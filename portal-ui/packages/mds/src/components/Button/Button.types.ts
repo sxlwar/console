@@ -14,20 +14,23 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import type { ButtonProps as AButtonProps } from "@atlaskit/button";
 import { MouseEventHandler, ReactNode } from "react";
 import { CSSObject } from "styled-components";
 
-export interface ButtonProps {
+export type Variant = "regular" | "callAction" | "secondary" | "text";
+
+export interface ButtonProps extends AButtonProps {
   id: string;
   name?: string;
   label?: string;
-  variant?: "regular" | "callAction" | "secondary" | "text";
+  variant?: Variant;
   icon?: ReactNode;
   iconLocation?: "start" | "end";
-  fullWidth?: boolean;
   disabled?: boolean;
+  fullWidth?: boolean;
   collapseOnSmall?: boolean;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
+  onClick?: MouseEventHandler<HTMLElement>;
   children?: ReactNode | string;
   sx?: CSSObject;
 }

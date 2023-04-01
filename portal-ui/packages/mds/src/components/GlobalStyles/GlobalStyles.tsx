@@ -197,7 +197,7 @@ const GlobalStyles = createGlobalStyle`
     }
     
     .min-icon {
-        width: 26px;
+        width: 18px;
     }
     
     #root: {
