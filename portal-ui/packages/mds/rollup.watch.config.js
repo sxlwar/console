@@ -1,6 +1,5 @@
 const { terser } = require("rollup-plugin-terser");
 const { default: dts } = require("rollup-plugin-dts");
-console.log(dts);
 const resolve = require("@rollup/plugin-node-resolve");
 const commonjs = require("@rollup/plugin-commonjs");
 const typescript = require("@rollup/plugin-typescript");
