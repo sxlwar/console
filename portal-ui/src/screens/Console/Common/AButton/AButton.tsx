@@ -18,7 +18,7 @@ import React from "react";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import { IconButtonProps } from "@mui/material";
+import type { IconButtonProps } from 'mds/dist/esm/types/components/IconButton/IconButton.types';
 
 const styles = (theme: Theme) =>
   createStyles({

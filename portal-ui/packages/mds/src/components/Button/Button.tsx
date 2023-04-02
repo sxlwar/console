@@ -15,8 +15,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import AButton, { Appearance } from "@atlaskit/button";
-import React, { FC } from "react";
+import React, { FC, useMemo } from "react";
 import { ButtonProps, Variant } from "./Button.types";
+import styled from "styled-components";
 
 const variantMap: { [key in Variant]: Appearance } = {
   regular: "default",
@@ -24,6 +25,11 @@ const variantMap: { [key in Variant]: Appearance } = {
   secondary: "danger",
   text: "link",
 };
+const Span = styled.span(() => {
+  return {
+    padding: "4px 5px",
+  };
+});
 
 const Button: FC<ButtonProps & React.ButtonHTMLAttributes<HTMLElement>> = ({
   label,
@@ -38,20 +44,19 @@ const Button: FC<ButtonProps & React.ButtonHTMLAttributes<HTMLElement>> = ({
   style,
   ...props
 }) => {
+  const wrappedIcon = useMemo<React.ReactChild>(
+    () => <Span>{icon}</Span>,
+    [icon]
+  );
+
   return (
     <AButton
       onClick={onClick}
       isDisabled={disabled || false}
       appearance={variantMap[variant] || props.appearance}
-      iconBefore={
-        iconLocation === "start" && icon
-          ? (icon as React.ReactChild)
-          : undefined
-      }
-      iconAfter={
-        iconLocation === "end" && icon ? (icon as React.ReactChild) : undefined
-      }
-      style={{ width: fullWidth ? "100%" : "auto", ...style }}
+      iconBefore={iconLocation === "start" && icon ? wrappedIcon : undefined}
+      iconAfter={iconLocation === "end" && icon ? wrappedIcon : undefined}
+      style={{ width: fullWidth ? "100%" : undefined, ...style }}
       {...props}
     >
       {label || children}

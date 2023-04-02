@@ -23,7 +23,7 @@ import createStyles from "@mui/styles/createStyles";
 import makeStyles from "@mui/styles/makeStyles";
 import { Theme } from "@mui/material/styles";
 import { Link, useNavigate } from "react-router-dom";
-import { IconButton } from "@mui/material";
+import { IconButton } from "mds";
 import { objectBrowserCommon } from "../Common/FormComponents/common/styleLibrary";
 import { encodeURLString } from "../../../common/utils";
 import { BackCaretIcon, Button, CopyIcon, NewPathIcon, Tooltip } from "mds";

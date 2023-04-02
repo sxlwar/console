@@ -17,7 +17,6 @@
 import React, { useState } from "react";
 import get from "lodash/get";
 import { Grid, InputLabel, Tooltip } from "@mui/material";
-import IconButton from "@mui/material/IconButton";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { Theme } from "@mui/material/styles";
@@ -29,7 +28,7 @@ import {
   tooltipHelper,
 } from "../common/styleLibrary";
 import { fileProcess } from "./utils";
-import { HelpIcon } from "mds";
+import { HelpIcon, IconButton } from "mds";
 import ErrorBlock from "../../../../shared/ErrorBlock";
 
 interface InputBoxProps {
@@ -144,12 +143,9 @@ const FileSelector = ({
               <IconButton
                 color="primary"
                 aria-label="upload picture"
-                component="span"
                 onClick={() => {
                   setShowSelector(false);
                 }}
-                disableRipple={false}
-                disableFocusRipple={false}
                 size="small"
               >
                 <CancelIcon />
@@ -164,12 +160,9 @@ const FileSelector = ({
             <IconButton
               color="primary"
               aria-label="upload picture"
-              component="span"
               onClick={() => {
                 setShowSelector(true);
               }}
-              disableRipple={false}
-              disableFocusRipple={false}
               size="small"
             >
               <AttachFileIcon />

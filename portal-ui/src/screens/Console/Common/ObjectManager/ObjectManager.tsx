@@ -19,9 +19,9 @@ import { Theme } from "@mui/material/styles";
 import { useSelector } from "react-redux";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import { IconButton, Tooltip } from "@mui/material";
+import { Tooltip } from "@mui/material";
 import { AppState, useAppDispatch } from "../../../../store";
-import { RemoveAllIcon } from "mds";
+import { IconButton, RemoveAllIcon } from "mds";
 import ObjectHandled from "./ObjectHandled";
 import {
   cleanList,

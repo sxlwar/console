@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import IconButton from "@mui/material/IconButton";
+import { IconButton } from "mds";
 import Snackbar from "@mui/material/Snackbar";
 import { Dialog, DialogContent, DialogTitle } from "@mui/material";
 import { Theme } from "@mui/material/styles";
@@ -137,7 +137,6 @@ const ModalWrapper = ({
             id={"close"}
             className={classes.closeButton}
             onClick={onClose}
-            disableRipple
             size="small"
           >
             <CloseIcon />

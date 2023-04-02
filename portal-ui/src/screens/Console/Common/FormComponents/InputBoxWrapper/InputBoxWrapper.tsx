@@ -16,7 +16,6 @@
 import React, { ClipboardEvent, useState } from "react";
 import {
   Grid,
-  IconButton,
   InputLabel,
   TextField,
   TextFieldProps,
@@ -35,7 +34,7 @@ import {
   inputFieldStyles,
   tooltipHelper,
 } from "../common/styleLibrary";
-import { HelpIcon } from "mds";
+import { HelpIcon, IconButton } from "mds";
 import clsx from "clsx";
 
 interface InputBoxProps {
@@ -236,9 +235,6 @@ const InputBoxWrapper = ({
                 }
                 id={overlayId}
                 size={"small"}
-                disableFocusRipple={false}
-                disableRipple={false}
-                disableTouchRipple={false}
               >
                 {inputBoxWrapperIcon}
               </IconButton>

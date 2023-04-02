@@ -21,8 +21,7 @@ import {
   DialogContent,
   DialogTitle,
 } from "@mui/material";
-import { Button } from "mds";
-import IconButton from "@mui/material/IconButton";
+import { Button, IconButton } from "mds";
 import CloseIcon from "@mui/icons-material/Close";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
@@ -94,7 +93,6 @@ const ConfirmDialog = ({
             aria-label="close"
             className={classes.closeButton}
             onClick={onClose}
-            disableRipple
             size="small"
           >
             <CloseIcon />

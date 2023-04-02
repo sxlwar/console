@@ -17,12 +17,12 @@ import React, { Fragment, useState } from "react";
 import {
   Checkbox,
   Grid,
-  IconButton,
   LinearProgress,
   Paper,
   Popover,
   Typography,
 } from "@mui/material";
+import { IconButton } from 'mds';
 import { useNavigate } from "react-router-dom";
 import { AutoSizer, Column, InfiniteLoader, Table } from "react-virtualized";
 import get from "lodash/get";

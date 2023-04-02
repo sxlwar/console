@@ -15,8 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, Suspense } from "react";
-import { ApplicationLogo, VersionIcon } from "mds";
-import { Box, IconButton } from "@mui/material";
+import { ApplicationLogo, VersionIcon, IconButton } from "mds";
+import { Box } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import TooltipWrapper from "../Common/TooltipWrapper/TooltipWrapper";
 import { getLogoVar } from "../../../config";
