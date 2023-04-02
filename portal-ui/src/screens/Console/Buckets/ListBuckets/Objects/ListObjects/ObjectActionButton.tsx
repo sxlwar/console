@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Button } from "@mui/material";
+import { Button } from "mds";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
@@ -70,10 +70,8 @@ const ObjectActionButton = ({
       disabled={disabled}
       onClick={onClick}
       className={clsx(classes.root, "noDefaultHeight")}
-      startIcon={icon}
-      sx={{
-        height: "initial",
-      }}
+      iconBefore={icon as React.ReactChild}
+      id="ObjectActionButton"
     >
       <span className={"buttonItem"}>{label}</span>
     </Button>

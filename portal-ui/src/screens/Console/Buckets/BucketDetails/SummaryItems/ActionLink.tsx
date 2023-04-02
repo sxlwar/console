@@ -15,8 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Button } from "@mui/material";
-import { Loader } from "mds";
+import { Loader, Button } from "mds";
 
 type ActionLinkProps = {
   isLoading: boolean;
@@ -38,7 +37,7 @@ const ActionLink = ({
       color="primary"
       onClick={onClick}
       variant="text"
-      sx={{
+      style={{
         padding: 0,
         margin: 0,
         alignItems: "flex-start",
@@ -47,14 +46,10 @@ const ActionLink = ({
         height: "auto",
         textDecoration: "underline",
         color: "#2781B0",
-
-        "&:hover": {
-          background: "#ffffff",
-          textDecoration: "underline",
-        },
       }}
-      disableRipple
-      disableFocusRipple
+      id="ActionLInk"
+      // disableRipple
+      // disableFocusRipple
       {...restProps}
     >
       {isLoading ? <Loader style={{ width: 16, height: 16 }} /> : label}
