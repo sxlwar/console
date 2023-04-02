@@ -1,4 +1,4 @@
-import { Box, Grid, Link } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { Fragment, useState } from "react";
 import { CopyIcon, SettingsIcon } from "mds";
 import FormSwitchWrapper from "../Common/FormComponents/FormSwitchWrapper/FormSwitchWrapper";
@@ -41,7 +41,7 @@ export const ClusterRegistered = ({ email }: { email: string }) => {
           }}
         >
           Login to{" "}
-          <Link
+          <a
             href="https://subnet.min.io"
             target="_blank"
             style={{
@@ -50,7 +50,7 @@ export const ClusterRegistered = ({ email }: { email: string }) => {
             }}
           >
             SUBNET
-          </Link>{" "}
+          </a>{" "}
           to avail support for this MinIO cluster
         </Box>
       </Grid>
@@ -103,7 +103,7 @@ export const ProxyConfiguration = () => {
             }}
           >
             For airgap/firewalled environments it is possible to{" "}
-            <Link
+            <a
               style={{
                 color: "#2781B0",
                 cursor: "pointer",
@@ -112,7 +112,7 @@ export const ProxyConfiguration = () => {
               target="_blank"
             >
               configure a proxy
-            </Link>{" "}
+            </a>{" "}
             to connect to SUBNET .
           </Box>
           <Box>

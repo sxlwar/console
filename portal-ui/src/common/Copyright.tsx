@@ -14,15 +14,13 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import Link from "@mui/material/Link";
-
 export default function Copyright() {
   return (
     <p style={{ textAlign: "center" }}>
       {"Copyright © "}
-      <Link color="inherit" href="https://min.io/?ref=con">
+      <a color="inherit" href="https://min.io/?ref=con">
         MinIO
-      </Link>{" "}
+      </a>{" "}
       {new Date().getFullYear()}
       {"."}
     </p>

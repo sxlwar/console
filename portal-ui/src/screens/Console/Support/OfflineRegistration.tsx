@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useState } from "react";
-import { Box, Link } from "@mui/material";
+import { Box } from "@mui/material";
 import { ClusterRegistered, FormTitle } from "./utils";
 import { Button, CopyIcon, OfflineRegistrationIcon } from "mds";
 import TooltipWrapper from "../Common/TooltipWrapper/TooltipWrapper";
@@ -134,7 +134,7 @@ const OfflineRegistration = () => {
                       gap: 3,
                     }}
                   >
-                    <Link
+                    <a
                       style={{
                         color: "#2781B0",
                         cursor: "pointer",
@@ -144,7 +144,7 @@ const OfflineRegistration = () => {
                       target="_blank"
                     >
                       https://subnet.min.io/cluster/register
-                    </Link>
+                    </a>
 
                     <TooltipWrapper tooltip={"Copy to Clipboard"}>
                       <CopyToClipboard text={offlineRegUrl}>

@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Box, Link } from "@mui/material";
+import { Box } from "@mui/material";
 import {
   CallHomeFeatureIcon,
   DiagnosticsFeatureIcon,
@@ -116,16 +116,13 @@ const RegisterHelpBox = ({ hasMargin = true }: { hasMargin?: boolean }) => {
         <FeatureItem
           icon={<ExtraFeaturesIcon />}
           description={
-            <Link
+            <a
               href="https://min.io/signup?ref=con"
               target="_blank"
-              sx={{
-                color: "#2781B0",
-                cursor: "pointer",
-              }}
+              color="#2781B0"
             >
               More Features
-            </Link>
+            </a>
           }
         />
       </Box>
