@@ -20,7 +20,7 @@ import { useParams } from "react-router-dom";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import get from "lodash/get";
 import {
   BucketEncryptionInfo,
@@ -62,6 +62,7 @@ import {
 } from "./bucketDetailsSlice";
 import { useAppDispatch } from "../../../../store";
 import VersioningInfo from "../VersioningInfo";
+import { Box } from "mds";
 
 const SetAccessPolicy = withSuspense(
   React.lazy(() => import("./SetAccessPolicy"))
@@ -89,8 +90,8 @@ const styles = (theme: Theme) =>
 
 const twoColCssGridLayoutConfig = {
   display: "grid",
-  gridTemplateColumns: { xs: "1fr", sm: "2fr 1fr" },
-  gridAutoFlow: { xs: "dense", sm: "row" },
+  gridTemplateColumns:  "1fr",
+  gridAutoFlow:  "dense",
   gap: 2,
 };
 
@@ -591,7 +592,6 @@ const BucketSummary = ({ classes }: IBucketSummaryProps) => {
                         sx={{
                           display: "flex",
                           flexDirection: "column",
-                          textDecorationStyle: "normal",
                           placeItems: "flex-start",
                           justifyItems: "flex-start",
                           gap: 3,
@@ -627,16 +627,16 @@ const BucketSummary = ({ classes }: IBucketSummaryProps) => {
               <Box
                 sx={{
                   display: "grid",
-                  gridTemplateColumns: { xs: "1fr", sm: "2fr 1fr" },
-                  gridAutoFlow: { xs: "dense", sm: "row" } /* NEW */,
+                  gridTemplateColumns:  "1fr",
+                  gridAutoFlow:  "dense",
                   gap: 2,
                 }}
               >
                 <Box
                   sx={{
                     display: "grid",
-                    gridTemplateColumns: { xs: "1fr", sm: "2fr 1fr" },
-                    gridAutoFlow: { xs: "dense", sm: "row" } /* NEW */,
+                    gridTemplateColumns:  "1fr",
+                    gridAutoFlow:  "dense",
                     gap: 2,
                   }}
                 >

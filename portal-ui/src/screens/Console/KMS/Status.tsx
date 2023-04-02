@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useEffect, useState } from "react";
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import PageLayout from "../Common/Layout/PageLayout";
 import api from "../../../common/api";
 
@@ -46,7 +46,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { DisabledIcon, EnabledIcon } from "mds";
+import { DisabledIcon, EnabledIcon, Box } from "mds";
 import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
 
 const Status = () => {
@@ -188,16 +188,16 @@ const Status = () => {
             <Box
               sx={{
                 display: "grid",
-                gridTemplateColumns: { xs: "1fr", sm: "2fr 1fr" },
-                gridAutoFlow: { xs: "dense", sm: "row" },
+                gridTemplateColumns: "1fr",
+                gridAutoFlow: "dense",
                 gap: 2,
               }}
             >
               <Box
                 sx={{
                   display: "grid",
-                  gridTemplateColumns: { xs: "1fr", sm: "2fr 1fr" },
-                  gridAutoFlow: { xs: "dense", sm: "row" },
+                  gridTemplateColumns: "1fr",
+                  gridAutoFlow: "dense",
                   gap: 2,
                 }}
               >
@@ -250,8 +250,8 @@ const Status = () => {
                 <Box
                   sx={{
                     display: "grid",
-                    gridTemplateColumns: { xs: "1fr", sm: "2fr 1fr" },
-                    gridAutoFlow: { xs: "dense", sm: "row" },
+                    gridTemplateColumns: "1fr",
+                    gridAutoFlow: "dense",
                     gap: 2,
                   }}
                 >

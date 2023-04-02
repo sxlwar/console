@@ -18,7 +18,7 @@ import get from "lodash/get";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import { BucketsIcon, ReportedUsageIcon, TotalObjectsIcon } from "mds";
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import {
   calculateBytes,
   niceBytes,
@@ -34,6 +34,7 @@ import { hasPermission } from "../../../../common/SecureComponent";
 import clsx from "clsx";
 import makeStyles from "@mui/styles/makeStyles";
 import { Bucket } from "../../../../api/consoleApi";
+import { Box } from "mds";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -247,7 +248,7 @@ const BucketListItem = ({
               <Grid item xs={12}>
                 <Grid container className={classes.bucketInfo}>
                   <Grid item xs={12} sm paddingRight={5}>
-                    <p style={{fontSize: 14}}>
+                    <p style={{ fontSize: 14 }}>
                       Created:{" "}
                       {bucket.creation_date
                         ? new Date(bucket.creation_date).toString()
@@ -255,7 +256,7 @@ const BucketListItem = ({
                     </p>
                   </Grid>
                   <Grid item xs={12} sm>
-                    <p style={{fontSize: 14}}>
+                    <p style={{ fontSize: 14 }}>
                       Access: {accessToStr(bucket)}
                     </p>
                   </Grid>
@@ -264,7 +265,7 @@ const BucketListItem = ({
             </Grid>
           </Grid>
           <Grid item xs={12} sm={5} className={classes.bucketActionButtons}>
-            <Box display={{ xs: "none", sm: "block" }}>
+            <Box sx={{ display: "block" }}>
               <div style={{ marginBottom: 10 }} />
             </Box>
           </Grid>

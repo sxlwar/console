@@ -19,7 +19,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import {
   containerForHeader,
   formFieldStyles,
@@ -43,6 +43,7 @@ import DeleteIDPConfigurationModal from "./DeleteIDPConfigurationModal";
 import FormSwitchWrapper from "../Common/FormComponents/FormSwitchWrapper/FormSwitchWrapper";
 import LabelValuePair from "../Common/UsageBarWrapper/LabelValuePair";
 import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
+import { Box } from "mds";
 
 type IDPConfigurationDetailsProps = {
   classes?: any;
@@ -266,10 +267,7 @@ const IDPConfigurationDetails = ({
           display: "grid",
           padding: "25px",
           gap: "25px",
-          gridTemplateColumns: {
-            md: "2fr 1.2fr",
-            xs: "1fr",
-          },
+          gridTemplateColumns: "2fr 1.2fr",
           border: "1px solid #eaeaea",
         }}
       >
@@ -339,8 +337,8 @@ const IDPConfigurationDetails = ({
       <Box
         sx={{
           display: "grid",
-          gridTemplateColumns: { xs: "1fr", sm: "2fr 1fr" },
-          gridAutoFlow: { xs: "dense", sm: "row" },
+          gridTemplateColumns: "1fr",
+          gridAutoFlow: "dense",
           gap: 3,
           padding: "15px",
           border: "1px solid #eaeaea",

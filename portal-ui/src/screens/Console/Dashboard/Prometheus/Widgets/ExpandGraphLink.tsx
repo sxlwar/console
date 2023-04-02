@@ -16,7 +16,7 @@
 
 import React from "react";
 import ZoomOutMapIcon from "@mui/icons-material/ZoomOutMap";
-import { Box } from "@mui/material";
+import { Box } from "mds";
 import { IDashboardPanel } from "../types";
 
 import { openZoomPage } from "../../dashboardSlice";

@@ -29,7 +29,7 @@ import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import Grid from "@mui/material/Grid";
 import api from "../../../common/api";
-import { Box } from "@mui/material";
+import { Box } from "mds";
 import TableWrapper from "../Common/TableWrapper/TableWrapper";
 import { stringSort } from "../../../utils/sortFunctions";
 import {

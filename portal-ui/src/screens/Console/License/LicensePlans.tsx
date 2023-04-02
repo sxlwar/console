@@ -26,7 +26,7 @@ import {
 } from "mds";
 import { useTheme } from "@mui/material/styles";
 import { SubnetInfo } from "./types";
-import { Box } from "@mui/material";
+import { Box } from "mds";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import {
   COMMUNITY_PLAN_FEATURES,
@@ -367,10 +367,7 @@ const LicensePlans = ({ licenseInfo }: IRegisterStatus) => {
 
             margin: "0 1.5rem 0 1.5rem",
 
-            gridTemplateColumns: {
-              sm: "1fr 1fr 1fr 1fr",
-              xs: "1fr 1fr 1fr",
-            },
+            gridTemplateColumns: "1fr 1fr 1fr 1fr",
 
             "&.paid-plans-only": {
               display: "grid",

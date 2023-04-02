@@ -15,11 +15,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Box } from "@mui/material";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { setSubnetOTP } from "./registerSlice";
-import { Button } from "mds";
+import { Button, Box } from "mds";
 import RegisterHelpBox from "./RegisterHelpBox";
 import { AppState, useAppDispatch } from "../../../store";
 import { useSelector } from "react-redux";

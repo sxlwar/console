@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment } from "react";
-import { Box, Button } from "@mui/material";
+import { Box, Button } from "mds";
 import { useNavigate } from "react-router-dom";
 import { HelpBox, WarnIcon, Grid } from "mds";
 
@@ -28,8 +28,8 @@ const RegisterCluster = ({ compactMode = false }: IRegisterCluster) => {
 
   const redirectButton = (
     <Button
+      id="registerYouCluster"
       type="submit"
-      variant="contained"
       color="primary"
       onClick={() => navigate("/support/register")}
     >
@@ -80,10 +80,7 @@ const RegisterCluster = ({ compactMode = false }: IRegisterCluster) => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        flexFlow: {
-          sm: "row",
-          xs: "column",
-        },
+        flexFlow: "row",
         marginBottom: "15px",
       }}
     >
@@ -112,10 +109,7 @@ const RegisterCluster = ({ compactMode = false }: IRegisterCluster) => {
           <Box
             sx={{
               display: "flex",
-              flexFlow: {
-                xs: "column",
-                md: "row",
-              },
+              flexFlow: "column",
             }}
           >
             <Box

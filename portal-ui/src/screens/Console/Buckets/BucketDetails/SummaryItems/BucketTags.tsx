@@ -13,22 +13,21 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
-import React, { useEffect, useState } from "react";
-import { Bucket } from "../../../Watch/types";
-import { ErrorResponseHandler } from "../../../../../common/types";
-import useApi from "../../../Common/Hooks/useApi";
-import { Box } from "@mui/material";
-import { IAM_SCOPES } from "../../../../../common/SecureComponent/permissions";
-import { SecureComponent } from "../../../../../common/SecureComponent";
-import get from "lodash/get";
-import Chip from "@mui/material/Chip";
-import CloseIcon from "@mui/icons-material/Close";
 import AddIcon from "@mui/icons-material/Add";
+import CloseIcon from "@mui/icons-material/Close";
+import Chip from "@mui/material/Chip";
+import get from "lodash/get";
+import { Box, Loader } from "mds";
+import React, { useEffect, useState } from "react";
+import { SecureComponent } from "../../../../../common/SecureComponent";
+import { IAM_SCOPES } from "../../../../../common/SecureComponent/permissions";
+import { ErrorResponseHandler } from "../../../../../common/types";
 import withSuspense from "../../../Common/Components/withSuspense";
-import { Loader } from "mds";
+import useApi from "../../../Common/Hooks/useApi";
+import { Bucket } from "../../../Watch/types";
 
-import { setErrorSnackMessage } from "../../../../../systemSlice";
 import { useAppDispatch } from "../../../../../store";
+import { setErrorSnackMessage } from "../../../../../systemSlice";
 
 const AddBucketTagModal = withSuspense(
   React.lazy(() => import("../AddBucketTagModal"))

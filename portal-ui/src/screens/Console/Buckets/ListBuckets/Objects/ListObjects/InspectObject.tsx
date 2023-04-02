@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { useState } from "react";
-import { Button, InspectMenuIcon, PasswordKeyIcon } from "mds";
+import { Button, InspectMenuIcon, PasswordKeyIcon, Box } from "mds";
 import withStyles from "@mui/styles/withStyles";
 import {
   decodeURLString,
@@ -34,7 +34,7 @@ import {
   modalStyleUtils,
   spacingUtils,
 } from "../../../../Common/FormComponents/common/styleLibrary";
-import { Box, DialogContentText } from "@mui/material";
+import { DialogContentText } from "@mui/material";
 import KeyRevealer from "../../../../Tools/KeyRevealer";
 import { setErrorSnackMessage } from "../../../../../../systemSlice";
 import { useAppDispatch } from "../../../../../../store";

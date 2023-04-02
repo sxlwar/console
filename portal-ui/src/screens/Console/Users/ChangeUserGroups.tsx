@@ -18,7 +18,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
 import { LinearProgress } from "@mui/material";
 import { Theme } from "@mui/material/styles";
-import { AddMembersToGroupIcon, Button } from "mds";
+import { AddMembersToGroupIcon, Button, Box } from "mds";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import {
@@ -32,7 +32,6 @@ import ModalWrapper from "../Common/ModalWrapper/ModalWrapper";
 import { encodeURLString } from "../../../common/utils";
 import { setModalErrorSnackMessage } from "../../../systemSlice";
 import { useAppDispatch } from "../../../store";
-import Box from "@mui/material/Box";
 
 const styles = (theme: Theme) =>
   createStyles({

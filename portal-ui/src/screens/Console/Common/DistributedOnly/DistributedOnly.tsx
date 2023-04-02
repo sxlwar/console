@@ -15,8 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Box, Grid } from "@mui/material";
-import { HelpBox } from "mds";
+import { Grid } from "@mui/material";
+import { Box, HelpBox } from "mds";
 
 interface IDistributedOnly {
   iconComponent: any;
@@ -36,12 +36,8 @@ const DistributedOnly = ({ iconComponent, entity }: IDistributedOnly) => {
                 fontSize: "14px",
                 display: "flex",
                 border: "none",
-                flexFlow: {
-                  xs: "column",
-                  md: "row",
-                },
+                flexFlow: "column",
                 "& a": {
-                  color: (theme) => theme.colors.link,
                   textDecoration: "underline",
                 },
               }}

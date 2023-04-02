@@ -15,9 +15,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 
-import { Button } from "mds";
+import { Button, Box } from "mds";
 
 type TierTypeCardProps = {
   onClick: (name: string) => void;

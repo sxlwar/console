@@ -15,9 +15,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Button, OpenListIcon, SyncIcon } from "mds";
+import { Box, Button, OpenListIcon, SyncIcon } from "mds";
 import { DateTime } from "luxon";
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import ScheduleIcon from "@mui/icons-material/Schedule";
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import DateTimePickerWrapper from "../DateTimePickerWrapper/DateTimePickerWrapper";
@@ -100,19 +100,10 @@ const DateRangeSelector = ({
       <Box
         sx={{
           display: "grid",
-          height: {
-            md: "40px",
-            xs: "auto",
-          },
+          height: "40px",
           alignItems: "center",
-          gridTemplateColumns: {
-            md: "auto 2fr auto",
-            sm: "1fr",
-          },
-          padding: {
-            md: "0",
-            xs: " 5px",
-          },
+          gridTemplateColumns: "auto 2fr auto",
+          padding: "0",
           gap: "5px",
         }}
       >
@@ -122,18 +113,10 @@ const DateRangeSelector = ({
         <Box
           sx={{
             display: "grid",
-            height: {
-              md: "40px",
-              xs: "auto",
-            },
-            border: {
-              md: "1px solid #eaeaea",
-            },
+            height: "40px",
+            border: "1px solid #eaeaea",
             alignItems: "center",
-            gridTemplateColumns: {
-              md: "1fr 1fr",
-              sm: "1fr",
-            },
+            gridTemplateColumns: "1fr 1fr",
             gap: "8px",
             paddingLeft: "8px",
             paddingRight: "8px",
@@ -144,9 +127,7 @@ const DateRangeSelector = ({
               display: "grid",
               height: "30px",
               alignItems: "center",
-              gridTemplateColumns: {
-                xs: "12px auto 1fr",
-              },
+              gridTemplateColumns: "12px auto 1fr",
               gap: "5px",
             }}
           >
@@ -189,9 +170,7 @@ const DateRangeSelector = ({
               display: "grid",
               height: "30px",
               alignItems: "center",
-              gridTemplateColumns: {
-                xs: "12px auto 1fr",
-              },
+              gridTemplateColumns: "12px auto 1fr",
               gap: "5px",
             }}
           >

@@ -19,8 +19,7 @@ import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import { ServerInfo } from "../types";
 import { niceDays } from "../../../../common/utils";
-import { Box } from "@mui/material";
-import { CircleIcon } from "mds";
+import { CircleIcon, Box } from "mds";
 import get from "lodash/get";
 import { commonDashboardInfocard } from "../../Common/FormComponents/common/styleLibrary";
 import {
@@ -152,11 +151,7 @@ const ServerInfoItem = ({ server }: ICardProps) => {
           justifyContent: "space-between",
           width: "100%",
           paddingLeft: "20px",
-
-          flexFlow: {
-            sm: "row",
-            xs: "column",
-          },
+          flexFlow: "row",
         }}
       >
         <Box
@@ -195,10 +190,7 @@ const ServerInfoItem = ({ server }: ICardProps) => {
             alignItems: "center",
             justifyContent: "center",
             flex: "1.5",
-            gap: {
-              md: "5%",
-              xs: "5%",
-            },
+            gap: "5%",
           }}
         >
           <ServerStatItem

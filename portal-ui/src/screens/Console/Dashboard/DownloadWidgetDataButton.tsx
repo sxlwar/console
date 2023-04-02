@@ -15,9 +15,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment } from "react";
-import { Box, Menu, MenuItem } from "@mui/material";
+import { Menu, MenuItem } from "@mui/material";
 import ListItemText from "@mui/material/ListItemText";
-import { DownloadIcon } from "mds";
+import { DownloadIcon, Box } from "mds";
 import { exportComponentAsPNG } from "react-component-export-image";
 import { ErrorResponseHandler } from "../../../common/types";
 import { useAppDispatch } from "../../../../src/store";
@@ -107,23 +107,8 @@ const DownloadWidgetDataButton = ({
   return (
     <Fragment>
       <Box
-        justifyItems={"center"}
         sx={{
-          "& .download-icon": {
-            backgroundColor: "transparent",
-            border: 0,
-            padding: 0,
-            cursor: "pointer",
-            "& svg": {
-              color: "#D0D0D0",
-              height: 16,
-            },
-            "&:hover": {
-              "& svg": {
-                color: "#404143",
-              },
-            },
-          },
+          justifyItems: "center",
         }}
       >
         <button onClick={handleClick} className={"download-icon"}>

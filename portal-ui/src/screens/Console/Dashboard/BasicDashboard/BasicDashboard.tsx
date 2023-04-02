@@ -15,8 +15,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import {
+  Box,
   ArrowRightIcon,
   BucketsIcon,
   Button,
@@ -48,14 +49,9 @@ const BoxItem = ({ children }: { children: any }) => {
     <Box
       sx={{
         border: "1px solid #f1f1f1",
-        padding: {
-          md: "15px",
-          xs: "5px",
-        },
+        padding: "15px",
         height: "136px",
-        maxWidth: {
-          sm: "100%",
-        },
+        maxWidth: "100%",
       }}
     >
       {children}
@@ -138,14 +134,8 @@ const BasicDashboard = ({ usage }: IDashboardProps) => {
             sx={{
               display: "grid",
               gridTemplateRows: "136px",
-              gridTemplateColumns: {
-                sm: "1fr 1fr 1fr",
-                xs: "1fr",
-              },
-              gap: {
-                md: "20px",
-                xs: "20px",
-              },
+              gridTemplateColumns: "1fr 1fr 1fr",
+              gap: "20px",
             }}
           >
             <BoxItem>
@@ -238,17 +228,8 @@ const BasicDashboard = ({ usage }: IDashboardProps) => {
                   icon={<HealIcon />}
                   label={
                     <Box>
-                      <Box
-                        sx={{
-                          display: {
-                            md: "inline",
-                            xs: "none",
-                          },
-                        }}
-                      >
-                        Time since last
-                      </Box>{" "}
-                      Heal Activity
+                      <Box sx={{ display: "inline" }}>Time since last</Box> Heal
+                      Activity
                     </Box>
                   }
                   value={lastHeal}
@@ -257,17 +238,7 @@ const BasicDashboard = ({ usage }: IDashboardProps) => {
                   icon={<DiagnosticsMenuIcon />}
                   label={
                     <Box>
-                      <Box
-                        sx={{
-                          display: {
-                            md: "inline",
-                            xs: "none",
-                          },
-                        }}
-                      >
-                        Time since last
-                      </Box>{" "}
-                      Scan Activity
+                      <Box>Time since last</Box> Scan Activity
                     </Box>
                   }
                   value={lastScan}
@@ -349,9 +320,6 @@ const BasicDashboard = ({ usage }: IDashboardProps) => {
                     sx={{
                       paddingTop: "20px",
                       fontSize: "14px",
-                      "& a": {
-                        color: (theme) => theme.colors.link,
-                      },
                     }}
                   >
                     <a

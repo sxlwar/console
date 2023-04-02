@@ -19,7 +19,8 @@ import React, { useState } from "react";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
+import { Box } from "mds";
 import {
   formFieldStyles,
   modalBasic,
@@ -176,10 +177,7 @@ const AddIDPConfiguration = ({
             display: "grid",
             padding: "25px",
             gap: "25px",
-            gridTemplateColumns: {
-              md: "2fr 1.2fr",
-              xs: "1fr",
-            },
+            gridTemplateColumns: "2fr 1.2fr",
             border: "1px solid #eaeaea",
           }}
         >

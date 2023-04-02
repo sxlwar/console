@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Box } from "@mui/material";
+import { Box } from "mds";
 import TimeStatItem from "../../TimeStatItem";
 
 export type SimpleWidgetRenderProps = {
@@ -50,10 +50,7 @@ const HealActivityRenderer = ({
           <Box>
             <Box
               sx={{
-                display: {
-                  md: "inline",
-                  xs: "none",
-                },
+                display: "inline",
               }}
             >
               Time since last

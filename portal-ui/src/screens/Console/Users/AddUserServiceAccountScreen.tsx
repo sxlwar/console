@@ -18,6 +18,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Theme } from "@mui/material/styles";
 import { useNavigate, useParams } from "react-router-dom";
 import {
+  Box,
   BackLink,
   Button,
   IAMPoliciesIcon,
@@ -31,7 +32,6 @@ import {
   modalStyleUtils,
 } from "../Common/FormComponents/common/styleLibrary";
 import Grid from "@mui/material/Grid";
-import { Box } from "@mui/material";
 import CodeMirrorWrapper from "../Common/FormComponents/CodeMirrorWrapper/CodeMirrorWrapper";
 import PageLayout from "../Common/Layout/PageLayout";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
@@ -181,10 +181,7 @@ const AddServiceAccount = ({ classes }: IAddServiceAccountProps) => {
               display: "grid",
               padding: "25px",
               gap: "25px",
-              gridTemplateColumns: {
-                md: "2fr 1.2fr",
-                xs: "1fr",
-              },
+              gridTemplateColumns: "2fr 1.2fr",
               border: "1px solid #eaeaea",
             }}
           >

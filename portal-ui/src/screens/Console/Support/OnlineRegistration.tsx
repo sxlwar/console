@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment } from "react";
-import { Box } from "@mui/material";
+import { Box } from "mds";
 import { FormTitle } from "./utils";
 import { Button, OnlineRegistrationIcon, UsersIcon } from "mds";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
@@ -77,10 +77,7 @@ const OnlineRegistration = () => {
       <Box
         sx={{
           display: "flex",
-          flexFlow: {
-            xs: "column",
-            md: "row",
-          },
+          flexFlow: "column",
         }}
       >
         <Box

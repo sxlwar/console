@@ -32,7 +32,7 @@ import { ErrorResponseHandler } from "../../../common/types";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
 import { useAppDispatch } from "../../../store";
 import { setErrorSnackMessage } from "../../../systemSlice";
-import { Box } from "@mui/material";
+import { Box } from "mds";
 
 const styles = (theme: Theme) =>
   createStyles({

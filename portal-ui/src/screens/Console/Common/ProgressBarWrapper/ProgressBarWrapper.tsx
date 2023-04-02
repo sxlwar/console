@@ -20,7 +20,7 @@ import LinearProgress, {
   linearProgressClasses,
   LinearProgressProps,
 } from "@mui/material/LinearProgress";
-import Box from "@mui/material/Box";
+import { Box } from "mds";
 
 interface IProgressBarWrapper {
   value: number;

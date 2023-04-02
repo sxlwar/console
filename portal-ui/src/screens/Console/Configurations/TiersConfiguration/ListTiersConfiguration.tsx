@@ -20,8 +20,9 @@ import { useSelector } from "react-redux";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import { Box, LinearProgress } from "@mui/material";
+import { LinearProgress } from "@mui/material";
 import {
+  Box,
   AddIcon,
   Button,
   HelpBox,

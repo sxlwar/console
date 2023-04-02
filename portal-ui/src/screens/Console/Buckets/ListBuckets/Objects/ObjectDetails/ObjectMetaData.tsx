@@ -17,13 +17,14 @@
 import React, { Fragment } from "react";
 import { withStyles } from "@mui/styles";
 import Grid from "@mui/material/Grid";
-import { Box, Table, TableBody, TableCell, TableRow } from "@mui/material";
+import { Table, TableBody, TableCell, TableRow } from "@mui/material";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import {
   detailsPanel,
   spacingUtils,
 } from "../../../../Common/FormComponents/common/styleLibrary";
+import { Box } from 'mds';
 
 interface IObjectMetadata {
   metaData: any;

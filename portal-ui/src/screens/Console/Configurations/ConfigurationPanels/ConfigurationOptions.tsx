@@ -36,7 +36,7 @@ import { IAM_PAGES } from "../../../../common/SecureComponent/permissions";
 import PageHeaderWrapper from "../../Common/PageHeaderWrapper/PageHeaderWrapper";
 import ExportConfigButton from "./ExportConfigButton";
 import ImportConfigButton from "./ImportConfigButton";
-import { Box } from "@mui/material";
+import { Box } from "mds";
 
 interface IConfigurationOptions {
   classes: any;

@@ -14,16 +14,15 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React from "react";
-import ListSubheader from "@mui/material/ListSubheader";
+import Collapse from "@mui/material/Collapse";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
-import Collapse from "@mui/material/Collapse";
+import ListSubheader from "@mui/material/ListSubheader";
+import { Box, MenuCollapsedIcon, MenuExpandedIcon } from "mds";
+import React from "react";
 import { ServerInfo } from "../types";
-import ServerInfoItem from "./ServerInfoItem";
-import { Box } from "@mui/material";
 import DriveInfoItem from "./DriveInfoItem";
-import { MenuCollapsedIcon, MenuExpandedIcon } from "mds";
+import ServerInfoItem from "./ServerInfoItem";
 
 const ServersList = ({ data }: { data: ServerInfo[] }) => {
   const [expanded, setExpanded] = React.useState<string>(
@@ -88,10 +87,7 @@ const ServersList = ({ data }: { data: ServerInfo[] }) => {
                     "&:hover": {
                       background: "#fafafa",
                     },
-                    display: {
-                      md: "block",
-                      xs: "none",
-                    },
+                    display: "block",
                     "& .collapse-icon": {
                       fill: "#494949",
                       "& g  rect": {

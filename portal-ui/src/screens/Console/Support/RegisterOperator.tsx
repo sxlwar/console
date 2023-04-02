@@ -24,7 +24,7 @@ import {
   spacingUtils,
 } from "../Common/FormComponents/common/styleLibrary";
 import withStyles from "@mui/styles/withStyles";
-import { Box } from "@mui/material";
+import { Box } from "mds";
 import PageLayout from "../Common/Layout/PageLayout";
 import api from "../../../common/api";
 

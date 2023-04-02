@@ -24,7 +24,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { Box, Grid, useMediaQuery } from "@mui/material";
+import { Grid, useMediaQuery } from "@mui/material";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
@@ -42,6 +42,7 @@ import { setErrorSnackMessage } from "../../../../../systemSlice";
 import { AppState, useAppDispatch } from "../../../../../store";
 import DownloadWidgetDataButton from "../../DownloadWidgetDataButton";
 import { useSelector } from "react-redux";
+import { Box } from "mds";
 
 interface ILinearGraphWidget {
   classes: any;
@@ -253,14 +254,10 @@ const LinearGraphWidget = ({
             : {
                 height: "100%",
                 display: "grid",
-                gridTemplateColumns: {
-                  md: "1fr 1fr",
-                  sm: "1fr",
-                },
+                gridTemplateColumns: "1fr 1fr",
               }
         }
         style={areaWidget ? { gridTemplateColumns: "1fr" } : {}}
-        ref={componentRef}
       >
         {loading && <Loader className={classes.loadingAlign} />}
         {!loading && (

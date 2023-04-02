@@ -16,7 +16,7 @@
 
 import React, { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Box } from "@mui/material";
+import { Box } from "mds";
 import { withStyles } from "@mui/styles";
 import { CSSObject } from "styled-components";
 import {

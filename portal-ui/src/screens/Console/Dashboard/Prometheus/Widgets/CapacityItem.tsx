@@ -16,7 +16,7 @@
 
 import React, { useEffect, useState } from "react";
 import { IDashboardPanel } from "../types";
-import { Box } from "@mui/material";
+import { Box } from "mds";
 import api from "../../../../../common/api";
 import { widgetDetailsToPanel } from "../utils";
 import { ErrorResponseHandler } from "../../../../../common/types";
@@ -139,19 +139,14 @@ const CapacityItem = ({
         flex: 1,
         display: "flex",
         alignItems: "center",
-        flexFlow: {
-          sm: "row",
-          xs: "column",
-        },
+        flexFlow: "row",
       }}
     >
       <Box
         sx={{
           fontSize: "16px",
           fontWeight: 600,
-          alignSelf: {
-            xs: "flex-start",
-          },
+          alignSelf: "flex-start",
         }}
       >
         Capacity
@@ -161,10 +156,7 @@ const CapacityItem = ({
           position: "relative",
           width: 110,
           height: 110,
-          marginLeft: {
-            sm: "auto",
-            xs: "",
-          },
+          marginLeft: "auto",
         }}
       >
         <Box
@@ -218,10 +210,7 @@ const CapacityItem = ({
         sx={{
           display: "flex",
           alignItems: "center",
-          marginLeft: {
-            sm: "auto",
-            xs: "",
-          },
+          marginLeft: "auto",
         }}
       >
         <Box>

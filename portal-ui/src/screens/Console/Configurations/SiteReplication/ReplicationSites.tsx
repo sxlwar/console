@@ -17,8 +17,9 @@
 import React, { useState } from "react";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
-import { Box, DialogContentText, Tooltip } from "@mui/material";
+import { DialogContentText, Tooltip } from "@mui/material";
 import {
+  Box,
   Button,
   CircleIcon,
   ConfirmDeleteIcon,
@@ -111,9 +112,7 @@ const ReplicationSites = ({
                   sx={{
                     flex: 2,
                     display: "grid",
-                    gridTemplateColumns: {
-                      sm: "1fr 1fr ",
-                    },
+                    gridTemplateColumns:  "1fr 1fr ",
                   }}
                 >
                   <Box

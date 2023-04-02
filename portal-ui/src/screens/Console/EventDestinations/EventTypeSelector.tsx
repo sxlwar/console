@@ -26,9 +26,8 @@ import {
 } from "../Common/FormComponents/common/styleLibrary";
 import PageLayout from "../Common/Layout/PageLayout";
 import { IAM_PAGES } from "../../../common/SecureComponent/permissions";
-import { Box } from "@mui/material";
 import NotificationEndpointTypeSelectorHelpBox from "../Account/NotificationEndpointTypeSelectorHelpBox";
-import { BackLink } from "mds";
+import { BackLink, Box } from "mds";
 import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
 
 interface INotificationTypeSelector {
@@ -73,10 +72,7 @@ const EventTypeSelector = ({ classes }: INotificationTypeSelector) => {
             display: "grid",
             padding: "16px",
             gap: "8px",
-            gridTemplateColumns: {
-              md: "2fr 1.2fr",
-              xs: "1fr",
-            },
+            gridTemplateColumns: "2fr 1.2fr",
             border: "1px solid #eaeaea",
           }}
         >

@@ -15,8 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { useState } from "react";
-import { Box } from "@mui/material";
-import { Button, CopyIcon } from "mds";
+import { Box, Button, CopyIcon } from "mds";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
 
 const KeyRevealer = ({ value }: { value: string }) => {
@@ -27,10 +26,7 @@ const KeyRevealer = ({ value }: { value: string }) => {
       sx={{
         display: "flex",
         alignItems: "center",
-        flexFlow: {
-          sm: "row",
-          xs: "column",
-        },
+        flexFlow: "row",
       }}
     >
       <InputBoxWrapper

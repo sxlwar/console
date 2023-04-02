@@ -15,8 +15,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useEffect, useState } from "react";
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import {
+  Box,
   BackLink,
   BucketsIcon,
   Button,
@@ -66,9 +67,6 @@ const SREntityStatus = ({
       sx={{
         border: "1px solid #f1f1f1",
         padding: "25px",
-        maxWidth: {
-          sm: "100%",
-        },
       }}
     >
       <StatusCountCard
@@ -154,11 +152,7 @@ const SiteReplicationStatus = () => {
             sx={{
               display: "grid",
               marginTop: "25px",
-              gridTemplateColumns: {
-                md: "1fr 1fr 1fr 1fr",
-                sm: "1fr 1fr",
-                xs: "1fr",
-              },
+              gridTemplateColumns: "1fr 1fr 1fr 1fr",
               gap: "30px",
             }}
           >
@@ -203,10 +197,7 @@ const SiteReplicationStatus = () => {
         <Box
           sx={{
             border: "1px solid #eaeaea",
-            minHeight: {
-              sm: "450px",
-              xs: "250px",
-            },
+            minHeight: "450px",
             marginTop: "25px",
             padding: "25px",
           }}

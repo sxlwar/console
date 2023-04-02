@@ -15,8 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useEffect, useState } from "react";
-import { Box, DialogContentText } from "@mui/material";
-import { Button, HelpBox, InspectMenuIcon, PasswordKeyIcon } from "mds";
+import { DialogContentText } from "@mui/material";
+import { Box, Button, HelpBox, InspectMenuIcon, PasswordKeyIcon } from "mds";
 import { useNavigate } from "react-router-dom";
 import PageLayout from "../Common/Layout/PageLayout";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
@@ -67,10 +67,7 @@ const ExampleBlock = ({
           sx={{
             display: "flex",
             marginBottom: "5px",
-            flexFlow: {
-              sm: "row",
-              xs: "column",
-            },
+            flexFlow: "row",
           }}
         >
           <label>Volume/bucket Name :</label> <code>{volumeVal}</code>
@@ -78,10 +75,7 @@ const ExampleBlock = ({
         <Box
           sx={{
             display: "flex",
-            flexFlow: {
-              sm: "row",
-              xs: "column",
-            },
+            flexFlow: "row",
           }}
         >
           <label>Path : </label>
@@ -208,40 +202,19 @@ const Inspect = ({ classes }: { classes: any }) => {
               alignItems: "flex-start",
               justifyContent: "flex-start",
               border: "1px solid #eaeaea",
-              padding: {
-                lg: "40px",
-                xs: "15px",
-              },
+              padding: "40px",
               flexWrap: "wrap",
-              gap: {
-                lg: "55px",
-                xs: "20px",
-              },
-              height: {
-                md: "calc(100vh - 120px)",
-                xs: "100%",
-              },
-              flexFlow: {
-                lg: "row",
-                xs: "column",
-              },
+              gap: "55px",
+              height: "calc(100vh - 120px)",
+              flexFlow: "row",
             }}
           >
             <Box
               sx={{
                 border: "1px solid #eaeaea",
-                flex: {
-                  md: 2,
-                  xs: 1,
-                },
-                width: {
-                  lg: "auto",
-                  xs: "100%",
-                },
-                padding: {
-                  lg: "40px",
-                  xs: "15px",
-                },
+                flex: 2,
+                width: "auto",
+                padding: "40px",
               }}
             >
               <form
@@ -350,10 +323,7 @@ const Inspect = ({ classes }: { classes: any }) => {
             <Box
               sx={{
                 flex: 1,
-                minWidth: {
-                  md: "365px",
-                  xs: "100%",
-                },
+                minWidth: "365px",
                 width: "100%",
               }}
             >
@@ -456,19 +426,13 @@ const Inspect = ({ classes }: { classes: any }) => {
 
                         "& .example-code-block label": {
                           display: "inline-block",
-                          width: {
-                            sm: "160px",
-                            xs: "100%",
-                          },
+                          width: "160px",
                           fontWeight: 600,
                           fontSize: "14px",
                         },
 
                         "& code": {
-                          width: {
-                            sm: "100px",
-                            xs: "100%",
-                          },
+                          width: "100px",
                           paddingLeft: "10px",
                           fontFamily: "monospace",
                           paddingRight: "10px",

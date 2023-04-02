@@ -16,9 +16,9 @@
 
 import React, { Fragment, useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
-import { Box, LinearProgress } from "@mui/material";
+import { LinearProgress } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { BackLink, Button, ClustersIcon, HelpBox } from "mds";
+import { BackLink, Button, ClustersIcon, HelpBox, Box } from "mds";
 import useApi from "../../Common/Hooks/useApi";
 import { IAM_PAGES } from "../../../../common/SecureComponent/permissions";
 import PageLayout from "../../Common/Layout/PageLayout";

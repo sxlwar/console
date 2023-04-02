@@ -14,16 +14,14 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React from "react";
-import { Box } from "@mui/material";
-import { FormTitle } from "./utils";
-import SelectWrapper from "../Common/FormComponents/SelectWrapper/SelectWrapper";
-import { setLoading, setSelectedSubnetOrganization } from "./registerSlice";
-import { Button } from "mds";
-import RegisterHelpBox from "./RegisterHelpBox";
+import { Box, Button } from "mds";
 import { useSelector } from "react-redux";
 import { AppState, useAppDispatch } from "../../../store";
+import SelectWrapper from "../Common/FormComponents/SelectWrapper/SelectWrapper";
+import RegisterHelpBox from "./RegisterHelpBox";
+import { setLoading, setSelectedSubnetOrganization } from "./registerSlice";
 import { callRegister } from "./registerThunks";
+import { FormTitle } from "./utils";
 
 const ClusterRegistrationForm = () => {
   const dispatch = useAppDispatch();

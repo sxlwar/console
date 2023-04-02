@@ -20,7 +20,7 @@ import Grid from "@mui/material/Grid";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import { Box, LinearProgress } from "@mui/material";
+import { LinearProgress } from "@mui/material";
 import { actionsTray } from "../../Common/FormComponents/common/styleLibrary";
 import { IDashboardPanel } from "./types";
 import { panelsConfiguration } from "./utils";
@@ -49,6 +49,8 @@ import { ITabOption } from "../../Common/TabSelector/types";
 import { getUsageAsync } from "../dashboardThunks";
 import { reloadWidgets } from "../dashboardSlice";
 import { selFeatures } from "../../consoleSlice";
+import { Box } from 'mds';
+import { CSSObject } from "styled-components";
 
 interface IPrDashboard {
   classes?: any;
@@ -135,7 +137,7 @@ const PrDashboard = ({ apiPrefix = "admin", usage }: IPrDashboard) => {
         }
       );
       const rowConfig = (
-        <Box sx={rowItem.sx} key={`layout-row-${rIdx}`}>
+        <Box sx={rowItem.sx as CSSObject} key={`layout-row-${rIdx}`}>
           {cellItems}
         </Box>
       );

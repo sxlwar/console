@@ -1,6 +1,5 @@
 import React from "react";
-import { Box } from "@mui/material";
-import { VerifiedIcon } from "mds";
+import { Box, VerifiedIcon } from "mds";
 
 const RegistrationStatusBanner = ({ email = "" }: { email?: string }) => {
   return (
@@ -51,10 +50,7 @@ const RegistrationStatusBanner = ({ email = "" }: { email?: string }) => {
         sx={{
           alignItems: "center",
           justifyContent: "flex-start",
-          display: {
-            sm: "flex",
-            xs: "none",
-          },
+          display: "flex",
         }}
       >
         <Box sx={{ fontSize: "16px", fontWeight: 400 }}>Registered to:</Box>

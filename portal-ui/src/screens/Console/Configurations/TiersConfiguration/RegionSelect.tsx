@@ -16,11 +16,12 @@
 
 import React from "react";
 
-import { Autocomplete, Box, TextField } from "@mui/material";
+import { Autocomplete, TextField } from "@mui/material";
 
 import s3Regions from "./s3-regions";
 import gcsRegions from "./gcs-regions";
 import azRegions from "./azure-regions";
+import { Box } from 'mds';
 
 const getRegions = (type: string): any => {
   if (type === "s3") {

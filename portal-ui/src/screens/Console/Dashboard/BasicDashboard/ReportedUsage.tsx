@@ -14,9 +14,10 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { Box, Tooltip } from "@mui/material";
+import { Tooltip } from "@mui/material";
 import React from "react";
 import { Cell, Pie, PieChart } from "recharts";
+import { Box } from 'mds';
 
 const ReportedUsage = ({
   usageValue,

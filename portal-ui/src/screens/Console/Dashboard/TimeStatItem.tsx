@@ -14,9 +14,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React from "react";
-import { Box } from "@mui/material";
-import { Loader, SuccessIcon } from "mds";
+import { Box, Loader, SuccessIcon } from "mds";
 
 const TimeStatItem = ({
   icon,
@@ -37,9 +35,7 @@ const TimeStatItem = ({
         gap: "8px",
         height: "33px",
         paddingLeft: "15px",
-        gridTemplateColumns: {
-          xs: "20px 1.5fr .5fr 20px",
-        },
+        gridTemplateColumns: "20px 1.5fr .5fr 20px",
         background: "#EBF9EE",
 
         "& .min-icon": {

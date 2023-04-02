@@ -16,9 +16,9 @@
 
 import React, { Fragment, useState } from "react";
 import { DateTime } from "luxon";
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import { IMessageEvent, w3cwebsocket as W3CWebSocket } from "websocket";
-import { Button, FilterIcon } from "mds";
+import { Box, Button, FilterIcon } from "mds";
 import { AppState, useAppDispatch } from "../../../store";
 import { useSelector } from "react-redux";
 import { TraceMessage } from "./types";
@@ -209,9 +209,7 @@ const Trace = ({ classes }: ITrace) => {
                 sx={{
                   display: "flex",
                   flexFlow: "row",
-                  gap: {
-                    md: "30px",
-                  },
+                  gap:  "30px",
 
                   "& .trace-checked-icon": {
                     border: "1px solid red",
@@ -441,7 +439,6 @@ const Trace = ({ classes }: ITrace) => {
                 }}
               >
                 <Box
-                  flex="2"
                   style={{
                     width: "calc( 100% + 10px)",
                   }}

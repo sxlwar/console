@@ -33,8 +33,7 @@ import { Action } from "kbar/lib/types";
 import { Theme } from "@mui/material/styles";
 import makeStyles from "@mui/styles/makeStyles";
 import { routesAsKbarActions } from "./kbar-actions";
-import { Box } from "@mui/material";
-import { MenuExpandedIcon } from "mds";
+import { MenuExpandedIcon, Box } from "mds";
 import { useSelector } from "react-redux";
 import { selFeatures } from "./consoleSlice";
 import {

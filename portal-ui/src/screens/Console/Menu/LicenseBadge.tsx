@@ -17,8 +17,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { AppState } from "../../../store";
-import { Box } from "@mui/material";
-import { CircleIcon } from "mds";
+import { CircleIcon, Box } from "mds";
 import { getLicenseConsent } from "../License/utils";
 import { registeredCluster } from "../../../config";
 

@@ -14,7 +14,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useState } from "react";
-import { Box } from "@mui/material";
+import { Box } from "mds";
 import Grid from "@mui/material/Grid";
 import SearchBox from "../Common/SearchBox";
 import { Theme } from "@mui/material/styles";
@@ -68,10 +68,7 @@ const PolicyView = ({
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: {
-              sm: "1fr 1fr",
-              xs: "1fr",
-            },
+            gridTemplateColumns: "1fr 1fr",
             alignItems: "center",
             justifyContent: "space-between",
             gap: "15px",
@@ -149,10 +146,7 @@ const PolicyView = ({
                 <Box
                   sx={{
                     display: "grid",
-                    gridTemplateColumns: {
-                      sm: "1fr 1fr",
-                      xs: "1fr",
-                    },
+                    gridTemplateColumns: "1fr 1fr",
                     gap: "15px",
                   }}
                 >

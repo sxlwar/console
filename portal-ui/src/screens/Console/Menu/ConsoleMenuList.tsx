@@ -15,11 +15,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useEffect, useState } from "react";
-import { Box } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import { LogoutIcon } from "mds";
+import { LogoutIcon, Box } from "mds";
 import ListItemText from "@mui/material/ListItemText";
 import List from "@mui/material/List";
 import {

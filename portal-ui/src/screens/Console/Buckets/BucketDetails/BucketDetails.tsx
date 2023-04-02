@@ -45,7 +45,7 @@ import {
 import { ErrorResponseHandler } from "../../../../common/types";
 
 import ScreenTitle from "../../Common/ScreenTitle/ScreenTitle";
-import { Box } from "@mui/material";
+import { Box } from "mds";
 import {
   browseBucketPermissions,
   deleteBucketPermissions,

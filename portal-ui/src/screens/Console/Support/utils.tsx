@@ -1,6 +1,6 @@
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import { Fragment, useState } from "react";
-import { CopyIcon, SettingsIcon } from "mds";
+import { CopyIcon, SettingsIcon, Box } from "mds";
 import FormSwitchWrapper from "../Common/FormComponents/FormSwitchWrapper/FormSwitchWrapper";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
 import RegistrationStatusBanner from "./RegistrationStatusBanner";

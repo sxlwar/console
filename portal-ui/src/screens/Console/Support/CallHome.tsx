@@ -14,21 +14,20 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import { Box, Button, CallHomeMenuIcon, HelpBox, Loader } from "mds";
 import React, { Fragment, useEffect, useState } from "react";
-import { Box } from "@mui/material";
-import { Button, CallHomeMenuIcon, HelpBox, Loader } from "mds";
 import { Link, useNavigate } from "react-router-dom";
-import PageLayout from "../Common/Layout/PageLayout";
 import api from "../../../common/api";
 import { ErrorResponseHandler } from "../../../common/types";
-import { setErrorSnackMessage } from "../../../systemSlice";
-import { useAppDispatch } from "../../../store";
-import { ICallHomeResponse } from "./types";
 import { registeredCluster } from "../../../config";
+import { useAppDispatch } from "../../../store";
+import { setErrorSnackMessage } from "../../../systemSlice";
+import FormSwitchWrapper from "../Common/FormComponents/FormSwitchWrapper/FormSwitchWrapper";
+import PageLayout from "../Common/Layout/PageLayout";
+import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
 import CallHomeConfirmation from "./CallHomeConfirmation";
 import RegisterCluster from "./RegisterCluster";
-import FormSwitchWrapper from "../Common/FormComponents/FormSwitchWrapper/FormSwitchWrapper";
-import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
+import { ICallHomeResponse } from "./types";
 
 const PromoLabels = ({ title, text }: { title: string; text: string }) => {
   return (
@@ -125,40 +124,19 @@ const CallHome = () => {
             alignItems: "flex-start",
             justifyContent: "flex-start",
             border: "1px solid #eaeaea",
-            padding: {
-              lg: "40px",
-              xs: "15px",
-            },
+            padding: "40px",
             flexWrap: "wrap",
-            gap: {
-              lg: "55px",
-              xs: "20px",
-            },
-            height: {
-              md: "calc(100vh - 120px)",
-              xs: "100%",
-            },
-            flexFlow: {
-              lg: "row",
-              xs: "column",
-            },
+            gap: "55px",
+            height: "calc(100vh - 120px)",
+            flexFlow: "row",
           }}
         >
           <Box
             sx={{
               border: "1px solid #eaeaea",
-              flex: {
-                md: 2,
-                xs: 1,
-              },
-              width: {
-                lg: "auto",
-                xs: "100%",
-              },
-              padding: {
-                lg: "40px",
-                xs: "15px",
-              },
+              flex: 2,
+              width: "auto",
+              padding: "40px",
             }}
           >
             {loading ? (
@@ -242,10 +220,7 @@ const CallHome = () => {
           <Box
             sx={{
               flex: 1,
-              minWidth: {
-                md: "365px",
-                xs: "100%",
-              },
+              minWidth: "365px",
               width: "100%",
             }}
           >

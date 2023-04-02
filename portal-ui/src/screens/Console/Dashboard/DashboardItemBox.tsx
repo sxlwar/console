@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Box } from "@mui/material";
+import { Box } from "mds";
 
 const DashboardItemBox = ({ children }: { children: any }) => {
   return (
@@ -23,17 +23,10 @@ const DashboardItemBox = ({ children }: { children: any }) => {
       sx={{
         border: "1px solid #f1f1f1",
         borderRadius: "3px",
-        padding: {
-          md: "15px",
-          xs: "5px",
-        },
-        height: {
-          md: "136px",
-          xs: "auto",
-        },
-        maxWidth: {
-          sm: "100%",
-        },
+        padding: "15px"
+        ,
+        height: "136px",
+        maxWidth: "100%",
       }}
     >
       {children}

@@ -29,7 +29,8 @@ import {
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import Grid from "@mui/material/Grid";
-import { Box, LinearProgress } from "@mui/material";
+import { LinearProgress } from "@mui/material";
+import { Box } from "mds";
 
 import { GroupsList } from "./types";
 import { stringSort } from "../../../utils/sortFunctions";

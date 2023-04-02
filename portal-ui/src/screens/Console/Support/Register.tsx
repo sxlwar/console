@@ -14,37 +14,37 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React, { Fragment, useEffect, useState } from "react";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
-import { spacingUtils } from "../Common/FormComponents/common/styleLibrary";
 import withStyles from "@mui/styles/withStyles";
-import { Box } from "@mui/material";
-import PageLayout from "../Common/Layout/PageLayout";
+import { Box } from "mds";
+import React, { Fragment, useEffect, useState } from "react";
 import api from "../../../common/api";
+import { spacingUtils } from "../Common/FormComponents/common/styleLibrary";
+import PageLayout from "../Common/Layout/PageLayout";
 
-import { SubnetRegTokenResponse } from "../License/types";
-import { ErrorResponseHandler } from "../../../common/types";
-import { useSelector } from "react-redux";
-import { setErrorSnackMessage } from "../../../systemSlice";
-import { AppState, useAppDispatch } from "../../../store";
-import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
+import { useSelector } from "react-redux";
+import { ErrorResponseHandler } from "../../../common/types";
+import { AppState, useAppDispatch } from "../../../store";
+import { setErrorSnackMessage } from "../../../systemSlice";
 import { TabPanel } from "../../shared/tabs";
-import { ClusterRegistered, ProxyConfiguration } from "./utils";
+import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
+import { SubnetRegTokenResponse } from "../License/types";
 import ApiKeyRegister from "./ApiKeyRegister";
-import { fetchLicenseInfo } from "./registerThunks";
+import ClusterRegistrationForm from "./ClusterRegistrationForm";
+import OfflineRegistration from "./OfflineRegistration";
+import OnlineRegistration from "./OnlineRegistration";
+import SubnetMFAToken from "./SubnetMFAToken";
 import {
   resetRegisterForm,
   setCurTab,
   setLoading,
   setSubnetRegToken,
 } from "./registerSlice";
-import OfflineRegistration from "./OfflineRegistration";
-import SubnetMFAToken from "./SubnetMFAToken";
-import ClusterRegistrationForm from "./ClusterRegistrationForm";
-import OnlineRegistration from "./OnlineRegistration";
-import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
+import { fetchLicenseInfo } from "./registerThunks";
+import { ClusterRegistered, ProxyConfiguration } from "./utils";
 
 interface IRegister {
   classes: any;

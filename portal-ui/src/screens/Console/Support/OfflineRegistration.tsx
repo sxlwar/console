@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useState } from "react";
-import { Box } from "@mui/material";
+import { Box } from "mds";
 import { ClusterRegistered, FormTitle } from "./utils";
 import { Button, CopyIcon, OfflineRegistrationIcon } from "mds";
 import TooltipWrapper from "../Common/TooltipWrapper/TooltipWrapper";

@@ -16,8 +16,7 @@
 
 import React from "react";
 import { IDashboardPanel } from "../types";
-import { Box } from "@mui/material";
-import { SpeedtestIcon } from "mds";
+import { SpeedtestIcon, Box } from "mds";
 import SingleValueWidget from "./SingleValueWidget";
 import NetworkGetItem from "./NetworkGetItem";
 import NetworkPutItem from "./NetworkPutItem";
@@ -85,10 +84,7 @@ const NetworkItem = ({
         flex: 1,
         display: "flex",
         alignItems: "center",
-        flexFlow: {
-          sm: "row",
-          xs: "column",
-        },
+        flexFlow: "row",
         gap: "15px",
         "& .unitText": {
           fontSize: "14px",
@@ -110,10 +106,7 @@ const NetworkItem = ({
           position: "relative",
           width: 110,
           height: 110,
-          marginLeft: {
-            sm: "auto",
-            xs: "",
-          },
+          marginLeft: "auto",
         }}
       >
         <Box
@@ -137,10 +130,7 @@ const NetworkItem = ({
         sx={{
           display: "flex",
           alignItems: "center",
-          marginLeft: {
-            sm: "auto",
-            xs: "",
-          },
+          marginLeft: "auto",
         }}
       >
         <Box

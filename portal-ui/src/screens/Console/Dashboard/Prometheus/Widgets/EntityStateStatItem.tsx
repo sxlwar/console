@@ -14,17 +14,16 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React, { useEffect, useState } from "react";
-import { Box } from "@mui/material";
+import { Box, Loader } from "mds";
+import { useEffect, useState } from "react";
 import api from "../../../../../common/api";
-import { widgetDetailsToPanel } from "../utils";
 import { ErrorResponseHandler } from "../../../../../common/types";
 import { IDashboardPanel } from "../types";
-import { Loader } from "mds";
+import { widgetDetailsToPanel } from "../utils";
 
-import { setErrorSnackMessage } from "../../../../../systemSlice";
-import { AppState, useAppDispatch } from "../../../../../store";
 import { useSelector } from "react-redux";
+import { AppState, useAppDispatch } from "../../../../../store";
+import { setErrorSnackMessage } from "../../../../../systemSlice";
 
 const EntityStateStatItem = ({
   panelItem,

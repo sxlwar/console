@@ -24,9 +24,8 @@ import {
   niceBytes,
   niceBytesInt,
 } from "../../../../common/utils";
-import { Box } from "@mui/material";
 import { Cell, Pie, PieChart } from "recharts";
-import { CircleIcon } from "mds";
+import { CircleIcon, Box } from "mds";
 import { commonDashboardInfocard } from "../../Common/FormComponents/common/styleLibrary";
 import { STATUS_COLORS } from "./Utils";
 
@@ -106,10 +105,7 @@ const DriveInfoItem = ({ drive }: ICardProps) => {
               wordBreak: "break-all",
               marginRight: "8px",
               fontWeight: 600,
-              fontSize: {
-                md: "16px",
-                xs: "10px",
-              },
+              fontSize: "16px",
             },
           }}
         >
@@ -124,10 +120,7 @@ const DriveInfoItem = ({ drive }: ICardProps) => {
             alignItems: "center",
             paddingLeft: "20px",
             marginTop: "10px",
-            flexFlow: {
-              sm: "row",
-              xs: "column",
-            },
+            flexFlow: "row",
             "& .info-label": {
               color: "#5E5E5E",
               fontSize: "12px",

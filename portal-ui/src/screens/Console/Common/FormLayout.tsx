@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Box } from "@mui/material";
+import { Box } from "mds";
 import SectionTitle from "./SectionTitle";
 
 type Props = {
@@ -32,10 +32,7 @@ const FormLayout: React.FC<Props> = ({ children, title, helpbox, icon }) => {
         display: "grid",
         padding: "25px",
         gap: "25px",
-        gridTemplateColumns: {
-          md: "2fr 1.2fr",
-          xs: "1fr",
-        },
+        gridTemplateColumns: "2fr 1.2fr",
         border: "1px solid #eaeaea",
       }}
     >

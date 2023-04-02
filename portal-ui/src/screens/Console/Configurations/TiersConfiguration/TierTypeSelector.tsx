@@ -14,16 +14,15 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import { BackLink, Box, HelpBox, TiersIcon } from "mds";
 import React, { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box } from "@mui/material";
-import { tierTypes } from "./utils";
 import { IAM_PAGES } from "../../../../common/SecureComponent/permissions";
-import PageLayout from "../../Common/Layout/PageLayout";
-import TierTypeCard from "./TierTypeCard";
-import { BackLink, HelpBox, TiersIcon } from "mds";
 import FormLayout from "../../Common/FormLayout";
+import PageLayout from "../../Common/Layout/PageLayout";
 import PageHeaderWrapper from "../../Common/PageHeaderWrapper/PageHeaderWrapper";
+import TierTypeCard from "./TierTypeCard";
+import { tierTypes } from "./utils";
 
 const TierTypeSelector = () => {
   const navigate = useNavigate();
@@ -111,12 +110,7 @@ const TierTypeSelector = () => {
               margin: "15px",
               display: "grid",
               gridGap: "20px",
-              gridTemplateColumns: {
-                xs: "repeat(1, 1fr)",
-                sm: "repeat(1, 1fr)",
-                md: "repeat(2, 1fr)",
-                lg: "repeat(2, 1fr)",
-              },
+              gridTemplateColumns: "repeat(2, 1fr)",
             }}
           >
             {tierTypes.map((tierType, index) => (

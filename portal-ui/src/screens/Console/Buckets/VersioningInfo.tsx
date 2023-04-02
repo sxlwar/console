@@ -1,8 +1,7 @@
 import React from "react";
-import { Box } from "@mui/material";
 import { BucketVersioningInfo } from "./types";
 import LabelWithIcon from "./BucketDetails/SummaryItems/LabelWithIcon";
-import { DisabledIcon, EnabledIcon } from "mds";
+import { Box, DisabledIcon, EnabledIcon } from "mds";
 
 const VersioningInfo = ({
   versioningState = {},

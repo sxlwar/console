@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Box } from "@mui/material";
+import { Box } from "mds";
 
 const DualStatCard = ({
   statItemLeft = null,
@@ -34,10 +34,7 @@ const DualStatCard = ({
         sx={{
           flex: 1,
           display: "flex",
-          padding: {
-            sm: "0 8px 0 8px",
-            xs: "0 10px 0 10px",
-          },
+          padding: "0 8px 0 8px",
         }}
       >
         <Box
@@ -62,16 +59,8 @@ const DualStatCard = ({
               alignItems: "center",
               gap: "5px",
               justifyContent: "space-between",
-              paddingBottom: {
-                md: "0px",
-                xs: "10px",
-              },
-              fontSize: {
-                xl: "55px",
-                lg: "50px",
-                md: "45px",
-                xs: "35px",
-              },
+              paddingBottom: "0px",
+              fontSize: "55px",
               flexFlow: "row",
               fontWeight: 600,
 

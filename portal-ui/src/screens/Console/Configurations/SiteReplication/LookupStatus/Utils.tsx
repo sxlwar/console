@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box } from "mds";
 import React from "react";
 import { StatsResponseType } from "../SiteReplicationStatus";
 

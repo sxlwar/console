@@ -15,11 +15,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment } from "react";
-import { Box } from "@mui/material";
 import InputBoxWrapper from "../../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
 import Grid from "@mui/material/Grid";
 import TooltipWrapper from "../../Common/TooltipWrapper/TooltipWrapper";
-import { AddIcon, Button, RemoveIcon } from "mds";
+import { Box, AddIcon, Button, RemoveIcon } from "mds";
 import { SiteInputRow } from "./Types";
 
 const SRSiteInputRow = ({

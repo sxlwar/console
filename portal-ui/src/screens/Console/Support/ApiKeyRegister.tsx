@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useCallback, useEffect, useState } from "react";
-import { Box } from "@mui/material";
+import { Box } from "mds";
 import { Button, OnlineRegistrationIcon } from "mds";
 import { FormTitle } from "./utils";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
@@ -105,10 +105,7 @@ const ApiKeyRegister = ({ classes, registerEndpoint }: IApiKeyRegister) => {
       <Box
         sx={{
           display: "flex",
-          flexFlow: {
-            xs: "column",
-            md: "row",
-          },
+          flexFlow: "column",
         }}
       >
         <Box
