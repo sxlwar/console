@@ -18,7 +18,7 @@ import React from "react";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import { InputLabel, Switch, Tooltip, Typography } from "@mui/material";
+import { InputLabel, Switch, Tooltip } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { actionsTray, fieldBasic } from "../common/styleLibrary";
 import { HelpIcon } from "mds";
@@ -200,9 +200,9 @@ const FormSwitchWrapper = ({
         </Grid>
         {description !== "" && (
           <Grid item xs={12} textAlign={"left"}>
-            <Typography component="p" className={classes.fieldDescription}>
+            <p className={classes.fieldDescription}>
               {description}
-            </Typography>
+            </p>
           </Grid>
         )}
       </Grid>

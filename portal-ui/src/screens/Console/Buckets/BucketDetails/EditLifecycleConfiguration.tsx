@@ -21,7 +21,6 @@ import {
   AccordionSummary,
   LinearProgress,
   SelectChangeEvent,
-  Typography,
 } from "@mui/material";
 import { Theme } from "@mui/material/styles";
 import { Button, LifecycleConfigIcon } from "mds";
@@ -464,7 +463,7 @@ const EditLifecycleConfiguration = ({
               <Grid item xs={12} className={classes.formFieldRowAccordion}>
                 <Accordion>
                   <AccordionSummary>
-                    <Typography>Filters</Typography>
+                    <p>Filters</p>
                   </AccordionSummary>
 
                   <AccordionDetails>
@@ -500,7 +499,7 @@ const EditLifecycleConfiguration = ({
                   <Grid item xs={12} className={classes.formFieldRowAccordion}>
                     <Accordion>
                       <AccordionSummary>
-                        <Typography>Advanced</Typography>
+                        <p>Advanced</p>
                       </AccordionSummary>
 
                       <AccordionDetails>

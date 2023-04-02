@@ -20,7 +20,6 @@ import {
   LinearProgress,
   Paper,
   Popover,
-  Typography,
 } from "@mui/material";
 import { IconButton } from 'mds';
 import { useNavigate } from "react-router-dom";
@@ -455,7 +454,7 @@ const TableWrapper = ({
   onSelect,
   records,
   isLoading,
-  loadingMessage = <Typography component="h3">Loading...</Typography>,
+  loadingMessage = <h3>Loading...</h3>,
   entityName,
   selectedItems,
   idField,

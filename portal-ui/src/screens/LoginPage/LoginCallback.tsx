@@ -23,7 +23,6 @@ import createStyles from "@mui/styles/createStyles";
 import { baseUrl } from "../../history";
 import { Paper } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
 import { Button } from "mds";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
@@ -165,14 +164,9 @@ const LoginCallback = ({ classes }: ILoginCallBackProps) => {
               <span className={classes.errorLabel}>Error from IDP</span>
             </div>
             <div className={classes.simpleError}>{error}</div>
-            <Typography
-              variant="body1"
-              gutterBottom
-              component="div"
-              className={classes.extraDetailsContainer}
-            >
+            <div className={classes.extraDetailsContainer}>
               {errorDescription}
-            </Typography>
+            </div>
             <Button
               id={"back-to-login"}
               onClick={() => {

@@ -1,6 +1,5 @@
-import React from "react";
-import Typography from "@mui/material/Typography";
 import { Theme } from "@mui/material/styles";
+import React from "react";
 
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
@@ -26,9 +25,7 @@ const ErrorBlock = ({
   return (
     <React.Fragment>
       {withBreak && <br />}
-      <Typography component="p" variant="body1" className={classes.errorBlock}>
-        {errorMessage}
-      </Typography>
+      <p className={classes.errorBlock}>{errorMessage}</p>
     </React.Fragment>
   );
 };

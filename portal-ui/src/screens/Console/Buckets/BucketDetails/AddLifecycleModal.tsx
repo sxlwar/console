@@ -27,7 +27,6 @@ import {
   AccordionSummary,
   LinearProgress,
   SelectChangeEvent,
-  Typography,
 } from "@mui/material";
 import Grid from "@mui/material/Grid";
 
@@ -322,7 +321,7 @@ const AddLifecycleModal = ({
                   <Grid item xs={12} className={classes.formFieldRowFilter}>
                     <Accordion>
                       <AccordionSummary>
-                        <Typography>Filters</Typography>
+                        <p>Filters</p>
                       </AccordionSummary>
                       <AccordionDetails>
                         <Grid item xs={12}>
@@ -358,7 +357,7 @@ const AddLifecycleModal = ({
                     <Grid item xs={12} className={classes.formFieldRowFilter}>
                       <Accordion>
                         <AccordionSummary>
-                          <Typography>Advanced</Typography>
+                          <p>Advanced</p>
                         </AccordionSummary>
                         <AccordionDetails>
                           <Grid item xs={12}>

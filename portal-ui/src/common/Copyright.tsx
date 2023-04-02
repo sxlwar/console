@@ -14,19 +14,17 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React from "react";
-import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 
 export default function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <p style={{ textAlign: "center" }}>
       {"Copyright © "}
       <Link color="inherit" href="https://min.io/?ref=con">
         MinIO
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
-    </Typography>
+    </p>
   );
 }

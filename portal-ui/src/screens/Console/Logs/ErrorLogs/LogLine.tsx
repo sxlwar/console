@@ -19,7 +19,6 @@ import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import Collapse from "@mui/material/Collapse";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import { LogMessage } from "../types";
 import { BoxArrowDown, BoxArrowUp, WarnFilledIcon } from "mds";
 
@@ -285,7 +284,7 @@ const LogLine = (props: { log: LogMessage }) => {
           <TableCell colSpan={2} style={{ paddingBottom: 0, paddingTop: 0 }}>
             <Collapse in={open} timeout="auto" unmountOnExit>
               <Box sx={{ margin: 1 }}>
-                <Typography
+                <p
                   style={{
                     background: "#efefef",
                     border: "1px solid #dedede",
@@ -295,7 +294,7 @@ const LogLine = (props: { log: LogMessage }) => {
                   }}
                 >
                   {fullMessage}
-                </Typography>
+                </p>
               </Box>
             </Collapse>
           </TableCell>
