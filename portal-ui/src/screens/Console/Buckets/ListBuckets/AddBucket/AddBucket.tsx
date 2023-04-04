@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useEffect, useState } from "react";
-import Grid from "@mui/material/Grid";
+import { Grid } from "mds";
 import { LinearProgress } from "@mui/material";
 import { Theme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
@@ -288,7 +288,12 @@ const AddBucket = () => {
               dispatch(addBucketAsync());
             }}
           >
-            <Grid container marginTop={1} spacing={2}>
+            <Grid
+              container
+              style={{ marginTop: 1 }}
+              rowSpacing={2}
+              columnSpacing={2}
+            >
               <Grid item xs={12}>
                 <AddBucketName hasErrors={hasErrors} />
               </Grid>
@@ -317,7 +322,7 @@ const AddBucket = () => {
                   </Fragment>
                 )}
               </Grid>
-              <Grid item xs={12} spacing={2}>
+              <Grid container  columnSpacing={2} rowSpacing={2}>
                 {siteReplicationInfo.enabled && (
                   <Fragment>
                     <br />

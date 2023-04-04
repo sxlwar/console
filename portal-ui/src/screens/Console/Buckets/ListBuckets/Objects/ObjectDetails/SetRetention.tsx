@@ -19,8 +19,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import Grid from "@mui/material/Grid";
-import { Button } from "mds";
+import { Button, Grid } from "mds";
 import {
   formFieldStyles,
   modalStyleUtils,

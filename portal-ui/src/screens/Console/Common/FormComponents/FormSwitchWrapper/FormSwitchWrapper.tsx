@@ -19,9 +19,8 @@ import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import { InputLabel, Switch, Tooltip } from "@mui/material";
-import Grid from "@mui/material/Grid";
 import { actionsTray, fieldBasic } from "../common/styleLibrary";
-import { HelpIcon } from "mds";
+import { HelpIcon, Grid } from "mds";
 import clsx from "clsx";
 import { InputProps as StandardInputProps } from "@mui/material/Input/Input";
 
@@ -170,7 +169,12 @@ const FormSwitchWrapper = ({
 
   return (
     <div>
-      <Grid container alignItems={"center"}>
+      <Grid
+        container
+        sx={{
+          alignItems: "center",
+        }}
+      >
         <Grid item xs={12} sm={8} md={8}>
           {label !== "" && (
             <InputLabel htmlFor={id} className={classes.inputLabel}>
@@ -192,17 +196,17 @@ const FormSwitchWrapper = ({
           xs={12}
           sm={label !== "" ? 4 : 12}
           md={label !== "" ? 4 : 12}
-          textAlign={"right"}
-          justifyContent={"end"}
+          sx={{
+            textAlign: "right",
+            justifyContent: "end",
+          }}
           className={classes.switchContainer}
         >
           {switchComponent}
         </Grid>
         {description !== "" && (
-          <Grid item xs={12} textAlign={"left"}>
-            <p className={classes.fieldDescription}>
-              {description}
-            </p>
+          <Grid item xs={12} style={{ textAlign: "left" }}>
+            <p className={classes.fieldDescription}>{description}</p>
           </Grid>
         )}
       </Grid>

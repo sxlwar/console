@@ -18,7 +18,6 @@ import React, { Fragment } from "react";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import Grid from "@mui/material/Grid";
 
 import { configurationElements } from "../utils";
 import {
@@ -36,7 +35,7 @@ import { IAM_PAGES } from "../../../../common/SecureComponent/permissions";
 import PageHeaderWrapper from "../../Common/PageHeaderWrapper/PageHeaderWrapper";
 import ExportConfigButton from "./ExportConfigButton";
 import ImportConfigButton from "./ImportConfigButton";
-import { Box } from "mds";
+import { Box, Grid } from "mds";
 
 interface IConfigurationOptions {
   classes: any;

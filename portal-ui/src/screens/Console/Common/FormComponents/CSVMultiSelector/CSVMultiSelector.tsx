@@ -25,10 +25,9 @@ import get from "lodash/get";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import Grid from "@mui/material/Grid";
 import { InputLabel, Tooltip } from "@mui/material";
 import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
-import { AddIcon, HelpIcon } from "mds";
+import { AddIcon, HelpIcon, Grid } from "mds";
 import InputBoxWrapper from "../InputBoxWrapper/InputBoxWrapper";
 
 interface ICSVMultiSelector {

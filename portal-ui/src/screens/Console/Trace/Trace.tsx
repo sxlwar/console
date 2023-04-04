@@ -16,7 +16,7 @@
 
 import React, { Fragment, useState } from "react";
 import { DateTime } from "luxon";
-import { Grid } from "@mui/material";
+import { Grid } from "mds";
 import { IMessageEvent, w3cwebsocket as W3CWebSocket } from "websocket";
 import { Box, Button, FilterIcon } from "mds";
 import { AppState, useAppDispatch } from "../../../store";

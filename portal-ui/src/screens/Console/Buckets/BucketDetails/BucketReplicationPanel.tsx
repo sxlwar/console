@@ -14,39 +14,37 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React, { Fragment, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { Theme } from "@mui/material/styles";
-import { AddIcon, BucketsIcon, Button, HelpBox, TrashIcon } from "mds";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import Grid from "@mui/material/Grid";
-
+import { AddIcon, BucketsIcon, Button, Grid, HelpBox, TrashIcon } from "mds";
+import React, { Fragment, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import {
+  SecureComponent,
+  hasPermission,
+} from "../../../../common/SecureComponent";
+import { IAM_SCOPES } from "../../../../common/SecureComponent/permissions";
+import api from "../../../../common/api";
+import { ErrorResponseHandler } from "../../../../common/types";
+import { useAppDispatch } from "../../../../store";
+import { setErrorSnackMessage } from "../../../../systemSlice";
+import withSuspense from "../../Common/Components/withSuspense";
 import {
   actionsTray,
   searchField,
 } from "../../Common/FormComponents/common/styleLibrary";
+import PanelTitle from "../../Common/PanelTitle/PanelTitle";
+import TableWrapper from "../../Common/TableWrapper/TableWrapper";
+import TooltipWrapper from "../../Common/TooltipWrapper/TooltipWrapper";
 import {
   BucketReplication,
   BucketReplicationDestination,
   BucketReplicationRule,
 } from "../types";
-import { ErrorResponseHandler } from "../../../../common/types";
-import {
-  hasPermission,
-  SecureComponent,
-} from "../../../../common/SecureComponent";
-import { IAM_SCOPES } from "../../../../common/SecureComponent/permissions";
-import api from "../../../../common/api";
-import TableWrapper from "../../Common/TableWrapper/TableWrapper";
-import PanelTitle from "../../Common/PanelTitle/PanelTitle";
-import withSuspense from "../../Common/Components/withSuspense";
 import EditReplicationModal from "./EditReplicationModal";
-import { setErrorSnackMessage } from "../../../../systemSlice";
 import { selBucketDetailsLoading } from "./bucketDetailsSlice";
-import { useParams } from "react-router-dom";
-import { useAppDispatch } from "../../../../store";
-import TooltipWrapper from "../../Common/TooltipWrapper/TooltipWrapper";
 
 const AddReplicationModal = withSuspense(
   React.lazy(() => import("./AddReplicationModal"))

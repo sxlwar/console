@@ -21,7 +21,7 @@ import withStyles from "@mui/styles/withStyles";
 import { LinearProgress } from "@mui/material";
 import get from "lodash/get";
 import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
+import { Grid } from "mds";
 import { UsersList } from "../Users/types";
 import { usersSort } from "../../../utils/sortFunctions";
 import {

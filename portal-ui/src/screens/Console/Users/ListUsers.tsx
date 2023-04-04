@@ -24,12 +24,13 @@ import {
   DeleteIcon,
   GroupsIcon,
   HelpBox,
+  Grid,
   UsersIcon,
 } from "mds";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import api from "../../../common/api";
-import { Grid, LinearProgress } from "@mui/material";
+import { LinearProgress } from "@mui/material";
 import { User, UsersList } from "./types";
 import { usersSort } from "../../../utils/sortFunctions";
 import {
@@ -358,7 +359,9 @@ const ListUsers = ({ classes }: IUsersProps) => {
                     item
                     xs={12}
                     className={classes.tableBlock}
-                    marginBottom={"15px"}
+                    style={{
+                      marginBottom: 15,
+                    }}
                   >
                     <SecureComponent
                       scopes={[IAM_SCOPES.ADMIN_LIST_USERS]}
@@ -432,9 +435,11 @@ const ListUsers = ({ classes }: IUsersProps) => {
             {records.length === 0 && (
               <Grid
                 container
-                justifyContent={"center"}
-                alignContent={"center"}
-                alignItems={"start"}
+                sx={{
+                  justifyContent: "center",
+                  alignContent: "center",
+                  alignItems: "start",
+                }}
               >
                 <Grid item xs={8}>
                   <HelpBox

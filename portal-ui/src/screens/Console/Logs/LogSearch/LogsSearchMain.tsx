@@ -16,9 +16,8 @@
 
 import React, { Fragment, useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Button, SearchIcon } from "mds";
+import { Button, SearchIcon, Grid } from "mds";
 import { Theme } from "@mui/material/styles";
-import { Grid } from "@mui/material";
 import { DateTime } from "luxon";
 import get from "lodash/get";
 import createStyles from "@mui/styles/createStyles";

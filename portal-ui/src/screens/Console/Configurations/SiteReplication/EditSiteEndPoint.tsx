@@ -15,9 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { useState } from "react";
-import { Box, Button, EditIcon } from "mds";
+import { Box, Button, EditIcon, Grid } from "mds";
 import { DialogContentText } from "@mui/material";
-import Grid from "@mui/material/Grid";
 import InputBoxWrapper from "../../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
 import ModalWrapper from "../../Common/ModalWrapper/ModalWrapper";
 import useApi from "../../Common/Hooks/useApi";
@@ -130,7 +129,7 @@ const EditSiteEndPoint = ({
             value={editEndPointName}
           />
         </Grid>
-        <Grid item xs={12} marginBottom={"15px"}>
+        <Grid item xs={12} style={{ marginBottom: 15 }}>
           <Box
             sx={{
               fontStyle: "italic",

@@ -15,8 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Grid } from "@mui/material";
-import { Box, HelpBox } from "mds";
+import { Box, HelpBox, Grid } from "mds";
 
 interface IDistributedOnly {
   iconComponent: any;
@@ -25,7 +24,7 @@ interface IDistributedOnly {
 
 const DistributedOnly = ({ iconComponent, entity }: IDistributedOnly) => {
   return (
-    <Grid container alignItems={"center"}>
+    <Grid container sx={{alignItems: 'center'}}>
       <Grid item xs={12}>
         <HelpBox
           title={`${entity} not available`}

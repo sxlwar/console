@@ -18,7 +18,6 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import {
   FormControl,
-  Grid,
   InputBase,
   MenuItem,
   Select,
@@ -26,7 +25,7 @@ import {
 } from "@mui/material";
 import { IMessageEvent, w3cwebsocket as W3CWebSocket } from "websocket";
 import { Theme } from "@mui/material/styles";
-import { Button, HealIcon } from "mds";
+import { Button, HealIcon, Grid } from "mds";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import { wsProtocol } from "../../../utils/wsUtils";

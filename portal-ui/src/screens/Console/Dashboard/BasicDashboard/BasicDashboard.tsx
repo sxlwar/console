@@ -15,9 +15,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Grid } from "@mui/material";
 import {
   Box,
+  Grid,
   ArrowRightIcon,
   BucketsIcon,
   Button,
@@ -251,7 +251,7 @@ const BasicDashboard = ({ usage }: IDashboardProps) => {
               </Box>
             </Box>
           </Box>
-          <Grid container spacing={1}>
+          <Grid container columnSpacing={1} rowSpacing={1}>
             <Grid item xs={4}>
               <TimeStatItem
                 icon={<StorageIcon />}

@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import UsersSelectors from "./UsersSelectors";
 import ModalWrapper from "../Common/ModalWrapper/ModalWrapper";
 import PredefinedList from "../Common/FormComponents/PredefinedList/PredefinedList";
-import Grid from "@mui/material/Grid";
-import { AddMembersToGroupIcon, Button } from "mds";
+import { AddMembersToGroupIcon, Button, Grid } from "mds";
 import api from "../../../common/api";
 import { ErrorResponseHandler } from "../../../common/types";
 

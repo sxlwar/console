@@ -17,11 +17,10 @@
 import React, { Fragment, useCallback, useEffect, useState } from "react";
 
 import get from "lodash/get";
-import Grid from "@mui/material/Grid";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import { BackLink, Button } from "mds";
+import { BackLink, Button, Grid } from "mds";
 
 import api from "../../../common/api";
 import {

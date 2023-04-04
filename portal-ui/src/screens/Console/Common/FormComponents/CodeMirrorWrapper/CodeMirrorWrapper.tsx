@@ -15,7 +15,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import Grid from "@mui/material/Grid";
 import { InputLabel, Tooltip } from "@mui/material";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
@@ -25,7 +24,7 @@ import { fieldBasic } from "../common/styleLibrary";
 import CopyToClipboard from "react-copy-to-clipboard";
 import CodeEditor from "@uiw/react-textarea-code-editor";
 import TooltipWrapper from "../../TooltipWrapper/TooltipWrapper";
-import { Box } from 'mds';
+import { Box, Grid } from 'mds';
 
 interface ICodeWrapper {
   value: string;

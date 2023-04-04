@@ -15,9 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { useState } from "react";
-import Grid from "@mui/material/Grid";
 import createStyles from "@mui/styles/createStyles";
-import { Button, EditIcon } from "mds";
+import { Button, Grid, EditIcon } from "mds";
 import makeStyles from "@mui/styles/makeStyles";
 import { Theme } from "@mui/material/styles";
 import {

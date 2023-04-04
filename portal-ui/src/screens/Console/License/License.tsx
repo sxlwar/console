@@ -16,10 +16,9 @@
 
 import React, { Fragment, useCallback, useEffect, useState } from "react";
 import { LinearProgress } from "@mui/material";
-import Grid from "@mui/material/Grid";
 import { SubnetInfo } from "./types";
 import api from "../../../common/api";
-import { ArrowIcon, Button } from "mds";
+import { ArrowIcon, Button, Grid } from "mds";
 import { IAM_PAGES } from "../../../common/SecureComponent/permissions";
 import LicensePlans from "./LicensePlans";
 import { useNavigate } from "react-router-dom";

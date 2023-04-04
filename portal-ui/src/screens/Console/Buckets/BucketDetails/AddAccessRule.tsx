@@ -16,8 +16,7 @@
 
 import React, { useState, useEffect } from "react";
 import ModalWrapper from "../../Common/ModalWrapper/ModalWrapper";
-import { Grid } from "@mui/material";
-import { AddAccessRuleIcon, Button } from "mds";
+import { AddAccessRuleIcon, Button, Grid } from "mds";
 import InputBoxWrapper from "../../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";

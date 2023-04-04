@@ -19,14 +19,13 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import { Grid } from "@mui/material";
 import {
   containerForHeader,
   formFieldStyles,
   modalBasic,
   searchField,
 } from "../Common/FormComponents/common/styleLibrary";
-import { BackLink, Button, EditIcon, RefreshIcon, TrashIcon } from "mds";
+import { BackLink, Button, EditIcon, RefreshIcon, TrashIcon, Grid } from "mds";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
 import { useNavigate, useParams } from "react-router-dom";
 import { ErrorResponseHandler } from "../../../common/types";
@@ -278,14 +277,19 @@ const IDPConfigurationDetails = ({
             saveRecord(e);
           }}
         >
-          <Grid container item spacing="20" sx={{ marginTop: 1 }}>
+          <Grid
+            container
+            rowSpacing={20}
+            columnSpacing={20}
+            sx={{ marginTop: 1 }}
+          >
             <Grid xs={12} item className={classes.fieldBox}>
               {Object.entries(formFields).map(([key, value]) => (
                 <Grid item xs={12} className={classes.formFieldRow} key={key}>
                   {renderFormField(key, value)}
                 </Grid>
               ))}
-              <Grid item xs={12} textAlign={"right"}>
+              <Grid item xs={12} style={{ textAlign: "right" }}>
                 <Box
                   sx={{
                     display: "flex",

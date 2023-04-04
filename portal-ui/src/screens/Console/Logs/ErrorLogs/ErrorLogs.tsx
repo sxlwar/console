@@ -16,11 +16,11 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { IMessageEvent, w3cwebsocket as W3CWebSocket } from "websocket";
 import { Theme } from "@mui/material/styles";
-import { Button } from "mds";
+import { Grid, Button } from "mds";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import { useSelector } from "react-redux";
-import { FormControl, Grid, InputBase, MenuItem, Select } from "@mui/material";
+import { FormControl, InputBase, MenuItem, Select } from "@mui/material";
 
 import { ErrorResponseHandler } from "../../../../../src/common/types";
 import api from "../../../../../src/common/api";
@@ -236,7 +236,7 @@ const ErrorLogs = () => {
     <Fragment>
       <PageHeaderWrapper label="Logs" />
       <PageLayout>
-        <Grid container spacing={1}>
+        <Grid container rowSpacing={1} columnSpacing={1}>
           <Grid item xs={4}>
             {!loadingNodes ? (
               <FormControl variant="outlined" className={classes.nodeField}>

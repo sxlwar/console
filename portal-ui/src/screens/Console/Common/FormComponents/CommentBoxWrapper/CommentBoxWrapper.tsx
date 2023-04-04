@@ -15,12 +15,12 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Grid, InputLabel, TextField, Tooltip } from "@mui/material";
+import { InputLabel, TextField, Tooltip } from "@mui/material";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
-import { HelpIcon } from "mds";
+import { HelpIcon, Grid } from "mds";
 
 interface CommentBoxProps {
   label: string;

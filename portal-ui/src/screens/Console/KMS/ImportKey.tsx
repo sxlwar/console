@@ -16,8 +16,7 @@
 
 import React, { Fragment, useState } from "react";
 
-import Grid from "@mui/material/Grid";
-import { AddAccessRuleIcon, BackLink, Button, Box } from "mds";
+import { AddAccessRuleIcon, BackLink, Button, Box, Grid } from "mds";
 import PageLayout from "../Common/Layout/PageLayout";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
 import { IAM_PAGES } from "../../../common/SecureComponent/permissions";
@@ -96,7 +95,7 @@ const ImportKey = () => {
                 importRecord(e);
               }}
             >
-              <Grid container item spacing={1}>
+              <Grid container rowSpacing={1} columnSpacing={1}>
                 <Grid item xs={12}>
                   <InputBoxWrapper
                     id="key-name"
@@ -120,7 +119,7 @@ const ImportKey = () => {
                     editorHeight={"350px"}
                   />
                 </Grid>
-                <Grid item xs={12} textAlign={"right"}>
+                <Grid item xs={12} style={{ textAlign: "right" }}>
                   <Box
                     sx={{
                       display: "flex",

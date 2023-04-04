@@ -16,7 +16,7 @@
 
 import React, { Fragment, useEffect, useState } from "react";
 import get from "lodash/get";
-import { Button, LifecycleConfigIcon } from "mds";
+import { Button, LifecycleConfigIcon, Grid } from "mds";
 import { useSelector } from "react-redux";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
@@ -28,7 +28,6 @@ import {
   LinearProgress,
   SelectChangeEvent,
 } from "@mui/material";
-import Grid from "@mui/material/Grid";
 
 import {
   ITierElement,
@@ -241,7 +240,7 @@ const AddLifecycleModal = ({
           <Grid container>
             <Grid item xs={12} className={classes.formScrollable}>
               <Grid item xs={12}>
-                <Grid container spacing={1}>
+                <Grid container rowSpacing={1} columnSpacing={1}>
                   <Grid item xs={12}>
                     <RadioGroupSelector
                       currentSelection={ilmType}

@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import Grid from "@mui/material/Grid";
+import { Grid } from "mds";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";

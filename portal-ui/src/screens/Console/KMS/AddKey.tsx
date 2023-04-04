@@ -16,14 +16,13 @@
 
 import React, { Fragment } from "react";
 
-import Grid from "@mui/material/Grid";
 import { IAM_PAGES } from "../../../common/SecureComponent/permissions";
 import { ErrorResponseHandler } from "../../../common/types";
 import { setErrorSnackMessage } from "../../../systemSlice";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../../store";
 import AddKeyForm from "./AddKeyForm";
-import { BackLink } from "mds";
+import { BackLink, Grid } from "mds";
 import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
 
 const AddKey = () => {

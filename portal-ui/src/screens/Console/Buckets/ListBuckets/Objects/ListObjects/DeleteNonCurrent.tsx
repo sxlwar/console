@@ -17,10 +17,9 @@
 import React, { Fragment, useEffect, useState } from "react";
 
 import { DialogContentText } from "@mui/material";
-import Grid from "@mui/material/Grid";
 import { ErrorResponseHandler } from "../../../../../../common/types";
 import { decodeURLString } from "../../../../../../common/utils";
-import { ConfirmDeleteIcon } from "mds";
+import { ConfirmDeleteIcon, Grid } from "mds";
 import ConfirmDialog from "../../../../Common/ModalWrapper/ConfirmDialog";
 import api from "../../../../../../common/api";
 import InputBoxWrapper from "../../../../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";

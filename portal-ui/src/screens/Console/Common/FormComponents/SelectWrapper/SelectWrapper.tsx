@@ -14,7 +14,6 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import React from "react";
-import Grid from "@mui/material/Grid";
 import {
   FormControl,
   InputBase,
@@ -28,7 +27,7 @@ import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
-import { HelpIcon } from "mds";
+import { HelpIcon, Grid } from "mds";
 
 export interface selectorTypes {
   label: string;

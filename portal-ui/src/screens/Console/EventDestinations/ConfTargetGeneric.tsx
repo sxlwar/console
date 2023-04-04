@@ -18,7 +18,6 @@ import React, { useEffect, useState } from "react";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import Grid from "@mui/material/Grid";
 import { IElementValue, IOverrideEnv, KVField } from "../Configurations/types";
 import {
   formFieldStyles,
@@ -29,7 +28,7 @@ import CSVMultiSelector from "../Common/FormComponents/CSVMultiSelector/CSVMulti
 import CommentBoxWrapper from "../Common/FormComponents/CommentBoxWrapper/CommentBoxWrapper";
 import FormSwitchWrapper from "../Common/FormComponents/FormSwitchWrapper/FormSwitchWrapper";
 import PredefinedList from "../Common/FormComponents/PredefinedList/PredefinedList";
-import { ConsoleIcon, Tooltip } from "mds";
+import { ConsoleIcon, Tooltip, Grid } from "mds";
 
 interface IConfGenericProps {
   onChange: (newValue: IElementValue[]) => void;

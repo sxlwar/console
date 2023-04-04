@@ -188,9 +188,11 @@ const SiteReplication = () => {
         {!hasSites && !isSiteInfoLoading ? (
           <Grid
             container
-            justifyContent={"center"}
-            alignContent={"center"}
-            alignItems={"center"}
+            sx={{
+              justifyContent: 'center',
+              alignContent: 'center',
+              alignItems: 'center',
+            }}
           >
             <Grid item xs={8}>
               <HelpBox

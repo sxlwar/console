@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Theme } from "@mui/material/styles";
 import { useNavigate, useParams } from "react-router-dom";
-import { AddIcon, Button, GroupsIcon, IAMPoliciesIcon, TrashIcon } from "mds";
+import { AddIcon, Button, GroupsIcon, IAMPoliciesIcon, TrashIcon, Grid } from "mds";
 import createStyles from "@mui/styles/createStyles";
 import {
   actionsTray,
@@ -12,7 +12,6 @@ import {
 } from "../Common/FormComponents/common/styleLibrary";
 
 import withStyles from "@mui/styles/withStyles";
-import { Grid } from "@mui/material";
 import ScreenTitle from "../Common/ScreenTitle/ScreenTitle";
 import TableWrapper from "../Common/TableWrapper/TableWrapper";
 import api from "../../../common/api";

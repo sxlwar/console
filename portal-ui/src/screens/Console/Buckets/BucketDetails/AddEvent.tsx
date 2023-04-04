@@ -16,8 +16,7 @@
 
 import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
 
-import Grid from "@mui/material/Grid";
-import { Button, EventSubscriptionIcon } from "mds";
+import { Button, EventSubscriptionIcon, Grid } from "mds";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";

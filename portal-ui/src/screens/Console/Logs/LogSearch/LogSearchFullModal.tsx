@@ -15,9 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment } from "react";
-import { Grid } from "@mui/material";
 import { Theme } from "@mui/material/styles";
-import { Button } from "mds";
+import { Button, Grid } from "mds";
 import get from "lodash/get";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";

@@ -37,10 +37,10 @@ import {
   PreviewIcon,
   RefreshIcon,
   ShareIcon,
+  Grid,
 } from "mds";
 import { DateTime } from "luxon";
 import createStyles from "@mui/styles/createStyles";
-import Grid from "@mui/material/Grid";
 import get from "lodash/get";
 import api from "../../../../../../common/api";
 import {

@@ -21,7 +21,6 @@ import { withStyles } from "@mui/styles";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import { LinearProgress, SelectChangeEvent } from "@mui/material";
-import Grid from "@mui/material/Grid";
 import ShareFile from "./ShareFile";
 import {
   actionsTray,
@@ -50,6 +49,7 @@ import {
   Button,
   DeleteIcon,
   DeleteNonCurrentIcon,
+  Grid,
   SelectMultipleIcon,
   VersionsIcon,
 } from "mds";

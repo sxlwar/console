@@ -16,7 +16,7 @@
 
 import React, { Fragment, useEffect, useState } from "react";
 import PrDashboard from "./Prometheus/PrDashboard";
-import Grid from "@mui/material/Grid";
+import { Grid } from "mds";
 import { containerForHeader } from "../Common/FormComponents/common/styleLibrary";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";

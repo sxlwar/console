@@ -15,8 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment } from "react";
-import Grid from "@mui/material/Grid";
-import { CircleIcon } from "mds";
+import { CircleIcon, Grid } from "mds";
 
 interface INARule {
   ruleText: string;
@@ -26,7 +25,7 @@ const NARule = ({ ruleText }: INARule) => {
   return (
     <Fragment>
       <Grid container style={{ display: "flex", justifyContent: "flex-start" }}>
-        <Grid item xs={1} paddingRight={1}>
+        <Grid item xs={1} style={{paddingLeft: 1}}>
           <CircleIcon
             width={"12px"}
             height={"12px"}
@@ -36,11 +35,11 @@ const NARule = ({ ruleText }: INARule) => {
         <Grid
           item
           xs={9}
-          paddingLeft={1}
           style={{
             color: "#8f949c",
             display: "flex",
             justifyContent: "flex-start",
+            paddingLeft: 1
           }}
         >
           {ruleText}

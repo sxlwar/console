@@ -26,9 +26,9 @@ import {
   StorageIcon,
   UploadStatIcon,
   VersionIcon,
+  Grid
 } from "mds";
 import createStyles from "@mui/styles/createStyles";
-import { Grid } from "@mui/material";
 import { IndvServerMetric, SpeedTestResponse, STServer } from "./types";
 import { calculateBytes, prettyNumber } from "../../../common/utils";
 import CodeMirrorWrapper from "../Common/FormComponents/CodeMirrorWrapper/CodeMirrorWrapper";
@@ -352,7 +352,9 @@ const STResults = ({ results, start }: ISTResults) => {
                   md={1}
                   lg={1}
                   className={classes.resultsIcon}
-                  alignItems={"flex-end"}
+                  style={{
+                    alignItems: 'flex-end'
+                  }}
                 >
                   <ComputerLineIcon width={45} />
                 </Grid>

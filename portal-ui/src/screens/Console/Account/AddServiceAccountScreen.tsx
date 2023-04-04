@@ -30,8 +30,7 @@ import {
   formFieldStyles,
   modalStyleUtils,
 } from "../Common/FormComponents/common/styleLibrary";
-import Grid from "@mui/material/Grid";
-import { Box } from "mds";
+import { Box, Grid } from "mds";
 import CodeMirrorWrapper from "../Common/FormComponents/CodeMirrorWrapper/CodeMirrorWrapper";
 import PageLayout from "../Common/Layout/PageLayout";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
@@ -171,63 +170,67 @@ const AddServiceAccount = ({ classes }: IAddServiceAccountProps) => {
                   addServiceAccount(e);
                 }}
               >
-                <Grid container item spacing="20" sx={{ marginTop: 1 }}>
+                <Grid
+                  container
+                  rowSpacing={20}
+                  columnSpacing={20}
+                  sx={{ marginTop: 1 }}
+                >
                   <Grid item xs={12}>
-                    <Grid container item spacing="20">
+                    <Grid container rowSpacing={20} columnSpacing={20}>
                       <Grid item xs={12}>
                         <Grid container>
                           <Grid item xs={1}>
                             <PasswordKeyIcon />
                           </Grid>
-                          <Grid item>
-                            <Grid container item spacing="20">
-                              <Grid item xs={12}>
-                                {" "}
-                                <div className={classes.stackedInputs}>
-                                  <InputBoxWrapper
-                                    value={accessKey}
-                                    label={"Access Key"}
-                                    id={"accessKey"}
-                                    name={"accessKey"}
-                                    placeholder={"Enter Access Key"}
-                                    onChange={(e) => {
-                                      setAccessKey(e.target.value);
-                                    }}
-                                  />
-                                </div>
-                              </Grid>
-                              <Grid item xs={12}>
-                                <div className={classes.stackedInputs}>
-                                  <InputBoxWrapper
-                                    value={secretKey}
-                                    label={"Secret Key"}
-                                    id={"secretKey"}
-                                    name={"secretKey"}
-                                    type={showPassword ? "text" : "password"}
-                                    placeholder={"Enter Secret Key"}
-                                    onChange={(e) => {
-                                      setSecretKey(e.target.value);
-                                    }}
-                                    overlayIcon={
-                                      showPassword ? (
-                                        <VisibilityOffIcon />
-                                      ) : (
-                                        <RemoveRedEyeIcon />
-                                      )
-                                    }
-                                    overlayAction={() =>
-                                      setShowPassword(!showPassword)
-                                    }
-                                  />
-                                </div>
-                              </Grid>
+
+                          <Grid container rowSpacing={20} columnSpacing={20}>
+                            <Grid item xs={12}>
+                              {" "}
+                              <div className={classes.stackedInputs}>
+                                <InputBoxWrapper
+                                  value={accessKey}
+                                  label={"Access Key"}
+                                  id={"accessKey"}
+                                  name={"accessKey"}
+                                  placeholder={"Enter Access Key"}
+                                  onChange={(e) => {
+                                    setAccessKey(e.target.value);
+                                  }}
+                                />
+                              </div>
+                            </Grid>
+                            <Grid item xs={12}>
+                              <div className={classes.stackedInputs}>
+                                <InputBoxWrapper
+                                  value={secretKey}
+                                  label={"Secret Key"}
+                                  id={"secretKey"}
+                                  name={"secretKey"}
+                                  type={showPassword ? "text" : "password"}
+                                  placeholder={"Enter Secret Key"}
+                                  onChange={(e) => {
+                                    setSecretKey(e.target.value);
+                                  }}
+                                  overlayIcon={
+                                    showPassword ? (
+                                      <VisibilityOffIcon />
+                                    ) : (
+                                      <RemoveRedEyeIcon />
+                                    )
+                                  }
+                                  overlayAction={() =>
+                                    setShowPassword(!showPassword)
+                                  }
+                                />
+                              </div>
                             </Grid>
                           </Grid>
                         </Grid>
                       </Grid>
                     </Grid>
                   </Grid>
-                  <Grid container item spacing="20">
+                  <Grid container rowSpacing={20} columnSpacing={20}>
                     <Grid item xs={12}>
                       <Grid container>
                         <Grid item xs={1}>

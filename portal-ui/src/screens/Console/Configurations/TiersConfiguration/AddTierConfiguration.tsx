@@ -18,9 +18,8 @@ import React, { Fragment, useCallback, useEffect, useState } from "react";
 
 import { useNavigate, useParams } from "react-router-dom";
 import get from "lodash/get";
-import Grid from "@mui/material/Grid";
 import { Theme } from "@mui/material/styles";
-import { BackLink, Button, Box } from "mds";
+import { BackLink, Button, Box, Grid } from "mds";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import {
@@ -372,8 +371,8 @@ const AddTierConfiguration = ({ classes }: IAddNotificationEndpointProps) => {
               xs={12}
               sx={{
                 display: "grid",
-                gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
-                gridAutoFlow: { xs: "dense", sm: "row" },
+                gridTemplateColumns:   "1fr 1fr",
+                gridAutoFlow:  "row",
                 gridRowGap: 25,
                 gridColumnGap: 50,
               }}

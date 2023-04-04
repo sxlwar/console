@@ -17,11 +17,10 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Theme } from "@mui/material/styles";
-import { Button, CopyIcon, ShareIcon } from "mds";
+import { Button, CopyIcon, ShareIcon, Grid } from "mds";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import CopyToClipboard from "react-copy-to-clipboard";
-import Grid from "@mui/material/Grid";
 import LinearProgress from "@mui/material/LinearProgress";
 import {
   formFieldStyles,

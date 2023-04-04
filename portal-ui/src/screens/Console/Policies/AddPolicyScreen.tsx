@@ -15,8 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useState } from "react";
-import Grid from "@mui/material/Grid";
-import { Box, AddAccessRuleIcon, BackLink, Button } from "mds";
+import { Box, AddAccessRuleIcon, BackLink, Button, Grid } from "mds";
 import PageLayout from "../Common/Layout/PageLayout";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
 import AddPolicyHelpBox from "./AddPolicyHelpBox";
@@ -108,7 +107,7 @@ const AddPolicyScreen = () => {
                 addRecord(e);
               }}
             >
-              <Grid container item spacing={1}>
+              <Grid container rowSpacing={1} columnSpacing={1}>
                 <Grid item xs={12}>
                   <InputBoxWrapper
                     id="policy-name"
@@ -132,7 +131,7 @@ const AddPolicyScreen = () => {
                     editorHeight={"350px"}
                   />
                 </Grid>
-                <Grid item xs={12} textAlign={"right"}>
+                <Grid item xs={12} style={{ textAlign: "left" }}>
                   <Box
                     sx={{
                       display: "flex",

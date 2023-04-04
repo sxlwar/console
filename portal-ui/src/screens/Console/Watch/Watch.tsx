@@ -16,7 +16,6 @@
 import React, { useEffect, useState } from "react";
 import {
   FormControl,
-  Grid,
   InputBase,
   MenuItem,
   Select,
@@ -25,7 +24,7 @@ import {
 import { IMessageEvent, w3cwebsocket as W3CWebSocket } from "websocket";
 import { useSelector } from "react-redux";
 import { Theme } from "@mui/material/styles";
-import { Button } from "mds";
+import { Button, Grid } from "mds";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import { AppState, useAppDispatch } from "../../../store";

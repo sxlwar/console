@@ -19,8 +19,7 @@ import React, { useState } from "react";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import { Grid } from "@mui/material";
-import { Box } from "mds";
+import { Box, Grid } from "mds";
 import {
   formFieldStyles,
   modalBasic,
@@ -190,7 +189,7 @@ const AddIDPConfiguration = ({
                 addRecord(e);
               }}
             >
-              <Grid container item spacing="20" sx={{ marginTop: 1 }}>
+              <Grid container rowSpacing={20} columnSpacing={20} sx={{ marginTop: 1 }}>
                 <Grid xs={12} item>
                   {Object.entries(extraFormFields).map(([key, value]) => (
                     <Grid
@@ -202,7 +201,7 @@ const AddIDPConfiguration = ({
                       {renderFormField(key, value)}
                     </Grid>
                   ))}
-                  <Grid item xs={12} textAlign={"right"}>
+                  <Grid item xs={12} style={{ textAlign: "right" }}>
                     <Box
                       sx={{
                         display: "flex",

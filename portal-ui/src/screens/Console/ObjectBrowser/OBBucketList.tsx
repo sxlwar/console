@@ -18,10 +18,9 @@ import React, { Fragment, useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 import { Theme } from "@mui/material/styles";
-import { BucketsIcon, Button, HelpBox, RefreshIcon } from "mds";
+import { BucketsIcon, Button, HelpBox, RefreshIcon, Grid } from "mds";
 import createStyles from "@mui/styles/createStyles";
 import { LinearProgress } from "@mui/material";
-import Grid from "@mui/material/Grid";
 import {
   actionsTray,
   containerForHeader,
@@ -142,7 +141,12 @@ const OBListBuckets = () => {
     <Fragment>
       {!obOnly && <PageHeaderWrapper label={"Object Browser"} />}
       <PageLayout>
-        <Grid item xs={12} className={classes.actionsTray} display="flex">
+        <Grid
+          item
+          xs={12}
+          className={classes.actionsTray}
+          style={{ display: "flex" }}
+        >
           {obOnly && (
             <Grid item xs>
               <AutoColorIcon marginRight={15} marginTop={10} />
@@ -160,13 +164,10 @@ const OBListBuckets = () => {
           <Grid
             item
             xs={12}
-            display={"flex"}
-            alignItems={"center"}
-            justifyContent={"flex-end"}
             sx={{
-              "& button": {
-                marginLeft: "8px",
-              },
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
             }}
           >
             <TooltipWrapper tooltip={"Refresh"}>
@@ -177,6 +178,7 @@ const OBListBuckets = () => {
                 }}
                 icon={<RefreshIcon />}
                 variant={"regular"}
+                style={{ marginLeft: 8 }}
               />
             </TooltipWrapper>
           </Grid>
@@ -250,9 +252,11 @@ const OBListBuckets = () => {
             {filteredRecords.length === 0 && filterBuckets !== "" && (
               <Grid
                 container
-                justifyContent={"center"}
-                alignContent={"center"}
-                alignItems={"center"}
+                sx={{
+                  justifyContent: "center",
+                  alignContent: "center",
+                  alignItems: "center",
+                }}
               >
                 <Grid item xs={8}>
                   <HelpBox
@@ -270,9 +274,11 @@ const OBListBuckets = () => {
             {!hasBuckets && (
               <Grid
                 container
-                justifyContent={"center"}
-                alignContent={"center"}
-                alignItems={"center"}
+                sx={{
+                  justifyContent: "center",
+                  alignContent: "center",
+                  alignItems: "center",
+                }}
               >
                 <Grid item xs={8}>
                   <HelpBox

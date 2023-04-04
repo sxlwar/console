@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import React from "react";
-import { Grid, InputLabel, Tooltip } from "@mui/material";
+import { InputLabel, Tooltip } from "@mui/material";
 import { InputProps as StandardInputProps } from "@mui/material/Input";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
@@ -25,7 +25,7 @@ import {
   inputFieldStyles,
   tooltipHelper,
 } from "../../Common/FormComponents/common/styleLibrary";
-import { HelpIcon, IconButton } from "mds";
+import { Grid, HelpIcon, IconButton } from "mds";
 import clsx from "clsx";
 import RegionSelect from "./RegionSelect";
 

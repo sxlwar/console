@@ -27,7 +27,7 @@ const variantMap: { [key in Variant]: Appearance } = {
 };
 const Span = styled.span(() => {
   return {
-    padding: "4px 5px",
+    padding: "4px 7px",
   };
 });
 

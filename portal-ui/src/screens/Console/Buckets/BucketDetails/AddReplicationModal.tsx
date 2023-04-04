@@ -16,12 +16,11 @@
 
 import React, { useEffect, useState } from "react";
 import { Theme } from "@mui/material/styles";
-import { BucketReplicationIcon, Button } from "mds";
+import { BucketReplicationIcon, Button, Grid } from "mds";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import { SelectChangeEvent } from "@mui/material";
 import get from "lodash/get";
-import Grid from "@mui/material/Grid";
 import {
   createTenantCommon,
   formFieldStyles,

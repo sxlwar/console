@@ -17,8 +17,7 @@ import React, { Fragment } from "react";
 import get from "lodash/get";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
-import { BucketsIcon, ReportedUsageIcon, TotalObjectsIcon } from "mds";
-import { Grid } from "@mui/material";
+import { BucketsIcon, ReportedUsageIcon, TotalObjectsIcon, Grid } from "mds";
 import {
   calculateBytes,
   niceBytes,
@@ -220,7 +219,7 @@ const BucketListItem = ({
       id={`manageBucket-${bucket.name}`}
     >
       <Grid item xs={12}>
-        <Grid container justifyContent={"space-between"}>
+        <Grid container style={{ justifyContent: "space-between" }}>
           <Grid item xs={12} sm={7}>
             <Grid container>
               <Grid item xs={12}>
@@ -247,7 +246,7 @@ const BucketListItem = ({
               </Grid>
               <Grid item xs={12}>
                 <Grid container className={classes.bucketInfo}>
-                  <Grid item xs={12} sm paddingRight={5}>
+                  <Grid item xs={12} sm style={{ paddingRight: 5 }}>
                     <p style={{ fontSize: 14 }}>
                       Created:{" "}
                       {bucket.creation_date
@@ -273,13 +272,18 @@ const BucketListItem = ({
       </Grid>
 
       <Grid item xs={12} className={classes.bucketStats}>
-        <Grid container justifyContent={"flex-start"} spacing={4}>
+        <Grid
+          container
+          style={{ justifyContent: "flex-start" }}
+          rowSpacing={4}
+          columnSpacing={4}
+        >
           <Grid item className={classes.bucketIcon}>
             <Link to={`/buckets/${bucket.name}/admin`}>
               <BucketsIcon />
             </Link>
           </Grid>
-          <Grid item textAlign={"left"} className={classes.metric}>
+          <Grid item style={{ textAlign: "left" }} className={classes.metric}>
             <ReportedUsageIcon />
             <span className={classes.metricLabel}>Usage</span>
             <div className={classes.metricText}>
@@ -294,7 +298,7 @@ const BucketListItem = ({
               )}
             </div>
           </Grid>
-          <Grid item textAlign={"left"} className={classes.metric}>
+          <Grid item style={{ textAlign: "left" }} className={classes.metric}>
             <TotalObjectsIcon />
             <span className={classes.metricLabel}>Objects</span>
             <div className={classes.metricText}>

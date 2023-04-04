@@ -15,8 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment } from "react";
-import Grid from "@mui/material/Grid";
-import { ConfirmDeleteIcon } from "mds";
+import { ConfirmDeleteIcon, Grid } from "mds";
 
 interface IInvalidRule {
   ruleText: string;
@@ -33,17 +32,17 @@ const InvalidRule = ({ ruleText }: IInvalidRule) => {
           justifyContent: "flex-start",
         }}
       >
-        <Grid item xs={1} paddingRight={1}>
+        <Grid item xs={1} style={{ paddingLeft: 1 }}>
           <ConfirmDeleteIcon width={"16px"} height={"16px"} />
         </Grid>
         <Grid
           item
           xs={9}
-          paddingLeft={1}
           style={{
             color: "#C83B51",
             display: "flex",
             justifyContent: "flex-start",
+            paddingLeft: 1,
           }}
         >
           {ruleText}

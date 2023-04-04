@@ -17,8 +17,7 @@
 import React, { Fragment, useState } from "react";
 import get from "lodash/get";
 import { useSelector } from "react-redux";
-import { Grid } from "@mui/material";
-import { AddNewTagIcon, Button, DisabledIcon, EditTagIcon, Box } from "mds";
+import { AddNewTagIcon, Button, DisabledIcon, EditTagIcon, Box, Grid } from "mds";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";

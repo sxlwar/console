@@ -15,7 +15,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import React from "react";
 import clsx from "clsx";
-import Grid from "@mui/material/Grid";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio, { RadioProps } from "@mui/material/Radio";
@@ -25,7 +24,7 @@ import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import makeStyles from "@mui/styles/makeStyles";
 import { fieldBasic, radioIcons, tooltipHelper } from "../common/styleLibrary";
-import { HelpIcon } from "mds";
+import { HelpIcon, Grid } from "mds";
 
 export interface SelectorTypes {
   label: any;
@@ -109,8 +108,8 @@ export const RadioGroupSelector = ({
   displayInColumn = false,
 }: RadioGroupProps) => {
   return (
-    <Grid container spacing={1}>
-      <Grid item fontSize={60}>
+    <Grid container rowSpacing={1} columnSpacing={1}>
+      <Grid item sx={{ fontSize: 60 }}>
         <InputLabel htmlFor={id} className={classes.inputLabel}>
           <span>{label}</span>
           {tooltip !== "" && (

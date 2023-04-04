@@ -34,9 +34,8 @@ import { ErrorResponseHandler } from "../../../common/types";
 import { setErrorSnackMessage } from "../../../systemSlice";
 import PageLayout from "../Common/Layout/PageLayout";
 import { containerForHeader } from "../Common/FormComponents/common/styleLibrary";
-import { Grid } from "@mui/material";
 import TooltipWrapper from "../Common/TooltipWrapper/TooltipWrapper";
-import { AddIcon, Button, RefreshIcon } from "mds";
+import { AddIcon, Button, RefreshIcon, Grid } from "mds";
 import TableWrapper from "../Common/TableWrapper/TableWrapper";
 import DeleteIDPConfigurationModal from "./DeleteIDPConfigurationModal";
 import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
@@ -150,17 +149,14 @@ const IDPConfigurations = ({ classes, idpType }: IDPConfigurationsProps) => {
       )}
       <PageHeaderWrapper label={`${idpType.toUpperCase()} Configurations`} />
       <PageLayout className={classes.pageContainer}>
-        <Grid container spacing={1}>
+        <Grid container columnSpacing={1} rowSpacing={1}>
           <Grid
             item
             xs={12}
-            display={"flex"}
-            alignItems={"center"}
-            justifyContent={"flex-end"}
             sx={{
-              "& button": {
-                marginLeft: "8px",
-              },
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
             }}
           >
             <SecureComponent
@@ -174,6 +170,7 @@ const IDPConfigurations = ({ classes, idpType }: IDPConfigurationsProps) => {
                   variant="regular"
                   icon={<RefreshIcon />}
                   onClick={() => setLoading(true)}
+                  style={{ marginLeft: 8 }}
                 />
               </TooltipWrapper>
             </SecureComponent>

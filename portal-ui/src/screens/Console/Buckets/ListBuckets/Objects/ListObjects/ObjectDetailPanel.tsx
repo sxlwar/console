@@ -33,10 +33,10 @@ import {
   ShareIcon,
   TagsIcon,
   VersionsIcon,
+  Grid,
 } from "mds";
 import createStyles from "@mui/styles/createStyles";
 import get from "lodash/get";
-import Grid from "@mui/material/Grid";
 import {
   actionsTray,
   detailsPanel,

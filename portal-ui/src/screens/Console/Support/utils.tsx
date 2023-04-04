@@ -1,6 +1,5 @@
-import { Grid } from "@mui/material";
 import { Fragment, useState } from "react";
-import { CopyIcon, SettingsIcon, Box } from "mds";
+import { CopyIcon, SettingsIcon, Box, Grid } from "mds";
 import FormSwitchWrapper from "../Common/FormComponents/FormSwitchWrapper/FormSwitchWrapper";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
 import RegistrationStatusBanner from "./RegistrationStatusBanner";
@@ -30,7 +29,7 @@ export const ClusterRegistered = ({ email }: { email: string }) => {
   return (
     <Fragment>
       <RegistrationStatusBanner email={email} />
-      <Grid item xs={12} marginTop={"25px"}>
+      <Grid item xs={12} style={{ marginTop: 25 }}>
         <Box
           sx={{
             padding: "20px",

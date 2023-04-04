@@ -16,8 +16,7 @@
 
 import React, { useState } from "react";
 
-import Grid from "@mui/material/Grid";
-import { Box, AddAccessRuleIcon, Button } from "mds";
+import { Box, Grid, AddAccessRuleIcon, Button } from "mds";
 import PageLayout from "../Common/Layout/PageLayout";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
 import { ErrorResponseHandler } from "../../../common/types";
@@ -72,7 +71,7 @@ const AddKeyForm = ({ onSuccess, onError }: IAddKeyFormProps) => {
             addRecord(e);
           }}
         >
-          <Grid container item spacing={1}>
+          <Grid container rowSpacing={1} columnSpacing={1}>
             <Grid item xs={12}>
               <InputBoxWrapper
                 id="key-name"
@@ -86,7 +85,7 @@ const AddKeyForm = ({ onSuccess, onError }: IAddKeyFormProps) => {
                 }}
               />
             </Grid>
-            <Grid item xs={12} textAlign={"right"}>
+            <Grid item xs={12} style={{ textAlign: "right" }}>
               <Box
                 sx={{
                   display: "flex",

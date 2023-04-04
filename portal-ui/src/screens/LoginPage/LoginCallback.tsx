@@ -22,8 +22,7 @@ import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import { baseUrl } from "../../history";
 import { Paper } from "@mui/material";
-import Grid from "@mui/material/Grid";
-import { Button } from "mds";
+import { Button, Grid } from "mds";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
 const styles = (theme: Theme) =>

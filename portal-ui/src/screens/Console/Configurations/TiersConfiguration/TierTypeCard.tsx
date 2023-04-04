@@ -15,9 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Grid } from "@mui/material";
 
-import { Button, Box } from "mds";
+import { Button, Box, Grid } from "mds";
 
 type TierTypeCardProps = {
   onClick: (name: string) => void;
@@ -53,9 +52,9 @@ const TierTypeCard = ({ onClick, icon, name }: TierTypeCardProps) => {
       }}
       style={styles.tierTypeCard}
     >
-      <Grid container alignItems={"center"}>
+      <Grid container sx={{ alignItems: "center" }}>
         {icon ? (
-          <Grid item padding={1} xs={4}>
+          <Grid item style={{ padding: 1 }} xs={4}>
             <Box
               sx={{
                 "& .min-icon": {
@@ -68,7 +67,7 @@ const TierTypeCard = ({ onClick, icon, name }: TierTypeCardProps) => {
             </Box>
           </Grid>
         ) : null}
-        <Grid item xs={8} style={styles.tierTypeTitle} paddingLeft={1}>
+        <Grid item xs={8} style={{ ...styles.tierTypeTitle, paddingLeft: 1 }}>
           {name}
         </Grid>
       </Grid>

@@ -16,12 +16,11 @@
 
 import React, { Fragment, useEffect, useState } from "react";
 import get from "lodash/get";
-import { Button, LockIcon } from "mds";
+import { Button, LockIcon, Grid } from "mds";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import { LinearProgress } from "@mui/material";
-import Grid from "@mui/material/Grid";
 import {
   formFieldStyles,
   modalBasic,

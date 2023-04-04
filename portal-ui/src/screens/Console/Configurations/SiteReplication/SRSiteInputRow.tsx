@@ -16,9 +16,8 @@
 
 import React, { Fragment } from "react";
 import InputBoxWrapper from "../../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
-import Grid from "@mui/material/Grid";
 import TooltipWrapper from "../../Common/TooltipWrapper/TooltipWrapper";
-import { Box, AddIcon, Button, RemoveIcon } from "mds";
+import { Box, AddIcon, Button, RemoveIcon, Grid } from "mds";
 import { SiteInputRow } from "./Types";
 
 const SRSiteInputRow = ({
@@ -112,7 +111,7 @@ const SRSiteInputRow = ({
           data-test-id={`add-rep-peer-site-sk-${index}`}
         />
       </Box>
-      <Grid item xs={12} alignItems={"center"} display={"flex"}>
+      <Grid item xs={12} style={{alignItems: 'center', display: 'flex'}}>
         <Box
           sx={{
             display: "flex",

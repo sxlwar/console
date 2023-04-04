@@ -25,10 +25,10 @@ import {
   PasswordKeyIcon,
   TrashIcon,
   UsersIcon,
+  Grid
 } from "mds";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import { Grid } from "@mui/material";
 
 import {
   actionsTray,

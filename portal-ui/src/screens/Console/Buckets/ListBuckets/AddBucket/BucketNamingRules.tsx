@@ -15,11 +15,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useState } from "react";
-import Grid from "@mui/material/Grid";
 import { LinearProgress } from "@mui/material";
 import { AppState } from "../../../../../store";
 import { useSelector } from "react-redux";
-import { Button, CollapseCaret, ExpandCaret } from "mds";
+import { Button, CollapseCaret, ExpandCaret, Grid } from "mds";
 import ValidRule from "./ValidRule";
 import InvalidRule from "./InvalidRule";
 import NARule from "./NARule";
@@ -78,7 +77,13 @@ const BucketNamingRules = ({ errorList }: { errorList: boolean[] }) => {
         }}
       />
       {showNamingRules && (
-        <Grid container fontSize={14} paddingTop={2}>
+        <Grid
+          container
+          sx={{
+            fontSize: 14,
+            paddingTop: 2,
+          }}
+        >
           <Grid item xs={6}>
             {bucketName.length === 0 ? (
               <NARule ruleText={lengthRuleText} />

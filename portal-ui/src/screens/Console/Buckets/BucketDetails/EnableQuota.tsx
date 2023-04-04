@@ -17,10 +17,9 @@
 import React, { useEffect, useState } from "react";
 import { LinearProgress } from "@mui/material";
 import { Theme } from "@mui/material/styles";
-import { BucketQuotaIcon, Button } from "mds";
+import { BucketQuotaIcon, Button, Grid } from "mds";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import Grid from "@mui/material/Grid";
 import {
   calculateBytes,
   getBytes,

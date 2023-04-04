@@ -14,41 +14,39 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React, { Fragment, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { Theme } from "@mui/material/styles";
-import { AddIcon, Button, HelpBox, LambdaIcon } from "mds";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import get from "lodash/get";
-import Grid from "@mui/material/Grid";
-import { BucketEvent, BucketEventList } from "../types";
+import { AddIcon, Button, Grid, HelpBox, LambdaIcon } from "mds";
+import React, { Fragment, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import api from "../../../../common/api";
+import { ErrorResponseHandler } from "../../../../common/types";
 import {
   actionsTray,
   searchField,
 } from "../../Common/FormComponents/common/styleLibrary";
-import { ErrorResponseHandler } from "../../../../common/types";
 import TableWrapper from "../../Common/TableWrapper/TableWrapper";
-import api from "../../../../common/api";
+import { BucketEvent, BucketEventList } from "../types";
 
-import PanelTitle from "../../Common/PanelTitle/PanelTitle";
 import {
   hasPermission,
   SecureComponent,
 } from "../../../../common/SecureComponent";
 import { IAM_SCOPES } from "../../../../common/SecureComponent/permissions";
+import PanelTitle from "../../Common/PanelTitle/PanelTitle";
 
-import withSuspense from "../../Common/Components/withSuspense";
-import { setErrorSnackMessage } from "../../../../systemSlice";
-import { selBucketDetailsLoading } from "./bucketDetailsSlice";
 import { useAppDispatch } from "../../../../store";
+import { setErrorSnackMessage } from "../../../../systemSlice";
+import withSuspense from "../../Common/Components/withSuspense";
 import TooltipWrapper from "../../Common/TooltipWrapper/TooltipWrapper";
+import { selBucketDetailsLoading } from "./bucketDetailsSlice";
 
 const DeleteEvent = withSuspense(React.lazy(() => import("./DeleteEvent")));
 const AddEvent = withSuspense(React.lazy(() => import("./AddEvent")));
 
-const styles = (theme: Theme) =>
+const styles = () =>
   createStyles({
     ...searchField,
     ...actionsTray,

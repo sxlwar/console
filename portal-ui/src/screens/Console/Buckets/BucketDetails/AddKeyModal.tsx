@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { DialogContentText, Grid } from "@mui/material";
+import { DialogContentText } from "@mui/material";
 import React, { useState } from "react";
 import { ErrorResponseHandler } from "../../../../common/types";
 import { useAppDispatch } from "../../../../store";
@@ -23,6 +23,7 @@ import InputBoxWrapper from "../../Common/FormComponents/InputBoxWrapper/InputBo
 import useApi from "../../Common/Hooks/useApi";
 import ConfirmDialog from "../../Common/ModalWrapper/ConfirmDialog";
 import KMSHelpBox from "../../KMS/KMSHelpbox";
+import { Grid } from "mds";
 
 interface IAddKeyModalProps {
   closeAddModalAndRefresh: (refresh: boolean) => void;
@@ -69,7 +70,7 @@ const AddKeyModal = ({
             ]}
           />
 
-          <Grid item xs={12} marginTop={3}>
+          <Grid item xs={12} style={{ marginTop: 3 }}>
             <InputBoxWrapper
               id="key-name"
               name="key-name"

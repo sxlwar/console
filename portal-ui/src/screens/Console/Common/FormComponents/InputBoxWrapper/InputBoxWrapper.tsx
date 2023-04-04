@@ -15,7 +15,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import React, { ClipboardEvent, useState } from "react";
 import {
-  Grid,
   InputLabel,
   TextField,
   TextFieldProps,
@@ -34,7 +33,7 @@ import {
   inputFieldStyles,
   tooltipHelper,
 } from "../common/styleLibrary";
-import { HelpIcon, IconButton } from "mds";
+import { Grid, HelpIcon, IconButton } from "mds";
 import clsx from "clsx";
 
 interface InputBoxProps {

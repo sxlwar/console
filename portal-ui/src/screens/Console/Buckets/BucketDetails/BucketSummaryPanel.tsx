@@ -20,7 +20,7 @@ import { useParams } from "react-router-dom";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import { Grid } from "@mui/material";
+import { Grid } from "mds";
 import get from "lodash/get";
 import {
   BucketEncryptionInfo,
@@ -428,7 +428,7 @@ const BucketSummary = ({ classes }: IBucketSummaryProps) => {
       )}
 
       <SectionTitle>Summary</SectionTitle>
-      <Grid container spacing={1}>
+      <Grid container rowSpacing={1} columnSpacing={1}>
         <SecureComponent
           scopes={[IAM_SCOPES.S3_GET_BUCKET_POLICY, IAM_SCOPES.S3_GET_ACTIONS]}
           resource={bucketName}

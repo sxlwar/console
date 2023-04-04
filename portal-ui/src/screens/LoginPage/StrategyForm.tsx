@@ -14,13 +14,13 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import Grid from "@mui/material/Grid";
 import React from "react";
 import {
   Button,
   LockFilledIcon,
   LogoutIcon,
   PasswordKeyIcon,
+  Grid,
   UserFilledIcon,
 } from "mds";
 import { setAccessKey, setSecretKey, setSTS, setUseSTS } from "./loginSlice";
@@ -129,7 +129,7 @@ const StrategyForm = ({ redirectRules }: IStrategyForm) => {
   return (
     <React.Fragment>
       <form className={classes.form} noValidate onSubmit={formSubmit}>
-        <Grid container spacing={2}>
+        <Grid container rowSpacing={2} columnSpacing={2}>
           <Grid item xs={12} className={classes.spacerBottom}>
             <LoginField
               fullWidth

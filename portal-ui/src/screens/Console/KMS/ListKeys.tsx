@@ -14,9 +14,9 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { Grid, Theme } from "@mui/material";
+import { Theme } from "@mui/material";
 import { createStyles, withStyles } from "@mui/styles";
-import { AddIcon, Button, RefreshIcon, UploadIcon } from "mds";
+import { Grid, AddIcon, Button, RefreshIcon, UploadIcon } from "mds";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../../common/api";
@@ -142,17 +142,14 @@ const ListKeys = ({ classes }: IKeysProps) => {
       )}
       <PageHeaderWrapper label="Key Management Service Keys" />
       <PageLayout className={classes.pageContainer}>
-        <Grid container spacing={1}>
+        <Grid container rowSpacing={1} columnSpacing={1}>
           <Grid
             item
             xs={12}
-            display={"flex"}
-            alignItems={"center"}
-            justifyContent={"flex-end"}
             sx={{
-              "& button": {
-                marginLeft: "8px",
-              },
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
             }}
           >
             <SecureComponent
@@ -178,6 +175,7 @@ const ListKeys = ({ classes }: IKeysProps) => {
                   variant="regular"
                   icon={<RefreshIcon />}
                   onClick={() => setLoading(true)}
+                  style={{ marginLeft: 8 }}
                 />
               </TooltipWrapper>
             </SecureComponent>

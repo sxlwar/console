@@ -15,12 +15,11 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useEffect, useState } from "react";
-import { AddIcon, Button, HelpBox, IAMPoliciesIcon } from "mds";
+import { AddIcon, Button, HelpBox, IAMPoliciesIcon, Grid } from "mds";
 import { useNavigate } from "react-router-dom";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import Grid from "@mui/material/Grid";
 
 import {
   actionsTray,
@@ -199,7 +198,7 @@ const ListPolicies = ({ classes }: IPoliciesProps) => {
       )}
       <PageHeaderWrapper label="IAM Policies" />
       <PageLayout className={classes.pageContainer}>
-        <Grid container spacing={1}>
+        <Grid container columnSpacing={1} rowSpacing={1}>
           <Grid item xs={12} className={classes.actionsTray}>
             <SearchBox
               onChange={setFilterPolicies}

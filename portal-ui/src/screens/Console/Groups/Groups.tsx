@@ -28,9 +28,8 @@ import {
 } from "mds";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import Grid from "@mui/material/Grid";
 import { LinearProgress } from "@mui/material";
-import { Box } from "mds";
+import { Box, Grid } from "mds";
 
 import { GroupsList } from "./types";
 import { stringSort } from "../../../utils/sortFunctions";
@@ -360,7 +359,7 @@ const Groups = ({ classes }: IGroupsProps) => {
                     </SecureComponent>
                   </Grid>
                 </TooltipWrapper>
-                <Grid item xs={12} marginTop={"25px"}>
+                <Grid item xs={12} style={{ marginTop: 25 }}>
                   <HelpBox
                     title={"Groups"}
                     iconComponent={<GroupsIcon />}
@@ -390,9 +389,11 @@ const Groups = ({ classes }: IGroupsProps) => {
             {records.length === 0 && (
               <Grid
                 container
-                justifyContent={"center"}
-                alignContent={"center"}
-                alignItems={"center"}
+                style={{
+                  justifyContent: "center",
+                  alignContent: "center",
+                  alignItems: "center",
+                }}
               >
                 <Grid item xs={8}>
                   <HelpBox

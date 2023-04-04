@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import Grid from "@mui/material/Grid";
+import { Grid } from "mds";
 
 type Props = {
   separator?: boolean;
@@ -33,10 +33,10 @@ const SectionTitle: React.FC<Props> = ({
   return (
     <Grid
       container
-      alignItems={"center"}
-      justifyContent="space-between"
       sx={{
         borderBottom: separator ? "1px solid #eaeaea" : "",
+        justifyContent: 'space-between',
+        alignItems: 'center'
       }}
     >
       <Grid item xs>
@@ -49,9 +49,12 @@ const SectionTitle: React.FC<Props> = ({
           {icon && (
             <Grid
               container
-              alignItems={"center"}
-              justifyContent={"flex-start"}
-              spacing={1}
+              sx={{
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+              rowSpacing={1}
+              columnSpacing={1}
             >
               <Grid item>{icon}</Grid>
               <Grid item>{children}</Grid>

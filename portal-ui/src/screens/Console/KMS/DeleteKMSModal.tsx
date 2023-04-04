@@ -16,7 +16,7 @@
 
 import React, { useState } from "react";
 
-import { DialogContentText, Grid } from "@mui/material";
+import { DialogContentText } from "@mui/material";
 import { ErrorResponseHandler } from "../../../common/types";
 import useApi from "../Common/Hooks/useApi";
 import ConfirmDialog from "../Common/ModalWrapper/ConfirmDialog";
@@ -24,7 +24,7 @@ import { setErrorSnackMessage } from "../../../systemSlice";
 import { useAppDispatch } from "../../../store";
 import WarningMessage from "../Common/WarningMessage/WarningMessage";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
-import { ConfirmDeleteIcon } from "mds";
+import { ConfirmDeleteIcon, Grid } from "mds";
 
 interface IDeleteKMSModalProps {
   closeDeleteModalAndRefresh: (refresh: boolean) => void;

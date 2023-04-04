@@ -28,6 +28,7 @@ import {
   BucketsIcon,
   Button,
   FolderIcon,
+  Grid,
   RefreshIcon,
   TrashIcon,
 } from "mds";
@@ -35,7 +36,6 @@ import { useSelector } from "react-redux";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import Grid from "@mui/material/Grid";
 import api from "../../../../common/api";
 import { BucketInfo } from "../types";
 import {

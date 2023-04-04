@@ -15,9 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { useEffect, useState } from "react";
-import Grid from "@mui/material/Grid";
 import { Theme } from "@mui/material/styles";
-import { BucketReplicationIcon, Button } from "mds";
+import { BucketReplicationIcon, Button, Grid } from "mds";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import ModalWrapper from "../../Common/ModalWrapper/ModalWrapper";

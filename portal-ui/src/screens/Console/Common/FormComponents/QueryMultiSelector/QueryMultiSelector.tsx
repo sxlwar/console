@@ -26,12 +26,11 @@ import debounce from "lodash/debounce";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import Grid from "@mui/material/Grid";
 import HelpIcon from "@mui/icons-material/Help";
 import { InputLabel, Tooltip } from "@mui/material";
 import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
 import InputBoxWrapper from "../InputBoxWrapper/InputBoxWrapper";
-import { AddIcon } from "mds";
+import { AddIcon, Grid } from "mds";
 
 interface IQueryMultiSelector {
   elements: string;

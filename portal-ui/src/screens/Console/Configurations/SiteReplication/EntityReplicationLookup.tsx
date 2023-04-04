@@ -15,8 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { useState } from "react";
-import { Grid } from "@mui/material";
-import { Button, Box, ClustersIcon, Loader } from "mds";
+import { Button, Box, ClustersIcon, Loader, Grid } from "mds";
 import SelectWrapper from "../../Common/FormComponents/SelectWrapper/SelectWrapper";
 import InputBoxWrapper from "../../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
 import useApi from "../../Common/Hooks/useApi";
@@ -152,10 +151,12 @@ const EntityReplicationLookup = () => {
         <Grid
           item
           xs={12}
-          display={"flex"}
-          alignItems={"center"}
-          justifyContent={"center"}
-          marginTop={"45px"}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginTop: 45,
+          }}
         >
           <Loader style={{ width: 25, height: 25 }} />
         </Grid>

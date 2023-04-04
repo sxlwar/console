@@ -17,7 +17,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { IMessageEvent, w3cwebsocket as W3CWebSocket } from "websocket";
-import { Grid } from "@mui/material";
+import { Grid } from "mds";
 import { Theme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { Button, HelpBox, Loader, SpeedtestIcon, WarnIcon } from "mds";
@@ -296,7 +296,7 @@ const Speedtest = () => {
                     />
                   </div>
                 </Grid>
-                <Grid item md={1} sm={12} textAlign={"right"}>
+                <Grid item md={1} sm={12} style={{ textAlign: "right" }}>
                   <Button
                     onClick={startSpeedtestButton}
                     color="primary"

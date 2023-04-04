@@ -23,9 +23,8 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import { Theme } from "@mui/material/styles";
-import { Button, LifecycleConfigIcon } from "mds";
+import { Button, Grid, LifecycleConfigIcon } from "mds";
 import get from "lodash/get";
-import Grid from "@mui/material/Grid";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import {
@@ -328,7 +327,7 @@ const EditLifecycleConfiguration = ({
       >
         <Grid container>
           <Grid item xs={12} className={classes.formScrollable}>
-            <Grid container spacing={1}>
+            <Grid container rowSpacing={1} columnSpacing={1}>
               <Grid item xs={12}>
                 <InputBoxWrapper
                   id="id"

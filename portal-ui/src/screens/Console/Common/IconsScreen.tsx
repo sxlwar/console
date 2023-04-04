@@ -24,14 +24,13 @@ import {
   FormControl,
   FormControlLabel,
   FormLabel,
-  Grid,
   Radio,
   RadioGroup,
 } from "@mui/material";
 
 import * as cicons from "mds";
 import * as micons from "mds";
-import { Loader } from "mds";
+import { Loader, Grid } from "mds";
 
 interface IIconsScreenSimple {
   classes: any;
@@ -79,8 +78,11 @@ const IconsScreen = ({ classes }: IIconsScreenSimple) => {
       <h1>Logos</h1>
       <Grid
         container
-        spacing={4}
-        textAlign={"center"}
+        sx={{
+          textAlign: 'center'
+        }}
+        rowSpacing={4}
+        columnSpacing={4}
         className={clsx(classes.root, {
           [classes.red]: color === "red",
         })}
@@ -94,8 +96,11 @@ const IconsScreen = ({ classes }: IIconsScreenSimple) => {
       <h1>Loaders</h1>
       <Grid
         container
-        spacing={4}
-        textAlign={"center"}
+        sx={{
+          textAlign: 'center'
+        }}
+        rowSpacing={4}
+        columnSpacing={4}
         className={clsx(classes.root, {
           [classes.red]: color === "red",
         })}
@@ -109,8 +114,11 @@ const IconsScreen = ({ classes }: IIconsScreenSimple) => {
       <h1>Icons</h1>
       <Grid
         container
-        spacing={4}
-        textAlign={"center"}
+        sx={{
+          textAlign: 'center'
+        }}
+        rowSpacing={4}
+        columnSpacing={4}
         className={clsx(classes.root, {
           [classes.red]: color === "red",
         })}
@@ -1160,8 +1168,11 @@ const IconsScreen = ({ classes }: IIconsScreenSimple) => {
       <h1>Menu Icons</h1>
       <Grid
         container
-        spacing={4}
-        textAlign={"center"}
+        sx={{
+          textAlign: 'center'
+        }}
+        rowSpacing={4}
+        columnSpacing={4}
         className={clsx(classes.root, {
           [classes.red]: color === "red",
         })}

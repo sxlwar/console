@@ -24,6 +24,7 @@ import {
   IAMPoliciesIcon,
   PasswordKeyIcon,
   ServiceAccountCredentialsIcon,
+  Grid,
 } from "mds";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
@@ -31,7 +32,6 @@ import {
   formFieldStyles,
   modalStyleUtils,
 } from "../Common/FormComponents/common/styleLibrary";
-import Grid from "@mui/material/Grid";
 import CodeMirrorWrapper from "../Common/FormComponents/CodeMirrorWrapper/CodeMirrorWrapper";
 import PageLayout from "../Common/Layout/PageLayout";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
@@ -196,16 +196,16 @@ const AddServiceAccount = ({ classes }: IAddServiceAccountProps) => {
                   addUserServiceAccount(e);
                 }}
               >
-                <Grid container item spacing="20" sx={{ marginTop: 1 }}>
+                <Grid container rowSpacing={20} columnSpacing={20} sx={{ marginTop: 1 }}>
                   <Grid item xs={12}>
-                    <Grid container item spacing="20">
+                    <Grid container rowSpacing={20} columnSpacing={20}>
                       <Grid item xs={12}>
                         <Grid container>
                           <Grid item xs={1}>
                             <PasswordKeyIcon />
                           </Grid>
                           <Grid item>
-                            <Grid container item spacing="20">
+                            <Grid container rowSpacing={20} columnSpacing={20}>
                               <Grid item xs={12}>
                                 {" "}
                                 <div className={classes.stackedInputs}>
@@ -252,7 +252,7 @@ const AddServiceAccount = ({ classes }: IAddServiceAccountProps) => {
                       </Grid>
                     </Grid>
                   </Grid>
-                  <Grid container item spacing="20">
+                  <Grid container rowSpacing={20} columnSpacing={20}>
                     <Grid item xs={12}>
                       <Grid container>
                         <Grid item xs={1}>

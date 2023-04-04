@@ -16,7 +16,7 @@
 
 import React, { useState } from "react";
 import get from "lodash/get";
-import { Grid, InputLabel, Tooltip } from "@mui/material";
+import { InputLabel, Tooltip } from "@mui/material";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { Theme } from "@mui/material/styles";
@@ -28,7 +28,7 @@ import {
   tooltipHelper,
 } from "../common/styleLibrary";
 import { fileProcess } from "./utils";
-import { HelpIcon, IconButton } from "mds";
+import { Grid, HelpIcon, IconButton } from "mds";
 import ErrorBlock from "../../../../shared/ErrorBlock";
 
 interface InputBoxProps {

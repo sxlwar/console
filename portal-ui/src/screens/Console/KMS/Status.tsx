@@ -15,7 +15,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useEffect, useState } from "react";
-import { Grid } from "@mui/material";
 import PageLayout from "../Common/Layout/PageLayout";
 import api from "../../../common/api";
 
@@ -46,7 +45,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { DisabledIcon, EnabledIcon, Box } from "mds";
+import { DisabledIcon, EnabledIcon, Box, Grid } from "mds";
 import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
 
 const Status = () => {
@@ -183,7 +182,7 @@ const Status = () => {
       <SectionTitle>Status</SectionTitle>
       <br />
       {status && (
-        <Grid container spacing={1}>
+        <Grid container rowSpacing={1} columnSpacing={1}>
           <Grid item xs={12}>
             <Box
               sx={{
@@ -242,7 +241,7 @@ const Status = () => {
       <SectionTitle>Supported API endpoints</SectionTitle>
       <br />
       {apis && (
-        <Grid container spacing={1}>
+        <Grid container rowSpacing={1} columnSpacing={1}>
           <Grid item xs={12}>
             <LabelValuePair
               label={""}

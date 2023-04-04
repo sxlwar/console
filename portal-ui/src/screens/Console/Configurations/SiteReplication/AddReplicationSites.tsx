@@ -15,10 +15,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useEffect, useState } from "react";
-import Grid from "@mui/material/Grid";
 import { LinearProgress } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { BackLink, Button, ClustersIcon, HelpBox, Box } from "mds";
+import { BackLink, Button, ClustersIcon, HelpBox, Box, Grid } from "mds";
 import useApi from "../../Common/Hooks/useApi";
 import { IAM_PAGES } from "../../../../common/SecureComponent/permissions";
 import PageLayout from "../../Common/Layout/PageLayout";

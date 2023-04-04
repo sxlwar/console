@@ -15,9 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useEffect, useState } from "react";
-import Grid from "@mui/material/Grid";
 import { LinearProgress, SelectChangeEvent } from "@mui/material";
-import { AddIcon, BucketEncryptionIcon, Button } from "mds";
+import { AddIcon, BucketEncryptionIcon, Button, Grid } from "mds";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
@@ -190,7 +189,7 @@ const EnableBucketEncryption = ({
                   item
                   xs={12}
                   className={classes.formFieldRow}
-                  display={"flex"}
+                  style={{ display: "flex" }}
                 >
                   <SelectWrapper
                     onChange={(e: SelectChangeEvent<string>) => {
@@ -207,7 +206,7 @@ const EnableBucketEncryption = ({
                       };
                     })}
                   />
-                  <Grid marginLeft={1}>
+                  <Grid style={{ marginLeft: 1 }}>
                     <SecureComponent
                       scopes={[IAM_SCOPES.KMS_IMPORT_KEY]}
                       resource={CONSOLE_UI_RESOURCE}

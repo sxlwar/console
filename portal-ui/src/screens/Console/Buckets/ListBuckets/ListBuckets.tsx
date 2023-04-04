@@ -28,9 +28,9 @@ import {
   RefreshIcon,
   SelectAllIcon,
   SelectMultipleIcon,
+  Grid,
 } from "mds";
 import { LinearProgress } from "@mui/material";
-import Grid from "@mui/material/Grid";
 import {
   actionsTray,
   containerForHeader,
@@ -238,7 +238,12 @@ const ListBuckets = () => {
       )}
       {!obOnly && <PageHeaderWrapper label={"Buckets"} />}
       <PageLayout>
-        <Grid item xs={12} className={classes.actionsTray} display="flex">
+        <Grid
+          item
+          xs={12}
+          className={classes.actionsTray}
+          style={{ display: "flex" }}
+        >
           {obOnly && (
             <Grid item xs>
               <AutoColorIcon marginRight={15} marginTop={10} />
@@ -256,13 +261,10 @@ const ListBuckets = () => {
           <Grid
             item
             xs={12}
-            display={"flex"}
-            alignItems={"center"}
-            justifyContent={"flex-end"}
             sx={{
-              "& button": {
-                marginLeft: "8px",
-              },
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
             }}
           >
             {!obOnly && (
@@ -285,6 +287,7 @@ const ListBuckets = () => {
                     icon={<SelectMultipleIcon />}
                     variant={bulkSelect ? "callAction" : "regular"}
                     disabled={!hasBuckets}
+                    style={{ marginLeft: 8 }}
                   />
                 </TooltipWrapper>
 
@@ -411,9 +414,11 @@ const ListBuckets = () => {
             {filteredRecords.length === 0 && filterBuckets !== "" && (
               <Grid
                 container
-                justifyContent={"center"}
-                alignContent={"center"}
-                alignItems={"center"}
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "flex-end",
+                }}
               >
                 <Grid item xs={8}>
                   <HelpBox
@@ -431,9 +436,11 @@ const ListBuckets = () => {
             {!hasBuckets && (
               <Grid
                 container
-                justifyContent={"center"}
-                alignContent={"center"}
-                alignItems={"center"}
+                sx={{
+                  justifyContent: "center",
+                  alignContent: "center",
+                  alignItems: "center",
+                }}
               >
                 <Grid item xs={8}>
                   <HelpBox

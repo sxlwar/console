@@ -16,9 +16,8 @@
 
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, CreateNewPathIcon } from "mds";
+import { Button, CreateNewPathIcon, Grid } from "mds";
 import ModalWrapper from "../../../../Common/ModalWrapper/ModalWrapper";
-import { Grid } from "@mui/material";
 import InputBoxWrapper from "../../../../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";

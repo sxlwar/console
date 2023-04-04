@@ -15,13 +15,13 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useEffect, useState } from "react";
-import { Grid } from "@mui/material";
 import {
   Box,
   BackLink,
   BucketsIcon,
   Button,
   GroupsIcon,
+  Grid,
   IAMPoliciesIcon,
   Loader,
   RefreshIcon,
@@ -185,10 +185,12 @@ const SiteReplicationStatus = () => {
           <Grid
             item
             xs={12}
-            display={"flex"}
-            alignItems={"center"}
-            justifyContent={"center"}
-            marginTop={"45px"}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginTop: 45
+            }}
           >
             <Loader style={{ width: 25, height: 25 }} />
           </Grid>

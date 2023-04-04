@@ -15,10 +15,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { useCallback, useEffect, useState } from "react";
-import Grid from "@mui/material/Grid";
 import { LinearProgress } from "@mui/material";
 import { Theme } from "@mui/material/styles";
-import { AddMembersToGroupIcon, Button, Box } from "mds";
+import { AddMembersToGroupIcon, Button, Box, Grid } from "mds";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import {

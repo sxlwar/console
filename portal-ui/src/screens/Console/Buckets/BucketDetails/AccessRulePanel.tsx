@@ -18,13 +18,12 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Theme } from "@mui/material/styles";
-import { AddIcon, Button } from "mds";
+import { AddIcon, Button, Grid } from "mds";
 import { Paper } from "@mui/material";
 import createStyles from "@mui/styles/createStyles";
 import { ErrorResponseHandler } from "../../../../common/types";
 import TableWrapper from "../../Common/TableWrapper/TableWrapper";
 import api from "../../../../common/api";
-import Grid from "@mui/material/Grid";
 import {
   actionsTray,
   containerForHeader,

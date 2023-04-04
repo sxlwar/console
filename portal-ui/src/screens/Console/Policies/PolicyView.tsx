@@ -14,8 +14,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useState } from "react";
-import { Box } from "mds";
-import Grid from "@mui/material/Grid";
+import { Box, Grid } from "mds";
 import SearchBox from "../Common/SearchBox";
 import { Theme } from "@mui/material/styles";
 import { searchField } from "../Common/FormComponents/common/styleLibrary";

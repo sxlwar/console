@@ -21,8 +21,7 @@ import get from "lodash/get";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import { Box } from "mds";
-import Grid from "@mui/material/Grid";
+import { Box, Grid } from "mds";
 import api from "../../../../common/api";
 import ConfTargetGeneric from "../ConfTargetGeneric";
 

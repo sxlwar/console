@@ -17,11 +17,12 @@
 import React, { Fragment, useState } from "react";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import { Grid, LinearProgress } from "@mui/material";
+import { LinearProgress } from "@mui/material";
 import { BucketObjectItem } from "../ListObjects/types";
 import { extensionPreview } from "../utils";
 import { encodeURLString } from "../../../../../../common/utils";
 import clsx from "clsx";
+import { Grid } from 'mds';
 
 const styles = () =>
   createStyles({

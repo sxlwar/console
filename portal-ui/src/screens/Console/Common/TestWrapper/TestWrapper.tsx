@@ -18,7 +18,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import { Grid } from "@mui/material";
+import { Grid } from "mds";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { DrivesIcon, Loader, VersionIcon } from "mds";
 import { ServerInfo, Usage } from "../../Dashboard/types";

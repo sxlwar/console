@@ -16,11 +16,10 @@
 
 import React, { useEffect, useState } from "react";
 
-import { Button, ChangeAccessPolicyIcon } from "mds";
+import { Button, ChangeAccessPolicyIcon, Grid } from "mds";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import Grid from "@mui/material/Grid";
 import {
   formFieldStyles,
   modalStyleUtils,

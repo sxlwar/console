@@ -15,7 +15,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import Grid from "@mui/material/Grid";
 import createStyles from "@mui/styles/createStyles";
 import { DateTime } from "luxon";
 import { Theme } from "@mui/material/styles";
@@ -23,7 +22,7 @@ import { withStyles } from "@mui/styles";
 import { displayFileIconName } from "../ListObjects/utils";
 import { IFileInfo } from "./types";
 import { Tooltip } from "@mui/material";
-import { DownloadIcon, PreviewIcon, RecoverIcon, ShareIcon, IconButton } from "mds";
+import { DownloadIcon, PreviewIcon, RecoverIcon, ShareIcon, IconButton, Grid } from "mds";
 import { niceBytes } from "../../../../../../common/utils";
 import SpecificVersionPill from "./SpecificVersionPill";
 import CheckboxWrapper from "../../../../Common/FormComponents/CheckboxWrapper/CheckboxWrapper";
@@ -219,13 +218,12 @@ const FileVersionItem = ({
   return (
     <Grid
       container
-      flex={1}
       className={classes.ctrItem}
       onClick={() => {
         globalClick(versionInfo);
       }}
       key={key}
-      style={style}
+      style={{...style, flex: 1}}
     >
       <Grid
         item
@@ -241,7 +239,7 @@ const FileVersionItem = ({
             versionInfo.is_delete_marker ? "deleted" : ""
           }`}
         >
-          <Grid item xs={12} justifyContent={"space-between"}>
+          <Grid item xs={12} style={{justifyContent: "space-between"}}>
             <Grid container>
               <Grid item xs md={4} className={classes.versionContainer}>
                 {checkable && (

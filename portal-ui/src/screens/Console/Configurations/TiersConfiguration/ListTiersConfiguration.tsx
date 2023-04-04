@@ -31,8 +31,8 @@ import {
   TierOnlineIcon,
   TiersIcon,
   TiersNotAvailableIcon,
+  Grid,
 } from "mds";
-import Grid from "@mui/material/Grid";
 import {
   actionsTray,
   containerForHeader,
@@ -202,9 +202,8 @@ const ListTiersConfiguration = ({ classes }: IListTiersConfig) => {
             justifyItems: "start",
             color: "#4CCB92",
             fontSize: "8px",
+            flexDirection: "column",
           }}
-          flexDirection={"column"}
-          display={"flex"}
         >
           <TierOnlineIcon style={{ fill: "#4CCB92", width: 14, height: 14 }} />
           ONLINE
@@ -219,9 +218,8 @@ const ListTiersConfiguration = ({ classes }: IListTiersConfig) => {
           alignItems: "center",
           color: "#C83B51",
           fontSize: "8px",
+          flexDirection: "column",
         }}
-        flexDirection={"column"}
-        display={"flex"}
       >
         <TierOfflineIcon style={{ fill: "#C83B51", width: 14, height: 14 }} />
         OFFLINE
@@ -492,9 +490,11 @@ const ListTiersConfiguration = ({ classes }: IListTiersConfig) => {
                 {records.length === 0 && (
                   <Grid
                     container
-                    justifyContent={"center"}
-                    alignContent={"center"}
-                    alignItems={"center"}
+                    sx={{
+                      justifyContent: "center",
+                      alignContent: "center",
+                      alignItems: "center",
+                    }}
                   >
                     <Grid item xs={8}>
                       <HelpBox

@@ -22,12 +22,12 @@ import {
   DownloadIcon,
   ServiceAccountCredentialsIcon,
   WarnIcon,
+  Grid
 } from "mds";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import { NewServiceAccount } from "./types";
 import ModalWrapper from "../ModalWrapper/ModalWrapper";
-import Grid from "@mui/material/Grid";
 import CredentialItem from "./CredentialItem";
 import TooltipWrapper from "../TooltipWrapper/TooltipWrapper";
 

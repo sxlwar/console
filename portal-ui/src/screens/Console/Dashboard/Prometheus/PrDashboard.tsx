@@ -16,7 +16,6 @@
 
 import React, { Fragment, useState } from "react";
 import { useSelector } from "react-redux";
-import Grid from "@mui/material/Grid";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
@@ -49,7 +48,7 @@ import { ITabOption } from "../../Common/TabSelector/types";
 import { getUsageAsync } from "../dashboardThunks";
 import { reloadWidgets } from "../dashboardSlice";
 import { selFeatures } from "../../consoleSlice";
-import { Box } from 'mds';
+import { Box, Grid } from 'mds';
 import { CSSObject } from "styled-components";
 
 interface IPrDashboard {

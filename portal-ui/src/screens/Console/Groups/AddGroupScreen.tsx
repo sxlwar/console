@@ -23,9 +23,8 @@ import {
   formFieldStyles,
   modalStyleUtils,
 } from "../Common/FormComponents/common/styleLibrary";
-import Grid from "@mui/material/Grid";
 import { LinearProgress } from "@mui/material";
-import { BackLink, Button, CreateGroupIcon } from "mds";
+import { BackLink, Button, CreateGroupIcon, Grid } from "mds";
 import PageLayout from "../Common/Layout/PageLayout";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
 import AddGroupHelpBox from "./AddGroupHelpBox";

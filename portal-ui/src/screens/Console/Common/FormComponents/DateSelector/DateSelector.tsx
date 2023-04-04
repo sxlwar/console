@@ -21,7 +21,6 @@ import React, {
   useState,
 } from "react";
 import clsx from "clsx";
-import Grid from "@mui/material/Grid";
 import { SelectChangeEvent } from "@mui/material";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
@@ -33,7 +32,7 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputBase from "@mui/material/InputBase";
 import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
-import { HelpIcon } from "mds";
+import { HelpIcon, Grid } from "mds";
 import FormSwitchWrapper from "../FormSwitchWrapper/FormSwitchWrapper";
 import { days, months, validDate, years } from "./utils";
 

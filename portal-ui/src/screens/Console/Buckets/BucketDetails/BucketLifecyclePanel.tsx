@@ -20,9 +20,8 @@ import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import get from "lodash/get";
-import Grid from "@mui/material/Grid";
 import { LifeCycleItem } from "../types";
-import { AddIcon, Button, HelpBox, TiersIcon } from "mds";
+import { Grid, AddIcon, Button, HelpBox, TiersIcon } from "mds";
 import {
   actionsTray,
   searchField,

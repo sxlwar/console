@@ -20,9 +20,10 @@ import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import { IWizardMain } from "./types";
 import WizardPage from "./WizardPage";
-import { Grid, List } from "@mui/material";
+import { List } from "@mui/material";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+import { Grid } from 'mds';
 
 const styles = (theme: Theme) =>
   createStyles({

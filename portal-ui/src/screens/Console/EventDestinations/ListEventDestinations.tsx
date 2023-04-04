@@ -15,14 +15,13 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useEffect, useState } from "react";
-import { AddIcon, Button, HelpBox, LambdaIcon, RefreshIcon } from "mds";
+import { AddIcon, Button, HelpBox, LambdaIcon, RefreshIcon, Grid } from "mds";
 import { useNavigate } from "react-router-dom";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import { LinearProgress } from "@mui/material";
 import { red } from "@mui/material/colors";
-import Grid from "@mui/material/Grid";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import {
   NotificationEndpointItem,
@@ -268,9 +267,11 @@ const ListEventDestinations = ({ classes }: IListNotificationEndpoints) => {
             {records.length === 0 && (
               <Grid
                 container
-                justifyContent={"center"}
-                alignContent={"center"}
-                alignItems={"center"}
+                style={{
+                  justifyContent: "center",
+                  alignContent: "center",
+                  alignItems: "center",
+                }}
               >
                 <Grid item xs={8}>
                   <HelpBox

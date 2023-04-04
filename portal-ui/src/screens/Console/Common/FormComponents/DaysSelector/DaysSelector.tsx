@@ -15,7 +15,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useEffect, useState } from "react";
-import Grid from "@mui/material/Grid";
 import InputLabel from "@mui/material/InputLabel";
 import { DateTime } from "luxon";
 import { Theme } from "@mui/material/styles";
@@ -23,7 +22,7 @@ import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
 import InputBoxWrapper from "../InputBoxWrapper/InputBoxWrapper";
-import { LinkIcon } from "mds";
+import { LinkIcon, Grid } from "mds";
 
 interface IDaysSelector {
   classes: any;

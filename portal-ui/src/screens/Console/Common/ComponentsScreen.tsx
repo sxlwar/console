@@ -15,10 +15,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useState } from "react";
-import { DialogContentText, Grid } from "@mui/material";
+import { DialogContentText } from "@mui/material";
 import PageLayout from "./Layout/PageLayout";
 import SectionTitle from "./SectionTitle";
-import { Button, ConfirmDeleteIcon } from "mds";
+import { Button, ConfirmDeleteIcon, Grid } from "mds";
 import ConfirmDialog from "./ModalWrapper/ConfirmDialog";
 import PageHeaderWrapper from "./PageHeaderWrapper/PageHeaderWrapper";
 
@@ -28,7 +28,7 @@ const ComponentsScreen = () => {
     <Fragment>
       <PageHeaderWrapper label={"Components"} />
       <PageLayout>
-        <Grid container spacing={1}>
+        <Grid container columnSpacing={1} rowSpacing={1}>
           <Grid item xs={12}>
             <SectionTitle>Confirm Dialogs</SectionTitle>
           </Grid>

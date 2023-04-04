@@ -25,7 +25,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { Grid, useMediaQuery } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
@@ -37,7 +37,7 @@ import { widgetDetailsToPanel } from "../utils";
 import { ErrorResponseHandler } from "../../../../../common/types";
 import api from "../../../../../common/api";
 import { useTheme } from "@mui/styles";
-import { Loader } from "mds";
+import { Loader, Grid } from "mds";
 import ExpandGraphLink from "./ExpandGraphLink";
 import { setErrorSnackMessage } from "../../../../../systemSlice";
 import { AppState, useAppDispatch } from "../../../../../store";
@@ -175,13 +175,13 @@ const BarChartWidget = ({
     >
       {!zoomActivated && (
         <Grid container>
-          <Grid item xs={10} alignItems={"start"} justifyItems={"start"}>
+          <Grid item xs={10} style={{ alignItems: 'center', justifyItems: 'center'}} >
             <div className={classes.titleContainer}>{title}</div>
           </Grid>
-          <Grid item xs={1} display={"flex"} justifyContent={"flex-end"}>
+          <Grid item xs={1} style={{display: 'flex', justifyContent: 'flex-end'}}>
             {hover && <ExpandGraphLink panelItem={panelItem} />}
           </Grid>
-          <Grid item xs={1} display={"flex"} justifyContent={"flex-end"}>
+          <Grid item xs={1} style={{display: 'flex', justifyContent: 'flex-end'}}>
             <DownloadWidgetDataButton
               title={title}
               componentRef={componentRef}
