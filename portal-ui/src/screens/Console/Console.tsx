@@ -26,7 +26,7 @@ import { Button } from "mds";
 import debounce from "lodash/debounce";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import CssBaseline from "@mui/material/CssBaseline";
 import Snackbar from "@mui/material/Snackbar";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
@@ -491,7 +491,7 @@ const Console = ({ classes }: IConsoleProps) => {
                 {isServerLoading ? (
                   <Fragment>
                     The server is restarting.
-                    <LinearProgress className={classes.progress} />
+                    <ProgressBar />
                   </Fragment>
                 ) : (
                   <Fragment>
@@ -510,9 +510,8 @@ const Console = ({ classes }: IConsoleProps) => {
               </div>
             )}
             {loadingProgress < 100 && (
-              <LinearProgress
-                className={classes.progress}
-                variant="determinate"
+              <ProgressBar
+                isIndeterminate
                 value={loadingProgress}
               />
             )}
