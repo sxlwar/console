@@ -18,7 +18,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import get from "lodash/get";
 import Paper from "@mui/material/Paper";
 import { Grid } from "mds";
@@ -150,7 +150,7 @@ const UsersSelectors = ({
     <React.Fragment>
       <Grid item xs={12}>
         <Paper className={classes.paper}>
-          {loading && <LinearProgress />}
+          {loading && <ProgressBar />}
           {records !== null && records.length > 0 ? (
             <React.Fragment>
               <Grid item xs={12} className={classes.actionsTray}>

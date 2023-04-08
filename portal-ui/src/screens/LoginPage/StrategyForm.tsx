@@ -26,11 +26,11 @@ import {
 import { setAccessKey, setSecretKey, setSTS, setUseSTS } from "./loginSlice";
 import {
   InputAdornment,
-  LinearProgress,
   MenuItem,
   Select,
   SelectChangeEvent,
 } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import { AppState, useAppDispatch } from "../../store";
 import { useSelector } from "react-redux";
 import { LoginField } from "./LoginField";
@@ -230,7 +230,7 @@ const StrategyForm = ({ redirectRules }: IStrategyForm) => {
           />
         </Grid>
         <Grid item xs={12} className={classes.linearPredef}>
-          {loginSending && <LinearProgress />}
+          {loginSending && <ProgressBar />}
         </Grid>
         <Grid
           item

@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useEffect, useState } from "react";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import { useNavigate } from "react-router-dom";
 import { BackLink, Button, ClustersIcon, HelpBox, Box, Grid } from "mds";
 import useApi from "../../Common/Hooks/useApi";
@@ -415,7 +415,7 @@ const AddReplicationSites = () => {
               Add Sites for Replication
             </SectionTitle>
 
-            {isSiteInfoLoading || isAdding ? <LinearProgress /> : null}
+            {isSiteInfoLoading || isAdding ? <ProgressBar /> : null}
 
             <Box
               sx={{

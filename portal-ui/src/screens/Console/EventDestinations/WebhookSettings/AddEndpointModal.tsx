@@ -31,7 +31,7 @@ import {
 } from "../../../../systemSlice";
 import { ErrorResponseHandler } from "../../../../common/types";
 import { useAppDispatch } from "../../../../store";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 
 interface IEndpointModal {
   open: boolean;
@@ -211,7 +211,7 @@ const AddEndpointModal = ({ open, type, onCloseEndpoint }: IEndpointModal) => {
               marginBottom: 10,
             }}
           >
-            <LinearProgress />
+            <ProgressBar />
           </Grid>
         )}
         <Grid

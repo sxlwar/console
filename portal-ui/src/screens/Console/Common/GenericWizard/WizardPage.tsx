@@ -20,7 +20,7 @@ import { Button } from "mds";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import { IWizardButton, IWizardPage } from "./types";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -97,7 +97,7 @@ const WizardPage = ({
       </div>
       {loadingStep && (
         <div>
-          <LinearProgress />
+          <ProgressBar />
         </div>
       )}
       <div

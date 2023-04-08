@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useState } from "react";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import { AppState } from "../../../../../store";
 import { useSelector } from "react-redux";
 import { Button, CollapseCaret, ExpandCaret, Grid } from "mds";
@@ -144,7 +144,7 @@ const BucketNamingRules = ({ errorList }: { errorList: boolean[] }) => {
 
       {addLoading && (
         <Grid item xs={12}>
-          <LinearProgress />
+          <ProgressBar />
         </Grid>
       )}
     </Fragment>

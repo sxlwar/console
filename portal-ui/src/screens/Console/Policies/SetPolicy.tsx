@@ -20,7 +20,7 @@ import { Theme } from "@mui/material/styles";
 import { Button, Grid } from "mds";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import {
   modalBasic,
   spacingUtils,
@@ -207,7 +207,7 @@ const SetPolicy = ({
       </Grid>
       {loading && (
         <Grid item xs={12}>
-          <LinearProgress />
+          <ProgressBar />
         </Grid>
       )}
     </ModalWrapper>

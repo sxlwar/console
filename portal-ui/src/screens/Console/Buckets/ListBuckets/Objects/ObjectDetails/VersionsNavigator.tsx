@@ -20,7 +20,8 @@ import { useSelector } from "react-redux";
 import { withStyles } from "@mui/styles";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
-import { LinearProgress, SelectChangeEvent } from "@mui/material";
+import { SelectChangeEvent } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import ShareFile from "./ShareFile";
 import {
   actionsTray,
@@ -500,7 +501,7 @@ const VersionsNavigator = ({
       <Grid container className={classes.versionsContainer}>
         {!actualInfo && (
           <Grid item xs={12}>
-            <LinearProgress />
+            <ProgressBar />
           </Grid>
         )}
 

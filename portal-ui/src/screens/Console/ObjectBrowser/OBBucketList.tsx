@@ -20,7 +20,7 @@ import { useNavigate } from "react-router-dom";
 import { Theme } from "@mui/material/styles";
 import { BucketsIcon, Button, HelpBox, RefreshIcon, Grid } from "mds";
 import createStyles from "@mui/styles/createStyles";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import {
   actionsTray,
   containerForHeader,
@@ -184,7 +184,7 @@ const OBListBuckets = () => {
           </Grid>
         </Grid>
 
-        {loading && <LinearProgress />}
+        {loading && <ProgressBar />}
         {!loading && (
           <Grid
             item

@@ -21,7 +21,7 @@ import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import ModalWrapper from "../Common/ModalWrapper/ModalWrapper";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import {
   containerForHeader,
   formFieldStyles,
@@ -167,7 +167,7 @@ const ChangeUserPassword = ({
           </Grid>
           {loading && (
             <Grid item xs={12}>
-              <LinearProgress />
+              <ProgressBar />
             </Grid>
           )}
         </Grid>

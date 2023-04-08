@@ -26,7 +26,7 @@ import {
   formFieldStyles,
   modalStyleUtils,
 } from "../Common/FormComponents/common/styleLibrary";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 
 import PageLayout from "../Common/Layout/PageLayout";
 
@@ -148,7 +148,7 @@ const AddUser = ({ classes }: IAddUserProps) => {
                 </Grid>
                 {addLoading && (
                   <Grid item xs={12}>
-                    <LinearProgress />
+                    <ProgressBar />
                   </Grid>
                 )}
 

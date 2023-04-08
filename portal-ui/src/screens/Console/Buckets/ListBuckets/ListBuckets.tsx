@@ -30,7 +30,7 @@ import {
   SelectMultipleIcon,
   Grid,
 } from "mds";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import {
   actionsTray,
   containerForHeader,
@@ -398,7 +398,7 @@ const ListBuckets = () => {
           </Grid>
         </Grid>
 
-        {loading && <LinearProgress />}
+        {loading && <ProgressBar />}
         {!loading && (
           <Grid
             item

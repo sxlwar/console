@@ -16,11 +16,9 @@
 
 import React, { Fragment } from "react";
 import { styled } from "@mui/material/styles";
-import LinearProgress, {
-  linearProgressClasses,
-  LinearProgressProps,
-} from "@mui/material/LinearProgress";
+import ProgressBar from '@atlaskit/progress-bar';
 import { Box } from "mds";
+import { CustomProgressBarProps } from "@atlaskit/progress-bar/dist/types/types";
 
 interface IProgressBarWrapper {
   value: number;
@@ -32,26 +30,17 @@ interface IProgressBarWrapper {
   cancelled?: boolean;
 }
 
-const BorderLinearProgress = styled(LinearProgress)(() => ({
+const BorderLinearProgress = styled(ProgressBar)(() => ({
   height: 10,
   borderRadius: 5,
-  [`&.${linearProgressClasses.colorPrimary}`]: {
-    backgroundColor: "#f1f1f1",
-  },
-  [`& .${linearProgressClasses.bar}`]: {
-    borderRadius: 5,
-  },
 }));
 const SmallBorderLinearProgress = styled(BorderLinearProgress)(() => ({
   height: 6,
   borderRadius: 3,
-  [`& .${linearProgressClasses.bar}`]: {
-    borderRadius: 3,
-  },
 }));
 
 function LinearProgressWithLabel(
-  props: { error: boolean; cancelled: boolean } & LinearProgressProps
+  props: { error: boolean; cancelled: boolean } & CustomProgressBarProps
 ) {
   let color = "#000";
   let size = 18;
@@ -67,7 +56,7 @@ function LinearProgressWithLabel(
   return (
     <Box sx={{ display: "flex", alignItems: "center" }}>
       <Box sx={{ width: "100%", mr: 3 }}>
-        <BorderLinearProgress variant="determinate" {...props} />
+        <BorderLinearProgress isIndeterminate {...props} />
       </Box>
       <Box
         sx={{
@@ -108,7 +97,7 @@ const ProgressBarWrapper = ({
   } else {
     color = "primary";
   }
-  const propsComponent: LinearProgressProps = {
+  const propsComponent = {
     variant:
       indeterminate && !ready && !cancelled ? "indeterminate" : "determinate",
     value: ready ? 100 : value,

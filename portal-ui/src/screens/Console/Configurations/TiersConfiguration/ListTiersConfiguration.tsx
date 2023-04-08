@@ -20,7 +20,7 @@ import { useSelector } from "react-redux";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import {
   Box,
   AddIcon,
@@ -361,7 +361,7 @@ const ListTiersConfiguration = ({ classes }: IListTiersConfig) => {
                 </TooltipWrapper>
               </div>
             </Grid>
-            {isLoading && <LinearProgress />}
+            {isLoading && <ProgressBar />}
             {!isLoading && (
               <Fragment>
                 {records.length > 0 && (

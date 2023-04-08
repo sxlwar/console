@@ -28,7 +28,7 @@ import {
 } from "mds";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import { Box, Grid } from "mds";
 
 import { GroupsList } from "./types";
@@ -323,7 +323,7 @@ const Groups = ({ classes }: IGroupsProps) => {
             </SecureComponent>
           </Box>
         </Grid>
-        {loading && <LinearProgress />}
+        {loading && <ProgressBar />}
         {!loading && (
           <Fragment>
             {records.length > 0 && (

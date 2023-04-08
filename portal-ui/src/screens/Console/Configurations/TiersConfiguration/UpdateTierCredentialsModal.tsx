@@ -20,7 +20,7 @@ import { Button, LockIcon, Grid } from "mds";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import {
   formFieldStyles,
   modalBasic,
@@ -222,7 +222,7 @@ const UpdateTierCredentialsModal = ({
           </Grid>
           {savingTiers && (
             <Grid item xs={12}>
-              <LinearProgress />
+              <ProgressBar />
             </Grid>
           )}
         </Grid>

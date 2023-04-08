@@ -16,7 +16,7 @@
 
 import React, { useEffect, useState } from "react";
 import { Button, Loader, Grid } from "mds";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
@@ -202,7 +202,7 @@ const SetRetentionConfig = ({
             </Grid>
             {addLoading && (
               <Grid item xs={12}>
-                <LinearProgress />
+                <ProgressBar />
               </Grid>
             )}
           </Grid>

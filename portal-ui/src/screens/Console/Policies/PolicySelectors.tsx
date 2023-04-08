@@ -19,7 +19,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import { Grid } from "mds";
 import { policySort } from "../../../utils/sortFunctions";
 import {
@@ -145,7 +145,7 @@ const PolicySelectors = ({ classes, noTitle = false }: ISelectPolicyProps) => {
   return (
     <Grid container>
       <Grid item xs={12}>
-        {loading && <LinearProgress />}
+        {loading && <ProgressBar />}
         {records.length > 0 ? (
           <React.Fragment>
             <Grid item xs={12} className={classes.filterBox}>

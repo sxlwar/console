@@ -16,10 +16,10 @@
 import React, { Fragment, useState } from "react";
 import {
   Checkbox,
-  LinearProgress,
   Paper,
   Popover,
 } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import { IconButton, Grid } from 'mds';
 import { useNavigate } from "react-router-dom";
 import { AutoSizer, Column, InfiniteLoader, Table } from "react-virtualized";
@@ -586,7 +586,7 @@ const TableWrapper = ({
                 {loadingMessage}
               </Grid>
               <Grid item xs={12}>
-                <LinearProgress />
+                <ProgressBar />
               </Grid>
             </Grid>
           )}

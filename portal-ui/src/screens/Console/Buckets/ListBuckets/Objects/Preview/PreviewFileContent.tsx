@@ -17,7 +17,7 @@
 import React, { Fragment, useState } from "react";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import { BucketObjectItem } from "../ListObjects/types";
 import { extensionPreview } from "../utils";
 import { encodeURLString } from "../../../../../../common/utils";
@@ -94,7 +94,7 @@ const PreviewFile = ({
     <Fragment>
       {loading && (
         <Grid item xs={12}>
-          <LinearProgress />
+          <ProgressBar />
         </Grid>
       )}
       <div style={{ textAlign: "center" }}>

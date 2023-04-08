@@ -16,7 +16,7 @@
 
 import React, { Fragment, useEffect, useState } from "react";
 import { Grid } from "mds";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import { Theme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { BackLink, BucketsIcon, Button, HelpBox, InfoIcon } from "mds";
@@ -546,7 +546,7 @@ const AddBucket = () => {
             </Grid>
             {addLoading && (
               <Grid item xs={12}>
-                <LinearProgress />
+                <ProgressBar />
               </Grid>
             )}
           </form>

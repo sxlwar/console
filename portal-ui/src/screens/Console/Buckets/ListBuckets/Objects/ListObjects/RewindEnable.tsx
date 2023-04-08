@@ -16,7 +16,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import { Button, Grid } from "mds";
 import ModalWrapper from "../../../../Common/ModalWrapper/ModalWrapper";
 import DateTimePickerWrapper from "../../../../Common/FormComponents/DateTimePickerWrapper/DateTimePickerWrapper";
@@ -133,7 +133,7 @@ const RewindEnable = ({
         </Grid>
         {rewindEnabling && (
           <Grid item xs={12}>
-            <LinearProgress />
+            <ProgressBar />
           </Grid>
         )}
       </Grid>

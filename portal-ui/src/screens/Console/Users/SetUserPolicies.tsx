@@ -17,7 +17,7 @@
 import React, { useEffect, useState } from "react";
 import { Theme } from "@mui/material/styles";
 import { Button, Grid } from "mds";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import { useSelector } from "react-redux";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
@@ -141,7 +141,7 @@ const SetUserPolicies = ({
       </Grid>
       {loading && (
         <Grid item xs={12}>
-          <LinearProgress />
+          <ProgressBar />
         </Grid>
       )}
     </ModalWrapper>

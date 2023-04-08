@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { useCallback, useEffect, useState } from "react";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import { Theme } from "@mui/material/styles";
 import { AddMembersToGroupIcon, Button, Box, Grid } from "mds";
 import createStyles from "@mui/styles/createStyles";
@@ -193,7 +193,7 @@ const ChangeUserGroups = ({
             </Box>
             {addLoading && (
               <Grid item xs={12}>
-                <LinearProgress />
+                <ProgressBar />
               </Grid>
             )}
           </Grid>

@@ -16,7 +16,8 @@
 
 import React, { useEffect, useState } from "react";
 
-import { DialogContentText, LinearProgress } from "@mui/material";
+import { DialogContentText } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
@@ -88,7 +89,7 @@ const ResetConfigurationModal = ({
       }}
       confirmationContent={
         <React.Fragment>
-          {resetLoading && <LinearProgress />}
+          {resetLoading && <ProgressBar />}
           <DialogContentText>
             Are you sure you want to restore these configurations to default
             values?

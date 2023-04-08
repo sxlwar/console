@@ -30,7 +30,7 @@ import {
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import api from "../../../common/api";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import { User, UsersList } from "./types";
 import { usersSort } from "../../../utils/sortFunctions";
 import {
@@ -340,7 +340,7 @@ const ListUsers = ({ classes }: IUsersProps) => {
           </SecureComponent>
         </Grid>
 
-        {loading && <LinearProgress />}
+        {loading && <ProgressBar />}
         {!loading && (
           <Fragment>
             {records.length > 0 && (

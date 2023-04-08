@@ -25,9 +25,9 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  LinearProgress,
   SelectChangeEvent,
 } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 
 import {
   ITierElement,
@@ -222,7 +222,7 @@ const AddLifecycleModal = ({
       {loadingTiers && (
         <Grid container className={classes.loadingBox}>
           <Grid item xs={12}>
-            <LinearProgress />
+            <ProgressBar />
           </Grid>
         </Grid>
       )}
@@ -405,7 +405,7 @@ const AddLifecycleModal = ({
             </Grid>
             {addLoading && (
               <Grid item xs={12}>
-                <LinearProgress />
+                <ProgressBar />
               </Grid>
             )}
           </Grid>

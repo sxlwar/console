@@ -19,9 +19,9 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  LinearProgress,
   SelectChangeEvent,
 } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import { Theme } from "@mui/material/styles";
 import { Button, Grid, LifecycleConfigIcon } from "mds";
 import get from "lodash/get";
@@ -544,7 +544,7 @@ const EditLifecycleConfiguration = ({
           </Grid>
           {addLoading && (
             <Grid item xs={12}>
-              <LinearProgress />
+              <ProgressBar />
             </Grid>
           )}
         </Grid>

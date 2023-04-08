@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useCallback, useEffect, useState } from "react";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import { SubnetInfo } from "./types";
 import api from "../../../common/api";
 import { ArrowIcon, Button, Grid } from "mds";
@@ -108,7 +108,7 @@ const License = () => {
   if (loadingLicenseInfo) {
     return (
       <Grid item xs={12}>
-        <LinearProgress />
+        <ProgressBar />
       </Grid>
     );
   }

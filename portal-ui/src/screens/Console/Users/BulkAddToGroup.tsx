@@ -19,7 +19,7 @@ import { AddMembersToGroupIcon, Button, Grid } from "mds";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import {
   formFieldStyles,
   modalStyleUtils,
@@ -166,7 +166,7 @@ const BulkAddToGroup = ({
             </Grid>
             {saving && (
               <Grid item xs={12}>
-                <LinearProgress />
+                <ProgressBar />
               </Grid>
             )}
           </Grid>

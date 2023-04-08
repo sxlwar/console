@@ -36,7 +36,7 @@ import {
   searchField,
 } from "../Common/FormComponents/common/styleLibrary";
 import Paper from "@mui/material/Paper";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import TableWrapper from "../Common/TableWrapper/TableWrapper";
 
 import { ErrorResponseHandler } from "../../../common/types";
@@ -593,7 +593,7 @@ const PolicyDetails = ({ classes }: IPolicyDetailsProps) => {
                     </Grid>
                     {addLoading && (
                       <Grid item xs={12}>
-                        <LinearProgress />
+                        <ProgressBar />
                       </Grid>
                     )}
                   </Grid>

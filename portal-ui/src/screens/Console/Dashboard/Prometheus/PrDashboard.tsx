@@ -19,7 +19,7 @@ import { useSelector } from "react-redux";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import { actionsTray } from "../../Common/FormComponents/common/styleLibrary";
 import { IDashboardPanel } from "./types";
 import { panelsConfiguration } from "./utils";
@@ -329,7 +329,7 @@ const PrDashboard = ({ apiPrefix = "admin", usage }: IPrDashboard) => {
           index={usage?.advancedMetricsStatus === "not configured" ? 0 : 3}
           value={curTab}
         >
-          {!usage && <LinearProgress />}
+          {!usage && <ProgressBar />}
           {usage && <BasicDashboard usage={usage} />}
         </TabPanel>
       </Grid>

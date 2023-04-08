@@ -31,7 +31,7 @@ import {
 } from "../../../../systemSlice";
 import { ErrorResponseHandler } from "../../../../common/types";
 import { useAppDispatch } from "../../../../store";
-import { LinearProgress } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import { IConfigurationSys } from "../../Configurations/types";
 import FormSwitchWrapper from "../../Common/FormComponents/FormSwitchWrapper/FormSwitchWrapper";
 import PredefinedList from "../../Common/FormComponents/PredefinedList/PredefinedList";
@@ -339,7 +339,7 @@ const EditEndpointModal = ({
                   marginBottom: 10,
                 }}
               >
-                <LinearProgress />
+                <ProgressBar />
               </Grid>
             )}
             <Grid

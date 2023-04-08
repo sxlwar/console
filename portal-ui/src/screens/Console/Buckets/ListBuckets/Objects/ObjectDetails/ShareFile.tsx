@@ -21,7 +21,7 @@ import { Button, CopyIcon, ShareIcon, Grid } from "mds";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import CopyToClipboard from "react-copy-to-clipboard";
-import LinearProgress from "@mui/material/LinearProgress";
+import ProgressBar from '@atlaskit/progress-bar';
 import {
   formFieldStyles,
   modalStyleUtils,
@@ -202,7 +202,7 @@ const ShareFile = ({
       >
         {isLoadingVersion && (
           <Grid item xs={12}>
-            <LinearProgress />
+            <ProgressBar />
           </Grid>
         )}
         {!isLoadingVersion && (

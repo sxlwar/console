@@ -15,7 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useEffect, useState } from "react";
-import { LinearProgress, SelectChangeEvent } from "@mui/material";
+import { SelectChangeEvent } from "@mui/material";
+import ProgressBar from '@atlaskit/progress-bar';
 import { AddIcon, BucketEncryptionIcon, Button, Grid } from "mds";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
@@ -249,7 +250,7 @@ const EnableBucketEncryption = ({
             </Grid>
             {loading && (
               <Grid item xs={12}>
-                <LinearProgress />
+                <ProgressBar />
               </Grid>
             )}
           </Grid>
