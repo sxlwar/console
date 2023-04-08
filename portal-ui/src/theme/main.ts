@@ -282,7 +282,6 @@ export interface Theme {
   colors: Colors;
 }
 
-// allow configuration using `createTheme`
 export interface ThemeOptions {
   colors?: {
     link?: string;
