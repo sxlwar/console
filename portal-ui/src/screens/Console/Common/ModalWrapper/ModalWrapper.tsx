@@ -18,9 +18,9 @@ import { useSelector } from "react-redux";
 import { IconButton } from "mds";
 import Snackbar from "@mui/material/Snackbar";
 import { Dialog, DialogContent, DialogTitle } from "@mui/material";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+
+import { withStyles } from "../../../../theme/makeStyles";
 import {
   deleteDialogStyles,
   snackBarCommon,
@@ -31,7 +31,7 @@ import MainError from "../MainError/MainError";
 import { setModalSnackMessage } from "../../../../systemSlice";
 
 interface IModalProps {
-  classes: any;
+  classes?: any;
   onClose: () => void;
   modalOpen: boolean;
   title: string | React.ReactNode;
@@ -41,8 +41,8 @@ interface IModalProps {
   titleIcon?: React.ReactNode;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     ...deleteDialogStyles,
     content: {
       padding: 25,
@@ -170,4 +170,4 @@ const ModalWrapper = ({
   );
 };
 
-export default withStyles(styles)(ModalWrapper);
+export default withStyles(ModalWrapper, styles);;

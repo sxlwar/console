@@ -15,9 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment } from "react";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 
 import { configurationElements } from "../utils";
 import {
@@ -38,24 +37,23 @@ import ImportConfigButton from "./ImportConfigButton";
 import { Box, Grid } from "mds";
 
 interface IConfigurationOptions {
-  classes: any;
+  classes?: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    settingsOptionsContainer: {
-      display: "flex" as const,
-      flexDirection: "row" as const,
-      justifyContent: "flex-start" as const,
-      flexWrap: "wrap" as const,
-      border: "#E5E5E5 1px solid",
-      borderRadius: 2,
-      backgroundColor: "#fff",
-    },
-    ...searchField,
-    ...actionsTray,
-    ...containerForHeader,
-  });
+const styles = () => ({
+  settingsOptionsContainer: {
+    display: "flex" as const,
+    flexDirection: "row" as const,
+    justifyContent: "flex-start" as const,
+    flexWrap: "wrap" as const,
+    border: "#E5E5E5 1px solid",
+    borderRadius: 2,
+    backgroundColor: "#fff",
+  },
+  ...searchField,
+  ...actionsTray,
+  ...containerForHeader,
+});
 
 const getRoutePath = (path: string) => {
   return `${IAM_PAGES.SETTINGS}/${path}`;
@@ -154,4 +152,4 @@ const ConfigurationOptions = ({ classes }: IConfigurationOptions) => {
   );
 };
 
-export default withStyles(styles)(ConfigurationOptions);
+export default withStyles(ConfigurationOptions, styles);

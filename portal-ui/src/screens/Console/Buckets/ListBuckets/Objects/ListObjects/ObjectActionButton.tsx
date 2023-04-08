@@ -16,9 +16,8 @@
 
 import React from "react";
 import { Button } from "mds";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../../../theme/makeStyles";
 import clsx from "clsx";
 
 type ObjectActionButtonProps = {
@@ -29,31 +28,30 @@ type ObjectActionButtonProps = {
   [x: string]: any;
 };
 
-const styles = (theme: Theme) =>
-  createStyles({
-    root: {
-      padding: "0 15px",
-      height: 22,
-      margin: 0,
-      color: "#5E5E5E",
-      fontWeight: "normal",
-      fontSize: 14,
-      whiteSpace: "nowrap",
-      width: "100%",
-      justifyContent: "flex-start",
-      "&:hover": {
-        backgroundColor: "transparent",
-        color: "#000",
-      },
-      "& .min-icon": {
-        width: 11,
-      },
-      "&:disabled": {
-        color: "#EBEBEB",
-        borderColor: "#EBEBEB",
-      },
+const styles = () => ({
+  root: {
+    padding: "0 15px",
+    height: 22,
+    margin: 0,
+    color: "#5E5E5E",
+    fontWeight: "normal",
+    fontSize: 14,
+    whiteSpace: "nowrap" as any,
+    width: "100%",
+    justifyContent: "flex-start",
+    "&:hover": {
+      backgroundColor: "transparent",
+      color: "#000",
     },
-  });
+    "& .min-icon": {
+      width: 11,
+    },
+    "&:disabled": {
+      color: "#EBEBEB",
+      borderColor: "#EBEBEB",
+    },
+  },
+});
 
 // TODO: Create an mds version of this.
 const ObjectActionButton = ({
@@ -78,4 +76,4 @@ const ObjectActionButton = ({
   );
 };
 
-export default withStyles(styles)(ObjectActionButton);
+export default withStyles(ObjectActionButton, styles);

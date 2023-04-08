@@ -6,14 +6,12 @@ import { AddMembersToGroupIcon, Button, Grid } from "mds";
 import api from "../../../common/api";
 import { ErrorResponseHandler } from "../../../common/types";
 
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
 import {
   formFieldStyles,
   modalBasic,
   modalStyleUtils,
 } from "../Common/FormComponents/common/styleLibrary";
-import withStyles from "@mui/styles/withStyles";
+import { withStyles } from "../../../theme/makeStyles";
 import { encodeURLString } from "../../../common/utils";
 import { setModalErrorSnackMessage } from "../../../systemSlice";
 import { useAppDispatch } from "../../../store";
@@ -29,18 +27,17 @@ type UserPickerModalProps = {
   groupStatus?: string;
 };
 
-const styles = (theme: Theme) =>
-  createStyles({
-    userSelector: {
-      "& .MuiPaper-root": {
-        padding: 0,
-        marginBottom: 15,
-      },
+const styles = () => ({
+  userSelector: {
+    "& .MuiPaper-root": {
+      padding: 0,
+      marginBottom: 15,
     },
-    ...modalStyleUtils,
-    ...formFieldStyles,
-    ...modalBasic,
-  });
+  },
+  ...modalStyleUtils,
+  ...formFieldStyles,
+  ...modalBasic,
+});
 
 const AddGroupMember = ({
   classes,
@@ -116,4 +113,4 @@ const AddGroupMember = ({
   );
 };
 
-export default withStyles(styles)(AddGroupMember);
+export default withStyles(AddGroupMember, styles);

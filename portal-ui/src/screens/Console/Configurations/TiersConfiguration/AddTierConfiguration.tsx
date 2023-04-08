@@ -18,10 +18,10 @@ import React, { Fragment, useCallback, useEffect, useState } from "react";
 
 import { useNavigate, useParams } from "react-router-dom";
 import get from "lodash/get";
-import { Theme } from "@mui/material/styles";
+
 import { BackLink, Button, Box, Grid } from "mds";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import {
   fileInputStyles,
   formFieldStyles,
@@ -48,33 +48,32 @@ import { setErrorSnackMessage } from "../../../../systemSlice";
 import { useAppDispatch } from "../../../../store";
 import PageHeaderWrapper from "../../Common/PageHeaderWrapper/PageHeaderWrapper";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...modalBasic,
-    ...settingsCommon,
-    ...formFieldStyles,
-    lambdaNotifTitle: {
-      color: "#07193E",
-      fontSize: 16,
-      fontFamily: "Inter,sans-serif",
-      paddingLeft: 18,
-    },
-    fileInputFieldCss: {
-      margin: "0",
-    },
-    fileTextBoxContainer: {
-      maxWidth: " 100%",
-      flex: 1,
-    },
-    fileReselectCss: {
-      maxWidth: " 100%",
-      flex: 1,
-    },
-    ...fileInputStyles,
-  });
+const styles = () => ({
+  ...modalBasic,
+  ...settingsCommon,
+  ...formFieldStyles,
+  lambdaNotifTitle: {
+    color: "#07193E",
+    fontSize: 16,
+    fontFamily: "Inter,sans-serif",
+    paddingLeft: 18,
+  },
+  fileInputFieldCss: {
+    margin: "0",
+  },
+  fileTextBoxContainer: {
+    maxWidth: " 100%",
+    flex: 1,
+  },
+  fileReselectCss: {
+    maxWidth: " 100%",
+    flex: 1,
+  },
+  ...fileInputStyles,
+});
 
 interface IAddNotificationEndpointProps {
-  classes: any;
+  classes?: any;
 }
 
 const AddTierConfiguration = ({ classes }: IAddNotificationEndpointProps) => {
@@ -371,8 +370,8 @@ const AddTierConfiguration = ({ classes }: IAddNotificationEndpointProps) => {
               xs={12}
               sx={{
                 display: "grid",
-                gridTemplateColumns:   "1fr 1fr",
-                gridAutoFlow:  "row",
+                gridTemplateColumns: "1fr 1fr",
+                gridAutoFlow: "row",
                 gridRowGap: 25,
                 gridColumnGap: 50,
               }}
@@ -534,4 +533,4 @@ const AddTierConfiguration = ({ classes }: IAddNotificationEndpointProps) => {
   );
 };
 
-export default withStyles(styles)(AddTierConfiguration);
+export default withStyles(AddTierConfiguration, styles);

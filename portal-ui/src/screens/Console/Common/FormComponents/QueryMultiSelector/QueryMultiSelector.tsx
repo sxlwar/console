@@ -23,9 +23,8 @@ import React, {
 } from "react";
 import get from "lodash/get";
 import debounce from "lodash/debounce";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../../theme/makeStyles";
 import HelpIcon from "@mui/icons-material/Help";
 import { InputLabel, Tooltip } from "@mui/material";
 import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
@@ -39,33 +38,32 @@ interface IQueryMultiSelector {
   tooltip?: string;
   keyPlaceholder?: string;
   valuePlaceholder?: string;
-  classes: any;
+  classes?: any;
   withBorder?: boolean;
   onChange: (elements: string) => void;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...fieldBasic,
-    ...tooltipHelper,
-    inputWithBorder: {
-      border: "1px solid #EAEAEA",
-      padding: 15,
-      height: 150,
-      overflowY: "auto",
-      position: "relative",
-      marginTop: 15,
-    },
-    lineInputBoxes: {
-      display: "flex",
-      marginBottom: 10,
-    },
-    queryDiv: {
-      alignSelf: "center",
-      margin: "0 4px",
-      fontWeight: 600,
-    },
-  });
+const styles = () => ({
+  ...fieldBasic,
+  ...tooltipHelper,
+  inputWithBorder: {
+    border: "1px solid #EAEAEA",
+    padding: 15,
+    height: 150,
+    overflowY: "auto",
+    position: "relative",
+    marginTop: 15,
+  },
+  lineInputBoxes: {
+    display: "flex",
+    marginBottom: 10,
+  },
+  queryDiv: {
+    alignSelf: "center",
+    margin: "0 4px",
+    fontWeight: 600,
+  },
+});
 
 const QueryMultiSelector = ({
   elements,
@@ -249,4 +247,4 @@ const QueryMultiSelector = ({
     </React.Fragment>
   );
 };
-export default withStyles(styles)(QueryMultiSelector);
+export default withStyles(QueryMultiSelector, styles);

@@ -22,10 +22,9 @@ import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWr
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import RegisterHelpBox from "./RegisterHelpBox";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
+
 import { spacingUtils } from "../Common/FormComponents/common/styleLibrary";
-import makeStyles from "@mui/styles/makeStyles";
+import { makeStyles } from "../../../theme/makeStyles";
 import { useSelector } from "react-redux";
 import { AppState, useAppDispatch } from "../../../store";
 import {
@@ -35,17 +34,15 @@ import {
 } from "./registerSlice";
 import { subnetLogin } from "./registerThunks";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    sizedLabel: {
-      minWidth: "75px",
-    },
-    ...spacingUtils,
-  })
-);
+const useStyles = makeStyles()(() => ({
+  sizedLabel: {
+    minWidth: "75px",
+  },
+  ...spacingUtils,
+}));
 
 const OnlineRegistration = () => {
-  const classes = useStyles();
+  const { classes } = useStyles() as any;
   const dispatch = useAppDispatch();
 
   const subnetPassword = useSelector(

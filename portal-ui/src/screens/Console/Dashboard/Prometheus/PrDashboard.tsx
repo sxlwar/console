@@ -16,10 +16,9 @@
 
 import React, { Fragment, useState } from "react";
 import { useSelector } from "react-redux";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
-import ProgressBar from '@atlaskit/progress-bar';
+
+import { withStyles } from "../../../../theme/makeStyles";
+import ProgressBar from "@atlaskit/progress-bar";
 import { actionsTray } from "../../Common/FormComponents/common/styleLibrary";
 import { IDashboardPanel } from "./types";
 import { panelsConfiguration } from "./utils";
@@ -48,7 +47,7 @@ import { ITabOption } from "../../Common/TabSelector/types";
 import { getUsageAsync } from "../dashboardThunks";
 import { reloadWidgets } from "../dashboardSlice";
 import { selFeatures } from "../../consoleSlice";
-import { Box, Grid } from 'mds';
+import { Box, Grid } from "mds";
 import { CSSObject } from "styled-components";
 
 interface IPrDashboard {
@@ -57,10 +56,9 @@ interface IPrDashboard {
   usage: Usage | null;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...actionsTray,
-  });
+const styles = () => ({
+  ...actionsTray,
+});
 
 const PrDashboard = ({ apiPrefix = "admin", usage }: IPrDashboard) => {
   const dispatch = useAppDispatch();
@@ -337,4 +335,4 @@ const PrDashboard = ({ apiPrefix = "admin", usage }: IPrDashboard) => {
   );
 };
 
-export default withStyles(styles)(PrDashboard);
+export default withStyles(PrDashboard, styles);

@@ -19,9 +19,9 @@ import { Button, CircleIcon, ObjectManagerIcon } from "mds";
 import { toggleList } from "../../ObjectBrowser/objectBrowserSlice";
 import { AppState, useAppDispatch } from "../../../../store";
 import { useSelector } from "react-redux";
-import makeStyles from "@mui/styles/makeStyles";
+import { makeStyles } from "../../../../theme/makeStyles";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()(() => ({
   indicator: {
     position: "absolute",
     display: "block",
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ObjectManagerButton = () => {
   const dispatch = useAppDispatch();
-  const classes = useStyles();
+  const { classes } = useStyles();
   const managerObjects = useSelector(
     (state: AppState) => state.objectBrowser.objectManager.objectsToManage
   );

@@ -14,23 +14,17 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import { Theme } from "@mui/material/styles";
 import React, { Fragment } from "react";
-import {
-  StyledEngineProvider,
-  Theme,
-  ThemeProvider,
-} from "@mui/material/styles";
-import withStyles from "@mui/styles/withStyles";
-import theme from "./theme/main";
-import "react-virtualized/styles.css";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
+import "react-virtualized/styles.css";
 
-import { generateOverrideTheme } from "./utils/stylesUtils";
-import "./index.css";
-import { useSelector } from "react-redux";
-import { AppState } from "./store";
 import { GlobalStyles, ThemeHandler } from "mds";
+import { useSelector } from "react-redux";
+import "./index.css";
+import { AppState } from "./store";
+import { withStyles } from "./theme/makeStyles";
 
 declare module "@mui/styles/defaultTheme" {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -46,14 +40,11 @@ const StyleHandler = ({ children }: IStyleHandler) => {
     (state: AppState) => state.system.overrideStyles
   );
 
-  let thm = theme;
   let globalBody: any = {};
   let rowColor: any = { color: "#393939" };
   let detailsListPanel: any = { backgroundColor: "#fff" };
 
   if (colorVariants) {
-    thm = generateOverrideTheme(colorVariants);
-
     globalBody = {
       backgroundColor: `${colorVariants.backgroundColor}!important`,
     };
@@ -65,31 +56,32 @@ const StyleHandler = ({ children }: IStyleHandler) => {
   }
 
   // Kept for Compatibility purposes. Once mds migration is complete then this will be removed
-  const GlobalCss = withStyles({
-    // @global is handled by jss-plugin-global.
-    "@global": {
-      body: {
-        ...globalBody,
+  const GlobalCss = withStyles(
+    () => null,
+    () => ({
+      root: {
+        // @global is handled by jss-plugin-global.
+        "@global": {
+          body: {
+            ...globalBody,
+          },
+          ".rowLine": {
+            ...rowColor,
+          },
+          ".detailsListPanel": {
+            ...detailsListPanel,
+          },
+        },
       },
-      ".rowLine": {
-        ...rowColor,
-      },
-      ".detailsListPanel": {
-        ...detailsListPanel,
-      },
-    },
-  })(() => null);
+    })
+  );
 
   // ThemeHandler is needed for MDS components theming. Eventually we will remove Theme Provider & use only mds themes.
   return (
     <Fragment>
       <GlobalStyles />
       <GlobalCss />
-      <StyledEngineProvider injectFirst>
-        <ThemeProvider theme={thm}>
-          <ThemeHandler>{children}</ThemeHandler>
-        </ThemeProvider>
-      </StyledEngineProvider>
+      <ThemeHandler>{children}</ThemeHandler>
     </Fragment>
   );
 };

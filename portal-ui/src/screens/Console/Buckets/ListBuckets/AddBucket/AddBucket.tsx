@@ -16,8 +16,8 @@
 
 import React, { Fragment, useEffect, useState } from "react";
 import { Grid } from "mds";
-import ProgressBar from '@atlaskit/progress-bar';
-import { Theme } from "@mui/material/styles";
+import ProgressBar from "@atlaskit/progress-bar";
+
 import { useNavigate } from "react-router-dom";
 import { BackLink, BucketsIcon, Button, HelpBox, InfoIcon } from "mds";
 import {
@@ -70,9 +70,9 @@ import {
   ListBucketsResponse,
 } from "../../../../../api/consoleApi";
 import { errorToHandler } from "../../../../../api/errors";
-import makeStyles from "@mui/styles/makeStyles";
+import { makeStyles } from "../../../../../theme/makeStyles";
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles()(() => ({
   buttonContainer: {
     marginTop: 24,
     display: "flex",
@@ -113,7 +113,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 const AddBucket = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   const validBucketCharacters = new RegExp(
     `^[a-z0-9][a-z0-9\\.\\-]{1,61}[a-z0-9]$`
@@ -322,7 +322,7 @@ const AddBucket = () => {
                   </Fragment>
                 )}
               </Grid>
-              <Grid container  columnSpacing={2} rowSpacing={2}>
+              <Grid container columnSpacing={2} rowSpacing={2}>
                 {siteReplicationInfo.enabled && (
                   <Fragment>
                     <br />

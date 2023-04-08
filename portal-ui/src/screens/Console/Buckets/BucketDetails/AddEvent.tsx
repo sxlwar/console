@@ -17,9 +17,9 @@
 import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
 
 import { Button, EventSubscriptionIcon, Grid } from "mds";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+
+import { withStyles } from "../../../../theme/makeStyles";
 import api from "../../../../common/api";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
@@ -40,8 +40,8 @@ import AutocompleteWrapper from "../../Common/FormComponents/AutocompleteWrapper
 import { setModalErrorSnackMessage } from "../../../../systemSlice";
 import { useAppDispatch } from "../../../../store";
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     arnField: {
       "& div div .MuiOutlinedInput-root": {
         padding: 0,
@@ -52,7 +52,7 @@ const styles = (theme: Theme) =>
   });
 
 interface IAddEventProps {
-  classes: any;
+  classes?: any;
   open: boolean;
   selectedBucket: string;
   closeModalAndRefresh: () => void;
@@ -268,4 +268,4 @@ const AddEvent = ({
   );
 };
 
-export default withStyles(styles)(AddEvent);
+export default withStyles(AddEvent, styles);;

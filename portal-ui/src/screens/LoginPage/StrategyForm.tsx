@@ -30,51 +30,48 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import ProgressBar from '@atlaskit/progress-bar';
+import ProgressBar from "@atlaskit/progress-bar";
 import { AppState, useAppDispatch } from "../../store";
 import { useSelector } from "react-redux";
 import { LoginField } from "./LoginField";
-import makeStyles from "@mui/styles/makeStyles";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
+import { makeStyles } from "../../theme/makeStyles";
+
 import { spacingUtils } from "../Console/Common/FormComponents/common/styleLibrary";
 import { doLoginAsync } from "./loginThunks";
 import { IStrategyForm } from "./types";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      position: "absolute",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-      overflow: "auto",
-    },
-    form: {
-      width: "100%", // Fix IE 11 issue.
-    },
-    submit: {
-      margin: "30px 0px 8px",
-      height: 40,
-      width: "100%",
-      boxShadow: "none",
-      padding: "16px 30px",
-    },
-    submitContainer: {
-      textAlign: "right",
-      marginTop: 30,
-    },
-    linearPredef: {
-      height: 10,
-    },
-    ...spacingUtils,
-  })
-);
+const useStyles = makeStyles()(() => ({
+  root: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    overflow: "auto",
+  },
+  form: {
+    width: "100%", // Fix IE 11 issue.
+  },
+  submit: {
+    margin: "30px 0px 8px",
+    height: 40,
+    width: "100%",
+    boxShadow: "none",
+    padding: "16px 30px",
+  },
+  submitContainer: {
+    textAlign: "right",
+    marginTop: 30,
+  },
+  linearPredef: {
+    height: 10,
+  },
+  ...spacingUtils,
+}));
 
 const StrategyForm = ({ redirectRules }: IStrategyForm) => {
   const dispatch = useAppDispatch();
-  const classes = useStyles();
+  const { classes } = useStyles() as any;
 
   const accessKey = useSelector((state: AppState) => state.login.accessKey);
   const secretKey = useSelector((state: AppState) => state.login.secretKey);

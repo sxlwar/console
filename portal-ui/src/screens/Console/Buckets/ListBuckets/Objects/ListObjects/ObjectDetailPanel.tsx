@@ -17,7 +17,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Box } from "mds";
-import { withStyles } from "@mui/styles";
+import { withStyles } from "../../../../../../theme/makeStyles";
 import { CSSObject } from "styled-components";
 import {
   Button,
@@ -35,7 +35,7 @@ import {
   VersionsIcon,
   Grid,
 } from "mds";
-import createStyles from "@mui/styles/createStyles";
+
 import get from "lodash/get";
 import {
   actionsTray,
@@ -86,7 +86,7 @@ import { downloadObject } from "../../../../ObjectBrowser/utils";
 import { BucketVersioningInfo } from "../../../types";
 
 const styles = () =>
-  createStyles({
+  ({
     ObjectDetailsTitle: {
       display: "flex",
       alignItems: "center",
@@ -138,7 +138,7 @@ const emptyFile: IFileInfo = {
 };
 
 interface IObjectDetailPanelProps {
-  classes: any;
+  classes?: any;
   internalPaths: string;
   bucketName: string;
   versioningInfo: BucketVersioningInfo;
@@ -856,4 +856,4 @@ const ObjectDetailPanel = ({
   );
 };
 
-export default withStyles(styles)(ObjectDetailPanel);
+export default withStyles(ObjectDetailPanel, styles);;

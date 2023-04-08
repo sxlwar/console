@@ -15,11 +15,11 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment } from "react";
-import { Theme } from "@mui/material/styles";
+
 import { Button, Grid } from "mds";
 import get from "lodash/get";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import ModalWrapper from "../../Common/ModalWrapper/ModalWrapper";
 import { modalBasic } from "../../Common/FormComponents/common/styleLibrary";
 import { IReqInfoSearchResults } from "./types";
@@ -29,11 +29,11 @@ interface ILogSearchFullModal {
   modalOpen: boolean;
   logSearchElement: IReqInfoSearchResults;
   onClose: () => void;
-  classes: any;
+  classes?: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     buttonContainer: {
       textAlign: "right",
     },
@@ -92,4 +92,4 @@ const LogSearchFullModal = ({
   );
 };
 
-export default withStyles(styles)(LogSearchFullModal);
+export default withStyles(LogSearchFullModal, styles);;

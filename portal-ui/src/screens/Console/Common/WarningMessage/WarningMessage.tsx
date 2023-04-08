@@ -15,37 +15,35 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 
 interface IWarningMessage {
-  classes: any;
+  classes?: any;
   label: any;
   title: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    headerContainer: {
-      backgroundColor: "#e78794",
-      borderRadius: 3,
-      marginBottom: 20,
-      padding: 1,
-      paddingBottom: 15,
-    },
-    labelHeadline: {
-      color: "#000000",
-      fontSize: 14,
-      marginLeft: 20,
-    },
-    labelText: {
-      color: "#000000",
-      fontSize: 14,
-      marginLeft: 20,
-      marginRight: 40,
-    },
-  });
+const styles = () => ({
+  headerContainer: {
+    backgroundColor: "#e78794",
+    borderRadius: 3,
+    marginBottom: 20,
+    padding: 1,
+    paddingBottom: 15,
+  },
+  labelHeadline: {
+    color: "#000000",
+    fontSize: 14,
+    marginLeft: 20,
+  },
+  labelText: {
+    color: "#000000",
+    fontSize: 14,
+    marginLeft: 20,
+    marginRight: 40,
+  },
+});
 
 const WarningMessage = ({ classes, label, title }: IWarningMessage) => {
   return (
@@ -56,4 +54,4 @@ const WarningMessage = ({ classes, label, title }: IWarningMessage) => {
   );
 };
 
-export default withStyles(styles)(WarningMessage);
+export default withStyles(WarningMessage, styles);

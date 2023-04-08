@@ -16,9 +16,8 @@
 
 import React, { Fragment, useEffect, useState } from "react";
 import { connect, useSelector } from "react-redux";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../../theme/makeStyles";
 import api from "../../../../../common/api";
 import { Loader } from "mds";
 import { widgetCommon } from "../../../Common/FormComponents/common/styleLibrary";
@@ -35,41 +34,40 @@ interface ISingleValueWidget {
   timeEnd: any;
   propLoading: boolean;
 
-  classes: any;
+  classes?: any;
   apiPrefix: string;
   renderFn?: (arg: Record<string, any>) => any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...widgetCommon,
-    loadingAlign: {
-      width: "100%",
-      textAlign: "center",
-      margin: "auto",
-    },
-    metric: {
-      fontSize: 60,
-      lineHeight: 1,
-      color: "#07193E",
-      fontWeight: 700,
-    },
-    titleElement: {
-      fontSize: 10,
+const styles = () => ({
+  ...widgetCommon,
+  loadingAlign: {
+    width: "100%",
+    textAlign: "center",
+    margin: "auto",
+  },
+  metric: {
+    fontSize: 60,
+    lineHeight: 1,
+    color: "#07193E",
+    fontWeight: 700,
+  },
+  titleElement: {
+    fontSize: 10,
+    color: "#767676",
+    fontWeight: 700,
+  },
+  containerAlignment: {
+    display: "flex",
+    height: 140,
+    flexDirection: "column",
+    justifyContent: "center",
+    "& .unitText": {
       color: "#767676",
-      fontWeight: 700,
+      fontSize: 12,
     },
-    containerAlignment: {
-      display: "flex",
-      height: 140,
-      flexDirection: "column",
-      justifyContent: "center",
-      "& .unitText": {
-        color: "#767676",
-        fontSize: 12,
-      },
-    },
-  });
+  },
+});
 
 const SingleValueWidget = ({
   title,
@@ -152,4 +150,4 @@ const connector = connect(null, {
   setErrorSnackMessage: setErrorSnackMessage,
 });
 
-export default withStyles(styles)(connector(SingleValueWidget));
+export default withStyles(connector(SingleValueWidget), styles);

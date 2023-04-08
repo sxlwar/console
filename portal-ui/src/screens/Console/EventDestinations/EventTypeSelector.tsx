@@ -15,10 +15,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment } from "react";
-import { Theme } from "@mui/material/styles";
+
 import { useNavigate } from "react-router-dom";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../theme/makeStyles";
 import { destinationList, DestType } from "./utils";
 import {
   settingsCommon,
@@ -31,7 +31,7 @@ import { BackLink, Box } from "mds";
 import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
 
 interface INotificationTypeSelector {
-  classes: any;
+  classes?: any;
 }
 
 const withLogos = destinationList.filter((elService) => elService.logo !== "");
@@ -45,11 +45,10 @@ const functions = withLogos.filter(
   (elService) => elService.category === DestType.Func
 );
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...settingsCommon,
-    ...typesSelection,
-  });
+const styles = () => ({
+  ...settingsCommon,
+  ...typesSelection,
+});
 
 const EventTypeSelector = ({ classes }: INotificationTypeSelector) => {
   const navigate = useNavigate();
@@ -175,4 +174,4 @@ const EventTypeSelector = ({ classes }: INotificationTypeSelector) => {
   );
 };
 
-export default withStyles(styles)(EventTypeSelector);
+export default withStyles(EventTypeSelector, styles);

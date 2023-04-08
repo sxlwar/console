@@ -30,8 +30,7 @@ import {
   useRegisterActions,
 } from "kbar";
 import { Action } from "kbar/lib/types";
-import { Theme } from "@mui/material/styles";
-import makeStyles from "@mui/styles/makeStyles";
+import { makeStyles } from "../../theme/makeStyles";
 import { routesAsKbarActions } from "./kbar-actions";
 import { MenuExpandedIcon, Box } from "mds";
 import { useSelector } from "react-redux";
@@ -44,7 +43,7 @@ import {
 } from "../../api/consoleApi";
 import { api } from "../../api";
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles()(() => ({
   resultItem: {
     display: "flex",
     gap: "8px",
@@ -218,7 +217,7 @@ const ResultItem = React.forwardRef(
     },
     ref: React.Ref<HTMLDivElement>
   ) => {
-    const classes = useStyles();
+    const { classes } = useStyles();
     const ancestors = React.useMemo(() => {
       if (!currentRootActionId) return action.ancestors;
       const index = action.ancestors.findIndex(

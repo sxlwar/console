@@ -16,9 +16,9 @@
 
 import React from "react";
 
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+
+import { withStyles } from "../../../theme/makeStyles";
 import { DialogContentText } from "@mui/material";
 
 import { ErrorResponseHandler } from "../../../common/types";
@@ -29,8 +29,8 @@ import { encodeURLString } from "../../../common/utils";
 import { setErrorSnackMessage } from "../../../systemSlice";
 import { useAppDispatch } from "../../../store";
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     wrapText: {
       maxWidth: "200px",
       whiteSpace: "normal",
@@ -39,7 +39,7 @@ const styles = (theme: Theme) =>
   });
 
 interface IDeleteServiceAccountProps {
-  classes: any;
+  classes?: any;
   closeDeleteModalAndRefresh: (refresh: boolean) => void;
   deleteOpen: boolean;
   selectedServiceAccount: string | null;
@@ -89,4 +89,4 @@ const DeleteServiceAccount = ({
   );
 };
 
-export default withStyles(styles)(DeleteServiceAccount);
+export default withStyles(DeleteServiceAccount, styles);;

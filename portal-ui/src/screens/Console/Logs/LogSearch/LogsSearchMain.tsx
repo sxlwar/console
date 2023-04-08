@@ -17,11 +17,11 @@
 import React, { Fragment, useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Button, SearchIcon, Grid } from "mds";
-import { Theme } from "@mui/material/styles";
+
 import { DateTime } from "luxon";
 import get from "lodash/get";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import {
   advancedFilterToggleStyles,
   containerForHeader,
@@ -50,11 +50,11 @@ import { useAppDispatch } from "../../../../store";
 import PageHeaderWrapper from "../../Common/PageHeaderWrapper/PageHeaderWrapper";
 
 interface ILogSearchProps {
-  classes: any;
+  classes?: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     blockCollapsed: {
       display: "none",
       overflowY: "hidden",
@@ -517,4 +517,4 @@ const LogsSearchMain = ({ classes }: ILogSearchProps) => {
   );
 };
 
-export default withStyles(styles)(LogsSearchMain);
+export default withStyles(LogsSearchMain, styles);;

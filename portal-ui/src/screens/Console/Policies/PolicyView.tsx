@@ -16,14 +16,14 @@
 import React, { Fragment, useState } from "react";
 import { Box, Grid } from "mds";
 import SearchBox from "../Common/SearchBox";
-import { Theme } from "@mui/material/styles";
+
 import { searchField } from "../Common/FormComponents/common/styleLibrary";
 import { DisabledIcon, EnabledIcon } from "mds";
 import { STATUS_COLORS } from "../Dashboard/BasicDashboard/Utils";
-import makeStyles from "@mui/styles/makeStyles";
+import { makeStyles } from "../../../theme/makeStyles";
 import { IAMStatement } from "./types";
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles()(() => ({
   searchField: {
     ...searchField.searchField,
     maxWidth: 380,
@@ -57,7 +57,7 @@ const PolicyView = ({
 }: {
   policyStatements: IAMStatement[];
 }) => {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   const [filter, setFilter] = useState<string>("");
 

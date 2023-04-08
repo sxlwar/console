@@ -17,10 +17,9 @@
 import React, { Fragment, useEffect, useState } from "react";
 import get from "lodash/get";
 import { useSelector } from "react-redux";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
-import ProgressBar from '@atlaskit/progress-bar';
+
+import { withStyles } from "../../../../theme/makeStyles";
+import ProgressBar from "@atlaskit/progress-bar";
 import {
   Box,
   AddIcon,
@@ -74,36 +73,35 @@ const UpdateTierCredentialsModal = withSuspense(
 );
 
 interface IListTiersConfig {
-  classes: any;
+  classes?: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...actionsTray,
-    ...searchField,
-    ...settingsCommon,
-    ...typesSelection,
-    ...containerForHeader,
-    customConfigurationPage: {
-      minHeight: 400,
-    },
-    actionsTray: {
-      ...actionsTray.actionsTray,
-    },
-    searchField: {
-      ...searchField.searchField,
-      marginRight: "auto",
-      maxWidth: 380,
-    },
+const styles = () => ({
+  ...actionsTray,
+  ...searchField,
+  ...settingsCommon,
+  ...typesSelection,
+  ...containerForHeader,
+  customConfigurationPage: {
+    minHeight: 400,
+  },
+  actionsTray: {
+    ...actionsTray.actionsTray,
+  },
+  searchField: {
+    ...searchField.searchField,
+    marginRight: "auto",
+    maxWidth: 380,
+  },
 
-    rightActionButtons: {
-      display: "flex",
-      "& button": {
-        whiteSpace: "nowrap",
-      },
+  rightActionButtons: {
+    display: "flex",
+    "& button": {
+      whiteSpace: "nowrap",
     },
-    ...tableStyles,
-  });
+  },
+  ...tableStyles,
+});
 
 const ListTiersConfiguration = ({ classes }: IListTiersConfig) => {
   const dispatch = useAppDispatch();
@@ -534,4 +532,4 @@ const ListTiersConfiguration = ({ classes }: IListTiersConfig) => {
   );
 };
 
-export default withStyles(styles)(ListTiersConfiguration);
+export default withStyles(ListTiersConfiguration, styles);

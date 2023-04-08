@@ -14,8 +14,8 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import get from "lodash/get";
 import { AddIcon, Button, Grid, HelpBox, LambdaIcon } from "mds";
 import React, { Fragment, useEffect, useState } from "react";
@@ -47,7 +47,7 @@ const DeleteEvent = withSuspense(React.lazy(() => import("./DeleteEvent")));
 const AddEvent = withSuspense(React.lazy(() => import("./AddEvent")));
 
 const styles = () =>
-  createStyles({
+  ({
     ...searchField,
     ...actionsTray,
     twHeight: {
@@ -56,7 +56,7 @@ const styles = () =>
   });
 
 interface IBucketEventsProps {
-  classes: any;
+  classes?: any;
 }
 
 const BucketEventsPanel = ({ classes }: IBucketEventsProps) => {
@@ -233,4 +233,4 @@ const BucketEventsPanel = ({ classes }: IBucketEventsProps) => {
   );
 };
 
-export default withStyles(styles)(BucketEventsPanel);
+export default withStyles(BucketEventsPanel, styles);;

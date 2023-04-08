@@ -14,9 +14,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+import { withStyles } from "../../../../theme/makeStyles";
 import { AddIcon, BucketsIcon, Button, Grid, HelpBox, TrashIcon } from "mds";
 import React, { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -54,17 +52,16 @@ const DeleteReplicationRule = withSuspense(
 );
 
 interface IBucketReplicationProps {
-  classes: any;
+  classes?: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...searchField,
-    ...actionsTray,
-    twHeight: {
-      minHeight: 400,
-    },
-  });
+const styles = () => ({
+  ...searchField,
+  ...actionsTray,
+  twHeight: {
+    minHeight: 400,
+  },
+});
 
 const BucketReplicationPanel = ({ classes }: IBucketReplicationProps) => {
   const dispatch = useAppDispatch();
@@ -375,4 +372,4 @@ const BucketReplicationPanel = ({ classes }: IBucketReplicationProps) => {
   );
 };
 
-export default withStyles(styles)(BucketReplicationPanel);
+export default withStyles(BucketReplicationPanel, styles);

@@ -15,15 +15,15 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Theme } from "@mui/material/styles";
+
 import { Button } from "mds";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import { IWizardButton, IWizardPage } from "./types";
 import ProgressBar from '@atlaskit/progress-bar';
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     wizardStepContainer: {
       display: "flex",
       flexDirection: "column",
@@ -127,4 +127,4 @@ const WizardPage = ({
   );
 };
 
-export default withStyles(styles)(WizardPage);
+export default withStyles(WizardPage, styles);;

@@ -15,28 +15,26 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
-import type { IconButtonProps } from 'mds/dist/esm/types/components/IconButton/IconButton.types';
 
-const styles = (theme: Theme) =>
-  createStyles({
-    root: {
-      padding: 0,
-      margin: 0,
-      border: 0,
-      backgroundColor: "transparent",
-      textDecoration: "underline",
-      cursor: "pointer",
-      fontSize: "inherit",
-      color: theme.palette.info.main,
-      fontFamily: "Inter, sans-serif",
-    },
-  });
+import { withStyles } from "../../../../theme/makeStyles";
+import type { IconButtonProps } from "mds/dist/esm/types/components/IconButton/IconButton.types";
+
+const styles = () => ({
+  root: {
+    padding: 0,
+    margin: 0,
+    border: 0,
+    backgroundColor: "transparent",
+    textDecoration: "underline",
+    cursor: "pointer",
+    fontSize: "inherit",
+    // color: theme.palette.info.main,
+    fontFamily: "Inter, sans-serif",
+  },
+});
 
 interface IAButton extends IconButtonProps {
-  classes: any;
+  classes?: any;
   children: any;
 }
 
@@ -48,4 +46,4 @@ const AButton = ({ classes, children, ...rest }: IAButton) => {
   );
 };
 
-export default withStyles(styles)(AButton);
+export default withStyles(AButton, styles);

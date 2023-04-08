@@ -16,16 +16,16 @@
 
 import React from "react";
 import { InputAdornment, OutlinedInput } from "@mui/material";
-import withStyles from "@mui/styles/withStyles";
-import { Theme } from "@mui/material/styles";
+import { withStyles } from "../../../../theme/makeStyles";
+
 import { Button, CopyIcon } from "mds";
-import createStyles from "@mui/styles/createStyles";
+
 import CopyToClipboard from "react-copy-to-clipboard";
 import { fieldBasic } from "../FormComponents/common/styleLibrary";
 import TooltipWrapper from "../TooltipWrapper/TooltipWrapper";
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     container: {
       display: "flex",
       flexFlow: "column",
@@ -63,7 +63,7 @@ const CredentialItem = ({
 }: {
   label: string;
   value: string;
-  classes: any;
+  classes?: any;
 }) => {
   return (
     <div className={classes.container}>
@@ -98,4 +98,4 @@ const CredentialItem = ({
   );
 };
 
-export default withStyles(styles)(CredentialItem);
+export default withStyles(CredentialItem, styles);;

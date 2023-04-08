@@ -16,10 +16,10 @@
 
 import React, { useCallback, useEffect, useState } from "react";
 import ProgressBar from '@atlaskit/progress-bar';
-import { Theme } from "@mui/material/styles";
+
 import { AddMembersToGroupIcon, Button, Box, Grid } from "mds";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../theme/makeStyles";
 import {
   modalBasic,
   spacingUtils,
@@ -32,14 +32,14 @@ import { encodeURLString } from "../../../common/utils";
 import { setModalErrorSnackMessage } from "../../../systemSlice";
 import { useAppDispatch } from "../../../store";
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     ...spacingUtils,
     ...modalBasic,
   });
 
 interface IChangeUserGroupsContentProps {
-  classes: any;
+  classes?: any;
   closeModalAndRefresh: () => void;
   selectedUser: string;
   open: boolean;
@@ -203,4 +203,4 @@ const ChangeUserGroups = ({
   );
 };
 
-export default withStyles(styles)(ChangeUserGroups);
+export default withStyles(ChangeUserGroups, styles);;

@@ -15,11 +15,11 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { useEffect, useState } from "react";
-import { Theme } from "@mui/material/styles";
+
 import { useNavigate } from "react-router-dom";
 import { Box, AddIcon, Button, DeleteIcon } from "mds";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../theme/makeStyles";
 import {
   actionsTray,
   searchField,
@@ -49,20 +49,19 @@ import { useAppDispatch } from "../../../store";
 import TooltipWrapper from "../Common/TooltipWrapper/TooltipWrapper";
 
 interface IUserServiceAccountsProps {
-  classes: any;
+  classes?: any;
   user: string;
   hasPolicy: boolean;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...searchField,
-    ...actionsTray,
-    actionsTray: {
-      ...actionsTray.actionsTray,
-    },
-    ...tableStyles,
-  });
+const styles = () => ({
+  ...searchField,
+  ...actionsTray,
+  actionsTray: {
+    ...actionsTray.actionsTray,
+  },
+  ...tableStyles,
+});
 
 const UserServiceAccountsPanel = ({
   classes,
@@ -281,4 +280,4 @@ const UserServiceAccountsPanel = ({
   );
 };
 
-export default withStyles(styles)(UserServiceAccountsPanel);
+export default withStyles(UserServiceAccountsPanel, styles);

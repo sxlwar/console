@@ -16,9 +16,8 @@
 
 import React from "react";
 import { EditIcon, IconButton } from "mds";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../../theme/makeStyles";
 
 type EditActionButtonProps = {
   disabled?: boolean;
@@ -26,14 +25,13 @@ type EditActionButtonProps = {
   [x: string]: any;
 };
 
-const styles = (theme: Theme) =>
-  createStyles({
-    root: {
-      "&:hover": {
-        backgroundColor: "#E2E2E2",
-      },
+const styles = () => ({
+  root: {
+    "&:hover": {
+      backgroundColor: "#E2E2E2",
     },
-  });
+  },
+});
 
 const EditActionButton = ({
   disabled,
@@ -52,4 +50,4 @@ const EditActionButton = ({
   );
 };
 
-export default withStyles(styles)(EditActionButton);
+export default withStyles(EditActionButton, styles);

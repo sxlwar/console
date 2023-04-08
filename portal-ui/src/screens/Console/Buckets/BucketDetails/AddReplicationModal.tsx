@@ -15,10 +15,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { useEffect, useState } from "react";
-import { Theme } from "@mui/material/styles";
+
 import { BucketReplicationIcon, Button, Grid } from "mds";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import { SelectChangeEvent } from "@mui/material";
 import get from "lodash/get";
 import {
@@ -45,14 +45,14 @@ import { useAppDispatch } from "../../../../store";
 interface IReplicationModal {
   open: boolean;
   closeModalAndRefresh: () => any;
-  classes: any;
+  classes?: any;
   bucketName: string;
 
   setReplicationRules: BucketReplicationRule[];
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     multiContainer: {
       display: "flex",
       alignItems: "center",
@@ -463,4 +463,4 @@ const AddReplicationModal = ({
   );
 };
 
-export default withStyles(styles)(AddReplicationModal);
+export default withStyles(AddReplicationModal, styles);;

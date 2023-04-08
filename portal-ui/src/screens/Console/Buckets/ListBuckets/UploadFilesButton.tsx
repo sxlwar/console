@@ -15,11 +15,11 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useState } from "react";
-import { Theme } from "@mui/material/styles";
+
 import { CSSObject } from "styled-components";
 import { Menu, MenuItem } from "@mui/material";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import { Button, UploadFolderIcon, UploadIcon } from "mds";
@@ -38,12 +38,12 @@ interface IUploadFilesButton {
   forceDisable?: boolean;
   uploadFileFunction: (closeFunction: () => void) => void;
   uploadFolderFunction: (closeFunction: () => void) => void;
-  classes: any;
+  classes?: any;
   overrideStyles?: CSSObject;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     listUploadIcons: {
       height: 20,
       "& .min-icon": {
@@ -157,4 +157,4 @@ const UploadFilesButton = ({
   );
 };
 
-export default withStyles(styles)(UploadFilesButton);
+export default withStyles(UploadFilesButton, styles);;

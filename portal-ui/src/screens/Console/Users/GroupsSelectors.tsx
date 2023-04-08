@@ -16,9 +16,9 @@
 
 import React, { useCallback, useEffect, useState } from "react";
 
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+
+import { withStyles } from "../../../theme/makeStyles";
 import ProgressBar from '@atlaskit/progress-bar';
 import get from "lodash/get";
 import { Grid } from "mds";
@@ -38,13 +38,13 @@ import { setModalErrorSnackMessage } from "../../../systemSlice";
 import { useAppDispatch } from "../../../store";
 
 interface IGroupsProps {
-  classes: any;
+  classes?: any;
   selectedGroups: string[];
   setSelectedGroups: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     noFound: {
       textAlign: "center",
       padding: "10px 0",
@@ -173,4 +173,4 @@ const GroupsSelectors = ({
   );
 };
 
-export default withStyles(styles)(GroupsSelectors);
+export default withStyles(GroupsSelectors, styles);;

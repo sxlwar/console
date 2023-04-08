@@ -26,9 +26,8 @@ import {
   TrashIcon,
   Grid,
 } from "mds";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../theme/makeStyles";
 import {
   actionsTray,
   containerForHeader,
@@ -36,7 +35,7 @@ import {
   searchField,
 } from "../Common/FormComponents/common/styleLibrary";
 import Paper from "@mui/material/Paper";
-import ProgressBar from '@atlaskit/progress-bar';
+import ProgressBar from "@atlaskit/progress-bar";
 import TableWrapper from "../Common/TableWrapper/TableWrapper";
 
 import { ErrorResponseHandler } from "../../../common/types";
@@ -85,32 +84,31 @@ import { IAMPolicy, IAMStatement } from "./types";
 
 const DeletePolicy = withSuspense(React.lazy(() => import("./DeletePolicy")));
 
-const styles = (theme: Theme) =>
-  createStyles({
-    buttonContainer: {
-      display: "flex",
-      justifyContent: "flex-end",
-      paddingTop: 16,
-      "& button": {
-        marginLeft: 8,
-      },
+const styles = () => ({
+  buttonContainer: {
+    display: "flex",
+    justifyContent: "flex-end",
+    paddingTop: 16,
+    "& button": {
+      marginLeft: 8,
     },
-    pageContainer: {
-      border: "1px solid #EAEAEA",
-      height: "100%",
-    },
-    paperContainer: {
-      padding: "15px 15px 15px 50px",
-      minHeight: "450px",
-    },
-    ...actionsTray,
-    ...searchField,
-    ...modalBasic,
-    ...containerForHeader,
-  });
+  },
+  pageContainer: {
+    border: "1px solid #EAEAEA",
+    height: "100%",
+  },
+  paperContainer: {
+    padding: "15px 15px 15px 50px",
+    minHeight: "450px",
+  },
+  ...actionsTray,
+  ...searchField,
+  ...modalBasic,
+  ...containerForHeader,
+});
 
 interface IPolicyDetailsProps {
-  classes: any;
+  classes?: any;
 }
 
 const PolicyDetails = ({ classes }: IPolicyDetailsProps) => {
@@ -607,4 +605,4 @@ const PolicyDetails = ({ classes }: IPolicyDetailsProps) => {
   );
 };
 
-export default withStyles(styles)(PolicyDetails);
+export default withStyles(PolicyDetails, styles);

@@ -16,9 +16,7 @@
 
 import React, { Fragment, useEffect, useState } from "react";
 
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+import { withStyles } from "../../../../theme/makeStyles";
 import { SelectChangeEvent, Tooltip } from "@mui/material";
 import get from "lodash/get";
 import { Grid } from "mds";
@@ -47,31 +45,30 @@ import { useAppDispatch } from "../../../../store";
 interface IBulkReplicationModal {
   open: boolean;
   closeModalAndRefresh: (clearSelection: boolean) => any;
-  classes: any;
+  classes?: any;
   buckets: string[];
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    remoteBucketList: {
-      display: "grid",
-      gridTemplateColumns: "auto auto 45px",
-      alignItems: "center",
-      justifyContent: "stretch",
-    },
-    errorIcon: {
-      color: "#C72C48",
-    },
-    successIcon: {
-      color: "#42C91A",
-    },
-    hide: {
-      opacity: 0,
-      transitionDuration: "0.3s",
-    },
-    ...modalBasic,
-    ...wizardCommon,
-  });
+const styles = () => ({
+  remoteBucketList: {
+    display: "grid",
+    gridTemplateColumns: "auto auto 45px",
+    alignItems: "center",
+    justifyContent: "stretch",
+  },
+  errorIcon: {
+    color: "#C72C48",
+  },
+  successIcon: {
+    color: "#42C91A",
+  },
+  hide: {
+    opacity: 0,
+    transitionDuration: "0.3s",
+  },
+  ...modalBasic,
+  ...wizardCommon,
+});
 
 const AddBulkReplicationModal = ({
   open,
@@ -513,4 +510,4 @@ const AddBulkReplicationModal = ({
   );
 };
 
-export default withStyles(styles)(AddBulkReplicationModal);
+export default withStyles(AddBulkReplicationModal, styles);

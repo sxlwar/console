@@ -17,10 +17,8 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { Theme } from "@mui/material/styles";
 import { AddIcon, Button, Grid } from "mds";
 import { Paper } from "@mui/material";
-import createStyles from "@mui/styles/createStyles";
 import { ErrorResponseHandler } from "../../../../common/types";
 import TableWrapper from "../../Common/TableWrapper/TableWrapper";
 import api from "../../../../common/api";
@@ -40,7 +38,7 @@ import {
 
 import withSuspense from "../../Common/Components/withSuspense";
 import { setErrorSnackMessage } from "../../../../systemSlice";
-import makeStyles from "@mui/styles/makeStyles";
+import { makeStyles }  from "../../../../theme/makeStyles";
 import { selBucketDetailsLoading } from "./bucketDetailsSlice";
 import { useAppDispatch } from "../../../../store";
 import TooltipWrapper from "../../Common/TooltipWrapper/TooltipWrapper";
@@ -55,8 +53,8 @@ const EditAccessRuleModal = withSuspense(
   React.lazy(() => import("./EditAccessRule"))
 );
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+const useStyles = makeStyles()(() =>
+  ({
     "@global": {
       ".rowLine:hover  .iconFileElm": {
         backgroundImage: "url(/images/ob_file_filled.svg)",
@@ -75,7 +73,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const AccessRule = () => {
   const dispatch = useAppDispatch();
-  const classes = useStyles();
+  const { classes } = useStyles() as any;
   const params = useParams();
 
   const loadingBucket = useSelector(selBucketDetailsLoading);

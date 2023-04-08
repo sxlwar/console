@@ -16,49 +16,47 @@
 
 import { calculateBytes } from "../../../common/utils";
 import React from "react";
-import withStyles from "@mui/styles/withStyles";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
+import { withStyles } from "../../../theme/makeStyles";
+
 import clsx from "clsx";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    objectGeneralTitle: {
-      lineHeight: 1,
-      fontSize: 50,
-      color: "#696969",
-    },
-    generalUnit: {
-      color: "#000",
-      fontSize: 12,
-      fontWeight: "bold",
-    },
-    testUnitRes: {
-      fontSize: 60,
-      color: "#081C42",
-      fontWeight: "bold",
-      textAlign: "right",
-    },
-    metricValContainer: {
-      lineHeight: 1,
-      verticalAlign: "bottom",
-    },
-    objectsUnitRes: {
-      fontSize: 22,
-      marginTop: 6,
-      color: "#696969",
-      fontWeight: "bold",
-      textAlign: "right",
-    },
-    objectsUnit: {
-      color: "#696969",
-      fontSize: 16,
-      fontWeight: "bold",
-    },
-    iconTd: {
-      verticalAlign: "bottom",
-    },
-  });
+const styles = () => ({
+  objectGeneralTitle: {
+    lineHeight: 1,
+    fontSize: 50,
+    color: "#696969",
+  },
+  generalUnit: {
+    color: "#000",
+    fontSize: 12,
+    fontWeight: "bold",
+  },
+  testUnitRes: {
+    fontSize: 60,
+    color: "#081C42",
+    fontWeight: "bold",
+    textAlign: "right",
+  },
+  metricValContainer: {
+    lineHeight: 1,
+    verticalAlign: "bottom",
+  },
+  objectsUnitRes: {
+    fontSize: 22,
+    marginTop: 6,
+    color: "#696969",
+    fontWeight: "bold",
+    textAlign: "right",
+  },
+  objectsUnit: {
+    color: "#696969",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  iconTd: {
+    verticalAlign: "bottom",
+  },
+});
 
 const SpeedTestUnit = ({
   classes,
@@ -67,7 +65,7 @@ const SpeedTestUnit = ({
   throughput,
   objects,
 }: {
-  classes: any;
+  classes?: any;
   title: any;
   icon: any;
   throughput: string;
@@ -110,4 +108,4 @@ const SpeedTestUnit = ({
     </table>
   );
 };
-export default withStyles(styles)(SpeedTestUnit);
+export default withStyles(SpeedTestUnit, styles);

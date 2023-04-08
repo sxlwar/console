@@ -16,9 +16,8 @@
 
 import React, { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import get from "lodash/get";
 import { LifeCycleItem } from "../types";
 import { Grid, AddIcon, Button, HelpBox, TiersIcon } from "mds";
@@ -42,8 +41,8 @@ import { selBucketDetailsLoading } from "./bucketDetailsSlice";
 import { useParams } from "react-router-dom";
 import TooltipWrapper from "../../Common/TooltipWrapper/TooltipWrapper";
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     ...searchField,
     ...actionsTray,
     twHeight: {
@@ -52,7 +51,7 @@ const styles = (theme: Theme) =>
   });
 
 interface IBucketLifecyclePanelProps {
-  classes: any;
+  classes?: any;
 }
 
 const BucketLifecyclePanel = ({ classes }: IBucketLifecyclePanelProps) => {
@@ -348,4 +347,4 @@ const BucketLifecyclePanel = ({ classes }: IBucketLifecyclePanelProps) => {
   );
 };
 
-export default withStyles(styles)(BucketLifecyclePanel);
+export default withStyles(BucketLifecyclePanel, styles);;

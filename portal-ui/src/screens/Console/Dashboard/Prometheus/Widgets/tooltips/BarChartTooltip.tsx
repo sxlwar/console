@@ -15,15 +15,13 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../../../theme/makeStyles";
 import { tooltipCommon } from "../../../../Common/FormComponents/common/styleLibrary";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...tooltipCommon,
-  });
+const styles = () => ({
+  ...tooltipCommon,
+});
 
 const BarChartTooltip = ({
   active,
@@ -62,4 +60,4 @@ const BarChartTooltip = ({
   return null;
 };
 
-export default withStyles(styles)(BarChartTooltip);
+export default withStyles(BarChartTooltip, styles);

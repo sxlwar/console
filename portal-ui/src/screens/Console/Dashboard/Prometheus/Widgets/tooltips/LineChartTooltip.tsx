@@ -15,16 +15,14 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../../../theme/makeStyles";
 import { getTimeFromTimestamp } from "../../../../../../common/utils";
 import { tooltipCommon } from "../../../../Common/FormComponents/common/styleLibrary";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...tooltipCommon,
-  });
+const styles = () => ({
+  ...tooltipCommon,
+});
 
 const LineChartTooltip = ({
   active,
@@ -69,4 +67,4 @@ const LineChartTooltip = ({
   return null;
 };
 
-export default withStyles(styles)(LineChartTooltip);
+export default withStyles(LineChartTooltip, styles);

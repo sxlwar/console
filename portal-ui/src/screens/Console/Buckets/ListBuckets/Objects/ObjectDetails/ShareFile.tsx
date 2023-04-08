@@ -16,10 +16,10 @@
 
 import React, { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Theme } from "@mui/material/styles";
+
 import { Button, CopyIcon, ShareIcon, Grid } from "mds";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../../../theme/makeStyles";
 import CopyToClipboard from "react-copy-to-clipboard";
 import ProgressBar from '@atlaskit/progress-bar';
 import {
@@ -41,8 +41,8 @@ import {
 } from "../../../../../../systemSlice";
 import { useAppDispatch } from "../../../../../../store";
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     shareLinkInfo: {
       fontSize: 14,
       fontWeight: 400,
@@ -68,7 +68,7 @@ const styles = (theme: Theme) =>
   });
 
 interface IShareFileProps {
-  classes: any;
+  classes?: any;
   open: boolean;
   bucketName: string;
   dataObject: IFileInfo;
@@ -266,4 +266,4 @@ const ShareFile = ({
   );
 };
 
-export default withStyles(styles)(ShareFile);
+export default withStyles(ShareFile, styles);;

@@ -31,9 +31,9 @@ import {
   HealthInfoMessage,
   ReportMessage,
 } from "./types";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+
+import { withStyles } from "../../../theme/makeStyles";
 import {
   WSCloseAbnormalClosure,
   WSCloseInternalServerErr,
@@ -56,8 +56,8 @@ import RegisterCluster from "../Support/RegisterCluster";
 import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
 import { registeredCluster } from "../../../config";
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     loading: {
       paddingTop: 8,
       paddingLeft: 40,
@@ -92,7 +92,7 @@ const styles = (theme: Theme) =>
   });
 
 interface IHealthInfo {
-  classes: any;
+  classes?: any;
 }
 
 const HealthInfo = ({ classes }: IHealthInfo) => {
@@ -371,4 +371,4 @@ const HealthInfo = ({ classes }: IHealthInfo) => {
   );
 };
 
-export default withStyles(styles)(HealthInfo);
+export default withStyles(HealthInfo, styles);;

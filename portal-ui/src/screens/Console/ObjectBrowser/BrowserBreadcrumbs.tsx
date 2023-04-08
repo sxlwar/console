@@ -18,9 +18,7 @@ import React, { Fragment, useState } from "react";
 import { useSelector } from "react-redux";
 import { CSSObject } from "styled-components";
 import CopyToClipboard from "react-copy-to-clipboard";
-import createStyles from "@mui/styles/createStyles";
-import makeStyles from "@mui/styles/makeStyles";
-import { Theme } from "@mui/material/styles";
+
 import { Link, useNavigate } from "react-router-dom";
 import { IconButton, Grid } from "mds";
 import { objectBrowserCommon } from "../Common/FormComponents/common/styleLibrary";
@@ -35,6 +33,7 @@ import withSuspense from "../Common/Components/withSuspense";
 import { setSnackBarMessage } from "../../../systemSlice";
 import { AppState, useAppDispatch } from "../../../store";
 import { setVersionsModeEnabled } from "./objectBrowserSlice";
+import { makeStyles } from "../../../theme/makeStyles";
 
 const CreatePathModal = withSuspense(
   React.lazy(
@@ -42,14 +41,12 @@ const CreatePathModal = withSuspense(
   )
 );
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    ...objectBrowserCommon,
-    slashSpacingStyle: {
-      margin: "0 5px",
-    },
-  })
-);
+const useStyles = makeStyles()(() => ({
+  ...(objectBrowserCommon as any),
+  slashSpacingStyle: {
+    margin: "0 5px",
+  },
+}));
 
 interface IObjectBrowser {
   bucketName: string;
@@ -66,7 +63,7 @@ const BrowserBreadcrumbs = ({
 }: IObjectBrowser) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const classes = useStyles();
+  const { classes } = useStyles() as any;
 
   const rewindEnabled = useSelector(
     (state: AppState) => state.objectBrowser.rewind.rewindEnabled

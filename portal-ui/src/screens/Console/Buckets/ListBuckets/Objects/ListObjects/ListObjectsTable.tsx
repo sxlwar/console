@@ -19,9 +19,8 @@ import TableWrapper, {
   ItemActions,
 } from "../../../../Common/TableWrapper/TableWrapper";
 import React, { useState } from "react";
-import makeStyles from "@mui/styles/makeStyles";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
+import { makeStyles } from "../../../../../../theme/makeStyles";
+
 import { useSelector } from "react-redux";
 import { AppState, useAppDispatch } from "../../../../../../store";
 import { selFeatures } from "../../../../consoleSlice";
@@ -46,45 +45,43 @@ import { hasPermission } from "../../../../../../common/SecureComponent";
 import { downloadObject } from "../../../../ObjectBrowser/utils";
 import { IFileInfo } from "../ObjectDetails/types";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    browsePaper: {
-      border: 0,
-      height: "calc(100vh - 290px)",
-      "&.isEmbedded": {
-        height: "calc(100vh - 315px)",
-      },
-      "&.actionsPanelOpen": {
-        minHeight: "100%",
-      },
-      "@media (max-width: 800px)": {
-        width: 800,
-      },
+const useStyles = makeStyles()(() => ({
+  browsePaper: {
+    border: 0,
+    height: "calc(100vh - 290px)",
+    "&.isEmbedded": {
+      height: "calc(100vh - 315px)",
     },
-    parentWrapper: {
-      position: "relative",
-      height: "calc(100% - 60px)",
-      "@media (max-width: 800px)": {
-        overflowX: "auto",
-      },
+    "&.actionsPanelOpen": {
+      minHeight: "100%",
     },
-    "@global": {
-      ".rowLine:hover  .iconFileElm": {
-        backgroundImage: "url(/images/ob_file_filled.svg)",
-      },
-      ".rowLine:hover  .iconFolderElm": {
-        backgroundImage: "url(/images/ob_folder_filled.svg)",
-      },
+    "@media (max-width: 800px)": {
+      width: 800,
     },
-  })
-);
+  },
+  parentWrapper: {
+    position: "relative",
+    height: "calc(100% - 60px)",
+    "@media (max-width: 800px)": {
+      overflowX: "auto",
+    },
+  },
+  "@global": {
+    ".rowLine:hover  .iconFileElm": {
+      backgroundImage: "url(/images/ob_file_filled.svg)",
+    },
+    ".rowLine:hover  .iconFolderElm": {
+      backgroundImage: "url(/images/ob_folder_filled.svg)",
+    },
+  },
+}));
 
 interface IListObjectTable {
   internalPaths: string | null;
 }
 
 const ListObjectsTable = ({ internalPaths }: IListObjectTable) => {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const dispatch = useAppDispatch();
   const params = useParams();
   const navigate = useNavigate();

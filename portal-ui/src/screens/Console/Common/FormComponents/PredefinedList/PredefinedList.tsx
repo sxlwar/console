@@ -1,22 +1,20 @@
 import React, { Fragment } from "react";
 import { Grid } from "mds";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../../theme/makeStyles";
 import { predefinedList } from "../common/styleLibrary";
 
 interface IPredefinedList {
-  classes: any;
+  classes?: any;
   label?: string;
   content: any;
   multiLine?: boolean;
   actionButton?: React.ReactNode;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...predefinedList,
-  });
+const styles = () => ({
+  ...predefinedList,
+});
 
 const PredefinedList = ({
   classes,
@@ -58,4 +56,4 @@ const PredefinedList = ({
   );
 };
 
-export default withStyles(styles)(PredefinedList);
+export default withStyles(PredefinedList, styles);

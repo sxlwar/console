@@ -16,10 +16,8 @@
 
 import React, { useCallback, useEffect, useState } from "react";
 
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
-import ProgressBar from '@atlaskit/progress-bar';
+import { withStyles } from "../../../theme/makeStyles";
+import ProgressBar from "@atlaskit/progress-bar";
 import { Grid } from "mds";
 import { policySort } from "../../../utils/sortFunctions";
 import {
@@ -44,41 +42,40 @@ import {
 } from "../../../api/consoleApi";
 
 interface ISelectPolicyProps {
-  classes: any;
+  classes?: any;
   selectedPolicy?: string[];
   noTitle?: boolean;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    noFound: {
-      textAlign: "center",
-      padding: "10px 0",
+const styles = () => ({
+  noFound: {
+    textAlign: "center",
+    padding: "10px 0",
+  },
+  searchBox: {
+    flex: 1,
+  },
+  fieldLabel: {
+    fontWeight: 400,
+    width: 160,
+    marginRight: 10,
+  },
+  tableBlock: {
+    ...tableStyles.tableBlock,
+  },
+  filterBox: {
+    display: "flex",
+    marginBottom: 15,
+    alignItems: "center",
+    "& span": {
+      fontSize: 14,
     },
-    searchBox: {
-      flex: 1,
-    },
-    fieldLabel: {
-      fontWeight: 400,
-      width: 160,
-      marginRight: 10,
-    },
-    tableBlock: {
-      ...tableStyles.tableBlock,
-    },
-    filterBox: {
-      display: "flex",
-      marginBottom: 15,
-      alignItems: "center",
-      "& span": {
-        fontSize: 14,
-      },
-    },
-    ...searchField,
-    ...tableStyles,
-    ...actionsTray,
-    ...selectorsCommon,
-  });
+  },
+  ...searchField,
+  ...tableStyles,
+  ...actionsTray,
+  ...selectorsCommon,
+});
 
 const PolicySelectors = ({ classes, noTitle = false }: ISelectPolicyProps) => {
   const dispatch = useAppDispatch();
@@ -188,4 +185,4 @@ const PolicySelectors = ({ classes, noTitle = false }: ISelectPolicyProps) => {
   );
 };
 
-export default withStyles(styles)(PolicySelectors);
+export default withStyles(PolicySelectors, styles);

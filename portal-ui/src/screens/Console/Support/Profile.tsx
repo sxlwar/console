@@ -1,9 +1,9 @@
 import React, { Fragment, useState } from "react";
 import { IMessageEvent, w3cwebsocket as W3CWebSocket } from "websocket";
-import { Theme } from "@mui/material/styles";
+
 import { Button, Grid } from "mds";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../theme/makeStyles";
 import PageLayout from "../Common/Layout/PageLayout";
 import CheckboxWrapper from "../Common/FormComponents/CheckboxWrapper/CheckboxWrapper";
 import { wsProtocol } from "../../../utils/wsUtils";
@@ -17,43 +17,42 @@ import RegisterCluster from "./RegisterCluster";
 import { registeredCluster } from "../../../config";
 import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    buttonContainer: {
-      display: "flex",
-      justifyContent: "flex-end",
-      marginTop: 24,
-      "& button": {
-        marginLeft: 8,
-      },
+const styles = () => ({
+  buttonContainer: {
+    display: "flex",
+    justifyContent: "flex-end",
+    marginTop: 24,
+    "& button": {
+      marginLeft: 8,
     },
-    dropdown: {
-      marginBottom: 24,
-    },
-    checkboxLabel: {
-      marginTop: 12,
-      marginRight: 4,
-      fontSize: 16,
-      fontWeight: 500,
-    },
-    checkboxDisabled: {
-      opacity: 0.5,
-    },
-    inlineCheckboxes: {
-      ...inlineCheckboxes.inlineCheckboxes,
-      alignItems: "center",
+  },
+  dropdown: {
+    marginBottom: 24,
+  },
+  checkboxLabel: {
+    marginTop: 12,
+    marginRight: 4,
+    fontSize: 16,
+    fontWeight: 500,
+  },
+  checkboxDisabled: {
+    opacity: 0.5,
+  },
+  inlineCheckboxes: {
+    ...inlineCheckboxes.inlineCheckboxes,
+    alignItems: "center",
 
-      "@media (max-width: 900px)": {
-        flexFlow: "column",
-        alignItems: "flex-start",
-      },
+    "@media (max-width: 900px)": {
+      flexFlow: "column",
+      alignItems: "flex-start",
     },
-    ...actionsTray,
-    ...containerForHeader,
-  });
+  },
+  ...actionsTray,
+  ...containerForHeader,
+});
 
 interface IProfileProps {
-  classes: any;
+  classes?: any;
 }
 
 var c: any = null;
@@ -200,4 +199,4 @@ const Profile = ({ classes }: IProfileProps) => {
   );
 };
 
-export default withStyles(styles)(Profile);
+export default withStyles(Profile, styles);

@@ -18,11 +18,11 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { IMessageEvent, w3cwebsocket as W3CWebSocket } from "websocket";
 import { Grid } from "mds";
-import { Theme } from "@mui/material/styles";
+
 import { useNavigate } from "react-router-dom";
 import { Button, HelpBox, Loader, SpeedtestIcon, WarnIcon } from "mds";
 import { DateTime } from "luxon";
-import createStyles from "@mui/styles/createStyles";
+
 import {
   actionsTray,
   advancedFilterToggleStyles,
@@ -44,45 +44,43 @@ import PageLayout from "../Common/Layout/PageLayout";
 import { SecureComponent } from "../../../common/SecureComponent";
 import DistributedOnly from "../Common/DistributedOnly/DistributedOnly";
 import { selDistSet } from "../../../systemSlice";
-import makeStyles from "@mui/styles/makeStyles";
+import { makeStyles } from "../../../theme/makeStyles";
 import RegisterCluster from "../Support/RegisterCluster";
 import { registeredCluster } from "../../../config";
 import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    advancedContent: {
-      backgroundColor: "#FBFAFA",
-      maxHeight: 0,
-      transitionDuration: "0.3s",
-      overflow: "hidden",
-      padding: "0 15px",
-      marginTop: 15,
-      justifyContent: "space-between",
-      "&.open": {
-        maxHeight: 400,
-        paddingBottom: 15,
-      },
+const useStyles = makeStyles()(() => ({
+  advancedContent: {
+    backgroundColor: "#FBFAFA",
+    maxHeight: 0,
+    transitionDuration: "0.3s",
+    overflow: "hidden",
+    padding: "0 15px",
+    marginTop: 15,
+    justifyContent: "space-between",
+    "&.open": {
+      maxHeight: 400,
+      paddingBottom: 15,
     },
+  },
 
-    stepProgressText: {
-      fontSize: 13,
-      marginBottom: 8,
-    },
-    ...advancedFilterToggleStyles,
-    ...actionsTray,
-    ...searchField,
-    ...formFieldStyles,
-    ...containerForHeader,
-  })
-);
+  stepProgressText: {
+    fontSize: 13,
+    marginBottom: 8,
+  },
+  ...advancedFilterToggleStyles,
+  ...actionsTray,
+  ...searchField,
+  ...formFieldStyles,
+  ...containerForHeader,
+}));
 
 const Speedtest = () => {
   const distributedSetup = useSelector(selDistSet);
 
   const navigate = useNavigate();
 
-  const classes = useStyles();
+  const { classes } = useStyles() as any;
   const [start, setStart] = useState<boolean>(false);
 
   const [currStatus, setCurrStatus] = useState<SpeedTestResponse[] | null>(

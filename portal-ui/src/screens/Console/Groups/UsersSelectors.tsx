@@ -15,68 +15,66 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { useCallback, useEffect, useState } from "react";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
-import ProgressBar from '@atlaskit/progress-bar';
-import get from "lodash/get";
+
+import ProgressBar from "@atlaskit/progress-bar";
 import Paper from "@mui/material/Paper";
+import get from "lodash/get";
 import { Grid } from "mds";
-import { UsersList } from "../Users/types";
+import { withStyles } from "../../../theme/makeStyles";
 import { usersSort } from "../../../utils/sortFunctions";
 import {
   actionsTray,
   selectorsCommon,
   tableStyles,
 } from "../Common/FormComponents/common/styleLibrary";
+import { UsersList } from "../Users/types";
 
-import { ErrorResponseHandler } from "../../../common/types";
 import api from "../../../common/api";
-import TableWrapper from "../Common/TableWrapper/TableWrapper";
+import { ErrorResponseHandler } from "../../../common/types";
 import SearchBox from "../Common/SearchBox";
+import TableWrapper from "../Common/TableWrapper/TableWrapper";
 
-import { setModalErrorSnackMessage } from "../../../systemSlice";
 import { useAppDispatch } from "../../../store";
+import { setModalErrorSnackMessage } from "../../../systemSlice";
 
 interface IGroupsProps {
-  classes: any;
+  classes?: any;
   selectedUsers: string[];
   setSelectedUsers: any;
   editMode?: boolean;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    paper: {
-      display: "flex",
-      overflow: "auto",
-      flexDirection: "column",
-      // paddingTop: 15,
-      boxShadow: "none",
-      border: 0,
-    },
+const styles = () => ({
+  paper: {
+    display: "flex",
+    overflow: "auto",
+    flexDirection: "column",
+    // paddingTop: 15,
+    boxShadow: "none",
+    border: 0,
+  },
 
-    tableBlock: {
-      ...tableStyles.tableBlock,
-    },
-    searchBox: {
-      flex: 1,
-    },
-    ...actionsTray,
-    actionsTitle: {
-      fontSize: 14,
-      alignSelf: "center",
-      minWidth: 160,
-      marginRight: 10,
-    },
-    noFound: {
-      textAlign: "center",
-      padding: theme.spacing(3),
-      border: "1px solid #EAEAEA",
-      fontSize: ".9rem",
-    },
-    ...selectorsCommon,
-  });
+  tableBlock: {
+    ...tableStyles.tableBlock,
+  },
+  searchBox: {
+    flex: 1,
+  },
+  ...actionsTray,
+  actionsTitle: {
+    fontSize: 14,
+    alignSelf: "center",
+    minWidth: 160,
+    marginRight: 10,
+  },
+  noFound: {
+    textAlign: "center",
+    // padding: theme.spacing(3),
+    border: "1px solid #EAEAEA",
+    fontSize: ".9rem",
+  },
+  ...selectorsCommon,
+});
 
 const UsersSelectors = ({
   classes,
@@ -188,4 +186,4 @@ const UsersSelectors = ({
   );
 };
 
-export default withStyles(styles)(UsersSelectors);
+export default withStyles(UsersSelectors, styles);

@@ -19,9 +19,8 @@ import get from "lodash/get";
 import { InputLabel, Tooltip } from "@mui/material";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import CancelIcon from "@mui/icons-material/Cancel";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../../theme/makeStyles";
 import {
   fieldBasic,
   fileInputStyles,
@@ -33,7 +32,7 @@ import ErrorBlock from "../../../../shared/ErrorBlock";
 
 interface InputBoxProps {
   label: string;
-  classes: any;
+  classes?: any;
   onChange: (e: string, i: string) => void;
   id: string;
   name: string;
@@ -45,35 +44,34 @@ interface InputBoxProps {
   value?: string;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...fieldBasic,
-    ...tooltipHelper,
-    valueString: {
-      maxWidth: 350,
-      whiteSpace: "nowrap",
-      overflow: "hidden",
-      textOverflow: "ellipsis",
-      marginTop: 2,
+const styles = () => ({
+  ...fieldBasic,
+  ...tooltipHelper,
+  valueString: {
+    maxWidth: 350,
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    marginTop: 2,
+  },
+  fileInputField: {
+    margin: "13px 0",
+    "@media (max-width: 900px)": {
+      flexFlow: "column",
     },
-    fileInputField: {
-      margin: "13px 0",
-      "@media (max-width: 900px)": {
-        flexFlow: "column",
-      },
-    },
-    ...fileInputStyles,
-    inputLabel: {
-      ...fieldBasic.inputLabel,
-      fontWeight: "normal",
-    },
-    textBoxContainer: {
-      ...fieldBasic.textBoxContainer,
-      maxWidth: "100%",
-      border: "1px solid #eaeaea",
-      paddingLeft: "15px",
-    },
-  });
+  },
+  ...fileInputStyles,
+  inputLabel: {
+    ...fieldBasic.inputLabel,
+    fontWeight: "normal",
+  },
+  textBoxContainer: {
+    ...fieldBasic.textBoxContainer,
+    maxWidth: "100%",
+    border: "1px solid #eaeaea",
+    paddingLeft: "15px",
+  },
+});
 
 const FileSelector = ({
   label,
@@ -174,4 +172,4 @@ const FileSelector = ({
   );
 };
 
-export default withStyles(styles)(FileSelector);
+export default withStyles(FileSelector, styles);

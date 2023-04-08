@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useEffect, useState } from "react";
-import { Theme } from "@mui/material/styles";
+
 import { useNavigate } from "react-router-dom";
 import {
   AddIcon,
@@ -26,9 +26,9 @@ import {
   IAMPoliciesIcon,
   UsersIcon,
 } from "mds";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
-import ProgressBar from '@atlaskit/progress-bar';
+
+import { withStyles } from "../../../theme/makeStyles";
+import ProgressBar from "@atlaskit/progress-bar";
 import { Box, Grid } from "mds";
 
 import { GroupsList } from "./types";
@@ -75,23 +75,22 @@ const SetPolicy = withSuspense(
 );
 
 interface IGroupsProps {
-  classes: any;
+  classes?: any;
   openGroupModal: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    tableBlock: {
-      ...tableStyles.tableBlock,
-      marginTop: 15,
-    },
-    ...actionsTray,
-    searchField: {
-      ...searchField.searchField,
-      maxWidth: 380,
-    },
-    ...containerForHeader,
-  });
+const styles = () => ({
+  tableBlock: {
+    ...tableStyles.tableBlock,
+    marginTop: 15,
+  },
+  ...actionsTray,
+  searchField: {
+    ...searchField.searchField,
+    maxWidth: 380,
+  },
+  ...containerForHeader,
+});
 
 const Groups = ({ classes }: IGroupsProps) => {
   const dispatch = useAppDispatch();
@@ -435,4 +434,4 @@ const Groups = ({ classes }: IGroupsProps) => {
   );
 };
 
-export default withStyles(styles)(Groups);
+export default withStyles(Groups, styles);

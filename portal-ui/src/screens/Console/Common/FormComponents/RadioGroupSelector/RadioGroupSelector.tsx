@@ -19,10 +19,8 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio, { RadioProps } from "@mui/material/Radio";
 import { InputLabel, Tooltip } from "@mui/material";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
-import makeStyles from "@mui/styles/makeStyles";
+
+import { withStyles } from "../../../../../theme/makeStyles";
 import { fieldBasic, radioIcons, tooltipHelper } from "../common/styleLibrary";
 import { HelpIcon, Grid } from "mds";
 
@@ -40,38 +38,34 @@ interface RadioGroupProps {
   tooltip?: string;
   disableOptions?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  classes: any;
+  classes?: any;
   displayInColumn?: boolean;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...fieldBasic,
-    ...tooltipHelper,
-    optionLabel: {
-      "&.Mui-disabled": {
-        "& .MuiFormControlLabel-label": {
-          color: "#9c9c9c",
-        },
-      },
-      "&:last-child": {
-        marginRight: 0,
-      },
+const styles = () => ({
+  ...fieldBasic,
+  ...tooltipHelper,
+  optionLabel: {
+    "&.Mui-disabled": {
       "& .MuiFormControlLabel-label": {
-        fontSize: 12,
-        color: "#07193E",
+        color: "#9c9c9c",
       },
     },
-    checkedOption: {
-      "& .MuiFormControlLabel-label": {
-        fontSize: 12,
-        color: "#07193E",
-        fontWeight: 700,
-      },
+    "&:last-child": {
+      marginRight: 0,
     },
-  });
-
-const radioStyles = makeStyles({
+    "& .MuiFormControlLabel-label": {
+      fontSize: 12,
+      color: "#07193E",
+    },
+  },
+  checkedOption: {
+    "& .MuiFormControlLabel-label": {
+      fontSize: 12,
+      color: "#07193E",
+      fontWeight: 700,
+    },
+  },
   root: {
     "&:hover": {
       backgroundColor: "transparent",
@@ -80,8 +74,9 @@ const radioStyles = makeStyles({
   ...radioIcons,
 });
 
+
 const RadioButton = (props: RadioProps) => {
-  const classes = radioStyles();
+  const classes = withStyles.getClasses(props) as any;
 
   return (
     <Radio
@@ -154,4 +149,4 @@ export const RadioGroupSelector = ({
   );
 };
 
-export default withStyles(styles)(RadioGroupSelector);
+export default withStyles(RadioGroupSelector, styles);

@@ -17,15 +17,14 @@
 import React, { Fragment, useEffect, useState } from "react";
 import InputLabel from "@mui/material/InputLabel";
 import { DateTime } from "luxon";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../../theme/makeStyles";
 import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
 import InputBoxWrapper from "../InputBoxWrapper/InputBoxWrapper";
 import { LinkIcon, Grid } from "mds";
 
 interface IDaysSelector {
-  classes: any;
+  classes?: any;
   id: string;
   initialDate: Date;
   maxDays?: number;
@@ -34,75 +33,74 @@ interface IDaysSelector {
   onChange: (newDate: string, isValid: boolean) => void;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...fieldBasic,
-    ...tooltipHelper,
-    labelContainer: {
-      display: "flex",
-      alignItems: "center",
-      marginBottom: 15,
-    },
-    fieldContainer: {
-      ...fieldBasic.fieldContainer,
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      paddingBottom: 10,
-      marginTop: 11,
-      marginBottom: 6,
-    },
-    dateInputContainer: {
-      margin: "0 10px",
-    },
-    durationInputs: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "flex-start",
-    },
+const styles = () => ({
+  ...fieldBasic,
+  ...tooltipHelper,
+  labelContainer: {
+    display: "flex",
+    alignItems: "center",
+    marginBottom: 15,
+  },
+  fieldContainer: {
+    ...fieldBasic.fieldContainer,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingBottom: 10,
+    marginTop: 11,
+    marginBottom: 6,
+  },
+  dateInputContainer: {
+    margin: "0 10px",
+  },
+  durationInputs: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-start",
+  },
 
-    validityIndicator: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "flex-start",
-      marginTop: 25,
-      marginLeft: 10,
-    },
-    invalidDurationText: {
-      marginTop: 15,
-      display: "flex",
-      color: "red",
-      fontSize: 11,
-    },
-    reverseInput: {
-      flexFlow: "row-reverse",
-      "& > label": {
-        fontWeight: 400,
-        marginLeft: 15,
-        marginRight: 25,
-      },
-    },
-    validityText: {
-      fontSize: 14,
-      marginTop: 15,
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      "@media (max-width: 900px)": {
-        flexFlow: "column",
-      },
-      "& > .min-icon": {
-        color: "#5E5E5E",
-        width: 15,
-        height: 15,
-        marginRight: 10,
-      },
-    },
-    validTill: {
-      fontWeight: "bold",
+  validityIndicator: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    marginTop: 25,
+    marginLeft: 10,
+  },
+  invalidDurationText: {
+    marginTop: 15,
+    display: "flex",
+    color: "red",
+    fontSize: 11,
+  },
+  reverseInput: {
+    flexFlow: "row-reverse",
+    "& > label": {
+      fontWeight: 400,
       marginLeft: 15,
+      marginRight: 25,
     },
-  });
+  },
+  validityText: {
+    fontSize: 14,
+    marginTop: 15,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    "@media (max-width: 900px)": {
+      flexFlow: "column",
+    },
+    "& > .min-icon": {
+      color: "#5E5E5E",
+      width: 15,
+      height: 15,
+      marginRight: 10,
+    },
+  },
+  validTill: {
+    fontWeight: "bold",
+    marginLeft: 15,
+  },
+});
 
 const calculateNewTime = (
   initialDate: Date,
@@ -292,4 +290,4 @@ const DaysSelector = ({
   );
 };
 
-export default withStyles(styles)(DaysSelector);
+export default withStyles(DaysSelector, styles);

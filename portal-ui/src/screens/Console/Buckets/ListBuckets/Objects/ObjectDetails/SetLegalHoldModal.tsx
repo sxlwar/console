@@ -15,9 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { useEffect, useState } from "react";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../../../theme/makeStyles";
 import get from "lodash/get";
 import { Button, Grid } from "mds";
 import {
@@ -36,15 +35,14 @@ import { encodeURLString } from "../../../../../../common/utils";
 import { setModalErrorSnackMessage } from "../../../../../../systemSlice";
 import { useAppDispatch } from "../../../../../../store";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...formFieldStyles,
-    ...modalStyleUtils,
-    ...spacingUtils,
-  });
+const styles = () => ({
+  ...formFieldStyles,
+  ...modalStyleUtils,
+  ...spacingUtils,
+});
 
 interface ISetRetentionProps {
-  classes: any;
+  classes?: any;
   open: boolean;
   closeModalAndRefresh: (reload: boolean) => void;
   objectName: string;
@@ -153,4 +151,4 @@ const SetLegalHoldModal = ({
   );
 };
 
-export default withStyles(styles)(SetLegalHoldModal);
+export default withStyles(SetLegalHoldModal, styles);

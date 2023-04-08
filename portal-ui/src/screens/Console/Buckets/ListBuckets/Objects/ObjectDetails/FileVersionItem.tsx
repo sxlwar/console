@@ -15,10 +15,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import createStyles from "@mui/styles/createStyles";
+
 import { DateTime } from "luxon";
-import { Theme } from "@mui/material/styles";
-import { withStyles } from "@mui/styles";
+
+import { withStyles } from "../../../../../../theme/makeStyles";
 import { displayFileIconName } from "../ListObjects/utils";
 import { IFileInfo } from "./types";
 import { Tooltip } from "@mui/material";
@@ -40,13 +40,13 @@ interface IFileVersionItem {
   onRestore: (versionInfo: IFileInfo) => void;
   onPreview: (versionInfo: IFileInfo) => void;
   globalClick: (versionInfo: IFileInfo) => void;
-  classes: any;
+  classes?: any;
   key: any;
   style: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     mainFileVersionItem: {
       borderBottom: "#E2E2E2 1px solid",
       padding: "1rem 0",
@@ -332,4 +332,4 @@ const FileVersionItem = ({
   );
 };
 
-export default withStyles(styles)(FileVersionItem);
+export default withStyles(FileVersionItem, styles);;

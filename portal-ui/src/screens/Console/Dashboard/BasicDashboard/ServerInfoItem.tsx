@@ -14,9 +14,8 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import React from "react";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import { ServerInfo } from "../types";
 import { niceDays } from "../../../../common/utils";
 import { CircleIcon, Box } from "mds";
@@ -28,10 +27,9 @@ import {
   serverStatusColor,
 } from "./Utils";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...commonDashboardInfocard,
-  });
+const styles = () => ({
+  ...commonDashboardInfocard,
+});
 
 interface ICardProps {
   classes?: any;
@@ -241,4 +239,4 @@ const ServerInfoItem = ({ server }: ICardProps) => {
     </Box>
   );
 };
-export default withStyles(styles)(ServerInfoItem);
+export default withStyles(ServerInfoItem, styles);

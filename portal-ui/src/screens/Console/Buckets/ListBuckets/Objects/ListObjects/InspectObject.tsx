@@ -16,7 +16,7 @@
 
 import React, { useState } from "react";
 import { Button, InspectMenuIcon, PasswordKeyIcon, Box, Grid } from "mds";
-import withStyles from "@mui/styles/withStyles";
+import { withStyles } from "../../../../../../theme/makeStyles";
 import {
   decodeURLString,
   deleteCookie,
@@ -26,8 +26,8 @@ import {
 } from "../../../../../../common/utils";
 import FormSwitchWrapper from "../../../../Common/FormComponents/FormSwitchWrapper/FormSwitchWrapper";
 import ModalWrapper from "../../../../Common/ModalWrapper/ModalWrapper";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
+
+
 import {
   formFieldStyles,
   modalStyleUtils,
@@ -38,15 +38,15 @@ import KeyRevealer from "../../../../Tools/KeyRevealer";
 import { setErrorSnackMessage } from "../../../../../../systemSlice";
 import { useAppDispatch } from "../../../../../../store";
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     ...formFieldStyles,
     ...modalStyleUtils,
     ...spacingUtils,
   });
 
 interface IInspectObjectProps {
-  classes: any;
+  classes?: any;
   closeInspectModalAndRefresh: (refresh: boolean) => void;
   inspectOpen: boolean;
   inspectPath: string;
@@ -186,4 +186,4 @@ const InspectObject = ({
   );
 };
 
-export default withStyles(styles)(InspectObject);
+export default withStyles(InspectObject, styles);;

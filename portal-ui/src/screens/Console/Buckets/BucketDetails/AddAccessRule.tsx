@@ -18,9 +18,8 @@ import React, { useState, useEffect } from "react";
 import ModalWrapper from "../../Common/ModalWrapper/ModalWrapper";
 import { AddAccessRuleIcon, Button, Grid } from "mds";
 import InputBoxWrapper from "../../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import {
   formFieldStyles,
   modalStyleUtils,
@@ -36,18 +35,17 @@ import {
 import { useAppDispatch } from "../../../../store";
 
 interface IAddAccessRule {
-  classes: any;
+  classes?: any;
   modalOpen: boolean;
   onClose: () => any;
   bucket: string;
   prefilledRoute?: string;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...formFieldStyles,
-    ...modalStyleUtils,
-  });
+const styles = () => ({
+  ...formFieldStyles,
+  ...modalStyleUtils,
+});
 
 const AddAccessRule = ({
   modalOpen,
@@ -153,4 +151,4 @@ const AddAccessRule = ({
   );
 };
 
-export default withStyles(styles)(AddAccessRule);
+export default withStyles(AddAccessRule, styles);

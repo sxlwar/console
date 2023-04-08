@@ -28,9 +28,8 @@ import {
 } from "mds";
 import { ReplicationSite } from "./SiteReplication";
 import ConfirmDialog from "../../Common/ModalWrapper/ConfirmDialog";
-import withStyles from "@mui/styles/withStyles";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
+import { withStyles } from "../../../../theme/makeStyles";
+
 import {
   formFieldStyles,
   modalStyleUtils,
@@ -39,12 +38,11 @@ import {
 import TooltipWrapper from "../../Common/TooltipWrapper/TooltipWrapper";
 import EditSiteEndPoint from "./EditSiteEndPoint";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...modalStyleUtils,
-    ...formFieldStyles,
-    ...spacingUtils,
-  });
+const styles = () => ({
+  ...modalStyleUtils,
+  ...formFieldStyles,
+  ...spacingUtils,
+});
 
 const ReplicationSites = ({
   sites,
@@ -54,7 +52,7 @@ const ReplicationSites = ({
   sites: ReplicationSite[];
   onDeleteSite: (isAll: boolean, sites: string[]) => void;
   onRefresh: () => void;
-  classes: any;
+  classes?: any;
 }) => {
   const [deleteSiteKey, setIsDeleteSiteKey] = useState<string>("");
   const [editSite, setEditSite] = useState<any>(null);
@@ -112,7 +110,7 @@ const ReplicationSites = ({
                   sx={{
                     flex: 2,
                     display: "grid",
-                    gridTemplateColumns:  "1fr 1fr ",
+                    gridTemplateColumns: "1fr 1fr ",
                   }}
                 >
                   <Box
@@ -263,4 +261,4 @@ const ReplicationSites = ({
   );
 };
 
-export default withStyles(styles)(ReplicationSites);
+export default withStyles(ReplicationSites, styles);

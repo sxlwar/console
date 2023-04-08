@@ -15,10 +15,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import React, { Fragment, useEffect, useState } from "react";
 import { IMessageEvent, w3cwebsocket as W3CWebSocket } from "websocket";
-import { Theme } from "@mui/material/styles";
+
 import { Grid, Button } from "mds";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import { useSelector } from "react-redux";
 import { FormControl, InputBase, MenuItem, Select } from "@mui/material";
 
@@ -45,57 +45,53 @@ import {
   logResetMessages,
   setLogsStarted,
 } from "../logsSlice";
-import makeStyles from "@mui/styles/makeStyles";
+import { makeStyles } from "../../../../theme/makeStyles";
 import PageHeaderWrapper from "../../Common/PageHeaderWrapper/PageHeaderWrapper";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    logList: {
-      background: "#fff",
-      minHeight: 400,
-      height: "calc(100vh - 200px)",
-      overflow: "auto",
-      fontSize: 13,
-      borderRadius: 4,
-    },
-    logerror_tab: {
-      color: "#A52A2A",
-      paddingLeft: 25,
-    },
-    nodeField: {
-      width: "100%",
-    },
-    ...actionsTray,
-    actionsTray: {
-      ...actionsTray.actionsTray,
-      marginBottom: 0,
-    },
-    ...searchField,
+const useStyles = makeStyles()((theme) => ({
+  logList: {
+    background: "#fff",
+    minHeight: 400,
+    height: "calc(100vh - 200px)",
+    overflow: "auto",
+    fontSize: 13,
+    borderRadius: 4,
+  },
+  logerror_tab: {
+    color: "#A52A2A",
+    paddingLeft: 25,
+  },
+  nodeField: {
+    width: "100%",
+  },
+  ...actionsTray,
+  actionsTray: {
+    ...actionsTray.actionsTray,
+    marginBottom: 0,
+  },
+  ...searchField,
 
-    ...inlineCheckboxes,
-    ...containerForHeader,
-  })
-);
+  ...inlineCheckboxes,
+  ...containerForHeader,
+}));
 
-const SelectStyled = withStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      lineHeight: "50px",
-      "label + &": {
-        marginTop: theme.spacing(3),
-      },
-      "& .MuiSelect-select:focus": {
-        backgroundColor: "transparent",
-      },
+const SelectStyled = withStyles(InputBase, () => ({
+  root: {
+    lineHeight: "50px",
+    "label + &": {
+      marginTop: "10px",
     },
-  })
-)(InputBase);
+    "& .MuiSelect-select:focus": {
+      backgroundColor: "transparent",
+    },
+  },
+}));
 
 var c: any = null;
 
 const ErrorLogs = () => {
   const dispatch = useAppDispatch();
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   const messages = useSelector((state: AppState) => state.logs.logMessages);
   const logsStarted = useSelector((state: AppState) => state.logs.logsStarted);

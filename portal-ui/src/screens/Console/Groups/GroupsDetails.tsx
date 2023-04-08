@@ -1,8 +1,15 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Theme } from "@mui/material/styles";
+
 import { useNavigate, useParams } from "react-router-dom";
-import { AddIcon, Button, GroupsIcon, IAMPoliciesIcon, TrashIcon, Grid } from "mds";
-import createStyles from "@mui/styles/createStyles";
+import {
+  AddIcon,
+  Button,
+  GroupsIcon,
+  IAMPoliciesIcon,
+  TrashIcon,
+  Grid,
+} from "mds";
+
 import {
   actionsTray,
   containerForHeader,
@@ -11,7 +18,7 @@ import {
   tableStyles,
 } from "../Common/FormComponents/common/styleLibrary";
 
-import withStyles from "@mui/styles/withStyles";
+import { withStyles } from "../../../theme/makeStyles";
 import ScreenTitle from "../Common/ScreenTitle/ScreenTitle";
 import TableWrapper from "../Common/TableWrapper/TableWrapper";
 import api from "../../../common/api";
@@ -50,53 +57,52 @@ import { useAppDispatch } from "../../../store";
 import { setSelectedPolicies } from "../Users/AddUsersSlice";
 import TooltipWrapper from "../Common/TooltipWrapper/TooltipWrapper";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    pageContainer: {
-      border: "1px solid #EAEAEA",
-      width: "100%",
-    },
-    statusLabel: {
-      fontSize: ".8rem",
-      marginRight: ".7rem",
-    },
-    statusValue: {
-      fontWeight: "bold",
-      fontSize: ".9rem",
-      marginRight: ".7rem",
-    },
-    searchField: {
-      ...searchField.searchField,
-      maxWidth: 280,
-    },
-    ...tableStyles,
-    ...spacingUtils,
-    actionsTray: {
-      ...actionsTray.actionsTray,
+const styles = () => ({
+  pageContainer: {
+    border: "1px solid #EAEAEA",
+    width: "100%",
+  },
+  statusLabel: {
+    fontSize: ".8rem",
+    marginRight: ".7rem",
+  },
+  statusValue: {
+    fontWeight: "bold",
+    fontSize: ".9rem",
+    marginRight: ".7rem",
+  },
+  searchField: {
+    ...searchField.searchField,
+    maxWidth: 280,
+  },
+  ...tableStyles,
+  ...spacingUtils,
+  actionsTray: {
+    ...actionsTray.actionsTray,
 
-      alignItems: "center",
+    alignItems: "center",
+    "& h1": {
+      flex: 1,
+    },
+    "& button": {
+      marginLeft: ".8rem",
+    },
+    "@media (max-width: 900px)": {
+      justifyContent: "flex-end",
       "& h1": {
-        flex: 1,
+        display: "none",
       },
       "& button": {
-        marginLeft: ".8rem",
-      },
-      "@media (max-width: 900px)": {
-        justifyContent: "flex-end",
-        "& h1": {
-          display: "none",
-        },
-        "& button": {
-          whiteSpace: "nowrap",
-          textOverflow: "ellipsis",
-        },
+        whiteSpace: "nowrap",
+        textOverflow: "ellipsis",
       },
     },
-    ...containerForHeader,
-  });
+  },
+  ...containerForHeader,
+});
 
 interface IGroupDetailsProps {
-  classes: any;
+  classes?: any;
 }
 
 type GroupInfo = {
@@ -462,4 +468,4 @@ const GroupsDetails = ({ classes }: IGroupDetailsProps) => {
   );
 };
 
-export default withStyles(styles)(GroupsDetails);
+export default withStyles(GroupsDetails, styles);

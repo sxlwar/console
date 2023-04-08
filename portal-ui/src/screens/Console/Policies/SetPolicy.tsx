@@ -16,11 +16,11 @@
 
 import React, { Fragment, useEffect, useState } from "react";
 import get from "lodash/get";
-import { Theme } from "@mui/material/styles";
+
 import { Button, Grid } from "mds";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
-import ProgressBar from '@atlaskit/progress-bar';
+
+import { withStyles } from "../../../theme/makeStyles";
+import ProgressBar from "@atlaskit/progress-bar";
 import {
   modalBasic,
   spacingUtils,
@@ -41,30 +41,29 @@ import { useSelector } from "react-redux";
 import { setSelectedPolicies } from "../Users/AddUsersSlice";
 
 interface ISetPolicyProps {
-  classes: any;
+  classes?: any;
   closeModalAndRefresh: () => void;
   selectedUser: User | null;
   selectedGroups: string[] | null;
   open: boolean;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...modalBasic,
-    ...spacingUtils,
-    tableBlock: {
-      ...tableStyles.tableBlock,
-      marginTop: 15,
+const styles = () => ({
+  ...modalBasic,
+  ...spacingUtils,
+  tableBlock: {
+    ...tableStyles.tableBlock,
+    marginTop: 15,
+  },
+  buttonContainer: {
+    display: "flex",
+    justifyContent: "flex-end",
+    marginTop: ".9rem",
+    "& button": {
+      marginLeft: 8,
     },
-    buttonContainer: {
-      display: "flex",
-      justifyContent: "flex-end",
-      marginTop: ".9rem",
-      "& button": {
-        marginLeft: 8,
-      },
-    },
-  });
+  },
+});
 
 const SetPolicy = ({
   classes,
@@ -214,4 +213,4 @@ const SetPolicy = ({
   );
 };
 
-export default withStyles(styles)(SetPolicy);
+export default withStyles(SetPolicy, styles);

@@ -22,11 +22,9 @@ import {
   TextFieldProps,
   Tooltip,
 } from "@mui/material";
-import makeStyles from "@mui/styles/makeStyles";
+import { makeStyles, withStyles } from "../../../../../theme/makeStyles";
 import Autocomplete from "@mui/material/Autocomplete";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
 import {
   fieldBasic,
   inputFieldStyles,
@@ -48,20 +46,17 @@ interface SelectProps {
   tooltip?: string;
   onChange: (returnedValue: string) => void;
   disabled?: boolean;
-  classes: any;
+  classes?: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...fieldBasic,
-    ...tooltipHelper,
-  });
+const styles = () => ({
+  ...fieldBasic,
+  ...tooltipHelper,
+});
 
-const inputStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    ...inputFieldStyles,
-  })
-);
+const inputStyles = makeStyles()((theme) => ({
+  ...inputFieldStyles,
+}));
 
 function InputField(props: TextFieldProps) {
   const classes = inputStyles();
@@ -129,4 +124,4 @@ const AutocompleteWrapper = ({
   );
 };
 
-export default withStyles(styles)(AutocompleteWrapper);
+export default withStyles(AutocompleteWrapper, styles);

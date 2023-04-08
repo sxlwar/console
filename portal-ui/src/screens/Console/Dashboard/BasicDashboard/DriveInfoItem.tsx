@@ -15,9 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import { IDriveInfo } from "../types";
 import {
   capacityColors,
@@ -29,10 +28,9 @@ import { CircleIcon, Box } from "mds";
 import { commonDashboardInfocard } from "../../Common/FormComponents/common/styleLibrary";
 import { STATUS_COLORS } from "./Utils";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...commonDashboardInfocard,
-  });
+const styles = () => ({
+  ...commonDashboardInfocard,
+});
 
 interface ICardProps {
   classes?: any;
@@ -228,4 +226,4 @@ const DriveInfoItem = ({ drive }: ICardProps) => {
   );
 };
 
-export default withStyles(styles)(DriveInfoItem);
+export default withStyles(DriveInfoItem, styles);

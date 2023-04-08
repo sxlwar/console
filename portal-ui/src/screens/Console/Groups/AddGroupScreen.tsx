@@ -15,15 +15,15 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useEffect, useState } from "react";
-import { Theme } from "@mui/material/styles";
+
 import { useNavigate } from "react-router-dom";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../theme/makeStyles";
 import {
   formFieldStyles,
   modalStyleUtils,
 } from "../Common/FormComponents/common/styleLibrary";
-import ProgressBar from '@atlaskit/progress-bar';
+import ProgressBar from "@atlaskit/progress-bar";
 import { BackLink, Button, CreateGroupIcon, Grid } from "mds";
 import PageLayout from "../Common/Layout/PageLayout";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
@@ -39,14 +39,13 @@ import { useAppDispatch } from "../../../store";
 import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
 
 interface IAddGroupProps {
-  classes: any;
+  classes?: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...formFieldStyles,
-    ...modalStyleUtils,
-  });
+const styles = () => ({
+  ...formFieldStyles,
+  ...modalStyleUtils,
+});
 
 const AddGroupScreen = ({ classes }: IAddGroupProps) => {
   const dispatch = useAppDispatch();
@@ -164,4 +163,4 @@ const AddGroupScreen = ({ classes }: IAddGroupProps) => {
   );
 };
 
-export default withStyles(styles)(AddGroupScreen);
+export default withStyles(AddGroupScreen, styles);

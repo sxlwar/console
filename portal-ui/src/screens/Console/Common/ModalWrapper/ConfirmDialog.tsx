@@ -23,14 +23,14 @@ import {
 } from "@mui/material";
 import { Button, IconButton } from "mds";
 import CloseIcon from "@mui/icons-material/Close";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+
+import { withStyles } from "../../../../theme/makeStyles";
 import { deleteDialogStyles } from "../FormComponents/common/styleLibrary";
 import { ButtonProps } from "../../types";
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     ...deleteDialogStyles,
   });
 
@@ -127,4 +127,4 @@ const ConfirmDialog = ({
   );
 };
 
-export default withStyles(styles)(ConfirmDialog);
+export default withStyles(ConfirmDialog, styles);;

@@ -17,9 +17,8 @@
 import React, { Fragment, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Loader, LoginWrapper, RefreshIcon } from "mds";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import makeStyles from "@mui/styles/makeStyles";
+
+import { makeStyles } from "../../theme/makeStyles";
 import { loginStrategyType, redirectRule } from "./types";
 import MainError from "../Console/Common/MainError/MainError";
 import { spacingUtils } from "../Console/Common/FormComponents/common/styleLibrary";
@@ -30,205 +29,204 @@ import { resetForm } from "./loginSlice";
 import StrategyForm from "./StrategyForm";
 import { redirectRules } from "../../utils/sortFunctions";
 import { getLogoVar } from "../../config";
+import { Theme } from "../../theme/main";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      position: "absolute",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-      overflow: "auto",
+const useStyles = makeStyles()((theme: Theme) => ({
+  root: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    overflow: "auto",
+  },
+  form: {
+    width: "100%", // Fix IE 11 issue.
+  },
+  submit: {
+    margin: "30px 0px 8px",
+    height: 40,
+    width: "100%",
+    boxShadow: "none",
+    padding: "16px 30px",
+  },
+  loginSsoText: {
+    fontWeight: "700",
+    marginBottom: "15px",
+  },
+  ssoSelect: {
+    width: "100%",
+    fontSize: "13px",
+    fontWeight: "700",
+    color: "grey",
+  },
+  ssoMenuItem: {
+    fontSize: "15px",
+    fontWeight: "700",
+    color: theme.palette.primary.light,
+    "&.MuiMenuItem-divider:last-of-type": {
+      borderBottom: "none",
     },
-    form: {
-      width: "100%", // Fix IE 11 issue.
+    "&.Mui-focusVisible": {
+      backgroundColor: theme.palette.grey["100"],
     },
-    submit: {
-      margin: "30px 0px 8px",
-      height: 40,
-      width: "100%",
-      boxShadow: "none",
-      padding: "16px 30px",
+  },
+  ssoLoginIcon: {
+    height: "13px",
+    marginRight: "25px",
+  },
+  ssoSubmit: {
+    marginTop: "15px",
+    "&:first-of-type": {
+      marginTop: 0,
     },
-    loginSsoText: {
-      fontWeight: "700",
-      marginBottom: "15px",
-    },
-    ssoSelect: {
-      width: "100%",
-      fontSize: "13px",
-      fontWeight: "700",
-      color: "grey",
-    },
-    ssoMenuItem: {
-      fontSize: "15px",
-      fontWeight: "700",
-      color: theme.palette.primary.light,
-      "&.MuiMenuItem-divider:last-of-type": {
-        borderBottom: "none",
-      },
-      "&.Mui-focusVisible": {
-        backgroundColor: theme.palette.grey["100"],
-      },
-    },
-    ssoLoginIcon: {
-      height: "13px",
-      marginRight: "25px",
-    },
-    ssoSubmit: {
-      marginTop: "15px",
-      "&:first-of-type": {
-        marginTop: 0,
-      },
-    },
-    separator: {
-      marginLeft: 4,
-      marginRight: 4,
-    },
-    linkHolder: {
-      marginTop: 20,
-      font: "normal normal normal 14px/16px Inter",
-    },
-    miniLinks: {
-      margin: "auto",
-      textAlign: "center",
+  },
+  separator: {
+    marginLeft: 4,
+    marginRight: 4,
+  },
+  linkHolder: {
+    marginTop: 20,
+    font: "normal normal normal 14px/16px Inter",
+  },
+  miniLinks: {
+    margin: "auto",
+    textAlign: "center",
+    color: "#B2DEF5",
+    "& a": {
       color: "#B2DEF5",
-      "& a": {
-        color: "#B2DEF5",
-        textDecoration: "none",
-      },
-      "& .min-icon": {
-        width: 10,
-        color: "#B2DEF5",
-      },
+      textDecoration: "none",
     },
-    miniLogo: {
-      marginTop: 8,
-      "& .min-icon": {
-        height: 12,
-        paddingTop: 2,
-        marginRight: 2,
-      },
+    "& .min-icon": {
+      width: 10,
+      color: "#B2DEF5",
     },
-    loginPage: {
+  },
+  miniLogo: {
+    marginTop: 8,
+    "& .min-icon": {
+      height: 12,
+      paddingTop: 2,
+      marginRight: 2,
+    },
+  },
+  loginPage: {
+    height: "100%",
+    margin: "auto",
+  },
+  buttonRetry: {
+    display: "flex",
+    justifyContent: "center",
+  },
+  loginContainer: {
+    flexDirection: "column",
+    maxWidth: 400,
+    margin: "auto",
+    "& .right-items": {
+      backgroundColor: "white",
+      padding: 40,
+    },
+    "& .consoleTextBanner": {
+      fontWeight: 300,
+      fontSize: "calc(3vw + 3vh + 1.5vmin)",
+      lineHeight: 1.15,
+      color: theme.palette.primary.main,
+      flex: 1,
       height: "100%",
-      margin: "auto",
-    },
-    buttonRetry: {
       display: "flex",
-      justifyContent: "center",
-    },
-    loginContainer: {
-      flexDirection: "column",
-      maxWidth: 400,
+      justifyContent: "flex-start",
       margin: "auto",
-      "& .right-items": {
-        backgroundColor: "white",
+
+      "& .logoLine": {
+        display: "flex",
+        alignItems: "center",
+        fontSize: 18,
+      },
+      "& .left-items": {
+        marginTop: 100,
+        background:
+          "transparent linear-gradient(180deg, #FBFAFA 0%, #E4E4E4 100%) 0% 0% no-repeat padding-box",
         padding: 40,
       },
-      "& .consoleTextBanner": {
-        fontWeight: 300,
-        fontSize: "calc(3vw + 3vh + 1.5vmin)",
-        lineHeight: 1.15,
-        color: theme.palette.primary.main,
-        flex: 1,
-        height: "100%",
+      "& .left-logo": {
+        "& .min-icon": {
+          color: theme.palette.primary.main,
+          width: 108,
+        },
+        marginBottom: 10,
+      },
+      "& .text-line1": {
+        font: " 100 44px 'Inter'",
+      },
+      "& .text-line2": {
+        fontSize: 80,
+        fontWeight: 100,
+        textTransform: "uppercase",
+      },
+      "& .text-line3": {
+        fontSize: 14,
+        fontWeight: "bold",
+      },
+      "& .logo-console": {
         display: "flex",
-        justifyContent: "flex-start",
-        margin: "auto",
+        alignItems: "center",
+
+        "@media (max-width: 900px)": {
+          marginTop: 20,
+          flexFlow: "column",
+
+          "& svg": {
+            width: "50%",
+          },
+        },
+      },
+    },
+  },
+  "@media (max-width: 900px)": {
+    loginContainer: {
+      display: "flex",
+      flexFlow: "column",
+
+      "& .consoleTextBanner": {
+        margin: 0,
+        flex: 2,
+
+        "& .left-items": {
+          alignItems: "center",
+          textAlign: "center",
+        },
 
         "& .logoLine": {
-          display: "flex",
-          alignItems: "center",
-          fontSize: 18,
-        },
-        "& .left-items": {
-          marginTop: 100,
-          background:
-            "transparent linear-gradient(180deg, #FBFAFA 0%, #E4E4E4 100%) 0% 0% no-repeat padding-box",
-          padding: 40,
-        },
-        "& .left-logo": {
-          "& .min-icon": {
-            color: theme.palette.primary.main,
-            width: 108,
-          },
-          marginBottom: 10,
-        },
-        "& .text-line1": {
-          font: " 100 44px 'Inter'",
-        },
-        "& .text-line2": {
-          fontSize: 80,
-          fontWeight: 100,
-          textTransform: "uppercase",
-        },
-        "& .text-line3": {
-          fontSize: 14,
-          fontWeight: "bold",
-        },
-        "& .logo-console": {
-          display: "flex",
-          alignItems: "center",
-
-          "@media (max-width: 900px)": {
-            marginTop: 20,
-            flexFlow: "column",
-
-            "& svg": {
-              width: "50%",
-            },
-          },
+          justifyContent: "center",
         },
       },
     },
-    "@media (max-width: 900px)": {
-      loginContainer: {
-        display: "flex",
-        flexFlow: "column",
-
-        "& .consoleTextBanner": {
-          margin: 0,
-          flex: 2,
-
-          "& .left-items": {
-            alignItems: "center",
-            textAlign: "center",
-          },
-
-          "& .logoLine": {
-            justifyContent: "center",
-          },
-        },
-      },
+  },
+  loginStrategyMessage: {
+    textAlign: "center",
+  },
+  loadingLoginStrategy: {
+    textAlign: "center",
+    width: 40,
+    height: 40,
+  },
+  submitContainer: {
+    textAlign: "right",
+    marginTop: 30,
+  },
+  linearPredef: {
+    height: 10,
+  },
+  retryButton: {
+    alignSelf: "flex-end",
+  },
+  iconLogo: {
+    "& .min-icon": {
+      width: "100%",
     },
-    loginStrategyMessage: {
-      textAlign: "center",
-    },
-    loadingLoginStrategy: {
-      textAlign: "center",
-      width: 40,
-      height: 40,
-    },
-    submitContainer: {
-      textAlign: "right",
-      marginTop: 30,
-    },
-    linearPredef: {
-      height: 10,
-    },
-    retryButton: {
-      alignSelf: "flex-end",
-    },
-    iconLogo: {
-      "& .min-icon": {
-        width: "100%",
-      },
-    },
-    ...spacingUtils,
-  })
-);
+  },
+  ...spacingUtils,
+}));
 
 export interface LoginStrategyPayload {
   accessKey: string;
@@ -251,7 +249,7 @@ export const getTargetPath = () => {
 const Login = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const classes = useStyles();
+  const { classes } = useStyles() as any;
 
   const loginStrategy = useSelector(
     (state: AppState) => state.login.loginStrategy

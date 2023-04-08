@@ -22,9 +22,9 @@ import React, {
   useState,
 } from "react";
 import get from "lodash/get";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+
+import { withStyles } from "../../../../../theme/makeStyles";
 import { InputLabel, Tooltip } from "@mui/material";
 import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
 import { AddIcon, HelpIcon, Grid } from "mds";
@@ -36,13 +36,13 @@ interface ICSVMultiSelector {
   label: string;
   tooltip?: string;
   commonPlaceholder?: string;
-  classes: any;
+  classes?: any;
   withBorder?: boolean;
   onChange: (elements: string) => void;
 }
 
-const styles = (theme: Theme) => {
-  return createStyles({
+const styles = () => {
+  return ({
     ...fieldBasic,
     ...tooltipHelper,
     inputWithBorder: {
@@ -204,4 +204,4 @@ const CSVMultiSelector = ({
     </React.Fragment>
   );
 };
-export default withStyles(styles)(CSVMultiSelector);
+export default withStyles(CSVMultiSelector, styles);;

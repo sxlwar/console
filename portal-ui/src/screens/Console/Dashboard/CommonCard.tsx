@@ -16,10 +16,8 @@
 
 import { Card, CardHeader } from "@mui/material";
 import { Link } from "react-router-dom";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
-import makeStyles from "@mui/styles/makeStyles";
+
+import { withStyles } from "../../../theme/makeStyles";
 import React, { Fragment } from "react";
 import { widgetCommon } from "../Common/FormComponents/common/styleLibrary";
 
@@ -36,61 +34,58 @@ interface ICommonCard {
   moreLink?: string;
   rightComponent?: any;
   extraMargin?: boolean;
-  classes: any;
+  classes?: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...widgetCommon,
-    cardRoot: {
-      ...widgetCommon.singleValueContainer,
-      "&.MuiPaper-root": {
-        borderRadius: 10,
-      },
+const styles = () => ({
+  ...widgetCommon,
+  cardRoot: {
+    ...widgetCommon.singleValueContainer,
+    "&.MuiPaper-root": {
+      borderRadius: 10,
     },
-    metricText: {
-      fontSize: 70,
-      lineHeight: 1.1,
-      color: "#07193E",
+  },
+  metricText: {
+    fontSize: 70,
+    lineHeight: 1.1,
+    color: "#07193E",
+    fontWeight: "bold",
+  },
+  unitText: {
+    fontSize: 10,
+    color: "#767676",
+    fontWeight: "normal",
+  },
+  subHearderContainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  subMessage: {
+    fontSize: 10,
+    color: "#767676",
+    "&.bold": {
       fontWeight: "bold",
     },
-    unitText: {
-      fontSize: 10,
-      color: "#767676",
-      fontWeight: "normal",
-    },
-    subHearderContainer: {
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "space-between",
-      alignItems: "center",
-    },
-    subMessage: {
-      fontSize: 10,
-      color: "#767676",
-      "&.bold": {
-        fontWeight: "bold",
-      },
-    },
-    headerContainer: {
-      display: "flex",
-      justifyContent: "space-between",
-    },
-    viewAll: {
-      fontSize: 10,
+  },
+  headerContainer: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
+  viewAll: {
+    fontSize: 10,
+    color: "#C83B51",
+    textTransform: "capitalize",
+
+    "& a, & a:hover, & a:visited, & a:active": {
       color: "#C83B51",
-      textTransform: "capitalize",
-
-      "& a, & a:hover, & a:visited, & a:active": {
-        color: "#C83B51",
-      },
     },
-    extraMargin: {
-      margin: "10px 20px 10px 0",
-    },
-  });
+  },
+  extraMargin: {
+    margin: "10px 20px 10px 0",
+  },
 
-const cardSubStyles = makeStyles({
   root: { backgroundColor: "#fff", padding: 0 },
   title: {
     ...widgetCommon.titleContainer,
@@ -110,7 +105,6 @@ const CommonCard = ({
   extraMargin = false,
   classes,
 }: ICommonCard) => {
-  const subStyles = cardSubStyles();
   const SubHeader = () => {
     return (
       <Fragment>
@@ -171,9 +165,9 @@ const CommonCard = ({
               </Fragment>
             }
             classes={{
-              root: subStyles.root,
-              title: subStyles.title,
-              content: subStyles.content,
+              root: classes.root,
+              title: classes.title,
+              content: classes.content,
             }}
           />
         )}
@@ -182,4 +176,4 @@ const CommonCard = ({
   );
 };
 
-export default withStyles(styles)(CommonCard);
+export default withStyles(CommonCard, styles);

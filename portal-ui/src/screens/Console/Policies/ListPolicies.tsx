@@ -17,9 +17,8 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { AddIcon, Button, HelpBox, IAMPoliciesIcon, Grid } from "mds";
 import { useNavigate } from "react-router-dom";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../theme/makeStyles";
 
 import {
   actionsTray,
@@ -63,19 +62,18 @@ import {
 
 const DeletePolicy = withSuspense(React.lazy(() => import("./DeletePolicy")));
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...actionsTray,
-    ...searchField,
-    searchField: {
-      ...searchField.searchField,
-      maxWidth: 380,
-    },
-    ...containerForHeader,
-  });
+const styles = () => ({
+  ...actionsTray,
+  ...searchField,
+  searchField: {
+    ...searchField.searchField,
+    maxWidth: 380,
+  },
+  ...containerForHeader,
+});
 
 interface IPoliciesProps {
-  classes: any;
+  classes?: any;
 }
 
 const ListPolicies = ({ classes }: IPoliciesProps) => {
@@ -298,4 +296,4 @@ const ListPolicies = ({ classes }: IPoliciesProps) => {
   );
 };
 
-export default withStyles(styles)(ListPolicies);
+export default withStyles(ListPolicies, styles);

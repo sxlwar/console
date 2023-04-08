@@ -15,9 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { useCallback, useEffect, useState } from "react";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import { Grid } from "mds";
 import InputBoxWrapper from "../../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
 import RadioGroupSelector from "../../Common/FormComponents/RadioGroupSelector/RadioGroupSelector";
@@ -32,14 +31,13 @@ import PredefinedList from "../../Common/FormComponents/PredefinedList/Predefine
 
 interface IConfMySqlProps {
   onChange: (newValue: IElementValue[]) => void;
-  classes: any;
+  classes?: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...modalBasic,
-    ...formFieldStyles,
-  });
+const styles = () => ({
+  ...modalBasic,
+  ...formFieldStyles,
+});
 
 const ConfMySql = ({ onChange, classes }: IConfMySqlProps) => {
   //Local States
@@ -308,4 +306,4 @@ const ConfMySql = ({ onChange, classes }: IConfMySqlProps) => {
   );
 };
 
-export default withStyles(styles)(ConfMySql);
+export default withStyles(ConfMySql, styles);

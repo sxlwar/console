@@ -18,9 +18,9 @@ import React, { Fragment, useEffect, useState } from "react";
 import { SelectChangeEvent } from "@mui/material";
 import ProgressBar from '@atlaskit/progress-bar';
 import { AddIcon, BucketEncryptionIcon, Button, Grid } from "mds";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+
+import { withStyles } from "../../../../theme/makeStyles";
 import {
   formFieldStyles,
   modalStyleUtils,
@@ -41,14 +41,14 @@ import { SecureComponent } from "../../../../common/SecureComponent";
 import TooltipWrapper from "../../Common/TooltipWrapper/TooltipWrapper";
 import AddKeyModal from "./AddKeyModal";
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     ...modalStyleUtils,
     ...formFieldStyles,
   });
 
 interface IEnableBucketEncryptionProps {
-  classes: any;
+  classes?: any;
   open: boolean;
   encryptionEnabled: boolean;
   encryptionCfg: BucketEncryptionInfo | null;
@@ -260,4 +260,4 @@ const EnableBucketEncryption = ({
   );
 };
 
-export default withStyles(styles)(EnableBucketEncryption);
+export default withStyles(EnableBucketEncryption, styles);;

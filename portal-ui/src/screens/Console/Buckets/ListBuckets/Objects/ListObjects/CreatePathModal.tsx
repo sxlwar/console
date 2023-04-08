@@ -14,24 +14,23 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import { Button, CreateNewPathIcon, Grid } from "mds";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, CreateNewPathIcon, Grid } from "mds";
-import ModalWrapper from "../../../../Common/ModalWrapper/ModalWrapper";
 import InputBoxWrapper from "../../../../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
+import ModalWrapper from "../../../../Common/ModalWrapper/ModalWrapper";
+
+import { connect, useSelector } from "react-redux";
+import { encodeURLString } from "../../../../../../common/utils";
 import {
   formFieldStyles,
   modalStyleUtils,
 } from "../../../../Common/FormComponents/common/styleLibrary";
-import { connect, useSelector } from "react-redux";
-import { encodeURLString } from "../../../../../../common/utils";
 
-import { BucketObjectItem } from "./types";
 import { AppState, useAppDispatch } from "../../../../../../store";
 import { setModalErrorSnackMessage } from "../../../../../../systemSlice";
-import makeStyles from "@mui/styles/makeStyles";
+import { makeStyles } from "../../../../../../theme/makeStyles";
+import { BucketObjectItem } from "./types";
 
 interface ICreatePath {
   modalOpen: boolean;
@@ -41,12 +40,10 @@ interface ICreatePath {
   simplePath: string | null;
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    ...modalStyleUtils,
-    ...formFieldStyles,
-  })
-);
+const useStyles = makeStyles()(() => ({
+  ...modalStyleUtils,
+  ...formFieldStyles,
+}));
 
 const CreatePathModal = ({
   modalOpen,
@@ -57,7 +54,7 @@ const CreatePathModal = ({
 }: ICreatePath) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const classes = useStyles();
+  const { classes } = useStyles() as any;
 
   const [pathUrl, setPathUrl] = useState("");
   const [isFormValid, setIsFormValid] = useState<boolean>(false);

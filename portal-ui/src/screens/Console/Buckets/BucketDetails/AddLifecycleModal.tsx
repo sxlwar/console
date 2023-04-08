@@ -18,16 +18,15 @@ import React, { Fragment, useEffect, useState } from "react";
 import get from "lodash/get";
 import { Button, LifecycleConfigIcon, Grid } from "mds";
 import { useSelector } from "react-redux";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
   SelectChangeEvent,
 } from "@mui/material";
-import ProgressBar from '@atlaskit/progress-bar';
+import ProgressBar from "@atlaskit/progress-bar";
 
 import {
   ITierElement,
@@ -55,7 +54,7 @@ import { useAppDispatch } from "../../../../store";
 interface IReplicationModal {
   open: boolean;
   closeModalAndRefresh: (refresh: boolean) => any;
-  classes: any;
+  classes?: any;
   bucketName: string;
 }
 
@@ -64,16 +63,15 @@ export interface ITiersDropDown {
   value: string;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    formFieldRowFilter: {
-      "& .MuiPaper-root": { padding: 0 },
-    },
-    ...spacingUtils,
-    ...modalStyleUtils,
-    ...formFieldStyles,
-    ...createTenantCommon,
-  });
+const styles = () => ({
+  formFieldRowFilter: {
+    "& .MuiPaper-root": { padding: 0 },
+  },
+  ...spacingUtils,
+  ...modalStyleUtils,
+  ...formFieldStyles,
+  ...createTenantCommon,
+});
 
 const AddLifecycleModal = ({
   open,
@@ -415,4 +413,4 @@ const AddLifecycleModal = ({
   );
 };
 
-export default withStyles(styles)(AddLifecycleModal);
+export default withStyles(AddLifecycleModal, styles);

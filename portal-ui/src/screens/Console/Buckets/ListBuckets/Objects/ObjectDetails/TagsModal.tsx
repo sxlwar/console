@@ -17,10 +17,16 @@
 import React, { Fragment, useState } from "react";
 import get from "lodash/get";
 import { useSelector } from "react-redux";
-import { AddNewTagIcon, Button, DisabledIcon, EditTagIcon, Box, Grid } from "mds";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+import {
+  AddNewTagIcon,
+  Button,
+  DisabledIcon,
+  EditTagIcon,
+  Box,
+  Grid,
+} from "mds";
+
+import { withStyles } from "../../../../../../theme/makeStyles";
 import { ErrorResponseHandler } from "../../../../../../common/types";
 import InputBoxWrapper from "../../../../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
 import ModalWrapper from "../../../../Common/ModalWrapper/ModalWrapper";
@@ -47,46 +53,45 @@ interface ITagModal {
   bucketName: string;
   actualInfo: IFileInfo;
   onCloseAndUpdate: (refresh: boolean) => void;
-  classes: any;
+  classes?: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    newTileHeader: {
-      fontSize: 18,
-      fontWeight: "bold",
-      color: "#000",
-      margin: "35px 0",
-      paddingBottom: 15,
-      display: "flex",
-      alignItems: "center",
-      "& > svg": {
-        marginRight: 10,
-      },
+const styles = () => ({
+  newTileHeader: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#000",
+    margin: "35px 0",
+    paddingBottom: 15,
+    display: "flex",
+    alignItems: "center",
+    "& > svg": {
+      marginRight: 10,
     },
-    tagsForLabel: {
-      fontSize: 16,
-      margin: "20px 0 30px",
-      whiteSpace: "nowrap",
-      overflow: "hidden",
-      textOverflow: "ellipsis",
-      width: "100%",
-    },
-    currentTagsContainer: {
-      fontSize: 14,
-      fontWeight: "normal",
-    },
-    noTagsForObject: {
-      color: "#858585",
-    },
-    deleteTag: {
-      color: "#C83B51",
-      marginLeft: 5,
-    },
-    ...formFieldStyles,
-    ...modalStyleUtils,
-    ...spacingUtils,
-  });
+  },
+  tagsForLabel: {
+    fontSize: 16,
+    margin: "20px 0 30px",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    width: "100%",
+  },
+  currentTagsContainer: {
+    fontSize: 14,
+    fontWeight: "normal",
+  },
+  noTagsForObject: {
+    color: "#858585",
+  },
+  deleteTag: {
+    color: "#C83B51",
+    marginLeft: 5,
+  },
+  ...formFieldStyles,
+  ...modalStyleUtils,
+  ...spacingUtils,
+});
 
 const AddTagModal = ({
   modalOpen,
@@ -361,4 +366,4 @@ const AddTagModal = ({
   );
 };
 
-export default withStyles(styles)(AddTagModal);
+export default withStyles(AddTagModal, styles);

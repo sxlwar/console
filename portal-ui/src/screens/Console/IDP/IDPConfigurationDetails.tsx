@@ -16,9 +16,7 @@
 
 import React, { Fragment, useEffect, useState } from "react";
 
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+import { withStyles } from "../../../theme/makeStyles";
 import {
   containerForHeader,
   formFieldStyles,
@@ -55,20 +53,19 @@ type IDPConfigurationDetailsProps = {
   icon: React.ReactNode;
 };
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...formFieldStyles,
-    formFieldRow: {
-      ...formFieldStyles.formFieldRow,
-    },
-    ...modalBasic,
-    pageContainer: {
-      height: "100%",
-    },
-    ...searchField,
+const styles = () => ({
+  ...formFieldStyles,
+  formFieldRow: {
+    ...formFieldStyles.formFieldRow,
+  },
+  ...modalBasic,
+  pageContainer: {
+    height: "100%",
+  },
+  ...searchField,
 
-    ...containerForHeader,
-  });
+  ...containerForHeader,
+});
 
 const IDPConfigurationDetails = ({
   classes,
@@ -423,4 +420,4 @@ const IDPConfigurationDetails = ({
   );
 };
 
-export default withStyles(styles)(IDPConfigurationDetails);
+export default withStyles(IDPConfigurationDetails, styles);

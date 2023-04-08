@@ -16,9 +16,7 @@
 
 import React, { useEffect, useState } from "react";
 
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+import { withStyles } from "../../../../../theme/makeStyles";
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 import { IPieChartConfiguration } from "./types";
 import { widgetCommon } from "../../../Common/FormComponents/common/styleLibrary";
@@ -34,7 +32,7 @@ import { AppState, useAppDispatch } from "../../../../../store";
 import { useSelector } from "react-redux";
 
 interface IPieChartWidget {
-  classes: any;
+  classes?: any;
   title: string;
   panelItem: IDashboardPanel;
   timeStart: any;
@@ -44,30 +42,29 @@ interface IPieChartWidget {
   apiPrefix: string;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...widgetCommon,
-    loadingAlign: {
-      width: "100%",
-      paddingTop: "15px",
-      textAlign: "center",
-      margin: "auto",
+const styles = () => ({
+  ...widgetCommon,
+  loadingAlign: {
+    width: "100%",
+    paddingTop: "15px",
+    textAlign: "center",
+    margin: "auto",
+  },
+  pieChartLabel: {
+    fontSize: 60,
+    color: "#07193E",
+    fontWeight: "bold",
+    width: "100%",
+    "& .unitText": {
+      color: "#767676",
+      fontSize: 12,
     },
-    pieChartLabel: {
-      fontSize: 60,
-      color: "#07193E",
-      fontWeight: "bold",
-      width: "100%",
-      "& .unitText": {
-        color: "#767676",
-        fontSize: 12,
-      },
-    },
-    chartContainer: {
-      width: "100%",
-      height: 140,
-    },
-  });
+  },
+  chartContainer: {
+    width: "100%",
+    height: 140,
+  },
+});
 
 const PieChartWidget = ({
   classes,
@@ -243,4 +240,4 @@ const PieChartWidget = ({
   );
 };
 
-export default withStyles(styles)(PieChartWidget);
+export default withStyles(PieChartWidget, styles);

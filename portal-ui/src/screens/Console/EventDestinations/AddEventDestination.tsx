@@ -17,9 +17,8 @@
 import React, { Fragment, useCallback, useEffect, useState } from "react";
 
 import get from "lodash/get";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../theme/makeStyles";
 import { BackLink, Button, Grid } from "mds";
 
 import api from "../../../common/api";
@@ -62,52 +61,51 @@ const ConfPostgres = withSuspense(
   React.lazy(() => import("./CustomForms/ConfPostgres"))
 );
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...modalBasic,
-    ...settingsCommon,
-    lambdaNotif: {
-      background:
-        "linear-gradient(90deg, rgba(249,249,250,1) 0%, rgba(250,250,251,1) 68%, rgba(254,254,254,1) 100%)",
-      border: "#E5E5E5 1px solid",
-      borderRadius: 5,
-      height: 80,
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "start",
-      marginBottom: 16,
-      cursor: "pointer",
-      padding: 0,
-      overflow: "hidden",
-    },
-    lambdaNotifIcon: {
-      backgroundColor: "#FEFEFE",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      width: 80,
-      height: 80,
+const styles = () => ({
+  ...modalBasic,
+  ...settingsCommon,
+  lambdaNotif: {
+    background:
+      "linear-gradient(90deg, rgba(249,249,250,1) 0%, rgba(250,250,251,1) 68%, rgba(254,254,254,1) 100%)",
+    border: "#E5E5E5 1px solid",
+    borderRadius: 5,
+    height: 80,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "start",
+    marginBottom: 16,
+    cursor: "pointer",
+    padding: 0,
+    overflow: "hidden",
+  },
+  lambdaNotifIcon: {
+    backgroundColor: "#FEFEFE",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 80,
+    height: 80,
 
-      "& img": {
-        maxWidth: 46,
-        maxHeight: 46,
-      },
+    "& img": {
+      maxWidth: 46,
+      maxHeight: 46,
     },
-    lambdaNotifTitle: {
-      color: "#07193E",
-      fontSize: 16,
-      fontFamily: "Inter,sans-serif",
-      paddingLeft: 18,
-    },
-    formBox: {
-      border: "1px solid #EAEAEA",
-      padding: 15,
-    },
-  });
+  },
+  lambdaNotifTitle: {
+    color: "#07193E",
+    fontSize: 16,
+    fontFamily: "Inter,sans-serif",
+    paddingLeft: 18,
+  },
+  formBox: {
+    border: "1px solid #EAEAEA",
+    padding: 15,
+  },
+});
 
 interface IAddNotificationEndpointProps {
   saveAndRefresh: any;
-  classes: any;
+  classes?: any;
 }
 
 const AddEventDestination = ({
@@ -242,4 +240,4 @@ const AddEventDestination = ({
   );
 };
 
-export default withStyles(styles)(AddEventDestination);
+export default withStyles(AddEventDestination, styles);

@@ -15,14 +15,13 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment } from "react";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../../theme/makeStyles";
 import TextField from "@mui/material/TextField";
 import { searchField } from "../common/styleLibrary";
 
 interface IFilterInputWrapper {
-  classes: any;
+  classes?: any;
   value: string;
   onChange: (txtVar: string) => any;
   label: string;
@@ -31,42 +30,41 @@ interface IFilterInputWrapper {
   name: string;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    searchField: {
-      ...searchField.searchField,
-      height: 30,
-      padding: 0,
-      "& input": {
-        padding: "0 12px",
-        height: 28,
-        fontSize: 12,
-        fontWeight: 600,
-        color: "#393939",
-      },
-      "&.isDisabled": {
-        "&:hover": {
-          borderColor: "#EAEDEE",
-        },
-      },
-      "& input.Mui-disabled": {
-        backgroundColor: "#EAEAEA",
-      },
-    },
-    labelStyle: {
-      color: "#393939",
+const styles = () => ({
+  searchField: {
+    ...searchField.searchField,
+    height: 30,
+    padding: 0,
+    "& input": {
+      padding: "0 12px",
+      height: 28,
       fontSize: 12,
-      marginBottom: 4,
+      fontWeight: 600,
+      color: "#393939",
     },
-    buttonKit: {
-      display: "flex",
-      alignItems: "center",
+    "&.isDisabled": {
+      "&:hover": {
+        borderColor: "#EAEDEE",
+      },
     },
-    fieldContainer: {
-      flexGrow: 1,
-      margin: "0 15px",
+    "& input.Mui-disabled": {
+      backgroundColor: "#EAEAEA",
     },
-  });
+  },
+  labelStyle: {
+    color: "#393939",
+    fontSize: 12,
+    marginBottom: 4,
+  },
+  buttonKit: {
+    display: "flex",
+    alignItems: "center",
+  },
+  fieldContainer: {
+    flexGrow: 1,
+    margin: "0 15px",
+  },
+});
 
 const FilterInputWrapper = ({
   classes,
@@ -102,4 +100,4 @@ const FilterInputWrapper = ({
   );
 };
 
-export default withStyles(styles)(FilterInputWrapper);
+export default withStyles(FilterInputWrapper, styles);

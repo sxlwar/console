@@ -17,10 +17,10 @@
 import React, { useState } from "react";
 import ModalWrapper from "../../Common/ModalWrapper/ModalWrapper";
 import { Grid } from "mds";
-import { Theme } from "@mui/material/styles";
+
 import { AddAccessRuleIcon, Button } from "mds";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import {
   modalStyleUtils,
   spacingUtils,
@@ -33,7 +33,7 @@ import { setErrorSnackMessage } from "../../../../systemSlice";
 import { useAppDispatch } from "../../../../store";
 
 interface IEditAccessRule {
-  classes: any;
+  classes?: any;
   modalOpen: boolean;
   onClose: () => any;
   bucket: string;
@@ -41,8 +41,8 @@ interface IEditAccessRule {
   initial: string;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     ...modalStyleUtils,
     ...spacingUtils,
   });
@@ -127,4 +127,4 @@ const EditAccessRule = ({
   );
 };
 
-export default withStyles(styles)(EditAccessRule);
+export default withStyles(EditAccessRule, styles);;

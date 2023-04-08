@@ -15,15 +15,14 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment } from "react";
-import { withStyles } from "@mui/styles";
+import { withStyles } from "../../../../../../theme/makeStyles";
 import { Table, TableBody, TableCell, TableRow } from "@mui/material";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
+
 import {
   detailsPanel,
   spacingUtils,
 } from "../../../../Common/FormComponents/common/styleLibrary";
-import { Box, Grid } from 'mds';
+import { Box, Grid } from "mds";
 
 interface IObjectMetadata {
   metaData: any;
@@ -31,14 +30,13 @@ interface IObjectMetadata {
   linear?: boolean;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    titleItem: {
-      width: "35%",
-    },
-    ...spacingUtils,
-    ...detailsPanel,
-  });
+const styles = () => ({
+  titleItem: {
+    width: "35%",
+  },
+  ...spacingUtils,
+  ...detailsPanel,
+});
 
 const ObjectMetaData = ({
   metaData,
@@ -118,4 +116,4 @@ const ObjectMetaData = ({
   );
 };
 
-export default withStyles(styles)(ObjectMetaData);
+export default withStyles(ObjectMetaData, styles);

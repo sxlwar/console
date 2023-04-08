@@ -16,9 +16,8 @@
 
 import React, { useEffect, useState } from "react";
 import { DialogContentText } from "@mui/material";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import { modalBasic } from "../../Common/FormComponents/common/styleLibrary";
 import { ErrorResponseHandler } from "../../../../common/types";
 
@@ -36,10 +35,9 @@ interface IDeleteLifecycleRule {
   id: string;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...modalBasic,
-  });
+const styles = () => ({
+  root: modalBasic,
+});
 
 const DeleteBucketLifecycleRule = ({
   onCloseAndRefresh,
@@ -87,4 +85,4 @@ const DeleteBucketLifecycleRule = ({
   );
 };
 
-export default withStyles(styles)(DeleteBucketLifecycleRule);
+export default withStyles(DeleteBucketLifecycleRule, styles);

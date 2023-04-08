@@ -22,11 +22,11 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import ProgressBar from '@atlaskit/progress-bar';
-import { Theme } from "@mui/material/styles";
+
 import { Button, Grid, LifecycleConfigIcon } from "mds";
 import get from "lodash/get";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import {
   createTenantCommon,
   formFieldStyles,
@@ -52,8 +52,8 @@ import RadioGroupSelector from "../../Common/FormComponents/RadioGroupSelector/R
 import { setModalErrorSnackMessage } from "../../../../systemSlice";
 import { useAppDispatch } from "../../../../store";
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     formFieldRowAccordion: {
       "& .MuiPaper-root": { padding: 0 },
     },
@@ -64,7 +64,7 @@ const styles = (theme: Theme) =>
   });
 
 interface IAddUserContentProps {
-  classes: any;
+  classes?: any;
   closeModalAndRefresh: (reload: boolean) => void;
   selectedBucket: string;
   lifecycleRule: LifeCycleItem;
@@ -553,4 +553,4 @@ const EditLifecycleConfiguration = ({
   );
 };
 
-export default withStyles(styles)(EditLifecycleConfiguration);
+export default withStyles(EditLifecycleConfiguration, styles);;

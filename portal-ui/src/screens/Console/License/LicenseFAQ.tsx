@@ -15,9 +15,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment } from "react";
-import makeStyles from "@mui/styles/makeStyles";
+import { makeStyles } from "../../../theme/makeStyles";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()(() => ({
   linkText: {
     color: "#2781B0",
     fontWeight: 600,
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LicenseFAQ = () => {
-  const classes = useStyles();
+  const { classes } = useStyles();
   return (
     <Fragment>
       <h2>What is the GNU AGPL v3?</h2>

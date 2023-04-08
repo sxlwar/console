@@ -14,8 +14,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { Theme } from "@mui/material";
-import { createStyles, withStyles } from "@mui/styles";
+import { withStyles } from "../../../theme/makeStyles";
 import { Grid, AddIcon, Button, RefreshIcon, UploadIcon } from "mds";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -47,14 +46,13 @@ const DeleteKMSModal = withSuspense(
   React.lazy(() => import("./DeleteKMSModal"))
 );
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...searchField,
-    ...containerForHeader,
-  });
+const styles = () => ({
+  ...searchField,
+  ...containerForHeader,
+});
 
 interface IKeysProps {
-  classes: any;
+  classes?: any;
 }
 
 const ListKeys = ({ classes }: IKeysProps) => {
@@ -237,4 +235,4 @@ const ListKeys = ({ classes }: IKeysProps) => {
   );
 };
 
-export default withStyles(styles)(ListKeys);
+export default withStyles(ListKeys, styles);

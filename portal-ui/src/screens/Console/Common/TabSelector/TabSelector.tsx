@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment } from "react";
-import makeStyles from "@mui/styles/makeStyles";
+import { makeStyles } from "../../../../theme/makeStyles";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { ITabOption } from "./types";
@@ -26,7 +26,7 @@ interface ITabSelector {
   tabOptions: ITabOption[];
 }
 
-const tabSubStyles = makeStyles({
+const tabSubStyles = makeStyles()({
   tabRoot: {
     height: "40px",
     borderBottom: "1px solid #eaeaea",
@@ -69,7 +69,7 @@ const tabSubStyles = makeStyles({
 });
 
 const TabSelector = ({ selectedTab, onChange, tabOptions }: ITabSelector) => {
-  const subStyles = tabSubStyles();
+  const { classes } = tabSubStyles();
 
   return (
     <Fragment>
@@ -84,9 +84,9 @@ const TabSelector = ({ selectedTab, onChange, tabOptions }: ITabSelector) => {
           onChange(newValue);
         }}
         classes={{
-          root: subStyles.tabRoot,
-          indicator: subStyles.indicator,
-          scroller: subStyles.scroller,
+          root: classes.tabRoot,
+          indicator: classes.indicator,
+          scroller: classes.scroller,
         }}
       >
         {tabOptions.map((option, index) => {
@@ -106,8 +106,8 @@ const TabSelector = ({ selectedTab, onChange, tabOptions }: ITabSelector) => {
             <Tab
               {...tabOptions}
               classes={{
-                root: subStyles.root,
-                selected: subStyles.selected,
+                root: classes.root,
+                selected: classes.selected,
               }}
               id={`simple-tab-${index}`}
               aria-controls={`simple-tabpanel-${index}`}

@@ -16,8 +16,8 @@
 import React from "react";
 import isString from "lodash/isString";
 import { Link } from "react-router-dom";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import { Tooltip } from "@mui/material";
 import { IconButton } from 'mds';
 import CloudIcon from "./TableActionIcons/CloudIcon";
@@ -34,7 +34,7 @@ import {
 } from "mds";
 
 const styles = () =>
-  createStyles({
+  ({
     spacing: {
       margin: "0 8px",
     },
@@ -57,7 +57,7 @@ interface IActionButton {
   sendOnlyId?: boolean;
   idField: string;
   disabled: boolean;
-  classes: any;
+  classes?: any;
 }
 
 const defineIcon = (type: string, selected: boolean) => {
@@ -159,4 +159,4 @@ const TableActionButton = ({
   return null;
 };
 
-export default withStyles(styles)(TableActionButton);
+export default withStyles(TableActionButton, styles);;

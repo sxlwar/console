@@ -15,9 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import React from "react";
 import { Checkbox, InputLabel, Tooltip } from "@mui/material";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../../theme/makeStyles";
 import {
   checkboxIcons,
   fieldBasic,
@@ -27,7 +26,7 @@ import { HelpIcon, Grid } from "mds";
 
 interface CheckBoxProps {
   label: string;
-  classes: any;
+  classes?: any;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value: string | boolean;
   id: string;
@@ -42,25 +41,24 @@ interface CheckBoxProps {
   className?: string;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...fieldBasic,
-    ...tooltipHelper,
-    ...checkboxIcons,
-    fieldContainer: {
-      ...fieldBasic.fieldContainer,
-      display: "flex",
-      justifyContent: "flex-start",
-      alignItems: "center",
-      margin: "15px 0",
-      marginBottom: 0,
-      flexBasis: "initial",
-      flexWrap: "nowrap",
-    },
-    noTopMargin: {
-      marginTop: 0,
-    },
-  });
+const styles = () => ({
+  ...fieldBasic,
+  ...tooltipHelper,
+  ...checkboxIcons,
+  fieldContainer: {
+    ...fieldBasic.fieldContainer,
+    display: "flex",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    margin: "15px 0",
+    marginBottom: 0,
+    flexBasis: "initial",
+    flexWrap: "nowrap",
+  },
+  noTopMargin: {
+    marginTop: 0,
+  },
+});
 
 const CheckboxWrapper = ({
   label,
@@ -128,4 +126,4 @@ const CheckboxWrapper = ({
   );
 };
 
-export default withStyles(styles)(CheckboxWrapper);
+export default withStyles(CheckboxWrapper, styles);

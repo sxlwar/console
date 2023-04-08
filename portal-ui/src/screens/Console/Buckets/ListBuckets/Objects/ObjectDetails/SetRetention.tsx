@@ -16,9 +16,9 @@
 
 import React, { useEffect, useRef, useState } from "react";
 
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+
+import { withStyles } from "../../../../../../theme/makeStyles";
 import { Button, Grid } from "mds";
 import {
   formFieldStyles,
@@ -38,8 +38,8 @@ import { encodeURLString } from "../../../../../../common/utils";
 import { setModalErrorSnackMessage } from "../../../../../../systemSlice";
 import { useAppDispatch } from "../../../../../../store";
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     ...formFieldStyles,
     ...modalStyleUtils,
     ...spacingUtils,
@@ -61,7 +61,7 @@ const styles = (theme: Theme) =>
   });
 
 interface ISetRetentionProps {
-  classes: any;
+  classes?: any;
   open: boolean;
   closeModalAndRefresh: (updateInfo: boolean) => void;
   objectName: string;
@@ -288,4 +288,4 @@ const SetRetention = ({
   );
 };
 
-export default withStyles(styles)(SetRetention);
+export default withStyles(SetRetention, styles);;

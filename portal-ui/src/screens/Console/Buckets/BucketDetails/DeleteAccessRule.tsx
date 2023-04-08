@@ -14,19 +14,17 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React from "react";
 import { DialogContentText } from "@mui/material";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import { modalBasic } from "../../Common/FormComponents/common/styleLibrary";
 
+import { ConfirmDeleteIcon } from "mds";
 import { ErrorResponseHandler } from "../../../../common/types";
+import { useAppDispatch } from "../../../../store";
+import { setErrorSnackMessage } from "../../../../systemSlice";
 import useApi from "../../Common/Hooks/useApi";
 import ConfirmDialog from "../../Common/ModalWrapper/ConfirmDialog";
-import { ConfirmDeleteIcon } from "mds";
-import { setErrorSnackMessage } from "../../../../systemSlice";
-import { useAppDispatch } from "../../../../store";
 
 interface IDeleteAccessRule {
   modalOpen: boolean;
@@ -35,10 +33,9 @@ interface IDeleteAccessRule {
   toDelete: string;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...modalBasic,
-  });
+const styles = () => ({
+  root: modalBasic,
+});
 
 const DeleteAccessRule = ({
   onClose,
@@ -77,4 +74,4 @@ const DeleteAccessRule = ({
   );
 };
 
-export default withStyles(styles)(DeleteAccessRule);
+export default withStyles(DeleteAccessRule, styles);

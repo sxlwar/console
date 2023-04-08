@@ -14,9 +14,9 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+
+import { withStyles } from "../../../theme/makeStyles";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -34,8 +34,8 @@ import { useAppDispatch } from "../../../store";
 import { setErrorSnackMessage } from "../../../systemSlice";
 import { Box } from "mds";
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     sizedLabel: {
       minWidth: "75px",
     },
@@ -47,7 +47,7 @@ interface IGetApiKeyModalProps {
   open: boolean;
   closeModal: () => void;
   onSet: (apiKey: string) => void;
-  classes: any;
+  classes?: any;
 }
 
 const GetApiKeyModal = ({
@@ -218,4 +218,4 @@ const GetApiKeyModal = ({
   ) : null;
 };
 
-export default withStyles(styles)(GetApiKeyModal);
+export default withStyles(GetApiKeyModal, styles);;

@@ -1,18 +1,16 @@
-import { Theme } from "@mui/material/styles";
 import React from "react";
 
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+import { withStyles } from "../../theme/makeStyles";
+import { Theme } from "../../theme/main";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    errorBlock: {
-      color: theme.palette?.error.main || "#C83B51",
-    },
-  });
+const styles = (theme: Theme) => ({
+  errorBlock: {
+    color: theme.palette?.error.main || "#C83B51",
+  },
+});
 
 interface IErrorBlockProps {
-  classes: any;
+  classes?: any;
   errorMessage: string;
   withBreak?: boolean;
 }
@@ -30,4 +28,4 @@ const ErrorBlock = ({
   );
 };
 
-export default withStyles(styles)(ErrorBlock);
+export default withStyles(ErrorBlock, styles);

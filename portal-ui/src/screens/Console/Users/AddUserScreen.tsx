@@ -15,10 +15,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment } from "react";
-import { Theme } from "@mui/material/styles";
+
 import { BackLink, Button, CreateUserIcon, Grid } from "mds";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../theme/makeStyles";
 import UserSelector from "./UserSelector";
 import PasswordSelector from "./PasswordSelector";
 import { createUserAsync, resetFormAsync } from "./thunk/AddUsersThunk";
@@ -26,7 +26,7 @@ import {
   formFieldStyles,
   modalStyleUtils,
 } from "../Common/FormComponents/common/styleLibrary";
-import ProgressBar from '@atlaskit/progress-bar';
+import ProgressBar from "@atlaskit/progress-bar";
 
 import PageLayout from "../Common/Layout/PageLayout";
 
@@ -49,14 +49,13 @@ import {
 import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
 
 interface IAddUserProps {
-  classes: any;
+  classes?: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...formFieldStyles,
-    ...modalStyleUtils,
-  });
+const styles = () => ({
+  ...formFieldStyles,
+  ...modalStyleUtils,
+});
 
 const AddUser = ({ classes }: IAddUserProps) => {
   const dispatch = useAppDispatch();
@@ -181,4 +180,4 @@ const AddUser = ({ classes }: IAddUserProps) => {
   );
 };
 
-export default withStyles(styles)(AddUser);
+export default withStyles(AddUser, styles);

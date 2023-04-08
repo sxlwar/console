@@ -22,9 +22,8 @@ import React, {
 } from "react";
 import clsx from "clsx";
 import { SelectChangeEvent } from "@mui/material";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../../theme/makeStyles";
 import InputLabel from "@mui/material/InputLabel";
 import Tooltip from "@mui/material/Tooltip";
 import FormControl from "@mui/material/FormControl";
@@ -36,52 +35,49 @@ import { HelpIcon, Grid } from "mds";
 import FormSwitchWrapper from "../FormSwitchWrapper/FormSwitchWrapper";
 import { days, months, validDate, years } from "./utils";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    dateInput: {
-      "&:not(:last-child)": {
-        marginRight: 22,
-      },
+const styles = () => ({
+  dateInput: {
+    "&:not(:last-child)": {
+      marginRight: 22,
     },
-    ...fieldBasic,
-    ...tooltipHelper,
-    labelContainer: {
-      flex: 1,
-    },
-    fieldContainer: {
-      ...fieldBasic.fieldContainer,
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      paddingBottom: 10,
-      marginTop: 11,
-      marginBottom: 6,
-    },
-    fieldContainerBorder: {
-      borderBottom: "#9c9c9c 1px solid",
-      marginBottom: 20,
-    },
-  });
+  },
+  ...fieldBasic,
+  ...tooltipHelper,
+  labelContainer: {
+    flex: 1,
+  },
+  fieldContainer: {
+    ...fieldBasic.fieldContainer,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingBottom: 10,
+    marginTop: 11,
+    marginBottom: 6,
+  },
+  fieldContainerBorder: {
+    borderBottom: "#9c9c9c 1px solid",
+    marginBottom: 20,
+  },
+});
 
-const SelectStyled = withStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      "& .MuiSelect-icon": {
-        color: "#000",
-        "&.Mui-disabled": {
-          color: "#9c9c9c",
-        },
+const SelectStyled = withStyles(InputBase, () => ({
+  root: {
+    "& .MuiSelect-icon": {
+      color: "#000",
+      "&.Mui-disabled": {
+        color: "#9c9c9c",
       },
     },
-    input: {
-      borderBottom: 0,
-      fontSize: 12,
-    },
-  })
-)(InputBase);
+  },
+  input: {
+    borderBottom: 0,
+    fontSize: 12,
+  },
+}));
 
 interface IDateSelectorProps {
-  classes: any;
+  classes?: any;
   id: string;
   label: string;
   disableOptions?: boolean;
@@ -278,4 +274,4 @@ const DateSelector = forwardRef(
   }
 );
 
-export default withStyles(styles)(DateSelector);
+export default withStyles(DateSelector, styles);

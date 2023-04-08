@@ -17,9 +17,8 @@
 import React, { useEffect, useState } from "react";
 
 import { Button, ChangeAccessPolicyIcon, Grid } from "mds";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../theme/makeStyles";
 import {
   formFieldStyles,
   modalStyleUtils,
@@ -34,28 +33,23 @@ import { encodeURLString } from "../../../common/utils";
 import { setModalErrorSnackMessage } from "../../../systemSlice";
 import { useAppDispatch } from "../../../store";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    codeMirrorContainer: {
-      marginBottom: 20,
-      "& label": {
-        marginBottom: ".5rem",
-      },
-      "& label + div": {
-        display: "none",
-      },
+const styles = () => ({
+  codeMirrorContainer: {
+    marginBottom: 20,
+    "& label": {
+      marginBottom: ".5rem",
     },
-    ...formFieldStyles,
-    ...modalStyleUtils,
-    ...spacingUtils,
-  });
-createStyles({
+    "& label + div": {
+      display: "none",
+    },
+  },
+  ...formFieldStyles,
   ...modalStyleUtils,
   ...spacingUtils,
 });
 
 interface IServiceAccountPolicyProps {
-  classes: any;
+  classes?: any;
   open: boolean;
   selectedAccessKey: string | null;
   closeModalAndRefresh: () => void;
@@ -161,4 +155,4 @@ const ServiceAccountPolicy = ({
   );
 };
 
-export default withStyles(styles)(ServiceAccountPolicy);
+export default withStyles(ServiceAccountPolicy, styles);

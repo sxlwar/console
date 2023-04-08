@@ -15,15 +15,14 @@
 // along with this program.  If not, see <http://www.gnu.org/APIKeys/>.
 
 import React, { Fragment, useCallback, useEffect, useState } from "react";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
+
 import {
   actionsTray,
   containerForHeader,
   searchField,
   spacingUtils,
 } from "../Common/FormComponents/common/styleLibrary";
-import withStyles from "@mui/styles/withStyles";
+import { withStyles } from "../../../theme/makeStyles";
 import { Box } from "mds";
 import PageLayout from "../Common/Layout/PageLayout";
 import api from "../../../common/api";
@@ -38,16 +37,15 @@ import ApiKeyRegister from "./ApiKeyRegister";
 import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
 
 interface IRegister {
-  classes: any;
+  classes?: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...actionsTray,
-    ...searchField,
-    ...spacingUtils,
-    ...containerForHeader,
-  });
+const styles = () => ({
+  ...actionsTray,
+  ...searchField,
+  ...spacingUtils,
+  ...containerForHeader,
+});
 
 const RegisterOperator = ({ classes }: IRegister) => {
   const [apiKeyRegistered, setAPIKeyRegistered] = useState<boolean>(false);
@@ -121,4 +119,4 @@ const RegisterOperator = ({ classes }: IRegister) => {
   );
 };
 
-export default withStyles(styles)(RegisterOperator);
+export default withStyles(RegisterOperator, styles);

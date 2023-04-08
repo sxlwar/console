@@ -17,11 +17,10 @@
 import React, { Fragment, useEffect, useState } from "react";
 import get from "lodash/get";
 import { useSelector } from "react-redux";
-import { withStyles } from "@mui/styles";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
+import { withStyles } from "../../../../../../theme/makeStyles";
+
 import { SelectChangeEvent } from "@mui/material";
-import ProgressBar from '@atlaskit/progress-bar';
+import ProgressBar from "@atlaskit/progress-bar";
 import ShareFile from "./ShareFile";
 import {
   actionsTray,
@@ -81,64 +80,63 @@ import {
 import { List, ListRowProps } from "react-virtualized";
 import TooltipWrapper from "../../../../Common/TooltipWrapper/TooltipWrapper";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    versionsContainer: {
-      padding: 10,
-      "@media (max-width: 799px)": {
-        minHeight: 800,
-      },
+const styles = () => ({
+  versionsContainer: {
+    padding: 10,
+    "@media (max-width: 799px)": {
+      minHeight: 800,
     },
-    noBottomBorder: {
-      borderBottom: 0,
+  },
+  noBottomBorder: {
+    borderBottom: 0,
+  },
+  versionsVirtualPanel: {
+    flexGrow: 1,
+    height: "calc(100% - 120px)",
+    overflow: "auto",
+    "@media (max-width: 799px)": {
+      height: 600,
     },
-    versionsVirtualPanel: {
-      flexGrow: 1,
-      height: "calc(100% - 120px)",
-      overflow: "auto",
-      "@media (max-width: 799px)": {
-        height: 600,
-      },
+  },
+  screenTitleContainer: {
+    position: "relative",
+    "&::before": {
+      content: "' '",
+      display: "block",
+      position: "absolute",
+      width: "2px",
+      backgroundColor: "#F8F8F8",
+      left: "24px",
+      height: "40px",
+      bottom: 0,
     },
-    screenTitleContainer: {
-      position: "relative",
+    "@media (max-width: 799px)": {
       "&::before": {
-        content: "' '",
-        display: "block",
-        position: "absolute",
-        width: "2px",
-        backgroundColor: "#F8F8F8",
-        left: "24px",
-        height: "40px",
-        bottom: 0,
-      },
-      "@media (max-width: 799px)": {
-        "&::before": {
-          display: "none",
-        },
-      },
-    },
-    sortByLabel: {
-      color: "#838383",
-      fontWeight: "bold",
-      whiteSpace: "nowrap",
-      marginRight: 12,
-      fontSize: 14,
-      "@media (max-width: 600px)": {
         display: "none",
       },
     },
-    ...actionsTray,
-    ...tableStyles,
-    ...spacingUtils,
-    ...textStyleUtils,
-    ...objectBrowserCommon,
-    ...objectBrowserExtras,
-    ...containerForHeader,
-  });
+  },
+  sortByLabel: {
+    color: "#838383",
+    fontWeight: "bold",
+    whiteSpace: "nowrap",
+    marginRight: 12,
+    fontSize: 14,
+    "@media (max-width: 600px)": {
+      display: "none",
+    },
+  },
+  ...actionsTray,
+  ...tableStyles,
+  ...spacingUtils,
+  ...textStyleUtils,
+  ...objectBrowserCommon,
+  ...objectBrowserExtras,
+  ...containerForHeader,
+});
 
 interface IVersionsNavigatorProps {
-  classes: any;
+  classes?: any;
   internalPaths: string;
   bucketName: string;
 }
@@ -631,4 +629,4 @@ const VersionsNavigator = ({
   );
 };
 
-export default withStyles(styles)(VersionsNavigator);
+export default withStyles(VersionsNavigator, styles);

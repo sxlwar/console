@@ -15,10 +15,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
+
+
 import { ClosePanelIcon, IconButton, Grid } from "mds";
-import makeStyles from "@mui/styles/makeStyles";
+import { makeStyles } from "../../../../../../theme/makeStyles";
 
 interface IDetailsListPanel {
   open: boolean;
@@ -27,8 +27,8 @@ interface IDetailsListPanel {
   children: React.ReactNode;
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+const useStyles = makeStyles()(() =>
+  ({
     detailsList: {
       borderColor: "#EAEDEE",
       borderWidth: 0,
@@ -74,7 +74,7 @@ const DetailsListPanel = ({
   className = "",
   children,
 }: IDetailsListPanel) => {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   return (
     <Grid

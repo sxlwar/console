@@ -17,10 +17,9 @@
 import React, { useEffect, useState } from "react";
 
 import { DialogContentText } from "@mui/material";
-import ProgressBar from '@atlaskit/progress-bar';
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+import ProgressBar from "@atlaskit/progress-bar";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import { deleteDialogStyles } from "../../Common/FormComponents/common/styleLibrary";
 
 import { ErrorResponseHandler } from "../../../../common/types";
@@ -30,18 +29,17 @@ import { ConfirmDeleteIcon } from "mds";
 import { setErrorSnackMessage } from "../../../../systemSlice";
 import { useAppDispatch } from "../../../../store";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    wrapText: {
-      maxWidth: "200px",
-      whiteSpace: "normal",
-      wordWrap: "break-word",
-    },
-    ...deleteDialogStyles,
-  });
+const styles = () => ({
+  wrapText: {
+    maxWidth: "200px",
+    whiteSpace: "normal",
+    wordWrap: "break-word",
+  },
+  ...deleteDialogStyles,
+});
 
 interface IResetConfiguration {
-  classes: any;
+  classes?: any;
   configurationName: string;
   closeResetModalAndRefresh: (reloadConfiguration: boolean) => void;
 
@@ -104,4 +102,4 @@ const ResetConfigurationModal = ({
   );
 };
 
-export default withStyles(styles)(ResetConfigurationModal);
+export default withStyles(ResetConfigurationModal, styles);

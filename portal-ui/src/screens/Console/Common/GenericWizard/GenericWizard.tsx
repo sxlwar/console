@@ -15,94 +15,92 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useState } from "react";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import { IWizardMain } from "./types";
 import WizardPage from "./WizardPage";
 import { List } from "@mui/material";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import { Grid } from 'mds';
+import { Grid } from "mds";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    wizFromContainer: {},
-    wizFromModal: {
-      position: "relative",
-    },
-    modalWizardSteps: {
-      padding: 5,
-      borderBottom: "#eaeaea 1px solid",
-      "& ul": {
-        padding: 0,
-        marginTop: 0,
-        display: "flex",
-        justifyContent: "space-evenly",
+const styles = () => ({
+  wizFromContainer: {},
+  wizFromModal: {
+    position: "relative",
+  },
+  modalWizardSteps: {
+    padding: 5,
+    borderBottom: "#eaeaea 1px solid",
+    "& ul": {
+      padding: 0,
+      marginTop: 0,
+      display: "flex",
+      justifyContent: "space-evenly",
 
-        "& li": {
-          listStyle: "lower-roman",
-          "&::marker": {
-            paddingLeft: 15,
-          },
+      "& li": {
+        listStyle: "lower-roman",
+        "&::marker": {
+          paddingLeft: 15,
         },
       },
     },
-    buttonList: {
-      backgroundColor: "transparent",
+  },
+  buttonList: {
+    backgroundColor: "transparent",
+    border: "none",
+    cursor: "pointer",
+    "&:not(:disabled):hover": {
+      textDecoration: "underline",
+    },
+    "&:selected, &:active, &:focus, &:focus:active": {
       border: "none",
-      cursor: "pointer",
-      "&:not(:disabled):hover": {
-        textDecoration: "underline",
-      },
-      "&:selected, &:active, &:focus, &:focus:active": {
-        border: "none",
-        outline: 0,
-        boxShadow: "none",
-      },
+      outline: 0,
+      boxShadow: "none",
     },
-    paddedContentGrid: {
-      marginTop: 8,
-      padding: "0 10px",
-      minHeight: 400,
-    },
-    stepsLabel: {
-      fontSize: 20,
-      color: "#393939",
-      fontWeight: 600,
-      margin: "15px 12px",
-      "&.stepsModalTitle": {
-        textAlign: "center",
-        width: "100%",
-        marginTop: 0,
-        marginBottom: 10,
-      },
-    },
-    stepsMasterContainer: {
-      position: "sticky",
-      top: 0,
-      backgroundColor: "#FFFFFF",
+  },
+  paddedContentGrid: {
+    marginTop: 8,
+    padding: "0 10px",
+    minHeight: 400,
+  },
+  stepsLabel: {
+    fontSize: 20,
+    color: "#393939",
+    fontWeight: 600,
+    margin: "15px 12px",
+    "&.stepsModalTitle": {
+      textAlign: "center",
       width: "100%",
-      maxHeight: 90,
+      marginTop: 0,
+      marginBottom: 10,
     },
-    verticalSteps: {
-      borderRight: "1px solid #E5E5E5",
-      background: "#F8F8F8",
+  },
+  stepsMasterContainer: {
+    position: "sticky",
+    top: 0,
+    backgroundColor: "#FFFFFF",
+    width: "100%",
+    maxHeight: 90,
+  },
+  verticalSteps: {
+    borderRight: "1px solid #E5E5E5",
+    background: "#F8F8F8",
+  },
+  stepsContainer: {
+    paddingTop: 0,
+    "& .MuiButtonBase-root.Mui-selected": {
+      background: "#E5E5E5",
     },
-    stepsContainer: {
-      paddingTop: 0,
-      "& .MuiButtonBase-root.Mui-selected": {
-        background: "#E5E5E5",
-      },
+  },
+  stepItem: {
+    minHeight: 60,
+    borderBottom: "1px solid #E5E5E5",
+    "&:hover": {
+      background: "rgba(247,247,247,0.7)",
     },
-    stepItem: {
-      minHeight: 60,
-      borderBottom: "1px solid #E5E5E5",
-      "&:hover": {
-        background: "rgba(247,247,247,0.7)",
-      },
-    },
-  });
+  },
+});
 
 const GenericWizard = ({
   classes,
@@ -254,4 +252,4 @@ const GenericWizard = ({
   );
 };
 
-export default withStyles(styles)(GenericWizard);
+export default withStyles(GenericWizard, styles);

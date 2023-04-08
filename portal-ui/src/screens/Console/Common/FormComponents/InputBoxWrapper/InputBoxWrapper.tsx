@@ -14,20 +14,13 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import React, { ClipboardEvent, useState } from "react";
-import {
-  InputLabel,
-  TextField,
-  TextFieldProps,
-  Tooltip,
-} from "@mui/material";
+import { InputLabel, TextField, TextFieldProps, Tooltip } from "@mui/material";
 import { OutlinedInputProps } from "@mui/material/OutlinedInput";
 import { InputProps as StandardInputProps } from "@mui/material/Input";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import makeStyles from "@mui/styles/makeStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { makeStyles, withStyles } from "../../../../../theme/makeStyles";
 import {
   fieldBasic,
   inputFieldStyles,
@@ -38,7 +31,7 @@ import clsx from "clsx";
 
 interface InputBoxProps {
   label: string;
-  classes: any;
+  classes?: any;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyPress?: (e: any) => void;
   onFocus?: () => void;
@@ -68,33 +61,30 @@ interface InputBoxProps {
   className?: string;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...fieldBasic,
-    ...tooltipHelper,
-    textBoxContainer: {
-      flexGrow: 1,
-      position: "relative",
+const styles = () => ({
+  ...fieldBasic,
+  ...tooltipHelper,
+  textBoxContainer: {
+    flexGrow: 1,
+    position: "relative",
+  },
+  overlayAction: {
+    position: "absolute",
+    right: 5,
+    top: 6,
+    "& svg": {
+      maxWidth: 15,
+      maxHeight: 15,
     },
-    overlayAction: {
-      position: "absolute",
-      right: 5,
-      top: 6,
-      "& svg": {
-        maxWidth: 15,
-        maxHeight: 15,
-      },
-      "&.withLabel": {
-        top: 5,
-      },
+    "&.withLabel": {
+      top: 5,
     },
-  });
+  },
+});
 
-const inputStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    ...inputFieldStyles,
-  })
-);
+const inputStyles = makeStyles()((theme) => ({
+  ...inputFieldStyles,
+}));
 
 function InputField(props: TextFieldProps) {
   const classes = inputStyles();
@@ -254,4 +244,4 @@ const InputBoxWrapper = ({
   );
 };
 
-export default withStyles(styles)(InputBoxWrapper);
+export default withStyles(InputBoxWrapper, styles);

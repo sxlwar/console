@@ -25,9 +25,8 @@ import {
   YAxis,
 } from "recharts";
 import { useMediaQuery } from "@mui/material";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../../theme/makeStyles";
 import { ILinearGraphConfiguration } from "./types";
 import { widgetCommon } from "../../../Common/FormComponents/common/styleLibrary";
 import { IDashboardPanel } from "../types";
@@ -45,7 +44,7 @@ import { useSelector } from "react-redux";
 import { Box } from "mds";
 
 interface ILinearGraphWidget {
-  classes: any;
+  classes?: any;
   title: string;
   panelItem: IDashboardPanel;
   timeStart: any;
@@ -59,36 +58,35 @@ interface ILinearGraphWidget {
   zoomActivated?: boolean;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...widgetCommon,
-    chartCont: {
-      position: "relative",
-      height: 140,
-      width: "100%",
-    },
-    legendChart: {
-      display: "flex",
-      flexDirection: "column",
-      flex: "0 1 auto",
-      maxHeight: 130,
-      margin: 0,
-      overflowY: "auto",
-      position: "relative",
-      textAlign: "center",
-      width: "100%",
-      justifyContent: "flex-start",
-      color: "#404143",
-      fontWeight: "bold",
-      fontSize: 12,
-    },
-    loadingAlign: {
-      width: 40,
-      height: 40,
-      textAlign: "center",
-      margin: "15px auto",
-    },
-  });
+const styles = () => ({
+  ...widgetCommon,
+  chartCont: {
+    position: "relative",
+    height: 140,
+    width: "100%",
+  },
+  legendChart: {
+    display: "flex",
+    flexDirection: "column",
+    flex: "0 1 auto",
+    maxHeight: 130,
+    margin: 0,
+    overflowY: "auto",
+    position: "relative",
+    textAlign: "center",
+    width: "100%",
+    justifyContent: "flex-start",
+    color: "#404143",
+    fontWeight: "bold",
+    fontSize: 12,
+  },
+  loadingAlign: {
+    width: 40,
+    height: 40,
+    textAlign: "center",
+    margin: "15px auto",
+  },
+});
 
 const LinearGraphWidget = ({
   classes,
@@ -240,7 +238,11 @@ const LinearGraphWidget = ({
           >
             {hover && <ExpandGraphLink panelItem={panelItem} />}
           </Grid>
-          <Grid item xs={1} style={{display: 'flex', justifyContent: 'flex-end'}}>
+          <Grid
+            item
+            xs={1}
+            style={{ display: "flex", justifyContent: "flex-end" }}
+          >
             <DownloadWidgetDataButton
               title={title}
               componentRef={componentRef}
@@ -398,4 +400,4 @@ const LinearGraphWidget = ({
   );
 };
 
-export default withStyles(styles)(LinearGraphWidget);
+export default withStyles(LinearGraphWidget, styles);

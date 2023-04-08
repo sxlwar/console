@@ -1,6 +1,4 @@
-import { createTheme } from "@mui/material";
-
-const theme = createTheme({
+const theme = {
   palette: {
     primary: {
       light: "#073052",
@@ -124,17 +122,181 @@ const theme = createTheme({
   colors: {
     link: "#2781B0",
   },
-});
+};
+
+interface Colors {
+  link: string;
+}
+
+interface Components {
+  MuiButton: MuiButton;
+  MuiPaper: MuiPaper;
+  MuiListItem: MuiListItem;
+  MuiTab: MuiTab;
+}
+
+interface MuiTab {
+  styleOverrides: StyleOverrides4;
+}
+
+interface StyleOverrides4 {
+  root: Root3;
+}
+
+interface Root3 {
+  textTransform: string;
+}
+
+interface MuiListItem {
+  styleOverrides: StyleOverrides3;
+}
+
+interface StyleOverrides3 {
+  root: Root2;
+}
+
+interface Root2 {
+  "&.MuiListItem-root.Mui-selected": MuiListItemrootMuiselected;
+}
+
+interface MuiListItemrootMuiselected {
+  background: string;
+  "& .MuiTypography-root": MuiTypographyroot;
+}
+
+interface MuiTypographyroot {
+  fontWeight: string;
+}
+
+interface MuiPaper {
+  styleOverrides: StyleOverrides2;
+}
+
+interface StyleOverrides2 {
+  elevation1: Elevation1;
+}
+
+interface Elevation1 {
+  boxShadow: string;
+  border: string;
+  borderRadius: number;
+}
+
+interface MuiButton {
+  styleOverrides: StyleOverrides;
+}
+
+interface StyleOverrides {
+  root: Root;
+}
+
+interface Root {
+  textTransform: string;
+  borderRadius: number;
+  height: number;
+  padding: string;
+  fontSize: number;
+  fontWeight: number;
+  boxShadow: string;
+  "& .min-icon": Minicon;
+  "&.MuiButton-contained.Mui-disabled": MuiButtoncontainedMuidisabled;
+  "& .MuiButton-iconSizeMedium > *:first-of-type": MuiButtoniconSizeMediumfirstoftype;
+}
+
+interface MuiButtoniconSizeMediumfirstoftype {
+  fontSize: number;
+}
+
+interface MuiButtoncontainedMuidisabled {
+  backgroundColor: string;
+  fontWeight: number;
+  color: string;
+}
+
+interface Minicon {
+  maxHeight: number;
+}
+
+interface Typography {
+  fontFamily: string;
+  h1: H1;
+  h2: H1;
+  h3: H1;
+  h4: H1;
+  h5: H1;
+  h6: H1;
+}
+
+interface H1 {
+  fontWeight: string;
+  color: string;
+}
+
+interface Palette {
+  primary: Primary;
+  secondary: Primary;
+  grey: Grey;
+  background: Background;
+  success: Success;
+  warning: Success;
+  error: Error;
+}
+
+interface Error {
+  light: string;
+  main: string;
+  contrastText: string;
+}
+
+interface Success {
+  main: string;
+}
+
+interface Background {
+  default: string;
+}
+
+interface Grey {
+  "100": string;
+  "200": string;
+  "300": string;
+  "400": string;
+  "500": string;
+  "600": string;
+  "700": string;
+  "800": string;
+  "900": string;
+}
+
+interface Primary {
+  light: string;
+  main: string;
+  dark: string;
+  contrastText: string;
+}
+
+export interface Theme {
+  palette: Palette;
+  typography: Typography;
+  components: Components;
+  colors: Colors;
+}
+
+// allow configuration using `createTheme`
+export interface ThemeOptions {
+  colors?: {
+    link?: string;
+  };
+}
 
 declare module "@mui/material/styles" {
-  interface Theme {
-    colors: {
-      link: string;
+  export interface Theme {
+    colors?: {
+      link?: string;
     };
   }
 
-  // allow configuration using `createTheme`
-  interface ThemeOptions {
+  export interface ThemeOptions {
     colors?: {
       link?: string;
     };

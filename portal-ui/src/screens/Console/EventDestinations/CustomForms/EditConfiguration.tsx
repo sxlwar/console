@@ -18,9 +18,8 @@ import React, { Fragment, useCallback, useEffect, useState } from "react";
 import { Button, Loader } from "mds";
 import { useLocation, useNavigate } from "react-router-dom";
 import get from "lodash/get";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import { Box, Grid } from "mds";
 import api from "../../../../common/api";
 import ConfTargetGeneric from "../ConfTargetGeneric";
@@ -53,20 +52,19 @@ import { AppState, useAppDispatch } from "../../../../store";
 import WebhookSettings from "../WebhookSettings/WebhookSettings";
 import { useSelector } from "react-redux";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...fieldBasic,
-    ...settingsCommon,
-    settingsFormContainer: {
-      display: "grid",
-      gridTemplateColumns: "1fr",
-      gridGap: "10px",
-    },
-  });
+const styles = () => ({
+  ...fieldBasic,
+  ...settingsCommon,
+  settingsFormContainer: {
+    display: "grid",
+    gridTemplateColumns: "1fr",
+    gridGap: "10px",
+  },
+});
 
 interface IAddNotificationEndpointProps {
   selectedConfiguration: IConfigurationElement;
-  classes: any;
+  classes?: any;
   className?: string;
 }
 
@@ -281,4 +279,4 @@ const EditConfiguration = ({
   );
 };
 
-export default withStyles(styles)(EditConfiguration);
+export default withStyles(EditConfiguration, styles);

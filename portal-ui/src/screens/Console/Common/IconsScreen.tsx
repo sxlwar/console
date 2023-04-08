@@ -16,9 +16,9 @@
 
 import React, { useState } from "react";
 import { containerForHeader } from "../Common/FormComponents/common/styleLibrary";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+
+import { withStyles } from "../../../theme/makeStyles";
 import clsx from "clsx";
 import {
   FormControl,
@@ -33,11 +33,11 @@ import * as micons from "mds";
 import { Loader, Grid } from "mds";
 
 interface IIconsScreenSimple {
-  classes: any;
+  classes?: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     ...containerForHeader,
     root: {
       fontSize: 12,
@@ -1313,4 +1313,4 @@ const IconsScreen = ({ classes }: IIconsScreenSimple) => {
   );
 };
 
-export default withStyles(styles)(IconsScreen);
+export default withStyles(IconsScreen, styles);;

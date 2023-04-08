@@ -16,10 +16,10 @@
 
 import React, { useEffect, useState } from "react";
 import { SelectChangeEvent } from "@mui/material";
-import { Theme } from "@mui/material/styles";
+
 import { Button, ChangeAccessPolicyIcon, Grid } from "mds";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import {
   formFieldStyles,
   modalStyleUtils,
@@ -36,28 +36,23 @@ import { setModalErrorSnackMessage } from "../../../../systemSlice";
 import { useAppDispatch } from "../../../../store";
 import { emptyPolicy } from "../../Policies/utils";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    codeMirrorContainer: {
-      marginBottom: 20,
-      "& label": {
-        marginBottom: ".5rem",
-      },
-      "& label + div": {
-        display: "none",
-      },
+const styles = () => ({
+  codeMirrorContainer: {
+    marginBottom: 20,
+    "& label": {
+      marginBottom: ".5rem",
     },
-    ...formFieldStyles,
-    ...modalStyleUtils,
-    ...spacingUtils,
-  });
-createStyles({
+    "& label + div": {
+      display: "none",
+    },
+  },
+  ...formFieldStyles,
   ...modalStyleUtils,
   ...spacingUtils,
 });
 
 interface ISetAccessPolicyProps {
-  classes: any;
+  classes?: any;
   open: boolean;
   bucketName: string;
   actualPolicy: string;
@@ -194,4 +189,4 @@ const SetAccessPolicy = ({
   );
 };
 
-export default withStyles(styles)(SetAccessPolicy);
+export default withStyles(SetAccessPolicy, styles);

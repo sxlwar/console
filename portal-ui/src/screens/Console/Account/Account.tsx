@@ -25,8 +25,6 @@ import {
 } from "mds";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
 import api from "../../../common/api";
 import { Box, Grid } from "mds";
 import TableWrapper from "../Common/TableWrapper/TableWrapper";
@@ -53,7 +51,7 @@ import { selectSAs } from "../Configurations/utils";
 import DeleteMultipleServiceAccounts from "../Users/DeleteMultipleServiceAccounts";
 import ServiceAccountPolicy from "./ServiceAccountPolicy";
 import { setErrorSnackMessage, setSnackBarMessage } from "../../../systemSlice";
-import makeStyles from "@mui/styles/makeStyles";
+import { makeStyles } from "../../../theme/makeStyles";
 import { selFeatures } from "../consoleSlice";
 import { useAppDispatch } from "../../../store";
 import TooltipWrapper from "../Common/TooltipWrapper/TooltipWrapper";
@@ -63,24 +61,22 @@ const DeleteServiceAccount = withSuspense(
   React.lazy(() => import("./DeleteServiceAccount"))
 );
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    ...actionsTray,
-    ...searchField,
-    searchField: {
-      ...searchField.searchField,
-      marginRight: "auto",
-      maxWidth: 380,
-    },
-    ...tableStyles,
-  })
-);
+const useStyles = makeStyles()(() => ({
+  ...actionsTray,
+  ...searchField,
+  searchField: {
+    ...searchField.searchField,
+    marginRight: "auto",
+    maxWidth: 380,
+  },
+  ...tableStyles,
+}));
 
 const Account = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const classes = useStyles();
+  const { classes } = useStyles() as any;
   const features = useSelector(selFeatures);
 
   const [records, setRecords] = useState<string[]>([]);

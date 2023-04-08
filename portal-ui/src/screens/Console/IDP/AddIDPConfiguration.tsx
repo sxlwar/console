@@ -16,9 +16,7 @@
 
 import React, { useState } from "react";
 
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+import { withStyles } from "../../../theme/makeStyles";
 import { Box, Grid } from "mds";
 import {
   formFieldStyles,
@@ -50,11 +48,10 @@ type AddIDPConfigurationProps = {
   endpoint: string;
 };
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...formFieldStyles,
-    ...modalBasic,
-  });
+const styles = () => ({
+  ...formFieldStyles,
+  ...modalBasic,
+});
 
 const AddIDPConfiguration = ({
   classes,
@@ -189,7 +186,12 @@ const AddIDPConfiguration = ({
                 addRecord(e);
               }}
             >
-              <Grid container rowSpacing={20} columnSpacing={20} sx={{ marginTop: 1 }}>
+              <Grid
+                container
+                rowSpacing={20}
+                columnSpacing={20}
+                sx={{ marginTop: 1 }}
+              >
                 <Grid xs={12} item>
                   {Object.entries(extraFormFields).map(([key, value]) => (
                     <Grid
@@ -240,4 +242,4 @@ const AddIDPConfiguration = ({
   );
 };
 
-export default withStyles(styles)(AddIDPConfiguration);
+export default withStyles(AddIDPConfiguration, styles);

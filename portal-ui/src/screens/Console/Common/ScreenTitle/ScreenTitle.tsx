@@ -16,8 +16,8 @@
 
 import React from "react";
 import { Grid } from "mds";
-import { Theme } from "@mui/material/styles";
-import makeStyles from "@mui/styles/makeStyles";
+
+import { makeStyles } from "../../../../theme/makeStyles";
 
 interface IScreenTitle {
   icon?: any;
@@ -27,7 +27,7 @@ interface IScreenTitle {
   className?: any;
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles()((theme) => ({
   headerBarIcon: {
     marginRight: ".7rem",
     color: theme.palette.primary.main,
@@ -93,7 +93,7 @@ const ScreenTitle = ({
   actions,
   className,
 }: IScreenTitle) => {
-  const classes = useStyles();
+  const { classes } = useStyles();
   return (
     <Grid container>
       <Grid

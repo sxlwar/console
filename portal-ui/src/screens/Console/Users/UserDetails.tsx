@@ -16,84 +16,83 @@
 
 import React, { Fragment, useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Theme } from "@mui/material/styles";
+
 import {
   AddIcon,
   BackLink,
   Button,
+  Grid,
   IAMPoliciesIcon,
   PasswordKeyIcon,
   TrashIcon,
   UsersIcon,
-  Grid
 } from "mds";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
 
+import { withStyles } from "../../../theme/makeStyles";
+
+import api from "../../../common/api";
+import { ErrorResponseHandler } from "../../../common/types";
+import ChangeUserPasswordModal from "../Account/ChangeUserPasswordModal";
+import FormSwitchWrapper from "../Common/FormComponents/FormSwitchWrapper/FormSwitchWrapper";
 import {
   actionsTray,
   containerForHeader,
   searchField,
   tableStyles,
 } from "../Common/FormComponents/common/styleLibrary";
-import { IPolicyItem } from "./types";
-import { ErrorResponseHandler } from "../../../common/types";
-import api from "../../../common/api";
+import PageLayout from "../Common/Layout/PageLayout";
+import PanelTitle from "../Common/PanelTitle/PanelTitle";
+import ScreenTitle from "../Common/ScreenTitle/ScreenTitle";
 import TableWrapper from "../Common/TableWrapper/TableWrapper";
+import VerticalTabs from "../Common/VerticalTabs/VerticalTabs";
 import ChangeUserGroups from "./ChangeUserGroups";
+import DeleteUser from "./DeleteUser";
 import SetUserPolicies from "./SetUserPolicies";
 import UserServiceAccountsPanel from "./UserServiceAccountsPanel";
-import ChangeUserPasswordModal from "../Account/ChangeUserPasswordModal";
-import DeleteUser from "./DeleteUser";
-import ScreenTitle from "../Common/ScreenTitle/ScreenTitle";
-import PanelTitle from "../Common/PanelTitle/PanelTitle";
-import PageLayout from "../Common/Layout/PageLayout";
-import VerticalTabs from "../Common/VerticalTabs/VerticalTabs";
-import FormSwitchWrapper from "../Common/FormComponents/FormSwitchWrapper/FormSwitchWrapper";
+import { IPolicyItem } from "./types";
 
-import { decodeURLString, encodeURLString } from "../../../common/utils";
-import { setModalErrorSnackMessage } from "../../../systemSlice";
+import { hasPermission } from "../../../common/SecureComponent";
 import {
+  CONSOLE_UI_RESOURCE,
+  IAM_PAGES,
   assignGroupPermissions,
   assignIAMPolicyPermissions,
-  CONSOLE_UI_RESOURCE,
   deleteUserPermissions,
   disableUserPermissions,
   editServiceAccountPermissions,
   enableDisableUserPermissions,
   enableUserPermissions,
   getGroupPermissions,
-  IAM_PAGES,
   permissionTooltipHelper,
 } from "../../../common/SecureComponent/permissions";
-import { hasPermission } from "../../../common/SecureComponent";
+import { decodeURLString, encodeURLString } from "../../../common/utils";
 import { useAppDispatch } from "../../../store";
+import { setModalErrorSnackMessage } from "../../../systemSlice";
 import { policyDetailsSort } from "../../../utils/sortFunctions";
-import TooltipWrapper from "../Common/TooltipWrapper/TooltipWrapper";
 import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
+import TooltipWrapper from "../Common/TooltipWrapper/TooltipWrapper";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    pageContainer: {
-      border: "1px solid #EAEAEA",
-    },
-    statusLabel: {
-      fontSize: ".8rem",
-      marginRight: ".5rem",
-    },
-    statusValue: {
-      fontWeight: "bold",
-      fontSize: ".9rem",
-      marginRight: ".5rem",
-    },
-    ...actionsTray,
-    ...searchField,
-    ...tableStyles,
-    ...containerForHeader,
-  });
+const styles = () => ({
+  pageContainer: {
+    border: "1px solid #EAEAEA",
+  },
+  statusLabel: {
+    fontSize: ".8rem",
+    marginRight: ".5rem",
+  },
+  statusValue: {
+    fontWeight: "bold",
+    fontSize: ".9rem",
+    marginRight: ".5rem",
+  },
+  ...actionsTray,
+  ...searchField,
+  ...tableStyles,
+  ...containerForHeader,
+});
 
 interface IUserDetailsProps {
-  classes: any;
+  classes?: any;
 }
 
 interface IGroupItem {
@@ -499,4 +498,4 @@ const UserDetails = ({ classes }: IUserDetailsProps) => {
   );
 };
 
-export default withStyles(styles)(UserDetails);
+export default withStyles(UserDetails, styles);

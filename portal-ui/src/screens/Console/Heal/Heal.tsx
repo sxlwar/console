@@ -24,10 +24,10 @@ import {
   TextField,
 } from "@mui/material";
 import { IMessageEvent, w3cwebsocket as W3CWebSocket } from "websocket";
-import { Theme } from "@mui/material/styles";
+
 import { Button, HealIcon, Grid } from "mds";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../theme/makeStyles";
 import { wsProtocol } from "../../../utils/wsUtils";
 import { Bucket, BucketList } from "../Watch/types";
 import { colorH, HealStatus } from "./types";
@@ -49,7 +49,7 @@ import PageLayout from "../Common/Layout/PageLayout";
 import { SecureComponent } from "../../../common/SecureComponent";
 import DistributedOnly from "../Common/DistributedOnly/DistributedOnly";
 import { selDistSet } from "../../../systemSlice";
-import makeStyles from "@mui/styles/makeStyles";
+import { makeStyles } from "../../../theme/makeStyles";
 import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
 import {
   Bar,
@@ -62,68 +62,64 @@ import {
 } from "recharts";
 import { Legend } from "recharts";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    graphContainer: {
-      backgroundColor: "#fff",
-      border: "#EAEDEE 1px solid",
-      borderRadius: 3,
-      padding: "19px 38px",
-      marginTop: 15,
-    },
-    scanInfo: {
-      marginTop: 20,
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "space-between",
-    },
-    scanData: {
-      fontSize: 13,
-    },
-    formBox: {
-      padding: 15,
-      border: "1px solid #EAEAEA",
-    },
-    buttonBar: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "flex-end",
-    },
-    bucketField: {
-      flex: 1,
-    },
-    prefixField: {
-      ...searchField.searchField,
-      marginLeft: 10,
-      flex: 1,
-    },
-    actionsTray: {
-      ...actionsTray.actionsTray,
-      marginBottom: 0,
-    },
-    ...inlineCheckboxes,
-    ...searchField,
-    ...containerForHeader,
-  })
-);
+const useStyles = makeStyles()(() => ({
+  graphContainer: {
+    backgroundColor: "#fff",
+    border: "#EAEDEE 1px solid",
+    borderRadius: 3,
+    padding: "19px 38px",
+    marginTop: 15,
+  },
+  scanInfo: {
+    marginTop: 20,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  scanData: {
+    fontSize: 13,
+  },
+  formBox: {
+    padding: 15,
+    border: "1px solid #EAEAEA",
+  },
+  buttonBar: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+  },
+  bucketField: {
+    flex: 1,
+  },
+  prefixField: {
+    ...searchField.searchField,
+    marginLeft: 10,
+    flex: 1,
+  },
+  actionsTray: {
+    ...actionsTray.actionsTray,
+    marginBottom: 0,
+  },
+  ...inlineCheckboxes,
+  ...searchField,
+  ...containerForHeader,
+}));
 
-const SelectStyled = withStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      lineHeight: "50px",
-      marginRight: 15,
-      "label + &": {
-        marginTop: theme.spacing(3),
-      },
-      "& .MuiSelect-select:focus": {
-        backgroundColor: "transparent",
-      },
+const SelectStyled = withStyles(InputBase, () => ({
+  root: {
+    lineHeight: "50px",
+    marginRight: 15,
+    "label + &": {
+      marginTop: "10px",
     },
-  })
-)(InputBase);
+    "& .MuiSelect-select:focus": {
+      backgroundColor: "transparent",
+    },
+  },
+}));
 
 const Heal = () => {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const distributedSetup = useSelector(selDistSet);
 
   const [start, setStart] = useState(false);

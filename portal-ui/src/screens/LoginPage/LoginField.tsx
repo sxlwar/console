@@ -14,47 +14,44 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import makeStyles from "@mui/styles/makeStyles";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
+import { makeStyles } from "../../theme/makeStyles";
+
 import { TextFieldProps } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import React from "react";
 
-const inputStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      "& .MuiOutlinedInput-root": {
+const inputStyles = makeStyles()((theme) => ({
+  root: {
+    "& .MuiOutlinedInput-root": {
+      paddingLeft: 0,
+      "& svg": {
+        marginLeft: 4,
+        height: 14,
+        color: theme.palette.primary.main,
+      },
+      "& input": {
+        padding: 10,
+        fontSize: 14,
         paddingLeft: 0,
-        "& svg": {
-          marginLeft: 4,
-          height: 14,
-          color: theme.palette.primary.main,
+        "&::placeholder": {
+          fontSize: 12,
         },
-        "& input": {
+        "@media (max-width: 900px)": {
           padding: 10,
-          fontSize: 14,
-          paddingLeft: 0,
-          "&::placeholder": {
-            fontSize: 12,
-          },
-          "@media (max-width: 900px)": {
-            padding: 10,
-          },
-        },
-        "& fieldset": {},
-
-        "& fieldset:hover": {
-          borderBottom: "2px solid #000000",
-          borderRadius: 0,
         },
       },
+      "& fieldset": {},
+
+      "& fieldset:hover": {
+        borderBottom: "2px solid #000000",
+        borderRadius: 0,
+      },
     },
-  })
-);
+  },
+}));
 
 export const LoginField = (props: TextFieldProps) => {
-  const classes = inputStyles();
+  const { classes } = inputStyles();
 
   return (
     <TextField

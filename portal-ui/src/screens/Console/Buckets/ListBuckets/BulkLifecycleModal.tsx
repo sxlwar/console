@@ -16,9 +16,7 @@
 
 import React, { Fragment, useEffect, useState } from "react";
 
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+import { withStyles } from "../../../../theme/makeStyles";
 import { SelectChangeEvent, Tooltip } from "@mui/material";
 import get from "lodash/get";
 import { Grid } from "mds";
@@ -52,31 +50,30 @@ import { useAppDispatch } from "../../../../store";
 interface IBulkReplicationModal {
   open: boolean;
   closeModalAndRefresh: (clearSelection: boolean) => any;
-  classes: any;
+  classes?: any;
   buckets: string[];
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    resultGrid: {
-      display: "grid",
-      gridTemplateColumns: "45px auto",
-      alignItems: "center",
-      justifyContent: "stretch",
-    },
-    errorIcon: {
-      paddingTop: 5,
-      color: "#C72C48",
-    },
-    successIcon: {
-      paddingTop: 5,
-      color: "#42C91A",
-    },
-    ...spacingUtils,
-    ...modalStyleUtils,
-    ...formFieldStyles,
-    ...createTenantCommon,
-  });
+const styles = () => ({
+  resultGrid: {
+    display: "grid",
+    gridTemplateColumns: "45px auto",
+    alignItems: "center",
+    justifyContent: "stretch",
+  },
+  errorIcon: {
+    paddingTop: 5,
+    color: "#C72C48",
+  },
+  successIcon: {
+    paddingTop: 5,
+    color: "#42C91A",
+  },
+  ...spacingUtils,
+  ...modalStyleUtils,
+  ...formFieldStyles,
+  ...createTenantCommon,
+});
 
 const AddBulkReplicationModal = ({
   open,
@@ -451,4 +448,4 @@ const AddBulkReplicationModal = ({
   );
 };
 
-export default withStyles(styles)(AddBulkReplicationModal);
+export default withStyles(AddBulkReplicationModal, styles);

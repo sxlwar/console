@@ -15,10 +15,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { useState } from "react";
-import createStyles from "@mui/styles/createStyles";
+
 import { Button, Grid, EditIcon } from "mds";
-import makeStyles from "@mui/styles/makeStyles";
-import { Theme } from "@mui/material/styles";
+
 import {
   containerForHeader,
   formFieldStyles,
@@ -40,6 +39,7 @@ import { useAppDispatch } from "../../../store";
 import ModalWrapper from "../Common/ModalWrapper/ModalWrapper";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
 import FormSwitchWrapper from "../Common/FormComponents/FormSwitchWrapper/FormSwitchWrapper";
+import { makeStyles } from "../../../theme/makeStyles";
 
 interface IRenameLongFilename {
   open: boolean;
@@ -50,14 +50,12 @@ interface IRenameLongFilename {
   closeModal: () => void;
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    ...modalStyleUtils,
-    ...formFieldStyles,
-    ...spacingUtils,
-    ...containerForHeader,
-  })
-);
+const useStyles = makeStyles()(() => ({
+  ...modalStyleUtils,
+  ...formFieldStyles,
+  ...spacingUtils,
+  ...containerForHeader,
+}));
 
 const RenameLongFileName = ({
   open,
@@ -67,7 +65,7 @@ const RenameLongFileName = ({
   actualInfo,
   bucketName,
 }: IRenameLongFilename) => {
-  const classes = useStyles();
+  const { classes } = useStyles() as any;
   const dispatch = useAppDispatch();
 
   const [newFileName, setNewFileName] = useState<string>(currentItem);

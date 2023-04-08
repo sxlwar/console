@@ -16,9 +16,9 @@
 
 import React, { useState } from "react";
 import { Button, ChangePasswordIcon, Grid } from "mds";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+
+import { withStyles } from "../../../theme/makeStyles";
 import ModalWrapper from "../Common/ModalWrapper/ModalWrapper";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
 import ProgressBar from '@atlaskit/progress-bar';
@@ -36,8 +36,8 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { setModalErrorSnackMessage } from "../../../systemSlice";
 import { useAppDispatch } from "../../../store";
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     ...modalStyleUtils,
     ...formFieldStyles,
     ...spacingUtils,
@@ -45,7 +45,7 @@ const styles = (theme: Theme) =>
   });
 
 interface IChangePasswordProps {
-  classes: any;
+  classes?: any;
   open: boolean;
   closeModal: () => void;
 }
@@ -217,4 +217,4 @@ const ChangePassword = ({
   ) : null;
 };
 
-export default withStyles(styles)(ChangePassword);
+export default withStyles(ChangePassword, styles);;

@@ -15,10 +15,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { useEffect, useState } from "react";
-import { Theme } from "@mui/material/styles";
+
 import { BucketReplicationIcon, Button, Grid } from "mds";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import ModalWrapper from "../../Common/ModalWrapper/ModalWrapper";
 import InputBoxWrapper from "../../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
 import QueryMultiSelector from "../../Common/FormComponents/QueryMultiSelector/QueryMultiSelector";
@@ -40,13 +40,13 @@ import { useAppDispatch } from "../../../../store";
 interface IEditReplicationModal {
   closeModalAndRefresh: (refresh: boolean) => void;
   open: boolean;
-  classes: any;
+  classes?: any;
   bucketName: string;
   ruleID: string;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     ...spacingUtils,
     ...createTenantCommon,
     ...formFieldStyles,
@@ -334,4 +334,4 @@ const EditReplicationModal = ({
   );
 };
 
-export default withStyles(styles)(EditReplicationModal);
+export default withStyles(EditReplicationModal, styles);;

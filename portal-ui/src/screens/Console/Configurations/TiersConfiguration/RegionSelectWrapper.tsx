@@ -16,10 +16,8 @@
 import React from "react";
 import { InputLabel, Tooltip } from "@mui/material";
 import { InputProps as StandardInputProps } from "@mui/material/Input";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import makeStyles from "@mui/styles/makeStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { makeStyles, withStyles } from "../../../../theme/makeStyles";
 import {
   fieldBasic,
   inputFieldStyles,
@@ -55,38 +53,35 @@ interface RegionSelectBoxProps {
   className?: string;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...fieldBasic,
-    ...tooltipHelper,
-    textBoxContainer: {
-      flexGrow: 1,
-      position: "relative",
-      minWidth: 160,
+const styles = () => ({
+  ...fieldBasic,
+  ...tooltipHelper,
+  textBoxContainer: {
+    flexGrow: 1,
+    position: "relative",
+    minWidth: 160,
+  },
+  overlayAction: {
+    position: "absolute",
+    right: 5,
+    top: 6,
+    "& svg": {
+      maxWidth: 15,
+      maxHeight: 15,
     },
-    overlayAction: {
-      position: "absolute",
-      right: 5,
-      top: 6,
-      "& svg": {
-        maxWidth: 15,
-        maxHeight: 15,
-      },
-      "&.withLabel": {
-        top: 5,
-      },
+    "&.withLabel": {
+      top: 5,
     },
-    inputLabel: {
-      ...fieldBasic.inputLabel,
-      fontWeight: "normal",
-    },
-  });
+  },
+  inputLabel: {
+    ...fieldBasic.inputLabel,
+    fontWeight: "normal",
+  },
+});
 
-const inputStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    ...inputFieldStyles,
-  })
-);
+const inputStyles = makeStyles()((theme) => ({
+  ...inputFieldStyles,
+}));
 
 const RegionSelectWrapper = ({
   label,
@@ -191,4 +186,4 @@ const RegionSelectWrapper = ({
   );
 };
 
-export default withStyles(styles)(RegionSelectWrapper);
+export default withStyles(RegionSelectWrapper, styles);

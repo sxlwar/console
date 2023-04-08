@@ -26,9 +26,8 @@ import {
   YAxis,
 } from "recharts";
 import { useMediaQuery } from "@mui/material";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../../theme/makeStyles";
 import { IBarChartConfiguration } from "./types";
 import { widgetCommon } from "../../../Common/FormComponents/common/styleLibrary";
 import BarChartTooltip from "./tooltips/BarChartTooltip";
@@ -45,7 +44,7 @@ import DownloadWidgetDataButton from "../../DownloadWidgetDataButton";
 import { useSelector } from "react-redux";
 
 interface IBarChartWidget {
-  classes: any;
+  classes?: any;
   title: string;
   panelItem: IDashboardPanel;
   timeStart: any;
@@ -55,16 +54,15 @@ interface IBarChartWidget {
   zoomActivated?: boolean;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...widgetCommon,
-    loadingAlign: {
-      width: "100%",
-      paddingTop: "15px",
-      textAlign: "center",
-      margin: "auto",
-    },
-  });
+const styles = () => ({
+  ...widgetCommon,
+  loadingAlign: {
+    width: "100%",
+    paddingTop: "15px",
+    textAlign: "center",
+    margin: "auto",
+  },
+});
 
 const CustomizedAxisTick = ({ y, payload }: any) => {
   return (
@@ -175,13 +173,25 @@ const BarChartWidget = ({
     >
       {!zoomActivated && (
         <Grid container>
-          <Grid item xs={10} style={{ alignItems: 'center', justifyItems: 'center'}} >
+          <Grid
+            item
+            xs={10}
+            style={{ alignItems: "center", justifyItems: "center" }}
+          >
             <div className={classes.titleContainer}>{title}</div>
           </Grid>
-          <Grid item xs={1} style={{display: 'flex', justifyContent: 'flex-end'}}>
+          <Grid
+            item
+            xs={1}
+            style={{ display: "flex", justifyContent: "flex-end" }}
+          >
             {hover && <ExpandGraphLink panelItem={panelItem} />}
           </Grid>
-          <Grid item xs={1} style={{display: 'flex', justifyContent: 'flex-end'}}>
+          <Grid
+            item
+            xs={1}
+            style={{ display: "flex", justifyContent: "flex-end" }}
+          >
             <DownloadWidgetDataButton
               title={title}
               componentRef={componentRef}
@@ -263,4 +273,4 @@ const BarChartWidget = ({
   );
 };
 
-export default withStyles(styles)(BarChartWidget);
+export default withStyles(BarChartWidget, styles);

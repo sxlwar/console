@@ -21,7 +21,7 @@ import { useSelector } from "react-redux";
 import { AppState, useAppDispatch } from "../../../store";
 
 interface IAddUserProps2 {
-  classes: any;
+  classes?: any;
 }
 
 const UserSelector = ({ classes }: IAddUserProps2) => {

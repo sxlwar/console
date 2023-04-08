@@ -16,9 +16,7 @@
 
 import React, { Fragment, useEffect, useState } from "react";
 
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+import { withStyles } from "../../../theme/makeStyles";
 import { useAppDispatch } from "../../../store";
 import { useNavigate } from "react-router-dom";
 import {
@@ -45,10 +43,9 @@ type IDPConfigurationsProps = {
   idpType: string;
 };
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...containerForHeader,
-  });
+const styles = () => ({
+  ...containerForHeader,
+});
 
 const IDPConfigurations = ({ classes, idpType }: IDPConfigurationsProps) => {
   const dispatch = useAppDispatch();
@@ -218,4 +215,4 @@ const IDPConfigurations = ({ classes, idpType }: IDPConfigurationsProps) => {
   );
 };
 
-export default withStyles(styles)(IDPConfigurations);
+export default withStyles(IDPConfigurations, styles);

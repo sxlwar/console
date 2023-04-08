@@ -16,60 +16,59 @@
 
 import React from "react";
 import get from "lodash/get";
-import { Theme } from "@mui/material/styles";
+
 import {
   Button,
   DownloadIcon,
   ServiceAccountCredentialsIcon,
   WarnIcon,
-  Grid
+  Grid,
 } from "mds";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import { NewServiceAccount } from "./types";
 import ModalWrapper from "../ModalWrapper/ModalWrapper";
 import CredentialItem from "./CredentialItem";
 import TooltipWrapper from "../TooltipWrapper/TooltipWrapper";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    warningBlock: {
-      color: "red",
-      fontSize: ".85rem",
-      margin: ".5rem 0 .5rem 0",
-      display: "flex",
-      alignItems: "center",
-      "& svg ": {
-        marginRight: ".3rem",
-        height: 16,
-        width: 16,
-      },
+const styles = () => ({
+  warningBlock: {
+    color: "red",
+    fontSize: ".85rem",
+    margin: ".5rem 0 .5rem 0",
+    display: "flex",
+    alignItems: "center",
+    "& svg ": {
+      marginRight: ".3rem",
+      height: 16,
+      width: 16,
     },
-    credentialTitle: {
-      padding: ".8rem 0 0 0",
-      fontWeight: 600,
-      fontSize: ".9rem",
-    },
-    buttonContainer: {
-      display: "flex",
-      justifyContent: "flex-end",
-      marginTop: "1rem",
-    },
-    credentialsPanel: {
-      overflowY: "auto",
-      maxHeight: 350,
-    },
-    promptTitle: {
-      display: "flex",
-      alignItems: "center",
-    },
-    buttonSpacer: {
-      marginRight: ".9rem",
-    },
-  });
+  },
+  credentialTitle: {
+    padding: ".8rem 0 0 0",
+    fontWeight: 600,
+    fontSize: ".9rem",
+  },
+  buttonContainer: {
+    display: "flex",
+    justifyContent: "flex-end",
+    marginTop: "1rem",
+  },
+  credentialsPanel: {
+    overflowY: "auto",
+    maxHeight: 350,
+  },
+  promptTitle: {
+    display: "flex",
+    alignItems: "center",
+  },
+  buttonSpacer: {
+    marginRight: ".9rem",
+  },
+});
 
 interface ICredentialsPromptProps {
-  classes: any;
+  classes?: any;
   newServiceAccount: NewServiceAccount | null;
   open: boolean;
   entity: string;
@@ -287,4 +286,4 @@ const CredentialsPrompt = ({
   );
 };
 
-export default withStyles(styles)(CredentialsPrompt);
+export default withStyles(CredentialsPrompt, styles);

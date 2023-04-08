@@ -16,7 +16,7 @@
 
 import React, { Fragment, useState } from "react";
 import get from "lodash/get";
-import { Theme } from "@mui/material/styles";
+
 import {
   Button,
   ComputerLineIcon,
@@ -28,17 +28,17 @@ import {
   VersionIcon,
   Grid
 } from "mds";
-import createStyles from "@mui/styles/createStyles";
+
 import { IndvServerMetric, SpeedTestResponse, STServer } from "./types";
 import { calculateBytes, prettyNumber } from "../../../common/utils";
 import CodeMirrorWrapper from "../Common/FormComponents/CodeMirrorWrapper/CodeMirrorWrapper";
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer } from "recharts";
 import { cleanMetrics } from "./utils";
 import SpeedTestUnit from "./SpeedTestUnit";
-import makeStyles from "@mui/styles/makeStyles";
+import { makeStyles } from "../../../theme/makeStyles";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+const useStyles = makeStyles()(() =>
+  ({
     actionButtons: {
       textAlign: "right",
     },
@@ -143,7 +143,7 @@ interface ISTResults {
 }
 
 const STResults = ({ results, start }: ISTResults) => {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   const [jsonView, setJsonView] = useState<boolean>(false);
 

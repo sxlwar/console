@@ -21,12 +21,12 @@ import React, {
   useLayoutEffect,
   useState,
 } from "react";
-import { Theme } from "@mui/material/styles";
 import { Button } from "mds";
 import debounce from "lodash/debounce";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
-import ProgressBar from '@atlaskit/progress-bar';
+
+import { withStyles } from "../../theme/makeStyles";
+import type { Theme } from "../../theme/main";
+import ProgressBar from "@atlaskit/progress-bar";
 import CssBaseline from "@mui/material/CssBaseline";
 import Snackbar from "@mui/material/Snackbar";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
@@ -145,43 +145,42 @@ const AddReplicationSites = React.lazy(
 
 const KMSRoutes = React.lazy(() => import("./KMS/KMSRoutes"));
 
-const styles = (theme: Theme) =>
-  createStyles({
-    root: {
-      display: "flex",
-      "& .MuiPaper-root.MuiSnackbarContent-root": {
-        borderRadius: "0px 0px 5px 5px",
-        boxShadow: "none",
-      },
+const styles = (theme: Theme) => ({
+  root: {
+    display: "flex",
+    "& .MuiPaper-root.MuiSnackbarContent-root": {
+      borderRadius: "0px 0px 5px 5px",
+      boxShadow: "none",
     },
-    content: {
-      flexGrow: 1,
-      height: "100vh",
-      overflow: "auto",
-      position: "relative",
+  },
+  content: {
+    flexGrow: 1,
+    height: "100vh",
+    overflow: "auto",
+    position: "relative",
+  },
+  warningBar: {
+    background: theme.palette.primary.main,
+    color: "white",
+    heigh: "60px",
+    widht: "100%",
+    lineHeight: "60px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    "& button": {
+      marginLeft: 8,
     },
-    warningBar: {
-      background: theme.palette.primary.main,
-      color: "white",
-      heigh: "60px",
-      widht: "100%",
-      lineHeight: "60px",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      "& button": {
-        marginLeft: 8,
-      },
-    },
-    progress: {
-      height: "3px",
-      backgroundColor: "#eaeaea",
-    },
-    ...snackBarCommon,
-  });
+  },
+  progress: {
+    height: "3px",
+    backgroundColor: "#eaeaea",
+  },
+  ...snackBarCommon,
+});
 
 interface IConsoleProps {
-  classes: any;
+  classes?: any;
 }
 
 const Console = ({ classes }: IConsoleProps) => {
@@ -510,10 +509,7 @@ const Console = ({ classes }: IConsoleProps) => {
               </div>
             )}
             {loadingProgress < 100 && (
-              <ProgressBar
-                isIndeterminate
-                value={loadingProgress}
-              />
+              <ProgressBar isIndeterminate value={loadingProgress} />
             )}
             <MainError />
             <div className={classes.snackDiv}>
@@ -589,4 +585,4 @@ const Console = ({ classes }: IConsoleProps) => {
   );
 };
 
-export default withStyles(styles)(Console);
+export default withStyles(Console, styles);

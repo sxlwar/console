@@ -23,7 +23,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 
 interface IAddUserProps2 {
-  classes: any;
+  classes?: any;
 }
 
 const PasswordSelector = ({ classes }: IAddUserProps2) => {

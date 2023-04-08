@@ -18,10 +18,9 @@ import React, { Fragment, useEffect, useState } from "react";
 import PrDashboard from "./Prometheus/PrDashboard";
 import { Grid } from "mds";
 import { containerForHeader } from "../Common/FormComponents/common/styleLibrary";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
-import ProgressBar from '@atlaskit/progress-bar';
+
+import { withStyles } from "../../../theme/makeStyles";
+import ProgressBar from "@atlaskit/progress-bar";
 import { AppState, useAppDispatch } from "../../../store";
 import { getUsageAsync } from "./dashboardThunks";
 import { useSelector } from "react-redux";
@@ -29,13 +28,12 @@ import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
 import { selFeatures } from "../consoleSlice";
 
 interface IDashboardSimple {
-  classes: any;
+  classes?: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...containerForHeader,
-  });
+const styles = () => ({
+  ...containerForHeader,
+});
 
 const Dashboard = ({ classes }: IDashboardSimple) => {
   const dispatch = useAppDispatch();
@@ -74,4 +72,4 @@ const Dashboard = ({ classes }: IDashboardSimple) => {
   );
 };
 
-export default withStyles(styles)(Dashboard);
+export default withStyles(Dashboard, styles);

@@ -16,9 +16,9 @@
 
 import React, { useEffect, useState } from "react";
 import { AddMembersToGroupIcon, Button, Grid } from "mds";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+
+import { withStyles } from "../../../theme/makeStyles";
 import ProgressBar from '@atlaskit/progress-bar';
 import {
   formFieldStyles,
@@ -36,11 +36,11 @@ interface IAddToGroup {
   open: boolean;
   checkedUsers: any;
   closeModalAndRefresh: any;
-  classes: any;
+  classes?: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     ...modalStyleUtils,
     ...formFieldStyles,
   });
@@ -176,4 +176,4 @@ const BulkAddToGroup = ({
   );
 };
 
-export default withStyles(styles)(BulkAddToGroup);
+export default withStyles(BulkAddToGroup, styles);;

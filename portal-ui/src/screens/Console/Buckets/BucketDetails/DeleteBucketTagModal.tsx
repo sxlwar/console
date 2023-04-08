@@ -17,9 +17,8 @@
 import React from "react";
 
 import { DialogContentText } from "@mui/material";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import { modalBasic } from "../../Common/FormComponents/common/styleLibrary";
 import { ErrorResponseHandler } from "../../../../common/types";
 import useApi from "../../Common/Hooks/useApi";
@@ -34,13 +33,12 @@ interface IDeleteBucketTagModal {
   bucketName: string;
   selectedTag: string[];
   onCloseAndUpdate: (refresh: boolean) => void;
-  classes: any;
+  classes?: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...modalBasic,
-  });
+const styles = () => ({
+  ...modalBasic,
+});
 
 const DeleteBucketTagModal = ({
   deleteOpen,
@@ -95,4 +93,4 @@ const DeleteBucketTagModal = ({
   );
 };
 
-export default withStyles(styles)(DeleteBucketTagModal);
+export default withStyles(DeleteBucketTagModal, styles);

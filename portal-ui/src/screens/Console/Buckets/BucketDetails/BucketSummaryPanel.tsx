@@ -17,9 +17,8 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import { Grid } from "mds";
 import get from "lodash/get";
 import {
@@ -82,21 +81,20 @@ const BucketTags = withSuspense(
 
 const EnableQuota = withSuspense(React.lazy(() => import("./EnableQuota")));
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...spacingUtils,
-    ...textStyleUtils,
-  });
+const styles = () => ({
+  ...spacingUtils,
+  ...textStyleUtils,
+});
 
 const twoColCssGridLayoutConfig = {
   display: "grid",
-  gridTemplateColumns:  "1fr",
-  gridAutoFlow:  "dense",
+  gridTemplateColumns: "1fr",
+  gridAutoFlow: "dense",
   gap: 2,
 };
 
 interface IBucketSummaryProps {
-  classes: any;
+  classes?: any;
 }
 
 const BucketSummary = ({ classes }: IBucketSummaryProps) => {
@@ -627,16 +625,16 @@ const BucketSummary = ({ classes }: IBucketSummaryProps) => {
               <Box
                 sx={{
                   display: "grid",
-                  gridTemplateColumns:  "1fr",
-                  gridAutoFlow:  "dense",
+                  gridTemplateColumns: "1fr",
+                  gridAutoFlow: "dense",
                   gap: 2,
                 }}
               >
                 <Box
                   sx={{
                     display: "grid",
-                    gridTemplateColumns:  "1fr",
-                    gridAutoFlow:  "dense",
+                    gridTemplateColumns: "1fr",
+                    gridAutoFlow: "dense",
                     gap: 2,
                   }}
                 >
@@ -699,4 +697,4 @@ const BucketSummary = ({ classes }: IBucketSummaryProps) => {
   );
 };
 
-export default withStyles(styles)(BucketSummary);
+export default withStyles(BucketSummary, styles);

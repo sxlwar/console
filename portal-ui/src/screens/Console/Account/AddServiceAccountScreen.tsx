@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useEffect, useState } from "react";
-import { Theme } from "@mui/material/styles";
+
 import { useNavigate } from "react-router-dom";
 import {
   BackLink,
@@ -24,8 +24,8 @@ import {
   PasswordKeyIcon,
   ServiceAccountCredentialsIcon,
 } from "mds";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../theme/makeStyles";
 import {
   formFieldStyles,
   modalStyleUtils,
@@ -54,11 +54,11 @@ import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
 import { getRandomString } from "../../../common/utils";
 
 interface IAddServiceAccountProps {
-  classes: any;
+  classes?: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     ...formFieldStyles,
     ...modalStyleUtils,
   });
@@ -307,4 +307,4 @@ const AddServiceAccount = ({ classes }: IAddServiceAccountProps) => {
   );
 };
 
-export default withStyles(styles)(AddServiceAccount);
+export default withStyles(AddServiceAccount, styles);;

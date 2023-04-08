@@ -15,9 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { useEffect, useState } from "react";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../theme/makeStyles";
 import { IElementValue, IOverrideEnv, KVField } from "../Configurations/types";
 import {
   formFieldStyles,
@@ -35,17 +34,16 @@ interface IConfGenericProps {
   fields: KVField[];
   defaultVals?: IElementValue[];
   overrideEnv?: IOverrideEnv;
-  classes: any;
+  classes?: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...formFieldStyles,
-    formFieldRow: {
-      ...formFieldStyles.formFieldRow,
-    },
-    ...modalBasic,
-  });
+const styles = () => ({
+  ...formFieldStyles,
+  formFieldRow: {
+    ...formFieldStyles.formFieldRow,
+  },
+  ...modalBasic,
+});
 
 // Function to get defined values,
 //we make this because the backed sometimes don't return all the keys when there is an initial configuration
@@ -223,4 +221,4 @@ const ConfTargetGeneric = ({
   );
 };
 
-export default withStyles(styles)(ConfTargetGeneric);
+export default withStyles(ConfTargetGeneric, styles);

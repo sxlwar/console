@@ -16,10 +16,10 @@
 
 import React, { useEffect, useState } from "react";
 import ProgressBar from '@atlaskit/progress-bar';
-import { Theme } from "@mui/material/styles";
+
 import { BucketQuotaIcon, Button, Grid } from "mds";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import {
   calculateBytes,
   getBytes,
@@ -41,14 +41,14 @@ import InputUnitMenu from "../../Common/FormComponents/InputUnitMenu/InputUnitMe
 import { setModalErrorSnackMessage } from "../../../../systemSlice";
 import { useAppDispatch } from "../../../../store";
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     ...formFieldStyles,
     ...modalStyleUtils,
   });
 
 interface IEnableQuotaProps {
-  classes: any;
+  classes?: any;
   open: boolean;
   enabled: boolean;
   cfg: BucketQuota | null;
@@ -218,4 +218,4 @@ const EnableQuota = ({
   );
 };
 
-export default withStyles(styles)(EnableQuota);
+export default withStyles(EnableQuota, styles);;

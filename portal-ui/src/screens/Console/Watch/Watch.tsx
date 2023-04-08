@@ -23,10 +23,10 @@ import {
 } from "@mui/material";
 import { IMessageEvent, w3cwebsocket as W3CWebSocket } from "websocket";
 import { useSelector } from "react-redux";
-import { Theme } from "@mui/material/styles";
+
 import { Button, Grid } from "mds";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles, makeStyles } from "../../../theme/makeStyles";
 import { AppState, useAppDispatch } from "../../../store";
 import { Bucket, BucketList, EventInfo } from "./types";
 import { niceBytes, timeFromDate } from "../../../common/utils";
@@ -41,52 +41,47 @@ import { ErrorResponseHandler } from "../../../common/types";
 import TableWrapper from "../Common/TableWrapper/TableWrapper";
 import api from "../../../common/api";
 import PageLayout from "../Common/Layout/PageLayout";
-import makeStyles from "@mui/styles/makeStyles";
 import { watchMessageReceived, watchResetMessages } from "./watchSlice";
 import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    searchPrefix: {
-      flexGrow: 1,
-      marginLeft: 15,
-    },
-    watchTableHeight: {
-      height: "calc(100vh - 270px)",
-    },
-    bucketField: {
-      flexGrow: 2,
-      minWidth: 200,
-    },
-    ...tableStyles,
-    ...actionsTray,
-    ...searchField,
-    ...containerForHeader,
-  })
-);
+const useStyles = makeStyles()(() => ({
+  searchPrefix: {
+    flexGrow: 1,
+    marginLeft: 15,
+  },
+  watchTableHeight: {
+    height: "calc(100vh - 270px)",
+  },
+  bucketField: {
+    flexGrow: 2,
+    minWidth: 200,
+  },
+  ...tableStyles,
+  ...actionsTray,
+  ...searchField,
+  ...containerForHeader,
+}));
 
-const SelectStyled = withStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      lineHeight: "50px",
-      "label + &": {
-        marginTop: theme.spacing(3),
-      },
-      "& .MuiSelect-select:focus": {
-        backgroundColor: "transparent",
-      },
+const SelectStyled = withStyles(InputBase, () => ({
+  root: {
+    lineHeight: "50px",
+    "label + &": {
+      marginTop: "15px",
     },
-    input: {
-      height: 50,
-      fontSize: 13,
-      lineHeight: "50px",
+    "& .MuiSelect-select:focus": {
+      backgroundColor: "transparent",
     },
-  })
-)(InputBase);
+  },
+  input: {
+    height: 50,
+    fontSize: 13,
+    lineHeight: "50px",
+  },
+}));
 
 const Watch = () => {
   const dispatch = useAppDispatch();
-  const classes = useStyles();
+  const { classes } = useStyles() as any;
 
   const messages = useSelector((state: AppState) => state.watch.messages);
 

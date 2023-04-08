@@ -16,7 +16,7 @@
 
 import React, { Fragment, useEffect, useState } from "react";
 
-import { Theme } from "@mui/material/styles";
+
 import { useNavigate } from "react-router-dom";
 import {
   AddIcon,
@@ -27,8 +27,8 @@ import {
   Grid,
   UsersIcon,
 } from "mds";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../theme/makeStyles";
 import api from "../../../common/api";
 import ProgressBar from '@atlaskit/progress-bar';
 import { User, UsersList } from "./types";
@@ -71,8 +71,8 @@ import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
 const DeleteUser = withSuspense(React.lazy(() => import("./DeleteUser")));
 const AddToGroup = withSuspense(React.lazy(() => import("./BulkAddToGroup")));
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     ...actionsTray,
     ...searchField,
     searchField: {
@@ -85,7 +85,7 @@ const styles = (theme: Theme) =>
   });
 
 interface IUsersProps {
-  classes: any;
+  classes?: any;
 }
 
 const ListUsers = ({ classes }: IUsersProps) => {
@@ -506,4 +506,4 @@ const ListUsers = ({ classes }: IUsersProps) => {
   );
 };
 
-export default withStyles(styles)(ListUsers);
+export default withStyles(ListUsers, styles);;

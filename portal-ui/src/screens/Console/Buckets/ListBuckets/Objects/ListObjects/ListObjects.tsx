@@ -25,7 +25,7 @@ import React, {
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
-import { Theme } from "@mui/material/styles";
+
 import { CSSObject } from "styled-components";
 import {
   AccessRuleIcon,
@@ -40,7 +40,7 @@ import {
   Grid,
 } from "mds";
 import { DateTime } from "luxon";
-import createStyles from "@mui/styles/createStyles";
+
 import get from "lodash/get";
 import api from "../../../../../../common/api";
 import {
@@ -123,7 +123,7 @@ import {
   setVersionsModeEnabled,
   updateProgress,
 } from "../../../../ObjectBrowser/objectBrowserSlice";
-import makeStyles from "@mui/styles/makeStyles";
+import { makeStyles } from "../../../../../../theme/makeStyles";
 import {
   selBucketDetailsInfo,
   selBucketDetailsLoading,
@@ -154,8 +154,8 @@ const PreviewFileModal = withSuspense(
   React.lazy(() => import("../Preview/PreviewFileModal"))
 );
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+const useStyles = makeStyles()(() =>
+  ({
     badgeOverlap: {
       "& .MuiBadge-badge": {
         top: 10,
@@ -225,7 +225,7 @@ const acceptDnDStyle = {
 };
 
 const ListObjects = () => {
-  const classes = useStyles();
+  const { classes } = useStyles() as any;
   const dispatch = useAppDispatch();
   const params = useParams();
   const navigate = useNavigate();

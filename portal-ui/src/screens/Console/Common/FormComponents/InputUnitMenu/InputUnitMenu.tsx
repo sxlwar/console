@@ -15,14 +15,14 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment } from "react";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+
+import { withStyles } from "../../../../../theme/makeStyles";
 import { selectorTypes } from "../SelectWrapper/SelectWrapper";
 import { Menu, MenuItem } from "@mui/material";
 
 interface IInputUnitBox {
-  classes: any;
+  classes?: any;
   id: string;
   unitSelected: string;
   unitsList: selectorTypes[];
@@ -30,8 +30,8 @@ interface IInputUnitBox {
   onUnitChange?: (newValue: string) => void;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     buttonTrigger: {
       border: "#F0F2F2 1px solid",
       borderRadius: 3,
@@ -105,4 +105,4 @@ const InputUnitMenu = ({
   );
 };
 
-export default withStyles(styles)(InputUnitMenu);
+export default withStyles(InputUnitMenu, styles);;

@@ -16,10 +16,8 @@
 
 import React, { useState } from "react";
 import { DialogContentText } from "@mui/material";
-import { Theme } from "@mui/material/styles";
 
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+import { withStyles } from "../../../../../../theme/makeStyles";
 import { modalBasic } from "../../../../Common/FormComponents/common/styleLibrary";
 
 import { ErrorResponseHandler } from "../../../../../../common/types";
@@ -33,7 +31,7 @@ import { IFileInfo } from "./types";
 import { restoreLocalObjectList } from "../../../../ObjectBrowser/objectBrowserSlice";
 
 interface IRestoreFileVersion {
-  classes: any;
+  classes?: any;
   restoreOpen: boolean;
   bucketName: string;
   versionToRestore: IFileInfo;
@@ -41,10 +39,9 @@ interface IRestoreFileVersion {
   onCloseAndUpdate: (refresh: boolean) => void;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...modalBasic,
-  });
+const styles = () => ({
+  ...modalBasic,
+});
 
 const RestoreFileVersion = ({
   classes,
@@ -111,4 +108,4 @@ const RestoreFileVersion = ({
   );
 };
 
-export default withStyles(styles)(RestoreFileVersion);
+export default withStyles(RestoreFileVersion, styles);

@@ -15,8 +15,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import React, { Fragment } from "react";
 import get from "lodash/get";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
 import { BucketsIcon, ReportedUsageIcon, TotalObjectsIcon, Grid } from "mds";
 import {
   calculateBytes,
@@ -31,12 +29,12 @@ import {
 } from "../../../../common/SecureComponent/permissions";
 import { hasPermission } from "../../../../common/SecureComponent";
 import clsx from "clsx";
-import makeStyles from "@mui/styles/makeStyles";
+import { makeStyles } from "../../../../theme/makeStyles";
 import { Bucket } from "../../../../api/consoleApi";
 import { Box } from "mds";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
+const useStyles = makeStyles()((theme) =>
+  ({
     root: {
       marginBottom: 30,
       padding: 20,
@@ -176,7 +174,7 @@ const BucketListItem = ({
   bulkSelect,
   noManage = false,
 }: IBucketListItem) => {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const navigate = useNavigate();
 
   const usage = niceBytes(`${bucket.size}` || "0");

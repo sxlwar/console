@@ -15,10 +15,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment } from "react";
-import { Theme } from "@mui/material/styles";
+
 import { Tooltip } from "@mui/material";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import { IFileItem } from "../../ObjectBrowser/types";
 import ProgressBarWrapper from "../ProgressBarWrapper/ProgressBarWrapper";
 import {
@@ -32,13 +32,13 @@ import clsx from "clsx";
 import { callForObjectID } from "../../ObjectBrowser/transferManager";
 
 interface IObjectHandled {
-  classes: any;
+  classes?: any;
   objectToDisplay: IFileItem;
   deleteFromList: (instanceID: string) => void;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     container: {
       borderBottom: "#E2E2E2 1px solid",
       padding: "15px 5px",
@@ -264,4 +264,4 @@ const ObjectHandled = ({
   );
 };
 
-export default withStyles(styles)(ObjectHandled);
+export default withStyles(ObjectHandled, styles);;

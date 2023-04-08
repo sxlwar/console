@@ -16,13 +16,13 @@
 
 import React, { Fragment } from "react";
 import ObjectActionButton from "./ObjectActionButton";
-import { withStyles } from "@mui/styles";
-import createStyles from "@mui/styles/createStyles";
+import { withStyles } from "../../../../../../theme/makeStyles";
+
 import { detailsPanel } from "../../../../Common/FormComponents/common/styleLibrary";
 import TooltipWrapper from "../../../../Common/TooltipWrapper/TooltipWrapper";
 
 const styles = () =>
-  createStyles({
+  ({
     ...detailsPanel,
   });
 
@@ -37,7 +37,7 @@ export interface MultiSelectionItem {
 interface IActionsListSectionProps {
   items: MultiSelectionItem[];
   title: string | React.ReactNode;
-  classes: any;
+  classes?: any;
 }
 
 const ActionsListSection = ({
@@ -69,4 +69,4 @@ const ActionsListSection = ({
   );
 };
 
-export default withStyles(styles)(ActionsListSection);
+export default withStyles(ActionsListSection, styles);;

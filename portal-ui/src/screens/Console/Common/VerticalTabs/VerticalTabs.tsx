@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Tab, TabProps } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
-import withStyles from "@mui/styles/withStyles";
-import { Theme, useTheme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
+import { withStyles } from "../../../../theme/makeStyles";
+import { useTheme } from "@mui/material/styles";
+
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useLocation } from "react-router-dom";
-import { Box } from 'mds';
+import { Box } from "mds";
 
 export type TabItemProps = {
   tabConfig: TabProps | any;
@@ -14,73 +14,72 @@ export type TabItemProps = {
 };
 
 type VerticalTabsProps = {
-  classes: any;
+  classes?: any;
   children: TabItemProps[];
   selectedTab?: string;
   routes?: any;
   isRouteTabs?: boolean;
 };
 
-const styles = (theme: Theme) =>
-  createStyles({
-    tabsContainer: {
-      display: "flex",
+const styles = () => ({
+  tabsContainer: {
+    display: "flex",
+    height: "100%",
+    width: "100%",
+  },
+  tabsHeaderContainer: {
+    width: "300px",
+    background: "#F8F8F8",
+    borderRight: "1px solid #EAEAEA",
+    "& .MuiTabs-root": {
+      "& .MuiTabs-indicator": {
+        display: "none",
+      },
+      "& .MuiTab-root": {
+        display: "flex",
+        flexFlow: "row",
+        alignItems: "center",
+        justifyContent: "flex-start",
+        borderBottom: "1px solid #EAEAEA",
+        "& .MuiSvgIcon-root": {
+          marginRight: 8,
+          marginBottom: 0,
+        },
+        "&.Mui-selected": {
+          background: "#E5E5E5",
+          fontWeight: 600,
+        },
+      },
+
+      "&. MuiTabs-scroller": {
+        display: "none",
+      },
+    },
+  },
+  tabContentContainer: {
+    width: "100%",
+    "& .MuiTabPanel-root": {
       height: "100%",
-      width: "100%",
+    },
+  },
+  tabPanel: {
+    height: "100%",
+  },
+  /*Below md breakpoint make it horizontal and style it for scrolling tabs*/
+  "@media (max-width: 900px)": {
+    tabsContainer: {
+      flexFlow: "column",
+      flexDirection: "column",
     },
     tabsHeaderContainer: {
-      width: "300px",
-      background: "#F8F8F8",
-      borderRight: "1px solid #EAEAEA",
-      "& .MuiTabs-root": {
-        "& .MuiTabs-indicator": {
-          display: "none",
-        },
-        "& .MuiTab-root": {
-          display: "flex",
-          flexFlow: "row",
-          alignItems: "center",
-          justifyContent: "flex-start",
-          borderBottom: "1px solid #EAEAEA",
-          "& .MuiSvgIcon-root": {
-            marginRight: 8,
-            marginBottom: 0,
-          },
-          "&.Mui-selected": {
-            background: "#E5E5E5",
-            fontWeight: 600,
-          },
-        },
-
-        "&. MuiTabs-scroller": {
-          display: "none",
-        },
-      },
-    },
-    tabContentContainer: {
       width: "100%",
-      "& .MuiTabPanel-root": {
-        height: "100%",
+      borderBottom: " 1px solid #EAEAEA",
+      "& .MuiTabs-root .MuiTabs-scroller .MuiButtonBase-root": {
+        borderBottom: " 0px",
       },
     },
-    tabPanel: {
-      height: "100%",
-    },
-    /*Below md breakpoint make it horizontal and style it for scrolling tabs*/
-    "@media (max-width: 900px)": {
-      tabsContainer: {
-        flexFlow: "column",
-        flexDirection: "column",
-      },
-      tabsHeaderContainer: {
-        width: "100%",
-        borderBottom: " 1px solid #EAEAEA",
-        "& .MuiTabs-root .MuiTabs-scroller .MuiButtonBase-root": {
-          borderBottom: " 0px",
-        },
-      },
-    },
-  });
+  },
+});
 
 const tabStripStyle = {
   minHeight: 60,
@@ -180,4 +179,4 @@ const VerticalTabs = ({
   );
 };
 
-export default withStyles(styles)(VerticalTabs);
+export default withStyles(VerticalTabs, styles);

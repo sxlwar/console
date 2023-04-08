@@ -17,9 +17,8 @@
 import React, { Fragment, useCallback, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router-dom";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import { AppState, useAppDispatch } from "../../../../store";
 import { containerForHeader } from "../../Common/FormComponents/common/styleLibrary";
 
@@ -58,10 +57,11 @@ import { BucketObjectLocking, BucketVersioningInfo } from "../types";
 import { ErrorResponseHandler } from "../../../../common/types";
 import OBHeader from "../../ObjectBrowser/OBHeader";
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () => ({
+  root: {
     ...containerForHeader,
-  });
+  },
+});
 
 let objectsWS: WebSocket;
 let currentRequestID: number = 0;
@@ -479,4 +479,4 @@ const BrowserHandler = () => {
   );
 };
 
-export default withStyles(styles)(BrowserHandler);
+export default withStyles(BrowserHandler, styles);

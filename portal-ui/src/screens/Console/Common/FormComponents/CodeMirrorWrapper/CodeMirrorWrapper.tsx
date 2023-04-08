@@ -16,32 +16,30 @@
 
 import React from "react";
 import { InputLabel, Tooltip } from "@mui/material";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../../theme/makeStyles";
 import { Button, CopyIcon, HelpIcon } from "mds";
 import { fieldBasic } from "../common/styleLibrary";
 import CopyToClipboard from "react-copy-to-clipboard";
 import CodeEditor from "@uiw/react-textarea-code-editor";
 import TooltipWrapper from "../../TooltipWrapper/TooltipWrapper";
-import { Box, Grid } from 'mds';
+import { Box, Grid } from "mds";
 
 interface ICodeWrapper {
   value: string;
   label?: string;
   mode?: string;
   tooltip?: string;
-  classes: any;
+  classes?: any;
   onChange?: (editor: any, data: any, value: string) => any;
   onBeforeChange: (editor: any, data: any, value: string) => any;
   readOnly?: boolean;
   editorHeight?: string;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...fieldBasic,
-  });
+const styles = () => ({
+  ...fieldBasic,
+});
 
 const CodeMirrorWrapper = ({
   value,
@@ -140,4 +138,4 @@ const CodeMirrorWrapper = ({
   );
 };
 
-export default withStyles(styles)(CodeMirrorWrapper);
+export default withStyles(CodeMirrorWrapper, styles);

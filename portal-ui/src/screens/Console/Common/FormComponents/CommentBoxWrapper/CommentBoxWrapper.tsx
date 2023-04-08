@@ -14,17 +14,16 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React from "react";
 import { InputLabel, TextField, Tooltip } from "@mui/material";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+import React from "react";
+
+import { Grid, HelpIcon } from "mds";
+import { withStyles } from "../../../../../theme/makeStyles";
 import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
-import { HelpIcon, Grid } from "mds";
 
 interface CommentBoxProps {
   label: string;
-  classes: any;
+  classes?: any;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value: string | boolean;
   id: string;
@@ -37,49 +36,48 @@ interface CommentBoxProps {
   placeholder?: string;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...fieldBasic,
-    ...tooltipHelper,
-    inputLabel: {
+const styles = () => ({
+  ...fieldBasic,
+  ...tooltipHelper,
+  inputLabel: {
+    ...fieldBasic.inputLabel,
+    fontSize: 14,
+    margin: 0,
+    alignItems: "flex-start",
+    paddingTop: "20px",
+    flexWrap: "wrap",
+    display: "flex",
+  },
+  textBoxContainer: {
+    flexGrow: 1,
+    position: "relative",
+  },
+  cssOutlinedInput: {
+    borderColor: "#EAEAEA",
+    padding: 16,
+  },
+  rootContainer: {
+    "& .MuiOutlinedInput-inputMultiline": {
       ...fieldBasic.inputLabel,
-      fontSize: 14,
-      margin: 0,
-      alignItems: "flex-start",
-      paddingTop: "20px",
-      flexWrap: "wrap",
-      display: "flex",
+      fontSize: 13,
+      minHeight: 150,
     },
-    textBoxContainer: {
-      flexGrow: 1,
-      position: "relative",
+    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#07193E",
+      borderWidth: 1,
     },
-    cssOutlinedInput: {
-      borderColor: "#EAEAEA",
-      padding: 16,
-    },
-    rootContainer: {
-      "& .MuiOutlinedInput-inputMultiline": {
-        ...fieldBasic.inputLabel,
-        fontSize: 13,
-        minHeight: 150,
-      },
-      "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-        borderColor: "#07193E",
-        borderWidth: 1,
-      },
-      "& textarea": {
-        color: "#07193E",
-        fontSize: 13,
-        fontWeight: 600,
-        "&:placeholder": {
-          color: "#858585",
-          opacity: 1,
-          fontWeight: 400,
-        },
+    "& textarea": {
+      color: "#07193E",
+      fontSize: 13,
+      fontWeight: 600,
+      "&:placeholder": {
+        color: "#858585",
+        opacity: 1,
+        fontWeight: 400,
       },
     },
-  });
+  },
+});
 
 const CommentBoxWrapper = ({
   label,
@@ -155,4 +153,4 @@ const CommentBoxWrapper = ({
   );
 };
 
-export default withStyles(styles)(CommentBoxWrapper);
+export default withStyles(CommentBoxWrapper, styles);

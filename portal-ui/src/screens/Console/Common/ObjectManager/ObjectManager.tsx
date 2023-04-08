@@ -15,10 +15,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment } from "react";
-import { Theme } from "@mui/material/styles";
+
 import { useSelector } from "react-redux";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import { Tooltip } from "@mui/material";
 import { AppState, useAppDispatch } from "../../../../store";
 import { IconButton, RemoveAllIcon } from "mds";
@@ -29,64 +29,63 @@ import {
 } from "../../ObjectBrowser/objectBrowserSlice";
 import clsx from "clsx";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    downloadContainer: {
-      border: "#EAEDEE 1px solid",
-      boxShadow: "rgba(0, 0, 0, 0.08) 0 2px 10px",
-      backgroundColor: "#fff",
-      position: "absolute",
-      right: 20,
-      top: 62,
-      width: 400,
-      overflowY: "hidden",
-      overflowX: "hidden",
-      borderRadius: 3,
-      zIndex: 1000,
-      padding: 0,
-      height: 0,
-      transitionDuration: "0.3s",
-      visibility: "hidden",
-      "&.open": {
-        visibility: "visible",
-        minHeight: 400,
-      },
+const styles = () => ({
+  downloadContainer: {
+    border: "#EAEDEE 1px solid",
+    boxShadow: "rgba(0, 0, 0, 0.08) 0 2px 10px",
+    backgroundColor: "#fff",
+    position: "absolute",
+    right: 20,
+    top: 62,
+    width: 400,
+    overflowY: "hidden",
+    overflowX: "hidden",
+    borderRadius: 3,
+    zIndex: 1000,
+    padding: 0,
+    height: 0,
+    transitionDuration: "0.3s",
+    visibility: "hidden",
+    "&.open": {
+      visibility: "visible",
+      minHeight: 400,
     },
-    downloadContainerAnonymous: {
-      top: 70,
+  },
+  downloadContainerAnonymous: {
+    top: 70,
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: "bold",
+    textAlign: "left",
+    paddingBottom: 20,
+    borderBottom: "#E2E2E2 1px solid",
+    margin: "25px 30px 5px 30px",
+    color: "#000",
+  },
+  actionsContainer: {
+    overflowY: "auto",
+    overflowX: "hidden",
+    minHeight: 250,
+    maxHeight: 335,
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+  },
+  cleanIcon: {
+    position: "absolute",
+    right: 28,
+    top: 25,
+  },
+  cleanButton: {
+    "& svg": {
+      width: 25,
     },
-    title: {
-      fontSize: 16,
-      fontWeight: "bold",
-      textAlign: "left",
-      paddingBottom: 20,
-      borderBottom: "#E2E2E2 1px solid",
-      margin: "25px 30px 5px 30px",
-      color: "#000",
-    },
-    actionsContainer: {
-      overflowY: "auto",
-      overflowX: "hidden",
-      minHeight: 250,
-      maxHeight: 335,
-      width: "100%",
-      display: "flex",
-      flexDirection: "column",
-    },
-    cleanIcon: {
-      position: "absolute",
-      right: 28,
-      top: 25,
-    },
-    cleanButton: {
-      "& svg": {
-        width: 25,
-      },
-    },
-  });
+  },
+});
 
 interface IObjectManager {
-  classes: any;
+  classes?: any;
 }
 
 const ObjectManager = ({ classes }: IObjectManager) => {
@@ -140,4 +139,4 @@ const ObjectManager = ({ classes }: IObjectManager) => {
   );
 };
 
-export default withStyles(styles)(ObjectManager);
+export default withStyles(ObjectManager, styles);

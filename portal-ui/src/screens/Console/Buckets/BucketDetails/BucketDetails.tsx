@@ -33,9 +33,8 @@ import {
   TrashIcon,
 } from "mds";
 import { useSelector } from "react-redux";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import api from "../../../../common/api";
 import { BucketInfo } from "../types";
 import {
@@ -100,21 +99,20 @@ const BucketLifecyclePanel = withSuspense(
   React.lazy(() => import("./BucketLifecyclePanel"))
 );
 
-const styles = (theme: Theme) =>
-  createStyles({
-    pageContainer: {
-      height: "100%",
-    },
-    ...searchField,
-    capitalize: {
-      textTransform: "capitalize",
-    },
+const styles = () => ({
+  pageContainer: {
+    height: "100%",
+  },
+  ...searchField,
+  capitalize: {
+    textTransform: "capitalize",
+  },
 
-    ...containerForHeader,
-  });
+  ...containerForHeader,
+});
 
 interface IBucketDetailsProps {
-  classes: any;
+  classes?: any;
 }
 
 const BucketDetails = ({ classes }: IBucketDetailsProps) => {
@@ -431,4 +429,4 @@ const BucketDetails = ({ classes }: IBucketDetailsProps) => {
   );
 };
 
-export default withStyles(styles)(BucketDetails);
+export default withStyles(BucketDetails, styles);

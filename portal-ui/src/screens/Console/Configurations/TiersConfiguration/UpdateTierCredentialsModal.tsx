@@ -17,10 +17,9 @@
 import React, { Fragment, useEffect, useState } from "react";
 import get from "lodash/get";
 import { Button, LockIcon, Grid } from "mds";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
-import ProgressBar from '@atlaskit/progress-bar';
+
+import { withStyles } from "../../../../theme/makeStyles";
+import ProgressBar from "@atlaskit/progress-bar";
 import {
   formFieldStyles,
   modalBasic,
@@ -38,19 +37,18 @@ import { useAppDispatch } from "../../../../store";
 interface ITierCredentialsModal {
   open: boolean;
   closeModalAndRefresh: (refresh: boolean) => any;
-  classes: any;
+  classes?: any;
   tierData: ITierElement;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    buttonContainer: {
-      display: "flex",
-      justifyContent: "flex-end",
-    },
-    ...modalBasic,
-    ...formFieldStyles,
-  });
+const styles = () => ({
+  buttonContainer: {
+    display: "flex",
+    justifyContent: "flex-end",
+  },
+  ...modalBasic,
+  ...formFieldStyles,
+});
 
 const UpdateTierCredentialsModal = ({
   open,
@@ -231,4 +229,4 @@ const UpdateTierCredentialsModal = ({
   );
 };
 
-export default withStyles(styles)(UpdateTierCredentialsModal);
+export default withStyles(UpdateTierCredentialsModal, styles);

@@ -15,8 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useState } from "react";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../../../theme/makeStyles";
 import ProgressBar from '@atlaskit/progress-bar';
 import { BucketObjectItem } from "../ListObjects/types";
 import { extensionPreview } from "../utils";
@@ -25,7 +25,7 @@ import clsx from "clsx";
 import { Grid } from 'mds';
 
 const styles = () =>
-  createStyles({
+  ({
     iframeContainer: {
       border: "0px",
       flex: "1 1 auto",
@@ -62,7 +62,7 @@ interface IPreviewFileProps {
   bucketName: string;
   object: BucketObjectItem | null;
   isFullscreen?: boolean;
-  classes: any;
+  classes?: any;
 }
 
 const PreviewFile = ({
@@ -168,4 +168,4 @@ const PreviewFile = ({
     </Fragment>
   );
 };
-export default withStyles(styles)(PreviewFile);
+export default withStyles(PreviewFile, styles);;

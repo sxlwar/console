@@ -16,9 +16,9 @@
 
 import React, { useState } from "react";
 import { AddNewTagIcon, Button, Grid } from "mds";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+
+import { withStyles } from "../../../../theme/makeStyles";
 import {
   formFieldStyles,
   modalStyleUtils,
@@ -37,11 +37,11 @@ interface IBucketTagModal {
   bucketName: string;
   onCloseAndUpdate: (refresh: boolean) => void;
 
-  classes: any;
+  classes?: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     ...formFieldStyles,
     ...modalStyleUtils,
     ...spacingUtils,
@@ -148,4 +148,4 @@ const AddBucketTagModal = ({
   );
 };
 
-export default withStyles(styles)(AddBucketTagModal);
+export default withStyles(AddBucketTagModal, styles);;

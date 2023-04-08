@@ -25,21 +25,19 @@ import {
   setSnackBarMessage,
 } from "../../../../systemSlice";
 import { useAppDispatch } from "../../../../store";
-import withStyles from "@mui/styles/withStyles";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
+import { withStyles } from "../../../../theme/makeStyles";
+
 import {
   formFieldStyles,
   modalStyleUtils,
   spacingUtils,
 } from "../../Common/FormComponents/common/styleLibrary";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...modalStyleUtils,
-    ...formFieldStyles,
-    ...spacingUtils,
-  });
+const styles = () => ({
+  ...modalStyleUtils,
+  ...formFieldStyles,
+  ...spacingUtils,
+});
 const EditSiteEndPoint = ({
   editSite = {},
   onClose,
@@ -49,7 +47,7 @@ const EditSiteEndPoint = ({
   editSite: any;
   onClose: () => void;
   onComplete: () => void;
-  classes: any;
+  classes?: any;
 }) => {
   const dispatch = useAppDispatch();
   const [editEndPointName, setEditEndPointName] = useState<string>("");
@@ -167,4 +165,4 @@ const EditSiteEndPoint = ({
     </ModalWrapper>
   );
 };
-export default withStyles(styles)(EditSiteEndPoint);
+export default withStyles(EditSiteEndPoint, styles);

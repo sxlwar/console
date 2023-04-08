@@ -22,13 +22,12 @@ import PageLayout from "../Common/Layout/PageLayout";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
 import FormSwitchWrapper from "../Common/FormComponents/FormSwitchWrapper/FormSwitchWrapper";
 import ModalWrapper from "../Common/ModalWrapper/ModalWrapper";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
+
 import {
   deleteDialogStyles,
   modalStyleUtils,
 } from "../Common/FormComponents/common/styleLibrary";
-import withStyles from "@mui/styles/withStyles";
+import { withStyles}  from "../../../theme/makeStyles";
 import { useSelector } from "react-redux";
 import {
   deleteCookie,
@@ -44,14 +43,13 @@ import RegisterCluster from "../Support/RegisterCluster";
 import { registeredCluster } from "../../../config";
 import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    switchLabel: {
-      fontWeight: "normal",
-    },
-    ...deleteDialogStyles,
-    ...modalStyleUtils,
-  });
+const styles = () => ({
+  switchLabel: {
+    fontWeight: "normal",
+  },
+  ...deleteDialogStyles,
+  ...modalStyleUtils,
+});
 
 const ExampleBlock = ({
   volumeVal,
@@ -86,7 +84,7 @@ const ExampleBlock = ({
   );
 };
 
-const Inspect = ({ classes }: { classes: any }) => {
+const Inspect = ({ classes }: { classes?: any }) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const distributedSetup = useSelector(selDistSet);
@@ -544,4 +542,4 @@ const Inspect = ({ classes }: { classes: any }) => {
   );
 };
 
-export default withStyles(styles)(Inspect);
+export default withStyles(Inspect, styles);

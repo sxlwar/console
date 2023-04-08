@@ -14,9 +14,9 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+
+import { withStyles } from "../../../theme/makeStyles";
 import { Box } from "mds";
 import React, { Fragment, useEffect, useState } from "react";
 import api from "../../../common/api";
@@ -47,11 +47,11 @@ import { fetchLicenseInfo } from "./registerThunks";
 import { ClusterRegistered, ProxyConfiguration } from "./utils";
 
 interface IRegister {
-  classes: any;
+  classes?: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     sizedLabel: {
       minWidth: "75px",
     },
@@ -233,4 +233,4 @@ const Register = ({ classes }: IRegister) => {
   );
 };
 
-export default withStyles(styles)(Register);
+export default withStyles(Register, styles);;

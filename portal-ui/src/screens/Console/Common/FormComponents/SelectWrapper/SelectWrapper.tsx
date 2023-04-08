@@ -23,9 +23,8 @@ import {
   SelectChangeEvent,
   Tooltip,
 } from "@mui/material";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+import { Property } from 'csstype';
+import { withStyles } from "../../../../../theme/makeStyles";
 import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
 import { HelpIcon, Grid } from "mds";
 
@@ -43,50 +42,47 @@ interface SelectProps {
   tooltip?: string;
   onChange: (e: SelectChangeEvent<string>) => void;
   disabled?: boolean;
-  classes: any;
+  classes?: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...fieldBasic,
-    ...tooltipHelper,
-    fieldContainer: {
-      display: "flex",
-      "@media (max-width: 600px)": {
-        flexFlow: "column",
-      },
+const styles = () => ({
+  ...fieldBasic,
+  ...tooltipHelper,
+  fieldContainer: {
+    display: "flex",
+    "@media (max-width: 600px)": {
+      flexFlow: "column",
     },
-  });
+  },
+});
 
-const SelectStyled = withStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      height: 38,
-      lineHeight: 1,
-      "label + &": {
-        marginTop: theme.spacing(3),
-      },
+const SelectStyled = withStyles(InputBase, () => ({
+  root: {
+    height: 38,
+    lineHeight: 1,
+    "label + &": {
+      marginTop: "10px",
     },
-    input: {
-      height: 38,
-      position: "relative",
-      color: "#07193E",
-      fontSize: 13,
-      fontWeight: 600,
-      padding: "8px 20px 10px 10px",
-      border: "#e5e5e5 1px solid",
-      borderRadius: 4,
-      display: "flex",
-      alignItems: "center",
-      "&:hover": {
-        borderColor: "#393939",
-      },
-      "&:focus": {
-        backgroundColor: "#fff",
-      },
+  },
+  input: {
+    height: 38,
+    position: "relative" as Property.Position,
+    color: "#07193E",
+    fontSize: 13,
+    fontWeight: 600,
+    padding: "8px 20px 10px 10px",
+    border: "#e5e5e5 1px solid",
+    borderRadius: 4,
+    display: "flex",
+    alignItems: "center",
+    "&:hover": {
+      borderColor: "#393939",
     },
-  })
-)(InputBase);
+    "&:focus": {
+      backgroundColor: "#fff",
+    },
+  },
+}));
 
 const SelectWrapper = ({
   classes,
@@ -140,4 +136,4 @@ const SelectWrapper = ({
   );
 };
 
-export default withStyles(styles)(SelectWrapper);
+export default withStyles(SelectWrapper, styles);

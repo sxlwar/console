@@ -15,12 +15,12 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { useEffect, useState } from "react";
-import { Theme } from "@mui/material/styles";
+
 import { Button, Grid } from "mds";
 import ProgressBar from '@atlaskit/progress-bar';
 import { useSelector } from "react-redux";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../theme/makeStyles";
 import { modalBasic } from "../Common/FormComponents/common/styleLibrary";
 import { IPolicyItem } from "../Users/types";
 import { ErrorResponseHandler } from "../../../common/types";
@@ -32,15 +32,15 @@ import { AppState, useAppDispatch } from "../../../store";
 import { setSelectedPolicies } from "./AddUsersSlice";
 
 interface ISetUserPoliciesProps {
-  classes: any;
+  classes?: any;
   closeModalAndRefresh: () => void;
   selectedUser: string;
   currentPolicies: IPolicyItem[];
   open: boolean;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     ...modalBasic,
     buttonContainer: {
       display: "flex",
@@ -148,4 +148,4 @@ const SetUserPolicies = ({
   );
 };
 
-export default withStyles(styles)(SetUserPolicies);
+export default withStyles(SetUserPolicies, styles);;

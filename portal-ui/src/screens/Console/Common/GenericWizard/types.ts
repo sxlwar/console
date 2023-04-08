@@ -32,14 +32,14 @@ export interface IWizardElement {
 }
 
 export interface IWizardMain {
-  classes: any;
+  classes?: any;
   loadingStep?: boolean;
   wizardSteps: IWizardElement[];
   forModal?: boolean;
 }
 
 export interface IWizardPage {
-  classes: any;
+  classes?: any;
   page: IWizardElement;
   pageChange: (to: string | number) => void;
   loadingStep?: boolean;

@@ -18,23 +18,21 @@ import React from "react";
 import InputAdornment from "@mui/material/InputAdornment";
 import { SearchIcon } from "mds";
 import TextField from "@mui/material/TextField";
-import withStyles from "@mui/styles/withStyles";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
+import { withStyles } from "../../../theme/makeStyles";
+
 import { searchField } from "./FormComponents/common/styleLibrary";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    searchField: {
-      ...searchField.searchField,
-    },
-    adornment: {},
-  });
+const styles = () => ({
+  searchField: {
+    ...searchField.searchField,
+  },
+  adornment: {},
+});
 
 type SearchBoxProps = {
   placeholder?: string;
   value: string;
-  classes: any;
+  classes?: any;
   onChange: (value: string) => void;
   adornmentPosition?: "start" | "end";
   overrideClass?: any;
@@ -75,4 +73,4 @@ const SearchBox = ({
   );
 };
 
-export default withStyles(styles)(SearchBox);
+export default withStyles(SearchBox, styles);

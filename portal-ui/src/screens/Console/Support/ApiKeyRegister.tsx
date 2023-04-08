@@ -27,19 +27,19 @@ import { useAppDispatch } from "../../../store";
 import { setErrorSnackMessage } from "../../../systemSlice";
 import { ErrorResponseHandler } from "../../../common/types";
 import { spacingUtils } from "../Common/FormComponents/common/styleLibrary";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+
+import { withStyles } from "../../../theme/makeStyles";
 import { useNavigate } from "react-router-dom";
 import { IAM_PAGES } from "../../../common/SecureComponent/permissions";
 
 interface IApiKeyRegister {
-  classes: any;
+  classes?: any;
   registerEndpoint: string;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
+const styles = () =>
+  ({
     sizedLabel: {
       minWidth: "75px",
     },
@@ -189,4 +189,4 @@ const ApiKeyRegister = ({ classes, registerEndpoint }: IApiKeyRegister) => {
   );
 };
 
-export default withStyles(styles)(ApiKeyRegister);
+export default withStyles(ApiKeyRegister, styles);;

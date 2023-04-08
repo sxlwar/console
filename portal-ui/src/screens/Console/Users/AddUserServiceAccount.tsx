@@ -15,23 +15,21 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment } from "react";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../theme/makeStyles";
 import {
   modalStyleUtils,
   serviceAccountStyles,
 } from "../Common/FormComponents/common/styleLibrary";
 import { NewServiceAccount } from "../Common/CredentialsPrompt/types";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...serviceAccountStyles,
-    ...modalStyleUtils,
-  });
+const styles = () => ({
+  ...serviceAccountStyles,
+  ...modalStyleUtils,
+});
 
 interface IAddUserServiceAccountProps {
-  classes: any;
+  classes?: any;
   open: boolean;
   user: string;
   closeModalAndRefresh: (res: NewServiceAccount | null) => void;
@@ -46,4 +44,4 @@ const AddUserServiceAccount = ({
   return <Fragment />;
 };
 
-export default withStyles(styles)(AddUserServiceAccount);
+export default withStyles(AddUserServiceAccount, styles);

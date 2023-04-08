@@ -17,10 +17,8 @@
 import React, { Fragment, useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
-import { Theme } from "@mui/material/styles";
 import { BucketsIcon, Button, HelpBox, RefreshIcon, Grid } from "mds";
-import createStyles from "@mui/styles/createStyles";
-import ProgressBar from '@atlaskit/progress-bar';
+import ProgressBar from "@atlaskit/progress-bar";
 import {
   actionsTray,
   containerForHeader,
@@ -44,7 +42,7 @@ import { selFeatures } from "../consoleSlice";
 import AutoColorIcon from "../Common/Components/AutoColorIcon";
 import TooltipWrapper from "../Common/TooltipWrapper/TooltipWrapper";
 import AButton from "../Common/AButton/AButton";
-import makeStyles from "@mui/styles/makeStyles";
+import { makeStyles } from "../../../theme/makeStyles";
 import TableWrapper from "../Common/TableWrapper/TableWrapper";
 import { niceBytesInt } from "../../../common/utils";
 import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
@@ -58,31 +56,29 @@ import { api } from "../../../api";
 import { errorToHandler } from "../../../api/errors";
 import { setLoadingObjects } from "./objectBrowserSlice";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    bucketList: {
-      marginTop: 25,
-      height: "calc(100vh - 211px)",
-      "&.isEmbedded": {
-        height: "calc(100vh - 128px)",
-      },
+const useStyles = makeStyles()(() => ({
+  bucketList: {
+    marginTop: 25,
+    height: "calc(100vh - 211px)",
+    "&.isEmbedded": {
+      height: "calc(100vh - 128px)",
     },
-    searchField: {
-      ...searchField.searchField,
-      minWidth: 380,
-      "@media (max-width: 900px)": {
-        minWidth: 220,
-      },
+  },
+  searchField: {
+    ...searchField.searchField,
+    minWidth: 380,
+    "@media (max-width: 900px)": {
+      minWidth: 220,
     },
-    ...actionsTray,
-    ...containerForHeader,
-  })
-);
+  },
+  ...actionsTray,
+  ...containerForHeader,
+}));
 
 const OBListBuckets = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   const [records, setRecords] = useState<Bucket[]>([]);
   const [loading, setLoading] = useState<boolean>(true);

@@ -15,22 +15,20 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import { IconButtonProps } from "mds/dist/esm/types/components/IconButton/IconButton.types";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    root: {
-      padding: 0,
-      margin: 0,
-      fontSize: ".9rem",
-    },
-  });
+const styles = () => ({
+  root: {
+    padding: 0,
+    margin: 0,
+    fontSize: ".9rem",
+  },
+});
 
 interface IPanelTitle extends IconButtonProps {
-  classes: any;
+  classes?: any;
   children: any;
 }
 
@@ -38,4 +36,4 @@ const PanelTitle = ({ classes, children }: IPanelTitle) => {
   return <h1 className={classes.root}>{children}</h1>;
 };
 
-export default withStyles(styles)(PanelTitle);
+export default withStyles(PanelTitle, styles);

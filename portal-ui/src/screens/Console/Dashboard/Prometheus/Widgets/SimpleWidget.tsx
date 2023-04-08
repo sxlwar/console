@@ -16,9 +16,8 @@
 
 import React, { Fragment, useEffect, useState } from "react";
 import { connect, useSelector } from "react-redux";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../../theme/makeStyles";
 import api from "../../../../../common/api";
 import { widgetDetailsToPanel } from "../utils";
 import { IDashboardPanel } from "../types";
@@ -29,7 +28,7 @@ import { setErrorSnackMessage } from "../../../../../systemSlice";
 import { AppState, useAppDispatch } from "../../../../../store";
 
 interface ISimpleWidget {
-  classes: any;
+  classes?: any;
   iconWidget: any;
   title: string;
   panelItem: IDashboardPanel;
@@ -41,28 +40,27 @@ interface ISimpleWidget {
   renderFn?: undefined | null | ((arg: Record<string, any>) => any);
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    mainWidgetContainer: {
-      display: "inline-flex",
-      color: "#072A4D",
-      alignItems: "center",
-    },
-    icon: {
-      color: "#072A4D",
-      fill: "#072A4D",
-      marginRight: 5,
-      marginLeft: 12,
-    },
-    widgetLabel: {
-      fontWeight: "bold",
-      textTransform: "uppercase",
-      marginRight: 10,
-    },
-    widgetValue: {
-      marginRight: 25,
-    },
-  });
+const styles = () => ({
+  mainWidgetContainer: {
+    display: "inline-flex",
+    color: "#072A4D",
+    alignItems: "center",
+  },
+  icon: {
+    color: "#072A4D",
+    fill: "#072A4D",
+    marginRight: 5,
+    marginLeft: 12,
+  },
+  widgetLabel: {
+    fontWeight: "bold",
+    textTransform: "uppercase",
+    marginRight: 10,
+  },
+  widgetValue: {
+    marginRight: 25,
+  },
+});
 
 const SimpleWidget = ({
   classes,
@@ -151,4 +149,4 @@ const connector = connect(null, {
   setErrorSnackMessage: setErrorSnackMessage,
 });
 
-export default withStyles(styles)(connector(SimpleWidget));
+export default withStyles(connector(SimpleWidget), styles);

@@ -14,70 +14,67 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React, { Fragment, useState } from "react";
 import { DateTime } from "luxon";
-import { Grid } from "mds";
-import { IMessageEvent, w3cwebsocket as W3CWebSocket } from "websocket";
-import { Box, Button, FilterIcon } from "mds";
-import { AppState, useAppDispatch } from "../../../store";
+import { Box, Button, FilterIcon, Grid } from "mds";
+import { Fragment, useState } from "react";
 import { useSelector } from "react-redux";
+import { IMessageEvent, w3cwebsocket as W3CWebSocket } from "websocket";
+import { AppState, useAppDispatch } from "../../../store";
 import { TraceMessage } from "./types";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../theme/makeStyles";
 import { niceBytes, timeFromDate } from "../../../common/utils";
 import { wsProtocol } from "../../../utils/wsUtils";
+import CheckboxWrapper from "../Common/FormComponents/CheckboxWrapper/CheckboxWrapper";
 import {
   actionsTray,
   containerForHeader,
   tableStyles,
 } from "../Common/FormComponents/common/styleLibrary";
-import TableWrapper from "../Common/TableWrapper/TableWrapper";
-import CheckboxWrapper from "../Common/FormComponents/CheckboxWrapper/CheckboxWrapper";
 import PageLayout from "../Common/Layout/PageLayout";
+import TableWrapper from "../Common/TableWrapper/TableWrapper";
 
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
+import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
+import TooltipWrapper from "../Common/TooltipWrapper/TooltipWrapper";
 import {
   setTraceStarted,
   traceMessageReceived,
   traceResetMessages,
 } from "./traceSlice";
-import TooltipWrapper from "../Common/TooltipWrapper/TooltipWrapper";
-import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    sizeItem: {
-      width: 150,
-    },
-    timeItem: {
-      width: 100,
-    },
-    ...actionsTray,
+const styles = () => ({
+  sizeItem: {
+    width: 150,
+  },
+  timeItem: {
+    width: 100,
+  },
+  ...actionsTray,
 
-    ...tableStyles,
-    tableWrapper: {
-      height: "calc(100vh - 292px)",
-    },
-    formBox: {
-      border: "1px solid #EAEAEA",
-      padding: 25,
-      marginBottom: 15,
-    },
-    traceCheckedIcon: {
-      width: "14px",
-      height: "14px",
-      marginLeft: "0px",
-    },
-    unCheckedIcon: {
-      width: "14px",
-      height: "14px",
-    },
-    ...containerForHeader,
-  });
+  ...tableStyles,
+  tableWrapper: {
+    height: "calc(100vh - 292px)",
+  },
+  formBox: {
+    border: "1px solid #EAEAEA",
+    padding: 25,
+    marginBottom: 15,
+  },
+  traceCheckedIcon: {
+    width: "14px",
+    height: "14px",
+    marginLeft: "0px",
+  },
+  unCheckedIcon: {
+    width: "14px",
+    height: "14px",
+  },
+  ...containerForHeader,
+});
 
 interface ITrace {
-  classes: any;
+  classes?: any;
 }
 
 var c: any = null;
@@ -209,7 +206,7 @@ const Trace = ({ classes }: ITrace) => {
                 sx={{
                   display: "flex",
                   flexFlow: "row",
-                  gap:  "30px",
+                  gap: "30px",
 
                   "& .trace-checked-icon": {
                     border: "1px solid red",
@@ -583,4 +580,4 @@ const Trace = ({ classes }: ITrace) => {
   );
 };
 
-export default withStyles(styles)(Trace);
+export default withStyles(Trace, styles);

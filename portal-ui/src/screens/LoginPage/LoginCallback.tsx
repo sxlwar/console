@@ -17,89 +17,87 @@
 import React, { useEffect, useState } from "react"; // eslint-disable-line @typescript-eslint/no-unused-vars
 import { useNavigate } from "react-router-dom";
 import api from "../../common/api";
-import withStyles from "@mui/styles/withStyles";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
+import { withStyles } from "../../theme/makeStyles";
+
 import { baseUrl } from "../../history";
 import { Paper } from "@mui/material";
 import { Button, Grid } from "mds";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    paper: {
+const styles = () => ({
+  paper: {
+    borderRadius: 8,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    width: 800,
+    height: 424,
+    margin: "auto",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    marginLeft: -400,
+    marginTop: -212,
+    "&.MuiPaper-root": {
       borderRadius: 8,
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      width: 800,
-      height: 424,
-      margin: "auto",
-      position: "absolute",
-      top: "50%",
-      left: "50%",
-      marginLeft: -400,
-      marginTop: -212,
-      "&.MuiPaper-root": {
-        borderRadius: 8,
-      },
     },
-    mainContainer: {
-      position: "relative",
-      height: 424,
+  },
+  mainContainer: {
+    position: "relative",
+    height: 424,
+  },
+  theOcean: {
+    borderTopLeftRadius: 8,
+    borderBottomLeftRadius: 8,
+    background:
+      "transparent linear-gradient(to bottom, #073052 0%,#05122b 100%); 0% 0% no-repeat padding-box;",
+  },
+  oceanBg: {
+    backgroundImage: "url(/images/BG_Illustration.svg)",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "bottom left",
+    height: "100%",
+    width: 324,
+  },
+  theLogin: {
+    padding: "40px 45px 20px 45px",
+  },
+  extraDetailsContainer: {
+    fontStyle: "italic",
+    color: "#9C9C9C",
+    transition: "all .2s ease-in-out",
+    padding: "0 5px",
+    marginTop: 5,
+    overflow: "auto",
+  },
+  errorLabel: {
+    color: "#000",
+    fontSize: 18,
+    fontWeight: 500,
+    marginLeft: 5,
+  },
+  simpleError: {
+    marginTop: 5,
+    padding: "2px 5px",
+    fontSize: 16,
+    color: "#000",
+  },
+  messageIcon: {
+    color: "#C72C48",
+    display: "flex",
+    "& svg": {
+      width: 32,
+      height: 32,
     },
-    theOcean: {
-      borderTopLeftRadius: 8,
-      borderBottomLeftRadius: 8,
-      background:
-        "transparent linear-gradient(to bottom, #073052 0%,#05122b 100%); 0% 0% no-repeat padding-box;",
-    },
-    oceanBg: {
-      backgroundImage: "url(/images/BG_Illustration.svg)",
-      backgroundRepeat: "no-repeat",
-      backgroundPosition: "bottom left",
-      height: "100%",
-      width: 324,
-    },
-    theLogin: {
-      padding: "40px 45px 20px 45px",
-    },
-    extraDetailsContainer: {
-      fontStyle: "italic",
-      color: "#9C9C9C",
-      transition: "all .2s ease-in-out",
-      padding: "0 5px",
-      marginTop: 5,
-      overflow: "auto",
-    },
-    errorLabel: {
-      color: "#000",
-      fontSize: 18,
-      fontWeight: 500,
-      marginLeft: 5,
-    },
-    simpleError: {
-      marginTop: 5,
-      padding: "2px 5px",
-      fontSize: 16,
-      color: "#000",
-    },
-    messageIcon: {
-      color: "#C72C48",
-      display: "flex",
-      "& svg": {
-        width: 32,
-        height: 32,
-      },
-    },
-    errorTitle: {
-      display: "flex",
-      alignItems: "center",
-    },
-  });
+  },
+  errorTitle: {
+    display: "flex",
+    alignItems: "center",
+  },
+});
 
 interface ILoginCallBackProps {
-  classes: any;
+  classes?: any;
 }
 
 const LoginCallback = ({ classes }: ILoginCallBackProps) => {
@@ -184,4 +182,4 @@ const LoginCallback = ({ classes }: ILoginCallBackProps) => {
   ) : null;
 };
 
-export default withStyles(styles)(LoginCallback);
+export default withStyles(LoginCallback, styles);

@@ -14,19 +14,15 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import React, { Fragment, useState } from "react";
-import {
-  Checkbox,
-  Paper,
-  Popover,
-} from "@mui/material";
-import ProgressBar from '@atlaskit/progress-bar';
-import { IconButton, Grid } from 'mds';
+import { Checkbox, Paper, Popover } from "@mui/material";
+import ProgressBar from "@atlaskit/progress-bar";
+import { IconButton, Grid } from "mds";
 import { useNavigate } from "react-router-dom";
 import { AutoSizer, Column, InfiniteLoader, Table } from "react-virtualized";
 import get from "lodash/get";
 import isString from "lodash/isString";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import ViewColumnIcon from "@mui/icons-material/ViewColumn";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
@@ -88,7 +84,7 @@ interface TableWrapperProps {
   isLoading: boolean;
   loadingMessage?: React.ReactNode;
   records: any[];
-  classes: any;
+  classes?: any;
   entityName: string;
   selectedItems?: string[];
   radioSelection?: boolean;
@@ -115,137 +111,136 @@ interface TableWrapperProps {
 
 const borderColor = "#9c9c9c80";
 
-const styles = () =>
-  createStyles({
-    paper: {
-      display: "flex",
-      overflow: "auto",
-      flexDirection: "column",
-      padding: "0 16px 8px",
-      boxShadow: "none",
-      border: "#EAEDEE 1px solid",
-      borderRadius: 3,
-      minHeight: 200,
-      overflowY: "scroll",
-      position: "relative",
-      "&::-webkit-scrollbar": {
-        width: 0,
-        height: 3,
+const styles = () => ({
+  paper: {
+    display: "flex",
+    overflow: "auto",
+    flexDirection: "column",
+    padding: "0 16px 8px",
+    boxShadow: "none",
+    border: "#EAEDEE 1px solid",
+    borderRadius: 3,
+    minHeight: 200,
+    overflowY: "scroll",
+    position: "relative",
+    "&::-webkit-scrollbar": {
+      width: 0,
+      height: 3,
+    },
+  },
+  noBackground: {
+    backgroundColor: "transparent",
+    border: 0,
+  },
+  disabled: {
+    backgroundColor: "#fbfafa",
+    color: "#cccccc",
+  },
+  defaultPaperHeight: {
+    height: "calc(100vh - 205px)",
+  },
+  loadingBox: {
+    paddingTop: "100px",
+    paddingBottom: "100px",
+  },
+  overlayColumnSelection: {
+    position: "absolute",
+    right: 0,
+    top: 0,
+  },
+  popoverContent: {
+    maxHeight: 250,
+    overflowY: "auto",
+    padding: "0 10px 10px",
+  },
+  shownColumnsLabel: {
+    color: "#9c9c9c",
+    fontSize: 12,
+    padding: 10,
+    borderBottom: "#eaeaea 1px solid",
+    width: "100%",
+  },
+  checkAllWrapper: {
+    marginTop: -16,
+  },
+  "@global": {
+    ".rowLine": {
+      borderBottom: `1px solid ${borderColor}`,
+      height: 40,
+      fontSize: 14,
+      transitionDuration: 0.3,
+      "&:focus": {
+        outline: "initial",
       },
-    },
-    noBackground: {
-      backgroundColor: "transparent",
-      border: 0,
-    },
-    disabled: {
-      backgroundColor: "#fbfafa",
-      color: "#cccccc",
-    },
-    defaultPaperHeight: {
-      height: "calc(100vh - 205px)",
-    },
-    loadingBox: {
-      paddingTop: "100px",
-      paddingBottom: "100px",
-    },
-    overlayColumnSelection: {
-      position: "absolute",
-      right: 0,
-      top: 0,
-    },
-    popoverContent: {
-      maxHeight: 250,
-      overflowY: "auto",
-      padding: "0 10px 10px",
-    },
-    shownColumnsLabel: {
-      color: "#9c9c9c",
-      fontSize: 12,
-      padding: 10,
-      borderBottom: "#eaeaea 1px solid",
-      width: "100%",
-    },
-    checkAllWrapper: {
-      marginTop: -16,
-    },
-    "@global": {
-      ".rowLine": {
-        borderBottom: `1px solid ${borderColor}`,
-        height: 40,
-        fontSize: 14,
-        transitionDuration: 0.3,
-        "&:focus": {
-          outline: "initial",
-        },
-        "&:hover:not(.ReactVirtualized__Table__headerRow)": {
-          userSelect: "none",
-          backgroundColor: "#ececec",
-          fontWeight: 600,
-          "&.canClick": {
-            cursor: "pointer",
-          },
-          "&.canSelectText": {
-            userSelect: "text",
-          },
-        },
-        "& .selected": {
-          fontWeight: 600,
-        },
-        "&:not(.deleted) .selected": {
-          color: "#081C42",
-        },
-        "&.deleted .selected": {
-          color: "#C51B3F",
-        },
-      },
-      ".headerItem": {
+      "&:hover:not(.ReactVirtualized__Table__headerRow)": {
         userSelect: "none",
-        fontWeight: 700,
-        fontSize: 14,
-        fontStyle: "initial",
-        display: "flex",
-        alignItems: "center",
-        outline: "none",
-      },
-      ".ReactVirtualized__Table__row": {
-        width: "100% !important",
-      },
-      ".ReactVirtualized__Table__headerRow": {
-        fontWeight: 700,
-        fontSize: 14,
-        borderColor: "#39393980",
-        textTransform: "initial",
-      },
-      ".optionsAlignment": {
-        textAlign: "center",
-        "& .min-icon": {
-          width: 16,
-          height: 16,
+        backgroundColor: "#ececec",
+        fontWeight: 600,
+        "&.canClick": {
+          cursor: "pointer",
+        },
+        "&.canSelectText": {
+          userSelect: "text",
         },
       },
-      ".text-center": {
-        textAlign: "center",
+      "& .selected": {
+        fontWeight: 600,
       },
-      ".text-right": {
-        textAlign: "right",
+      "&:not(.deleted) .selected": {
+        color: "#081C42",
       },
-      ".progress-enabled": {
-        paddingTop: 3,
-        display: "inline-block",
-        margin: "0 10px",
-        position: "relative",
-        width: 18,
-        height: 18,
-      },
-      ".progress-enabled > .MuiCircularProgress-root": {
-        position: "absolute",
-        left: 0,
-        top: 3,
+      "&.deleted .selected": {
+        color: "#C51B3F",
       },
     },
-    ...checkboxIcons,
-    ...radioIcons,
-  });
+    ".headerItem": {
+      userSelect: "none",
+      fontWeight: 700,
+      fontSize: 14,
+      fontStyle: "initial",
+      display: "flex",
+      alignItems: "center",
+      outline: "none",
+    },
+    ".ReactVirtualized__Table__row": {
+      width: "100% !important",
+    },
+    ".ReactVirtualized__Table__headerRow": {
+      fontWeight: 700,
+      fontSize: 14,
+      borderColor: "#39393980",
+      textTransform: "initial",
+    },
+    ".optionsAlignment": {
+      textAlign: "center",
+      "& .min-icon": {
+        width: 16,
+        height: 16,
+      },
+    },
+    ".text-center": {
+      textAlign: "center",
+    },
+    ".text-right": {
+      textAlign: "right",
+    },
+    ".progress-enabled": {
+      paddingTop: 3,
+      display: "inline-block",
+      margin: "0 10px",
+      position: "relative",
+      width: 18,
+      height: 18,
+    },
+    ".progress-enabled > .MuiCircularProgress-root": {
+      position: "absolute",
+      left: 0,
+      top: 3,
+    },
+  },
+  ...checkboxIcons,
+  ...radioIcons,
+});
 
 const selectWidth = 45;
 
@@ -447,35 +442,36 @@ const calculateOptionsSize = (containerWidth: number, totalOptions: number) => {
 };
 
 // Main function to render the Table Wrapper
-const TableWrapper = ({
-  itemActions,
-  columns,
-  onSelect,
-  records,
-  isLoading,
-  loadingMessage = <h3>Loading...</h3>,
-  entityName,
-  selectedItems,
-  idField,
-  classes,
-  radioSelection = false,
-  customEmptyMessage = "",
-  customPaperHeight = "",
-  noBackground = false,
-  columnsSelector = false,
-  textSelectable = false,
-  columnsShown = [],
-  onColumnChange = (column: string, state: boolean) => {},
-  infiniteScrollConfig,
-  sortConfig,
-  autoScrollToBottom = false,
-  disabled = false,
-  onSelectAll,
-  rowStyle,
-  parentClassName = "",
-  tooltip,
-}: TableWrapperProps) => {
+const TableWrapper = (props: TableWrapperProps) => {
+  const {
+    itemActions,
+    columns,
+    onSelect,
+    records,
+    isLoading,
+    loadingMessage = <h3>Loading...</h3>,
+    entityName,
+    selectedItems,
+    idField,
+    radioSelection = false,
+    customEmptyMessage = "",
+    customPaperHeight = "",
+    noBackground = false,
+    columnsSelector = false,
+    textSelectable = false,
+    columnsShown = [],
+    onColumnChange = (column: string, state: boolean) => {},
+    infiniteScrollConfig,
+    sortConfig,
+    autoScrollToBottom = false,
+    disabled = false,
+    onSelectAll,
+    rowStyle,
+    parentClassName = "",
+    tooltip,
+  } = props;
   const navigate = useNavigate();
+  const classes = withStyles.getClasses(props);
 
   const [columnSelectorOpen, setColumnSelectorOpen] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = React.useState<any>(null);
@@ -817,4 +813,4 @@ const TableWrapper = ({
   );
 };
 
-export default withStyles(styles)(TableWrapper);
+export default withStyles(TableWrapper, styles);

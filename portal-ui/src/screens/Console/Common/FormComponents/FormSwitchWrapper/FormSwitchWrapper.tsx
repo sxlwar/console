@@ -15,18 +15,17 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
 import { InputLabel, Switch, Tooltip } from "@mui/material";
-import { actionsTray, fieldBasic } from "../common/styleLibrary";
-import { HelpIcon, Grid } from "mds";
-import clsx from "clsx";
 import { InputProps as StandardInputProps } from "@mui/material/Input/Input";
+import clsx from "clsx";
+import { Grid, HelpIcon } from "mds";
+import { withStyles } from "../../../../../theme/makeStyles";
+import { actionsTray, fieldBasic } from "../common/styleLibrary";
 
 interface IFormSwitch {
   label?: string;
-  classes: any;
+  classes?: any;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value: string | boolean;
   id: string;
@@ -41,29 +40,28 @@ interface IFormSwitch {
   extraInputProps?: StandardInputProps["inputProps"];
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    indicatorLabelOn: {
-      fontWeight: "bold",
-      color: "#081C42 !important",
-    },
-    indicatorLabel: {
-      fontSize: 12,
-      color: "#E2E2E2",
-      margin: "0 8px 0 10px",
-    },
-    fieldDescription: {
-      marginTop: 4,
-      color: "#999999",
-    },
-    tooltip: {
-      fontSize: 16,
-    },
-    ...actionsTray,
-    ...fieldBasic,
-  });
+const styles = () => ({
+  indicatorLabelOn: {
+    fontWeight: "bold",
+    color: "#081C42 !important",
+  },
+  indicatorLabel: {
+    fontSize: 12,
+    color: "#E2E2E2",
+    margin: "0 8px 0 10px",
+  },
+  fieldDescription: {
+    marginTop: 4,
+    color: "#999999",
+  },
+  tooltip: {
+    fontSize: 16,
+  },
+  ...actionsTray,
+  ...fieldBasic,
+});
 
-const StyledSwitch = withStyles((theme) => ({
+const StyledSwitch = withStyles(Switch, () => ({
   root: {
     width: 50,
     height: 24,
@@ -74,7 +72,7 @@ const StyledSwitch = withStyles((theme) => ({
     padding: 1,
     "&$checked": {
       transform: "translateX(24px)",
-      color: theme.palette.common.white,
+      color: "white",
       "& + $track": {
         backgroundColor: "#4CCB92",
         boxShadow: "inset 0px 1px 4px rgba(0,0,0,0.1)",
@@ -99,7 +97,7 @@ const StyledSwitch = withStyles((theme) => ({
     backgroundColor: "#E2E2E2",
     boxShadow: "inset 0px 1px 4px rgba(0,0,0,0.1)",
     opacity: 1,
-    transition: theme.transitions.create(["background-color", "border"]),
+    // transition: theme.transitions.create(["background-color", "border"]),
   },
   checked: {},
   focusVisible: {},
@@ -108,7 +106,7 @@ const StyledSwitch = withStyles((theme) => ({
     alignItems: "center",
     justifyContent: "flex-end",
   },
-}))(Switch);
+}));
 
 const FormSwitchWrapper = ({
   label = "",
@@ -214,4 +212,4 @@ const FormSwitchWrapper = ({
   );
 };
 
-export default withStyles(styles)(FormSwitchWrapper);
+export default withStyles(FormSwitchWrapper, styles);

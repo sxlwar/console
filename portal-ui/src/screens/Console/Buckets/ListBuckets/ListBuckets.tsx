@@ -17,7 +17,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
-import { Theme } from "@mui/material/styles";
 import {
   AddIcon,
   BucketsIcon,
@@ -30,7 +29,7 @@ import {
   SelectMultipleIcon,
   Grid,
 } from "mds";
-import ProgressBar from '@atlaskit/progress-bar';
+import ProgressBar from "@atlaskit/progress-bar";
 import {
   actionsTray,
   containerForHeader,
@@ -62,7 +61,7 @@ import TooltipWrapper from "../../Common/TooltipWrapper/TooltipWrapper";
 import AButton from "../../Common/AButton/AButton";
 import { setLoadingObjects } from "../../ObjectBrowser/objectBrowserSlice";
 import PageHeaderWrapper from "../../Common/PageHeaderWrapper/PageHeaderWrapper";
-import makeStyles from "@mui/styles/makeStyles";
+import { makeStyles } from "../../../../theme/makeStyles";
 import { api } from "../../../../api";
 import {
   Bucket,
@@ -72,7 +71,7 @@ import {
 } from "../../../../api/consoleApi";
 import { errorToHandler } from "../../../../api/errors";
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles()(() => ({
   bucketList: {
     marginTop: 25,
     height: "calc(100vh - 211px)",
@@ -94,7 +93,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 const ListBuckets = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   const [records, setRecords] = useState<Bucket[]>([]);
   const [loading, setLoading] = useState<boolean>(true);

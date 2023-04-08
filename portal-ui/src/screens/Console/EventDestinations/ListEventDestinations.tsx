@@ -17,10 +17,9 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { AddIcon, Button, HelpBox, LambdaIcon, RefreshIcon, Grid } from "mds";
 import { useNavigate } from "react-router-dom";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
-import ProgressBar from '@atlaskit/progress-bar';
+
+import { withStyles } from "../../../theme/makeStyles";
+import ProgressBar from "@atlaskit/progress-bar";
 import { red } from "@mui/material/colors";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import {
@@ -54,32 +53,31 @@ import ConfirmDeleteDestinationModal from "./ConfirmDeleteDestinationModal";
 import TooltipWrapper from "../Common/TooltipWrapper/TooltipWrapper";
 
 interface IListNotificationEndpoints {
-  classes: any;
+  classes?: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...actionsTray,
-    ...settingsCommon,
-    ...containerForHeader,
-    twHeight: {
-      minHeight: 400,
+const styles = () => ({
+  ...actionsTray,
+  ...settingsCommon,
+  ...containerForHeader,
+  twHeight: {
+    minHeight: 400,
+  },
+  tableBlock: {
+    ...tableStyles.tableBlock,
+  },
+  rightActionItems: {
+    display: "flex",
+    alignItems: "center",
+    "& button": {
+      whiteSpace: "nowrap",
     },
-    tableBlock: {
-      ...tableStyles.tableBlock,
-    },
-    rightActionItems: {
-      display: "flex",
-      alignItems: "center",
-      "& button": {
-        whiteSpace: "nowrap",
-      },
-    },
-    searchField: {
-      ...searchField.searchField,
-      maxWidth: 380,
-    },
-  });
+  },
+  searchField: {
+    ...searchField.searchField,
+    maxWidth: 380,
+  },
+});
 
 const ListEventDestinations = ({ classes }: IListNotificationEndpoints) => {
   const dispatch = useAppDispatch();
@@ -321,4 +319,4 @@ const ListEventDestinations = ({ classes }: IListNotificationEndpoints) => {
   );
 };
 
-export default withStyles(styles)(ListEventDestinations);
+export default withStyles(ListEventDestinations, styles);

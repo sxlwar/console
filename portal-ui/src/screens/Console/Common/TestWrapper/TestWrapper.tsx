@@ -15,9 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useEffect, useState } from "react";
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import { Grid } from "mds";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { DrivesIcon, Loader, VersionIcon } from "mds";
@@ -28,95 +27,94 @@ import api from "../../../../common/api";
 interface ITestWrapper {
   title: any;
   children: any;
-  classes: any;
+  classes?: any;
   advancedVisible: boolean;
   advancedContent?: any;
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    titleBar: {
-      borderBottom: "#E5E5E5 1px solid",
-      padding: "30px 25px",
-      fontSize: 20,
-      color: "#07193E",
-      fontWeight: "bold",
-      borderRadius: "10px 10px 0px 0px",
-      paddingTop: 0,
+const styles = () => ({
+  titleBar: {
+    borderBottom: "#E5E5E5 1px solid",
+    padding: "30px 25px",
+    fontSize: 20,
+    color: "#07193E",
+    fontWeight: "bold",
+    borderRadius: "10px 10px 0px 0px",
+    paddingTop: 0,
+  },
+  divisorContainer: {
+    padding: 25,
+  },
+  serversData: {
+    color: "#07193E",
+    fontSize: 18,
+    display: "flex",
+    alignItems: "center",
+    "& svg": {
+      marginRight: 10,
     },
-    divisorContainer: {
-      padding: 25,
-    },
-    serversData: {
+  },
+  minioVersionContainer: {
+    fontSize: 12,
+    color: "#07193E",
+    justifyContent: "center",
+    alignSelf: "center",
+    alignItems: "center",
+    display: "flex",
+  },
+  versionIcon: {
+    color: "#07193E",
+    marginRight: 20,
+  },
+  loaderAlign: {
+    textAlign: "center",
+  },
+  advancedContainer: {
+    justifyContent: "flex-end",
+    display: "flex",
+  },
+  optionsContainer: {
+    padding: 0,
+    marginBottom: 25,
+  },
+  advancedConfiguration: {
+    color: "#2781B0",
+    fontSize: 10,
+    textDecoration: "underline",
+    border: "none",
+    backgroundColor: "transparent",
+    cursor: "pointer",
+    alignItems: "center",
+    display: "flex",
+
+    "&:hover": {
       color: "#07193E",
-      fontSize: 18,
-      display: "flex",
-      alignItems: "center",
-      "& svg": {
-        marginRight: 10,
-      },
     },
-    minioVersionContainer: {
-      fontSize: 12,
-      color: "#07193E",
-      justifyContent: "center",
+
+    "& svg": {
+      width: 10,
       alignSelf: "center",
-      alignItems: "center",
-      display: "flex",
+      marginLeft: 5,
     },
-    versionIcon: {
-      color: "#07193E",
-      marginRight: 20,
+  },
+  advancedOpen: {
+    transform: "rotateZ(-90deg) translateX(-4px) translateY(2px)",
+  },
+  advancedClosed: {
+    transform: "rotateZ(90deg)",
+  },
+  advancedContent: {
+    backgroundColor: "#F5F7F9",
+    maxHeight: 0,
+    transitionDuration: "0.3s",
+    overflow: "hidden",
+    padding: "0 15px",
+    "&.open": {
+      maxHeight: 400,
+      padding: 15,
     },
-    loaderAlign: {
-      textAlign: "center",
-    },
-    advancedContainer: {
-      justifyContent: "flex-end",
-      display: "flex",
-    },
-    optionsContainer: {
-      padding: 0,
-      marginBottom: 25,
-    },
-    advancedConfiguration: {
-      color: "#2781B0",
-      fontSize: 10,
-      textDecoration: "underline",
-      border: "none",
-      backgroundColor: "transparent",
-      cursor: "pointer",
-      alignItems: "center",
-      display: "flex",
-
-      "&:hover": {
-        color: "#07193E",
-      },
-
-      "& svg": {
-        width: 10,
-        alignSelf: "center",
-        marginLeft: 5,
-      },
-    },
-    advancedOpen: {
-      transform: "rotateZ(-90deg) translateX(-4px) translateY(2px)",
-    },
-    advancedClosed: {
-      transform: "rotateZ(90deg)",
-    },
-    advancedContent: {
-      backgroundColor: "#F5F7F9",
-      maxHeight: 0,
-      transitionDuration: "0.3s",
-      overflow: "hidden",
-      padding: "0 15px",
-      "&.open": {
-        maxHeight: 400,
-        padding: 15,
-      },
-    },
-  });
+  },
+});
 
 const TestWrapper = ({
   title,
@@ -232,4 +230,4 @@ const TestWrapper = ({
   );
 };
 
-export default withStyles(styles)(TestWrapper);
+export default withStyles(TestWrapper, styles);

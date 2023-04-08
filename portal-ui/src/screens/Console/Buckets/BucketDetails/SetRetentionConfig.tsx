@@ -16,10 +16,9 @@
 
 import React, { useEffect, useState } from "react";
 import { Button, Loader, Grid } from "mds";
-import ProgressBar from '@atlaskit/progress-bar';
-import { Theme } from "@mui/material/styles";
-import createStyles from "@mui/styles/createStyles";
-import withStyles from "@mui/styles/withStyles";
+import ProgressBar from "@atlaskit/progress-bar";
+
+import { withStyles } from "../../../../theme/makeStyles";
 import {
   createTenantCommon,
   formFieldStyles,
@@ -38,16 +37,15 @@ import InputBoxWrapper from "../../Common/FormComponents/InputBoxWrapper/InputBo
 import { setModalErrorSnackMessage } from "../../../../systemSlice";
 import { useAppDispatch } from "../../../../store";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    ...spacingUtils,
-    ...createTenantCommon,
-    ...formFieldStyles,
-    ...modalStyleUtils,
-  });
+const styles = () => ({
+  ...spacingUtils,
+  ...createTenantCommon,
+  ...formFieldStyles,
+  ...modalStyleUtils,
+});
 
 interface ISetRetentionConfigProps {
-  classes: any;
+  classes?: any;
   open: boolean;
   bucketName: string;
   closeModalAndRefresh: () => void;
@@ -212,4 +210,4 @@ const SetRetentionConfig = ({
   );
 };
 
-export default withStyles(styles)(SetRetentionConfig);
+export default withStyles(SetRetentionConfig, styles);
