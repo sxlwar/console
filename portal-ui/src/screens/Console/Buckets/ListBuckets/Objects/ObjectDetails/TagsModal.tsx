@@ -35,7 +35,7 @@ import { IFileInfo } from "./types";
 import { IAM_SCOPES } from "../../../../../../common/SecureComponent/permissions";
 import { SecureComponent } from "../../../../../../common/SecureComponent";
 import Chip from "@mui/material/Chip";
-import CloseIcon from "@mui/icons-material/Close";
+import CrossIcon from '@atlaskit/icon/glyph/cross'
 import {
   selDistSet,
   setModalErrorSnackMessage,
@@ -280,7 +280,7 @@ const AddTagModal = ({
                               size="small"
                               label={`${tagKey} : ${tag}`}
                               color="primary"
-                              deleteIcon={<CloseIcon />}
+                              deleteIcon={<CrossIcon label=""/>}
                               onDelete={() => {
                                 onDeleteTag(tagKey, tag);
                               }}

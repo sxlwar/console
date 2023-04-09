@@ -17,9 +17,9 @@
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import WatchFilledIcon from '@atlaskit/icon/glyph/watch-filled'
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff"; // todo
+import LockIcon from '@atlaskit/icon/glyph/lock'
 import {
   containerForHeader,
   spacingUtils,
@@ -136,7 +136,7 @@ const GetApiKeyModal = ({
           type={showPassword ? "text" : "password"}
           value={password}
           overlayIcon={
-            showPassword ? <VisibilityOffIcon /> : <RemoveRedEyeIcon />
+            showPassword ? <VisibilityOffIcon /> : <WatchFilledIcon label=""/>
           }
           overlayAction={() => setShowPassword(!showPassword)}
         />
@@ -172,7 +172,7 @@ const GetApiKeyModal = ({
             }}
           >
             <InputBoxWrapper
-              overlayIcon={<LockOutlinedIcon />}
+              overlayIcon={<LockIcon label=""/>}
               id="subnet-otp"
               name="subnet-otp"
               onChange={(event: React.ChangeEvent<HTMLInputElement>) =>

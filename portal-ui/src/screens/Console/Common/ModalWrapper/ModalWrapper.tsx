@@ -26,7 +26,7 @@ import {
   snackBarCommon,
 } from "../FormComponents/common/styleLibrary";
 import { AppState, useAppDispatch } from "../../../../store";
-import CloseIcon from "@mui/icons-material/Close";
+import CrossIcon from '@atlaskit/icon/glyph/cross'
 import MainError from "../MainError/MainError";
 import { setModalSnackMessage } from "../../../../systemSlice";
 
@@ -139,7 +139,7 @@ const ModalWrapper = ({
             onClick={onClose}
             size="small"
           >
-            <CloseIcon />
+            <CrossIcon label=""/>
           </IconButton>
         </div>
       </DialogTitle>

@@ -22,7 +22,8 @@ import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
 import { LinearProgress } from "@mui/material";
 import { red } from "@mui/material/colors";
-import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import PresenceActiveIcon from '@atlaskit/icon/glyph/presence-active'
+
 import {
   NotificationEndpointItem,
   NotificationEndpointsList,
@@ -169,8 +170,9 @@ const ListEventDestinations = ({ classes }: IListNotificationEndpoints) => {
           alignItems: "center",
         }}
       >
-        <FiberManualRecordIcon
-          style={status === "Offline" ? { color: red[500] } : {}}
+        <PresenceActiveIcon
+          primaryColor={status === 'Offline' ? red[500]: ''}
+          label=""
         />
         {status}
       </div>

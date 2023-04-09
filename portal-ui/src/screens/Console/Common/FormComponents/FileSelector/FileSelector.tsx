@@ -17,8 +17,8 @@
 import React, { useState } from "react";
 import get from "lodash/get";
 import { InputLabel, Tooltip } from "@mui/material";
-import AttachFileIcon from "@mui/icons-material/AttachFile";
-import CancelIcon from "@mui/icons-material/Cancel";
+import AttachmentIcon from '@atlaskit/icon/glyph/attachment'
+import CrossCircleIcon from '@atlaskit/icon/glyph/cross-circle'
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
@@ -148,7 +148,7 @@ const FileSelector = ({
                 }}
                 size="small"
               >
-                <CancelIcon />
+                <CrossCircleIcon  label=""/>
               </IconButton>
             )}
 
@@ -165,7 +165,7 @@ const FileSelector = ({
               }}
               size="small"
             >
-              <AttachFileIcon />
+              <AttachmentIcon  label=""/>
             </IconButton>
           </div>
         )}

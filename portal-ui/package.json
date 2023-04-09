@@ -5,6 +5,7 @@
   "homepage": ".",
   "private": true,
   "dependencies": {
+    "@atlaskit/icon": "^21.11.5",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.11",
@@ -36,7 +37,9 @@
     "tinycolor2": "^1.6.0",
     "websocket": "^1.0.31"
   },
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "start": "PORT=5005 react-scripts start",
     "build": "react-scripts build",

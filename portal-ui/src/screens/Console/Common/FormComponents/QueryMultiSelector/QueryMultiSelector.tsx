@@ -26,7 +26,7 @@ import debounce from "lodash/debounce";
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
-import HelpIcon from "@mui/icons-material/Help";
+import QuestionCircleIcon from '@atlaskit/icon/glyph/question-circle'
 import { InputLabel, Tooltip } from "@mui/material";
 import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
 import InputBoxWrapper from "../InputBoxWrapper/InputBoxWrapper";
@@ -232,7 +232,9 @@ const QueryMultiSelector = ({
           {tooltip !== "" && (
             <div className={classes.tooltipContainer}>
               <Tooltip title={tooltip} placement="top-start">
-                <HelpIcon className={classes.tooltip} />
+                <div className={classes.tooltip}>
+                  <QuestionCircleIcon label=""/>
+                </div>
               </Tooltip>
             </div>
           )}

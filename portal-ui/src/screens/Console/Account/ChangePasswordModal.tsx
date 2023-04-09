@@ -31,8 +31,8 @@ import {
 import { ChangePasswordRequest } from "../Buckets/types";
 import { ErrorResponseHandler } from "../../../common/types";
 import api from "../../../common/api";
-import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import WatchFilledIcon from '@atlaskit/icon/glyph/watch-filled'
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff"; // todo
 import { setModalErrorSnackMessage } from "../../../systemSlice";
 import { useAppDispatch } from "../../../store";
 
@@ -152,7 +152,7 @@ const ChangePassword = ({
                 value={currentPassword}
                 overlayAction={() => setShowPassword(!showPassword)}
                 overlayIcon={
-                  showPassword ? <VisibilityOffIcon /> : <RemoveRedEyeIcon />
+                  showPassword ? <VisibilityOffIcon /> : <WatchFilledIcon label=""/>
                 }
               />
             </Grid>
@@ -168,7 +168,7 @@ const ChangePassword = ({
                 value={newPassword}
                 overlayAction={() => setShowPassword(!showPassword)}
                 overlayIcon={
-                  showPassword ? <VisibilityOffIcon /> : <RemoveRedEyeIcon />
+                  showPassword ? <VisibilityOffIcon /> : <WatchFilledIcon label=""/>
                 }
               />
             </Grid>
@@ -184,7 +184,7 @@ const ChangePassword = ({
                 value={reNewPassword}
                 overlayAction={() => setShowPassword(!showPassword)}
                 overlayIcon={
-                  showPassword ? <VisibilityOffIcon /> : <RemoveRedEyeIcon />
+                  showPassword ? <VisibilityOffIcon /> : <WatchFilledIcon label=""/>
                 }
               />
             </Grid>

@@ -13,8 +13,9 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
-import AddIcon from "@mui/icons-material/Add";
-import CloseIcon from "@mui/icons-material/Close";
+
+import AddIcon from '@atlaskit/icon/glyph/add'
+import CrossIcon from '@atlaskit/icon/glyph/cross'
 import Chip from "@mui/material/Chip";
 import get from "lodash/get";
 import { Box, Loader } from "mds";
@@ -131,7 +132,7 @@ const BucketTags = ({ bucketName }: BucketTagProps) => {
                         size="small"
                         label={`${tagKey} : ${tag}`}
                         color="primary"
-                        deleteIcon={<CloseIcon />}
+                        deleteIcon={<CrossIcon label="" />}
                         onDelete={() => {
                           deleteTag(tagKey, tag);
                         }}
@@ -153,7 +154,7 @@ const BucketTags = ({ bucketName }: BucketTagProps) => {
           >
             <Chip
               style={{ maxWidth: 80, marginTop: "10px" }}
-              icon={<AddIcon />}
+              icon={<AddIcon label="" />}
               clickable
               size="small"
               label="Add tag"

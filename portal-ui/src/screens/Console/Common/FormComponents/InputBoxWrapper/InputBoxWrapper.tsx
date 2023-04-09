@@ -22,8 +22,8 @@ import {
 } from "@mui/material";
 import { OutlinedInputProps } from "@mui/material/OutlinedInput";
 import { InputProps as StandardInputProps } from "@mui/material/Input";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff"; // todo
+import WatchFilledIcon from '@atlaskit/icon/glyph/watch-filled'
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import makeStyles from "@mui/styles/makeStyles";
@@ -160,7 +160,7 @@ const InputBoxWrapper = ({
     inputBoxWrapperIcon = toggleTextInput ? (
       <VisibilityOffIcon />
     ) : (
-      <RemoveRedEyeIcon />
+      <WatchFilledIcon label="" />
     );
     inputBoxWrapperType = toggleTextInput ? "text" : "password";
   }

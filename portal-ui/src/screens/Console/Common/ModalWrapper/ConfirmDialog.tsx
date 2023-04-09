@@ -22,7 +22,7 @@ import {
   DialogTitle,
 } from "@mui/material";
 import { Button, IconButton } from "mds";
-import CloseIcon from "@mui/icons-material/Close";
+import CrossIcon from '@atlaskit/icon/glyph/cross'
 import { Theme } from "@mui/material/styles";
 import createStyles from "@mui/styles/createStyles";
 import withStyles from "@mui/styles/withStyles";
@@ -95,7 +95,7 @@ const ConfirmDialog = ({
             onClick={onClose}
             size="small"
           >
-            <CloseIcon />
+            <CrossIcon label=""/>
           </IconButton>
         </div>
       </DialogTitle>
