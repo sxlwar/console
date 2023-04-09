@@ -20,7 +20,6 @@ import { useNavigate } from "react-router-dom";
 
 import { withStyles } from "../../../theme/makeStyles";
 import ProgressBar from "@atlaskit/progress-bar";
-import { red } from "@mui/material/colors";
 import PresenceActiveIcon from '@atlaskit/icon/glyph/presence-active'
 
 import {
@@ -169,7 +168,7 @@ const ListEventDestinations = ({ classes }: IListNotificationEndpoints) => {
         }}
       >
         <PresenceActiveIcon
-          primaryColor={status === 'Offline' ? red[500]: ''}
+          primaryColor={status === 'Offline' ? '#f44336': ''}
           label=""
         />
         {status}

@@ -15,8 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Box } from "@mui/material";
 import {
+  Box,
   CallHomeFeatureIcon,
   DiagnosticsFeatureIcon,
   ExtraFeaturesIcon,
@@ -60,15 +60,8 @@ const RegisterHelpBox = ({ hasMargin = true }: { hasMargin?: boolean }) => {
         display: "flex",
         flexFlow: "column",
         padding: "20px",
-        marginLeft: {
-          xs: "0px",
-          sm: "0px",
-          md: hasMargin ? "30px" : "",
-        },
-        marginTop: {
-          xs: "0px",
-          sm: hasMargin ? "30px" : "",
-        },
+        marginLeft: 0,
+        marginTop: 0,
       }}
     >
       <Box

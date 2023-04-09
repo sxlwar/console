@@ -22,24 +22,24 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { useDropzone } from "react-dropzone";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { useDropzone } from "react-dropzone";
 
-import { CSSObject } from "styled-components";
+import { DateTime } from "luxon";
 import {
   AccessRuleIcon,
   BucketsIcon,
   Button,
   DeleteIcon,
   DownloadIcon,
+  Grid,
   HistoryIcon,
   PreviewIcon,
   RefreshIcon,
   ShareIcon,
-  Grid,
 } from "mds";
-import { DateTime } from "luxon";
+import { CSSObject } from "styled-components";
 
 import get from "lodash/get";
 import api from "../../../../../../common/api";
@@ -50,6 +50,10 @@ import {
 } from "../../../../../../common/utils";
 
 import {
+  ErrorResponseHandler,
+  IRetentionConfig,
+} from "../../../../../../common/types";
+import {
   actionsTray,
   containerForHeader,
   objectBrowserCommon,
@@ -57,46 +61,38 @@ import {
   searchField,
   tableStyles,
 } from "../../../../Common/FormComponents/common/styleLibrary";
-import { Badge } from "@mui/material";
 import BrowserBreadcrumbs from "../../../../ObjectBrowser/BrowserBreadcrumbs";
-import { extensionPreview } from "../utils";
 import { BucketInfo, BucketQuota } from "../../../types";
-import {
-  ErrorResponseHandler,
-  IRetentionConfig,
-} from "../../../../../../common/types";
+import { extensionPreview } from "../utils";
 
 import ScreenTitle from "../../../../Common/ScreenTitle/ScreenTitle";
 
-import { AppState, useAppDispatch } from "../../../../../../store";
-import PageLayout from "../../../../Common/Layout/PageLayout";
+import {
+  SecureComponent,
+  hasPermission,
+} from "../../../../../../common/SecureComponent";
 import {
   IAM_SCOPES,
   permissionTooltipHelper,
 } from "../../../../../../common/SecureComponent/permissions";
-import {
-  hasPermission,
-  SecureComponent,
-} from "../../../../../../common/SecureComponent";
+import { AppState, useAppDispatch } from "../../../../../../store";
 import withSuspense from "../../../../Common/Components/withSuspense";
+import CheckboxWrapper from "../../../../Common/FormComponents/CheckboxWrapper/CheckboxWrapper";
+import PageLayout from "../../../../Common/Layout/PageLayout";
 import UploadFilesButton from "../../UploadFilesButton";
+import VersionsNavigator from "../ObjectDetails/VersionsNavigator";
+import ActionsListSection from "./ActionsListSection";
 import DetailsListPanel from "./DetailsListPanel";
 import ObjectDetailPanel from "./ObjectDetailPanel";
-import ActionsListSection from "./ActionsListSection";
-import VersionsNavigator from "../ObjectDetails/VersionsNavigator";
-import CheckboxWrapper from "../../../../Common/FormComponents/CheckboxWrapper/CheckboxWrapper";
 
 import {
   setErrorSnackMessage,
   setSnackBarMessage,
 } from "../../../../../../systemSlice";
 
-import {
-  makeid,
-  removeTrace,
-  storeCallForObjectWithID,
-  storeFormDataWithID,
-} from "../../../../ObjectBrowser/transferManager";
+import { makeStyles } from "../../../../../../theme/makeStyles";
+import TooltipWrapper from "../../../../Common/TooltipWrapper/TooltipWrapper";
+import RenameLongFileName from "../../../../ObjectBrowser/RenameLongFilename";
 import {
   cancelObjectInList,
   completeObject,
@@ -115,30 +111,33 @@ import {
   setRetentionConfig,
   setSearchObjects,
   setSelectedBucket,
-  setSelectedObjects,
   setSelectedObjectView,
+  setSelectedObjects,
   setSelectedPreview,
   setShareFileModalOpen,
   setShowDeletedObjects,
   setVersionsModeEnabled,
   updateProgress,
 } from "../../../../ObjectBrowser/objectBrowserSlice";
-import { makeStyles } from "../../../../../../theme/makeStyles";
-import {
-  selBucketDetailsInfo,
-  selBucketDetailsLoading,
-  setBucketDetailsLoad,
-  setBucketInfo,
-} from "../../../BucketDetails/bucketDetailsSlice";
-import RenameLongFileName from "../../../../ObjectBrowser/RenameLongFilename";
-import TooltipWrapper from "../../../../Common/TooltipWrapper/TooltipWrapper";
-import ListObjectsTable from "./ListObjectsTable";
 import {
   downloadSelected,
   openAnonymousAccess,
   openPreview,
   openShare,
 } from "../../../../ObjectBrowser/objectBrowserThunks";
+import {
+  makeid,
+  removeTrace,
+  storeCallForObjectWithID,
+  storeFormDataWithID,
+} from "../../../../ObjectBrowser/transferManager";
+import {
+  selBucketDetailsInfo,
+  selBucketDetailsLoading,
+  setBucketDetailsLoad,
+  setBucketInfo,
+} from "../../../BucketDetails/bucketDetailsSlice";
+import ListObjectsTable from "./ListObjectsTable";
 
 import FilterObjectsSB from "../../../../ObjectBrowser/FilterObjectsSB";
 import AddAccessRule from "../../../BucketDetails/AddAccessRule";
@@ -154,56 +153,54 @@ const PreviewFileModal = withSuspense(
   React.lazy(() => import("../Preview/PreviewFileModal"))
 );
 
-const useStyles = makeStyles()(() =>
-  ({
-    badgeOverlap: {
-      "& .MuiBadge-badge": {
-        top: 10,
-        right: 1,
-        width: 5,
-        height: 5,
-        minWidth: 5,
-      },
+const useStyles = makeStyles()(() => ({
+  badgeOverlap: {
+    "& .MuiBadge-badge": {
+      top: 10,
+      right: 1,
+      width: 5,
+      height: 5,
+      minWidth: 5,
     },
-    ...tableStyles,
-    ...actionsTray,
-    ...searchField,
+  },
+  ...tableStyles,
+  ...actionsTray,
+  ...searchField,
 
-    searchField: {
-      ...searchField.searchField,
-      maxWidth: 380,
+  searchField: {
+    ...searchField.searchField,
+    maxWidth: 380,
+  },
+  screenTitleContainer: {
+    border: "#EAEDEE 1px solid",
+  },
+  labelStyle: {
+    color: "#969FA8",
+    fontSize: "12px",
+  },
+  breadcrumbsContainer: {
+    padding: "12px 14px 5px",
+  },
+  fullContainer: {
+    position: "relative",
+    "@media (max-width: 799px)": {
+      width: 0,
     },
-    screenTitleContainer: {
-      border: "#EAEDEE 1px solid",
+  },
+  hideListOnSmall: {
+    "@media (max-width: 799px)": {
+      display: "none",
     },
-    labelStyle: {
-      color: "#969FA8",
-      fontSize: "12px",
-    },
-    breadcrumbsContainer: {
-      padding: "12px 14px 5px",
-    },
-    fullContainer: {
-      position: "relative",
-      "@media (max-width: 799px)": {
-        width: 0,
-      },
-    },
-    hideListOnSmall: {
-      "@media (max-width: 799px)": {
-        display: "none",
-      },
-    },
-    actionsSection: {
-      display: "flex",
-      justifyContent: "space-between",
-      width: "100%",
-    },
-    ...objectBrowserExtras,
-    ...objectBrowserCommon,
-    ...containerForHeader,
-  })
-);
+  },
+  actionsSection: {
+    display: "flex",
+    justifyContent: "space-between",
+    width: "100%",
+  },
+  ...objectBrowserExtras,
+  ...objectBrowserCommon,
+  ...containerForHeader,
+}));
 
 const baseDnDStyle = {
   borderWidth: 2,
@@ -1032,14 +1029,7 @@ const ListObjects = () => {
                       id={"rewind-objects-list"}
                       label={"Rewind"}
                       icon={
-                        <Badge
-                          badgeContent=" "
-                          color="secondary"
-                          variant="dot"
-                          invisible={!rewindEnabled}
-                          className={classes.badgeOverlap}
-                          sx={{ height: 16 }}
-                        >
+                        <div style={{ position: "relative" }}>
                           <HistoryIcon
                             style={{
                               minWidth: 16,
@@ -1049,7 +1039,19 @@ const ListObjects = () => {
                               marginTop: -3,
                             }}
                           />
-                        </Badge>
+                          <div
+                            style={{
+                              display: rewindEnabled ? "none" : "block",
+                              width: 10,
+                              height: 10,
+                              borderRadius: 10,
+                              background: "red",
+                              position: "absolute",
+                              top: -5,
+                              right: -5,
+                            }}
+                          ></div>
+                        </div>
                       }
                       variant={"regular"}
                       onClick={() => {
