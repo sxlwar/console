@@ -15,10 +15,11 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { IconButton } from "mds";
-import Snackbar from "@mui/material/Snackbar";
+import { AlertCloseIcon, IconButton } from "mds";
+import SectionMessage, {
+  SectionMessageAction,
+} from "@atlaskit/section-message";
 import { Dialog, DialogContent, DialogTitle } from "@mui/material";
-
 
 import { withStyles } from "../../../../theme/makeStyles";
 import {
@@ -41,19 +42,18 @@ interface IModalProps {
   titleIcon?: React.ReactNode;
 }
 
-const styles = () =>
-  ({
-    ...deleteDialogStyles,
-    content: {
-      padding: 25,
-      paddingBottom: 0,
-    },
-    customDialogSize: {
-      width: "100%",
-      maxWidth: 765,
-    },
-    ...snackBarCommon,
-  });
+const styles = () => ({
+  ...deleteDialogStyles,
+  content: {
+    padding: 25,
+    paddingBottom: 0,
+  },
+  customDialogSize: {
+    width: "100%",
+    maxWidth: 765,
+  },
+  ...snackBarCommon,
+});
 
 const ModalWrapper = ({
   onClose,
@@ -145,24 +145,31 @@ const ModalWrapper = ({
       </DialogTitle>
 
       <MainError isModal={true} />
-      <Snackbar
-        open={openSnackbar}
-        className={classes.snackBarModal}
-        onClose={() => {
-          closeSnackBar();
-        }}
-        message={message}
-        ContentProps={{
-          className: `${classes.snackBar} ${
-            modalSnackMessage && modalSnackMessage.type === "error"
-              ? classes.errorSnackBar
-              : ""
-          }`,
-        }}
-        autoHideDuration={
-          modalSnackMessage && modalSnackMessage.type === "error" ? 10000 : 5000
-        }
-      />
+      <div className={classes.snackBarModal}>
+        {openSnackbar && (
+          <SectionMessage
+            actions={[
+              <SectionMessageAction
+                onClick={() => {
+                  closeSnackBar();
+                }}
+              >
+                <AlertCloseIcon />
+              </SectionMessageAction>,
+            ]}
+          >
+            <p
+              className={`${classes.snackBar} ${
+                modalSnackMessage && modalSnackMessage.type === "error"
+                  ? classes.errorSnackBar
+                  : ""
+              }`}
+            >
+              {message}
+            </p>
+          </SectionMessage>
+        )}
+      </div>
       <DialogContent className={noContentPadding ? "" : classes.content}>
         {children}
       </DialogContent>
@@ -170,4 +177,4 @@ const ModalWrapper = ({
   );
 };
 
-export default withStyles(ModalWrapper, styles);;
+export default withStyles(ModalWrapper, styles);

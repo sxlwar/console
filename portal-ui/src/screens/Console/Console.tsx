@@ -27,8 +27,9 @@ import debounce from "lodash/debounce";
 import { withStyles } from "../../theme/makeStyles";
 import type { Theme } from "../../theme/main";
 import ProgressBar from "@atlaskit/progress-bar";
-import CssBaseline from "@mui/material/CssBaseline";
-import Snackbar from "@mui/material/Snackbar";
+import SectionMessage, {
+  SectionMessageAction,
+} from "@atlaskit/section-message";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { AppState, useAppDispatch } from "../../store";
@@ -56,6 +57,7 @@ import {
   setSnackBarMessage,
 } from "../../systemSlice";
 import { selFeatures, selSession } from "./consoleSlice";
+import { AlertCloseIcon } from "mds";
 
 const Trace = React.lazy(() => import("./Trace/Trace"));
 const Heal = React.lazy(() => import("./Heal/Heal"));
@@ -481,7 +483,6 @@ const Console = ({ classes }: IConsoleProps) => {
     <Fragment>
       {session && session.status === "ok" ? (
         <div className={classes.root}>
-          <CssBaseline />
           {!hideMenu && <Menu />}
 
           <main className={classes.content}>
@@ -513,24 +514,30 @@ const Console = ({ classes }: IConsoleProps) => {
             )}
             <MainError />
             <div className={classes.snackDiv}>
-              <Snackbar
-                open={openSnackbar}
-                onClose={() => {
-                  closeSnackBar();
-                }}
-                autoHideDuration={
-                  snackBarMessage.type === "error" ? 10000 : 5000
-                }
-                message={snackBarMessage.message}
-                className={classes.snackBarExternal}
-                ContentProps={{
-                  className: `${classes.snackBar} ${
-                    snackBarMessage.type === "error"
-                      ? classes.errorSnackBar
-                      : ""
-                  }`,
-                }}
-              />
+              <div className={classes.snackBarExternal}>
+                {openSnackbar && (
+                  <SectionMessage
+                    appearance={
+                      snackBarMessage.type === "error" ? "error" : "information"
+                    }
+                    actions={[
+                      <SectionMessageAction onClick={() => closeSnackBar()}>
+                        <AlertCloseIcon />
+                      </SectionMessageAction>,
+                    ]}
+                  >
+                    <p
+                      className={`${classes.snackBar} ${
+                        snackBarMessage.type === "error"
+                          ? classes.errorSnackBar
+                          : ""
+                      }`}
+                    >
+                      {snackBarMessage.message}
+                    </p>
+                  </SectionMessage>
+                )}
+              </div>
             </div>
             <Suspense fallback={<LoadingComponent />}>
               <ObjectManager />

@@ -6,6 +6,7 @@
   "private": true,
   "dependencies": {
     "@atlaskit/progress-bar": "^0.5.16",
+    "@atlaskit/section-message": "^6.3.14",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.11",
