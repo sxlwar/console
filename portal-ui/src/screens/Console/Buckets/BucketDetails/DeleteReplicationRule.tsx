@@ -16,8 +16,6 @@
 
 import React, { Fragment, useState } from "react";
 
-import { DialogContentText } from "@mui/material";
-
 import { ErrorResponseHandler } from "../../../../common/types";
 import useApi from "../../Common/Hooks/useApi";
 import ConfirmDialog from "../../Common/ModalWrapper/ConfirmDialog";
@@ -26,6 +24,7 @@ import InputBoxWrapper from "../../Common/FormComponents/InputBoxWrapper/InputBo
 import WarningMessage from "../../Common/WarningMessage/WarningMessage";
 import { setErrorSnackMessage } from "../../../../systemSlice";
 import { useAppDispatch } from "../../../../store";
+import { DialogContentText } from "../../../../common/DialogContentText";
 
 interface IDeleteReplicationProps {
   closeDeleteModalAndRefresh: (refresh: boolean) => void;

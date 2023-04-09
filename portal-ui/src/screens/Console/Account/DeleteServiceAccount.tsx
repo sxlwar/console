@@ -19,7 +19,6 @@ import React from "react";
 
 
 import { withStyles } from "../../../theme/makeStyles";
-import { DialogContentText } from "@mui/material";
 
 import { ErrorResponseHandler } from "../../../common/types";
 import useApi from "../Common/Hooks/useApi";
@@ -28,6 +27,7 @@ import { ConfirmDeleteIcon } from "mds";
 import { encodeURLString } from "../../../common/utils";
 import { setErrorSnackMessage } from "../../../systemSlice";
 import { useAppDispatch } from "../../../store";
+import { DialogContentText } from "../../../common/DialogContentText";
 
 const styles = () =>
   ({

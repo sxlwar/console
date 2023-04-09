@@ -16,7 +16,6 @@
 
 import React, { Fragment, useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { DialogContentText } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { setErrorSnackMessage } from "../../../systemSlice";
 import { ErrorResponseHandler } from "../../../common/types";
@@ -28,6 +27,7 @@ import ConfirmDialog from "../Common/ModalWrapper/ConfirmDialog";
 import WarningMessage from "../Common/WarningMessage/WarningMessage";
 import TableWrapper from "../Common/TableWrapper/TableWrapper";
 import api from "../../../common/api";
+import { DialogContentText } from "../../../common/DialogContentText";
 
 interface IDeleteUserProps {
   closeDeleteModalAndRefresh: (refresh: boolean) => void;

@@ -1,7 +1,7 @@
 import React from "react";
 import ConfirmDialog from "../Common/ModalWrapper/ConfirmDialog";
 import { ConfirmModalIcon } from "mds";
-import { DialogContentText } from "@mui/material";
+import { DialogContentText } from "../../../common/DialogContentText";
 
 const ConfirmDeleteDestinationModal = ({
   onConfirm,

@@ -16,7 +16,6 @@
 
 import React, { useEffect, useState } from "react";
 
-import { DialogContentText } from "@mui/material";
 import ProgressBar from "@atlaskit/progress-bar";
 
 import { withStyles } from "../../../../theme/makeStyles";
@@ -28,6 +27,7 @@ import ConfirmDialog from "../../Common/ModalWrapper/ConfirmDialog";
 import { ConfirmDeleteIcon } from "mds";
 import { setErrorSnackMessage } from "../../../../systemSlice";
 import { useAppDispatch } from "../../../../store";
+import { DialogContentText } from "../../../../common/DialogContentText";
 
 const styles = () => ({
   wrapText: {

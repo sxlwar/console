@@ -15,7 +15,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useState } from "react";
-import { DialogContentText } from "@mui/material";
 import api from "../../../../common/api";
 
 import { ErrorResponseHandler } from "../../../../common/types";
@@ -26,6 +25,7 @@ import { setErrorSnackMessage } from "../../../../systemSlice";
 import { useAppDispatch } from "../../../../store";
 import { BucketVersioningInfo } from "../types";
 import VersioningInfo from "../VersioningInfo";
+import { DialogContentText } from "../../../../common/DialogContentText";
 
 interface IVersioningEventProps {
   closeVersioningModalAndRefresh: (refresh: boolean) => void;

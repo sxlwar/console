@@ -15,7 +15,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useState } from "react";
-import { DialogContentText } from "@mui/material";
 
 import { ErrorResponseHandler } from "../../../../../../common/types";
 import { decodeURLString } from "../../../../../../common/utils";
@@ -31,6 +30,7 @@ import { IAM_SCOPES } from "../../../../../../common/SecureComponent/permissions
 import { useSelector } from "react-redux";
 import { BucketVersioningInfo } from "../../../types";
 import { isVersionedMode } from "../../../../../../utils/validationFunctions";
+import { DialogContentText } from "../../../../../../common/DialogContentText";
 
 interface IDeleteObjectProps {
   closeDeleteModalAndRefresh: (refresh: boolean) => void;
@@ -103,7 +103,7 @@ const DeleteObject = ({
       onClose={onClose}
       confirmationContent={
         <DialogContentText
-          sx={{
+          style={{
             width: "430px",
           }}
         >

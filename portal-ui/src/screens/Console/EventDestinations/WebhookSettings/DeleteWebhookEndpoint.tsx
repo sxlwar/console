@@ -16,7 +16,6 @@
 
 import React, { useEffect, useState } from "react";
 import { ConfirmDeleteIcon } from "mds";
-import { DialogContentText } from "@mui/material";
 import ConfirmDialog from "../../Common/ModalWrapper/ConfirmDialog";
 import api from "../../../../common/api";
 import {
@@ -26,6 +25,7 @@ import {
 } from "../../../../systemSlice";
 import { ErrorResponseHandler } from "../../../../common/types";
 import { useAppDispatch } from "../../../../store";
+import { DialogContentText } from "../../../../common/DialogContentText";
 
 interface IDeleteWebhookEndpoint {
   modalOpen: boolean;

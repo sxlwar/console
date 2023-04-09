@@ -16,7 +16,6 @@
 
 import React, { Fragment, useEffect, useState } from "react";
 
-import { DialogContentText } from "@mui/material";
 import { ErrorResponseHandler } from "../../../../../../common/types";
 import { decodeURLString } from "../../../../../../common/utils";
 import { ConfirmDeleteIcon, Grid } from "mds";
@@ -29,6 +28,7 @@ import FormSwitchWrapper from "../../../../Common/FormComponents/FormSwitchWrapp
 import { hasPermission } from "../../../../../../common/SecureComponent";
 import { IAM_SCOPES } from "../../../../../../common/SecureComponent/permissions";
 import { useSelector } from "react-redux";
+import { DialogContentText } from "../../../../../../common/DialogContentText";
 
 interface IDeleteNonCurrentProps {
   closeDeleteModalAndRefresh: (refresh: boolean) => void;

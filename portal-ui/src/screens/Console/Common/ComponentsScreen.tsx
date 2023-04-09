@@ -15,12 +15,12 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useState } from "react";
-import { DialogContentText } from "@mui/material";
 import PageLayout from "./Layout/PageLayout";
 import SectionTitle from "./SectionTitle";
 import { Button, ConfirmDeleteIcon, Grid } from "mds";
 import ConfirmDialog from "./ModalWrapper/ConfirmDialog";
 import PageHeaderWrapper from "./PageHeaderWrapper/PageHeaderWrapper";
+import { DialogContentText } from "../../../common/DialogContentText";
 
 const ComponentsScreen = () => {
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);

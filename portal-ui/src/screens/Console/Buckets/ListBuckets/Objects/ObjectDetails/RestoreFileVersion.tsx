@@ -15,7 +15,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { useState } from "react";
-import { DialogContentText } from "@mui/material";
 
 import { withStyles } from "../../../../../../theme/makeStyles";
 import { modalBasic } from "../../../../Common/FormComponents/common/styleLibrary";
@@ -29,6 +28,7 @@ import { setErrorSnackMessage } from "../../../../../../systemSlice";
 import { useAppDispatch } from "../../../../../../store";
 import { IFileInfo } from "./types";
 import { restoreLocalObjectList } from "../../../../ObjectBrowser/objectBrowserSlice";
+import { DialogContentText } from "../../../../../../common/DialogContentText";
 
 interface IRestoreFileVersion {
   classes?: any;

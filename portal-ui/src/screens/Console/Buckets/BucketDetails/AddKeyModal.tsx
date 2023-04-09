@@ -14,7 +14,6 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { DialogContentText } from "@mui/material";
 import React, { useState } from "react";
 import { ErrorResponseHandler } from "../../../../common/types";
 import { useAppDispatch } from "../../../../store";
@@ -24,6 +23,7 @@ import useApi from "../../Common/Hooks/useApi";
 import ConfirmDialog from "../../Common/ModalWrapper/ConfirmDialog";
 import KMSHelpBox from "../../KMS/KMSHelpbox";
 import { Grid } from "mds";
+import { DialogContentText } from "../../../../common/DialogContentText";
 
 interface IAddKeyModalProps {
   closeAddModalAndRefresh: (refresh: boolean) => void;

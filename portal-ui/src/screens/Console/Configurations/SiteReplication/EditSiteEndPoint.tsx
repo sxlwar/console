@@ -16,7 +16,6 @@
 
 import React, { useState } from "react";
 import { Box, Button, EditIcon, Grid } from "mds";
-import { DialogContentText } from "@mui/material";
 import InputBoxWrapper from "../../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
 import ModalWrapper from "../../Common/ModalWrapper/ModalWrapper";
 import useApi from "../../Common/Hooks/useApi";
@@ -32,6 +31,7 @@ import {
   modalStyleUtils,
   spacingUtils,
 } from "../../Common/FormComponents/common/styleLibrary";
+import { DialogContentText } from "../../../../common/DialogContentText";
 
 const styles = () => ({
   ...modalStyleUtils,

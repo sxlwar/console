@@ -16,14 +16,13 @@
 
 import React from "react";
 
-import { DialogContentText } from "@mui/material";
-
 import { ErrorResponseHandler } from "../../../../common/types";
 import useApi from "../../Common/Hooks/useApi";
 import ConfirmDialog from "../../Common/ModalWrapper/ConfirmDialog";
 import { ConfirmDeleteIcon } from "mds";
 import { setErrorSnackMessage } from "../../../../systemSlice";
 import { useAppDispatch } from "../../../../store";
+import { DialogContentText } from "../../../../common/DialogContentText";
 
 interface IDeleteBucketProps {
   closeDeleteModalAndRefresh: (refresh: boolean) => void;

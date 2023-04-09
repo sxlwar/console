@@ -15,7 +15,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useEffect, useState } from "react";
-import { DialogContentText } from "@mui/material";
 import { Box, Button, HelpBox, InspectMenuIcon, PasswordKeyIcon } from "mds";
 import { useNavigate } from "react-router-dom";
 import PageLayout from "../Common/Layout/PageLayout";
@@ -42,6 +41,7 @@ import { useAppDispatch } from "../../../store";
 import RegisterCluster from "../Support/RegisterCluster";
 import { registeredCluster } from "../../../config";
 import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
+import { DialogContentText } from "../../../common/DialogContentText";
 
 const styles = () => ({
   switchLabel: {
@@ -520,7 +520,7 @@ const Inspect = ({ classes }: { classes?: any }) => {
             onClose={onCloseDecKeyModal}
             titleIcon={<PasswordKeyIcon />}
           >
-            <DialogContentText component="div">
+            <DialogContentText>
               <Box>
                 This will be displayed only once. It cannot be recovered.
                 <br />

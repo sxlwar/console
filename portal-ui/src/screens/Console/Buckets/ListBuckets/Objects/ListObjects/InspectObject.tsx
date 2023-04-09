@@ -33,10 +33,10 @@ import {
   modalStyleUtils,
   spacingUtils,
 } from "../../../../Common/FormComponents/common/styleLibrary";
-import { DialogContentText } from "@mui/material";
 import KeyRevealer from "../../../../Tools/KeyRevealer";
 import { setErrorSnackMessage } from "../../../../../../systemSlice";
 import { useAppDispatch } from "../../../../../../store";
+import { DialogContentText } from "../../../../../../common/DialogContentText";
 
 const styles = () =>
   ({

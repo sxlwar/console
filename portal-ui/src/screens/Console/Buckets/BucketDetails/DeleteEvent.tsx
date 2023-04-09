@@ -17,7 +17,6 @@
 import React from "react";
 import get from "lodash/get";
 
-import { DialogContentText } from "@mui/material";
 import { BucketEvent } from "../types";
 
 import { ErrorResponseHandler } from "../../../../common/types";
@@ -26,6 +25,7 @@ import ConfirmDialog from "../../Common/ModalWrapper/ConfirmDialog";
 import { ConfirmDeleteIcon } from "mds";
 import { setErrorSnackMessage } from "../../../../systemSlice";
 import { useAppDispatch } from "../../../../store";
+import { DialogContentText } from "../../../../common/DialogContentText";
 
 interface IDeleteEventProps {
   closeDeleteModalAndRefresh: (refresh: boolean) => void;

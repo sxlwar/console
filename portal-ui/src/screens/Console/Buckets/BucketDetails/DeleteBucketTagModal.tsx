@@ -16,8 +16,6 @@
 
 import React from "react";
 
-import { DialogContentText } from "@mui/material";
-
 import { withStyles } from "../../../../theme/makeStyles";
 import { modalBasic } from "../../Common/FormComponents/common/styleLibrary";
 import { ErrorResponseHandler } from "../../../../common/types";
@@ -26,6 +24,7 @@ import ConfirmDialog from "../../Common/ModalWrapper/ConfirmDialog";
 import { ConfirmDeleteIcon } from "mds";
 import { setErrorSnackMessage } from "../../../../systemSlice";
 import { useAppDispatch } from "../../../../store";
+import { DialogContentText } from "../../../../common/DialogContentText";
 
 interface IDeleteBucketTagModal {
   deleteOpen: boolean;

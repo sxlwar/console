@@ -15,13 +15,13 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import React from "react";
 
-import { DialogContentText } from "@mui/material";
 import { ErrorResponseHandler } from "../../../common/types";
 import useApi from "../../../screens/Console/Common/Hooks/useApi";
 import ConfirmDialog from "../../../screens/Console/Common/ModalWrapper/ConfirmDialog";
 import { ConfirmDeleteIcon } from "mds";
 import { setErrorSnackMessage } from "../../../systemSlice";
 import { useAppDispatch } from "../../../store";
+import { DialogContentText } from "../../../common/DialogContentText";
 
 interface IDeleteMultiSAsProps {
   closeDeleteModalAndRefresh: (refresh: boolean) => void;

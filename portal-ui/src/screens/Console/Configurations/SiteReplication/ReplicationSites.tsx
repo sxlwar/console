@@ -17,7 +17,6 @@
 import React, { useState } from "react";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
-import { DialogContentText } from "@mui/material";
 import {
   Box,
   Button,
@@ -38,6 +37,7 @@ import {
 } from "../../Common/FormComponents/common/styleLibrary";
 import TooltipWrapper from "../../Common/TooltipWrapper/TooltipWrapper";
 import EditSiteEndPoint from "./EditSiteEndPoint";
+import { DialogContentText } from "../../../../common/DialogContentText";
 
 const styles = () => ({
   ...modalStyleUtils,
