@@ -17,8 +17,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
+import Tabs, { Tab, TabList } from "@atlaskit/tabs";
 
 import { TabPanel } from "../../../shared/tabs";
 import { User } from "../../Users/types";
@@ -43,7 +42,7 @@ import { Policy } from "../../../../api/consoleApi";
 
 function a11yProps(index: any) {
   return {
-    id: `simple-tab-${index}`,
+    testId: `simple-tab-${index}`,
     "aria-controls": `simple-tabpanel-${index}`,
   };
 }
@@ -155,18 +154,17 @@ const AccessDetails = () => {
     <Fragment>
       <PanelTitle>Access Audit</PanelTitle>
       <Tabs
-        value={curTab}
-        onChange={(e: React.ChangeEvent<{}>, newValue: number) => {
+        id="Access Detail"
+        selected={curTab}
+        onChange={(newValue: number) => {
           setCurTab(newValue);
         }}
-        indicatorColor="primary"
-        textColor="primary"
         aria-label="cluster-tabs"
-        variant="scrollable"
-        scrollButtons="auto"
       >
-        {displayPoliciesList && <Tab label="Policies" {...a11yProps(0)} />}
-        {displayUsersList && <Tab label="Users" {...a11yProps(1)} />}
+        <TabList>
+          {displayPoliciesList && <Tab {...a11yProps(0)}>Policies</Tab>}
+          {displayUsersList && <Tab {...a11yProps(1)}>Users</Tab>}
+        </TabList>
       </Tabs>
       <div>
         <TabPanel index={0} value={curTab}>

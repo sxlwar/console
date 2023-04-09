@@ -14,8 +14,6 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-
-
 import { withStyles } from "../../../theme/makeStyles";
 import { Box } from "mds";
 import React, { Fragment, useEffect, useState } from "react";
@@ -23,8 +21,7 @@ import api from "../../../common/api";
 import { spacingUtils } from "../Common/FormComponents/common/styleLibrary";
 import PageLayout from "../Common/Layout/PageLayout";
 
-import Tab from "@mui/material/Tab";
-import Tabs from "@mui/material/Tabs";
+import Tabs, { Tab } from "@atlaskit/tabs";
 import { useSelector } from "react-redux";
 import { ErrorResponseHandler } from "../../../common/types";
 import { AppState, useAppDispatch } from "../../../store";
@@ -50,13 +47,12 @@ interface IRegister {
   classes?: any;
 }
 
-const styles = () =>
-  ({
-    sizedLabel: {
-      minWidth: "75px",
-    },
-    ...spacingUtils,
-  });
+const styles = () => ({
+  sizedLabel: {
+    minWidth: "75px",
+  },
+  ...spacingUtils,
+});
 
 const Register = ({ classes }: IRegister) => {
   const dispatch = useAppDispatch();
@@ -191,32 +187,17 @@ const Register = ({ classes }: IRegister) => {
 
       <PageLayout>
         <Tabs
-          value={curTab}
-          onChange={(e: React.ChangeEvent<{}>, newValue: number) => {
+          selected={curTab}
+          onChange={(newValue: number) => {
             dispatch(setCurTab(newValue));
           }}
-          indicatorColor="primary"
-          textColor="primary"
-          aria-label="cluster-tabs"
-          variant="scrollable"
-          scrollButtons="auto"
+          id="register"
         >
-          <Tab
-            label="Credentials"
-            id="simple-tab-0"
-            aria-controls="simple-tab-panel-0"
-          />
-          <Tab
-            label="API Key"
-            id="simple-tab-1"
-            aria-controls="simple-tab-panel-1"
-          />
-          <Tab
-            label="Air-Gap"
-            id="simple-tab-2"
-            aria-controls="simple-tab-panel-2"
-            onClick={() => fetchSubnetRegToken()}
-          />
+          <Tab>Credentials</Tab>
+          <Tab>API Key</Tab>
+          <Tab>
+            <span onClick={() => fetchSubnetRegToken()}>Air-Gap</span>
+          </Tab>
         </Tabs>
 
         <TabPanel index={0} value={curTab}>
@@ -233,4 +214,4 @@ const Register = ({ classes }: IRegister) => {
   );
 };
 
-export default withStyles(Register, styles);;
+export default withStyles(Register, styles);

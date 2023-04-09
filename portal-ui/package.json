@@ -9,6 +9,7 @@
     "@atlaskit/modal-dialog": "^12.4.11",
     "@atlaskit/progress-bar": "^0.5.16",
     "@atlaskit/section-message": "^6.3.14",
+    "@atlaskit/tabs": "^13.3.13",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/lab": "^5.0.0-alpha.122",

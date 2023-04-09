@@ -1,15 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { Tab, TabProps } from "@mui/material";
-import { TabContext, TabList, TabPanel } from "@mui/lab";
+import Tabs, { TabList, TabPanel, useTab } from "@atlaskit/tabs";
+import React, { PropsWithChildren, useEffect, useRef, useState } from "react";
 import { withStyles } from "../../../../theme/makeStyles";
-import { useTheme } from "@mui/material/styles";
 
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { useLocation } from "react-router-dom";
 import { Box } from "mds";
+import { useLocation, useNavigate } from "react-router-dom";
+
+export type ITabProps = {
+  label: string;
+  value: string;
+  component: React.FC<any>;
+  to: string;
+};
 
 export type TabItemProps = {
-  tabConfig: TabProps | any;
+  tabConfig: ITabProps | any;
   content?: JSX.Element | JSX.Element[];
 };
 
@@ -31,36 +35,20 @@ const styles = () => ({
     width: "300px",
     background: "#F8F8F8",
     borderRight: "1px solid #EAEAEA",
-    "& .MuiTabs-root": {
-      "& .MuiTabs-indicator": {
-        display: "none",
-      },
-      "& .MuiTab-root": {
-        display: "flex",
-        flexFlow: "row",
-        alignItems: "center",
-        justifyContent: "flex-start",
-        borderBottom: "1px solid #EAEAEA",
-        "& .MuiSvgIcon-root": {
-          marginRight: 8,
-          marginBottom: 0,
-        },
-        "&.Mui-selected": {
-          background: "#E5E5E5",
-          fontWeight: 600,
-        },
-      },
-
-      "&. MuiTabs-scroller": {
-        display: "none",
-      },
+    "& [role=tablist]": {
+      display: "flex",
+      flexDirection: "column",
+    },
+    "& [role=tab]": {
+      minHeight: 60,
+      textAlign: "center",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
     },
   },
   tabContentContainer: {
     width: "100%",
-    "& .MuiTabPanel-root": {
-      height: "100%",
-    },
   },
   tabPanel: {
     height: "100%",
@@ -74,15 +62,35 @@ const styles = () => ({
     tabsHeaderContainer: {
       width: "100%",
       borderBottom: " 1px solid #EAEAEA",
-      "& .MuiTabs-root .MuiTabs-scroller .MuiButtonBase-root": {
-        borderBottom: " 0px",
-      },
     },
   },
 });
 
-const tabStripStyle = {
-  minHeight: 60,
+const CustomTab = ({
+  children,
+  ...rest
+}: PropsWithChildren<React.HTMLAttributes<HTMLDivElement>> & {
+  to?: string;
+}) => {
+  const tabAttributes = useTab();
+  const ref = useRef(null);
+  console.log(tabAttributes);
+
+  return (
+    <div
+      ref={ref}
+      {...rest}
+      {...tabAttributes}
+      onClick={(e) => {
+        rest.onClick?.(e);
+        setTimeout(() => {
+          tabAttributes.onClick();
+        }, 300);
+      }}
+    >
+      {children}
+    </div>
+  );
 };
 
 const VerticalTabs = ({
@@ -92,14 +100,12 @@ const VerticalTabs = ({
   routes,
   isRouteTabs,
 }: VerticalTabsProps) => {
-  const theme = useTheme();
+  const navigate = useNavigate();
   const { pathname = "" } = useLocation();
-
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   const [value, setValue] = useState(selectedTab);
 
-  const headerList: TabProps[] = [];
+  const headerList: ITabProps[] = [];
   const contentList: React.ReactNode[] = [];
 
   useEffect(() => {
@@ -121,34 +127,26 @@ const VerticalTabs = ({
     contentList.push(child.content);
   });
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue);
+  const handleChange = (newValue: number) => {
+    setValue(String(newValue));
   };
 
   return (
-    <TabContext value={`${value}`}>
+    <Tabs
+      id="vertical-tabs"
+      selected={+value}
+      onChange={handleChange}
+      defaultSelected={1}
+    >
       <Box className={classes.tabsContainer}>
         <Box className={classes.tabsHeaderContainer}>
-          <TabList
-            onChange={handleChange}
-            orientation={isSmallScreen ? "horizontal" : "vertical"}
-            variant={isSmallScreen ? "scrollable" : "standard"}
-            scrollButtons="auto"
-            className={classes.tabList}
-          >
+          <TabList>
             {headerList.map((item, index) => {
               if (item) {
                 return (
-                  <Tab
-                    className={classes.tabHeader}
-                    key={`v-tab-${index}`}
-                    value={`${index}`}
-                    style={tabStripStyle}
-                    {...item}
-                    disableRipple
-                    disableTouchRipple
-                    focusRipple={true}
-                  />
+                  <CustomTab key={index} onClick={() => navigate(item.to)}>
+                    {item.label}
+                  </CustomTab>
                 );
               }
               return null;
@@ -160,12 +158,8 @@ const VerticalTabs = ({
           {!isRouteTabs
             ? contentList.map((item, index) => {
                 return (
-                  <TabPanel
-                    classes={{ ...classes.tabPanel }}
-                    key={`v-tab-p-${index}`}
-                    value={`${index}`}
-                  >
-                    {item ? item : null}
+                  <TabPanel key={`v-tab-p-${index}`}>
+                    <span style={{ height: "100%" }}>{item ? item : null}</span>
                   </TabPanel>
                 );
               })
@@ -175,7 +169,7 @@ const VerticalTabs = ({
           ) : null}
         </Box>
       </Box>
-    </TabContext>
+    </Tabs>
   );
 };
 

@@ -27,8 +27,7 @@ import {
 
 import { setErrorSnackMessage } from "../../../systemSlice";
 import { useAppDispatch } from "../../../store";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
+import Tabs, { Tab } from "@atlaskit/tabs";
 import { TabPanel } from "../../shared/tabs";
 
 import LabelValuePair from "../Common/UsageBarWrapper/LabelValuePair";
@@ -357,32 +356,15 @@ const Status = () => {
 
       <PageLayout>
         <Tabs
-          value={curTab}
-          onChange={(e: React.ChangeEvent<{}>, newValue: number) => {
+          selected={curTab}
+          onChange={(newValue: number) => {
             setCurTab(newValue);
           }}
-          indicatorColor="primary"
-          textColor="primary"
-          aria-label="cluster-tabs"
-          variant="scrollable"
-          scrollButtons="auto"
+          id="status"
         >
-          <Tab
-            label="Status"
-            id="simple-tab-0"
-            aria-controls="simple-tabpanel-0"
-          />
-          <Tab
-            label="APIs"
-            id="simple-tab-1"
-            aria-controls="simple-tabpanel-1"
-          />
-          <Tab
-            label="Metrics"
-            id="simple-tab-2"
-            aria-controls="simple-tabpanel-2"
-            onClick={() => {}}
-          />
+          <Tab>Status</Tab>
+          <Tab>APIS</Tab>
+          <Tab>Metrics</Tab>
         </Tabs>
 
         <TabPanel index={0} value={curTab}>

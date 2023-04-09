@@ -231,6 +231,19 @@
     "@babel/runtime" "^7.0.0"
     "@emotion/react" "^11.7.1"
 
+"@atlaskit/tabs@^13.3.13":
+  version "13.3.13"
+  resolved "https://registry.yarnpkg.com/@atlaskit/tabs/-/tabs-13.3.13.tgz#53840e246bd21dc0affc2a7917ba1fd9704c78e4"
+  integrity sha512-4C5EE44Q5J1eYsPTozQc630gGxGVSYxYayMeXEmDGckJB+g3NiU9vWGsuB6DPGQbHsdjtctjDC+A0lSxRNlVhg==
+  dependencies:
+    "@atlaskit/analytics-next" "^9.0.0"
+    "@atlaskit/codemod-utils" "^4.1.0"
+    "@atlaskit/ds-explorations" "^2.0.0"
+    "@atlaskit/theme" "^12.2.0"
+    "@atlaskit/tokens" "^1.2.0"
+    "@babel/runtime" "^7.0.0"
+    "@emotion/react" "^11.7.1"
+
 "@atlaskit/theme@^12.2.0", "@atlaskit/theme@^12.3.0":
   version "12.3.0"
   resolved "https://registry.yarnpkg.com/@atlaskit/theme/-/theme-12.3.0.tgz#769629b063241da4e80bb60a304c0bda6ee05fd0"

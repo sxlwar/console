@@ -16,8 +16,7 @@
 
 import React, { Fragment } from "react";
 import { makeStyles } from "../../../../theme/makeStyles";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
+import Tabs, { Tab } from "@atlaskit/tabs";
 import { ITabOption } from "./types";
 
 interface ITabSelector {
@@ -74,19 +73,10 @@ const TabSelector = ({ selectedTab, onChange, tabOptions }: ITabSelector) => {
   return (
     <Fragment>
       <Tabs
-        indicatorColor="primary"
-        textColor="primary"
-        aria-label="cluster-tabs"
-        variant="scrollable"
-        scrollButtons="auto"
-        value={selectedTab}
-        onChange={(e: React.ChangeEvent<{}>, newValue: number) => {
+        id="cluster-tabs"
+        selected={selectedTab}
+        onChange={(newValue: number) => {
           onChange(newValue);
-        }}
-        classes={{
-          root: classes.tabRoot,
-          indicator: classes.indicator,
-          scroller: classes.scroller,
         }}
       >
         {tabOptions.map((option, index) => {
@@ -103,16 +93,14 @@ const TabSelector = ({ selectedTab, onChange, tabOptions }: ITabSelector) => {
           }
 
           return (
-            <Tab
-              {...tabOptions}
-              classes={{
-                root: classes.root,
-                selected: classes.selected,
-              }}
-              id={`simple-tab-${index}`}
-              aria-controls={`simple-tabpanel-${index}`}
-              key={`tab-${index}-${option.label}`}
-            />
+            <div {...tabOptions} key={`tab-${index}-${option.label}`} className={classes.root}>
+              <Tab
+                {...tabOptions}
+                aria-controls={`simple-tabpanel-${index}`}
+              >
+                {option.label}
+              </Tab>
+            </div>
           );
         })}
       </Tabs>
