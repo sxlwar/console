@@ -19,9 +19,8 @@ import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
 
 import { withStyles } from "../../../../theme/makeStyles";
-import { Tooltip } from "@mui/material";
 import { AppState, useAppDispatch } from "../../../../store";
-import { IconButton, RemoveAllIcon } from "mds";
+import { IconButton, RemoveAllIcon, Tooltip } from "mds";
 import ObjectHandled from "./ObjectHandled";
 import {
   cleanList,
@@ -110,7 +109,7 @@ const ObjectManager = ({ classes }: IObjectManager) => {
           })}
         >
           <div className={classes.cleanIcon}>
-            <Tooltip title={"Clean Completed Objects"} placement="bottom-start">
+            <Tooltip tooltip={"Clean Completed Objects"} placement="bottom">
               <IconButton
                 aria-label={"Clear Completed List"}
                 size={"small"}

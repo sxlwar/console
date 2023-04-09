@@ -21,8 +21,7 @@ import { DateTime } from "luxon";
 import { withStyles } from "../../../../../../theme/makeStyles";
 import { displayFileIconName } from "../ListObjects/utils";
 import { IFileInfo } from "./types";
-import { Tooltip } from "@mui/material";
-import { DownloadIcon, PreviewIcon, RecoverIcon, ShareIcon, IconButton, Grid } from "mds";
+import { DownloadIcon, PreviewIcon, RecoverIcon, ShareIcon, IconButton, Grid, Tooltip } from "mds";
 import { niceBytes } from "../../../../../../common/utils";
 import SpecificVersionPill from "./SpecificVersionPill";
 import CheckboxWrapper from "../../../../Common/FormComponents/CheckboxWrapper/CheckboxWrapper";
@@ -272,7 +271,7 @@ const FileVersionItem = ({
                 {versionItemButtons.map((button, index) => {
                   return (
                     <Tooltip
-                      title={button.tooltip}
+                      tooltip={button.tooltip}
                       key={`version-action-${
                         button.tooltip
                       }-${index.toString()}`}

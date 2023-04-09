@@ -20,7 +20,6 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Tooltip,
 } from "@mui/material";
 import {
   menuItemContainerStyles,
@@ -30,7 +29,7 @@ import {
   menuItemTextStyles,
 } from "./MenuStyleUtils";
 import List from "@mui/material/List";
-import { MenuCollapsedIcon, MenuExpandedIcon } from "mds";
+import { MenuCollapsedIcon, MenuExpandedIcon, Tooltip } from "mds";
 import { hasPermission } from "../../../common/SecureComponent";
 import {
   CONSOLE_UI_RESOURCE,
@@ -137,7 +136,7 @@ const MenuItem = ({
         }}
       >
         {page.icon && (
-          <Tooltip title={`${page.name}`} placement="right">
+          <Tooltip tooltip={`${page.name}`} placement="right">
             <ListItemIcon
               sx={{ ...menuItemIconStyles }}
               className={`${
@@ -219,7 +218,7 @@ const MenuItem = ({
                   className={`${stateClsName}`}
                 >
                   {item.icon && (
-                    <Tooltip title={`${item.name}`} placement="right">
+                    <Tooltip tooltip={`${item.name}`} placement="right">
                       <ListItemIcon
                         sx={{
                           background: "#00274D",

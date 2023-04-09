@@ -16,7 +16,7 @@
 
 import React, { useState } from "react";
 import get from "lodash/get";
-import { InputLabel, Tooltip } from "@mui/material";
+import { InputLabel } from "@mui/material";
 
 import { withStyles } from "../../../../../theme/makeStyles";
 import AttachmentIcon from '@atlaskit/icon/glyph/attachment'
@@ -27,7 +27,7 @@ import {
   tooltipHelper,
 } from "../common/styleLibrary";
 import { fileProcess } from "./utils";
-import { Grid, HelpIcon, IconButton } from "mds";
+import { Grid, HelpIcon, IconButton, Tooltip } from "mds";
 import ErrorBlock from "../../../../shared/ErrorBlock";
 
 interface InputBoxProps {
@@ -110,7 +110,7 @@ const FileSelector = ({
             </span>
             {tooltip !== "" && (
               <div className={classes.tooltipContainer}>
-                <Tooltip title={tooltip} placement="top-start">
+                <Tooltip tooltip={tooltip} placement="top">
                   <div className={classes.tooltip}>
                     <HelpIcon />
                   </div>

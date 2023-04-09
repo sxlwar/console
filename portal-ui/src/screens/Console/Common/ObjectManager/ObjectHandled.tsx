@@ -16,8 +16,6 @@
 
 import React, { Fragment } from "react";
 
-import { Tooltip } from "@mui/material";
-
 import { withStyles } from "../../../../theme/makeStyles";
 import { IFileItem } from "../../ObjectBrowser/types";
 import ProgressBarWrapper from "../ProgressBarWrapper/ProgressBarWrapper";
@@ -27,6 +25,7 @@ import {
   DownloadStatIcon,
   EnabledIcon,
   UploadStatIcon,
+  Tooltip,
 } from "mds";
 import clsx from "clsx";
 import { callForObjectID } from "../../ObjectBrowser/transferManager";
@@ -37,121 +36,120 @@ interface IObjectHandled {
   deleteFromList: (instanceID: string) => void;
 }
 
-const styles = () =>
-  ({
-    container: {
-      borderBottom: "#E2E2E2 1px solid",
-      padding: "15px 5px",
-      margin: "0 30px",
-      position: "relative",
+const styles = () => ({
+  container: {
+    borderBottom: "#E2E2E2 1px solid",
+    padding: "15px 5px",
+    margin: "0 30px",
+    position: "relative",
+    "& .showOnHover": {
+      opacity: 1,
+      transitionDuration: "0.2s",
+    },
+    "&.inProgress": {
+      "& .hideOnProgress": {
+        //visibility: "hidden",
+      },
+    },
+    "&:hover": {
       "& .showOnHover": {
         opacity: 1,
-        transitionDuration: "0.2s",
-      },
-      "&.inProgress": {
-        "& .hideOnProgress": {
-          //visibility: "hidden",
-        },
-      },
-      "&:hover": {
-        "& .showOnHover": {
-          opacity: 1,
-        },
       },
     },
-    headItem: {
-      color: "#000",
-      fontSize: 14,
-      fontWeight: "bold",
-      width: "100%",
-      whiteSpace: "nowrap",
-      textOverflow: "ellipsis",
-      overflow: "hidden",
+  },
+  headItem: {
+    color: "#000",
+    fontSize: 14,
+    fontWeight: "bold",
+    width: "100%",
+    whiteSpace: "nowrap",
+    textOverflow: "ellipsis",
+    overflow: "hidden",
+  },
+  downloadHeader: {
+    display: "flex",
+    alignItems: "center",
+    width: "100%",
+  },
+  progressContainer: {
+    marginTop: 5,
+  },
+  objectDetails: {
+    display: "flex",
+    alignItems: "center",
+  },
+  iconContainer: {
+    paddingTop: 5,
+    marginRight: 5,
+    "& svg": {
+      width: 16,
+      height: 16,
     },
-    downloadHeader: {
-      display: "flex",
-      alignItems: "center",
-      width: "100%",
+  },
+  completedSuccess: {
+    color: "#4CCB92",
+  },
+  inProgress: {
+    color: "#2781B0",
+  },
+  completedError: {
+    color: "#C83B51",
+  },
+  cancelledAction: {
+    color: "#FFBD62",
+  },
+  closeIcon: {
+    backgroundColor: "#E9EDEE",
+    display: "block",
+    width: 18,
+    height: 18,
+    borderRadius: "100%",
+    "&:hover": {
+      backgroundColor: "#cecbcb",
     },
-    progressContainer: {
-      marginTop: 5,
-    },
-    objectDetails: {
-      display: "flex",
-      alignItems: "center",
-    },
-    iconContainer: {
-      paddingTop: 5,
-      marginRight: 5,
-      "& svg": {
-        width: 16,
-        height: 16,
-      },
-    },
-    completedSuccess: {
-      color: "#4CCB92",
-    },
-    inProgress: {
-      color: "#2781B0",
-    },
-    completedError: {
-      color: "#C83B51",
-    },
-    cancelledAction: {
-      color: "#FFBD62",
-    },
-    closeIcon: {
-      backgroundColor: "#E9EDEE",
-      display: "block",
-      width: 18,
-      height: 18,
-      borderRadius: "100%",
-      "&:hover": {
-        backgroundColor: "#cecbcb",
-      },
-      "&::before": {
-        width: 1,
-        height: 9,
-        top: "50%",
-        content: "' '",
-        position: "absolute",
-        transform: "translate(-50%, -50%) rotate(45deg)",
-        borderLeft: "#000 2px solid",
-      },
-      "&::after": {
-        width: 1,
-        height: 9,
-        top: "50%",
-        content: "' '",
-        position: "absolute",
-        transform: "translate(-50%, -50%) rotate(-45deg)",
-        borderLeft: "#000 2px solid",
-      },
-    },
-    closeButton: {
-      backgroundColor: "transparent",
-      border: 0,
-      right: 0,
-      top: 5,
-      marginTop: 15,
+    "&::before": {
+      width: 1,
+      height: 9,
+      top: "50%",
+      content: "' '",
       position: "absolute",
+      transform: "translate(-50%, -50%) rotate(45deg)",
+      borderLeft: "#000 2px solid",
     },
-    fileName: {
-      width: 295,
+    "&::after": {
+      width: 1,
+      height: 9,
+      top: "50%",
+      content: "' '",
+      position: "absolute",
+      transform: "translate(-50%, -50%) rotate(-45deg)",
+      borderLeft: "#000 2px solid",
     },
-    bucketName: {
-      fontSize: 12,
-      color: "#696969",
-      fontWeight: "normal",
-    },
-    errorMessage: {
-      fontSize: 12,
-      color: "#C83B51",
-      fontWeight: "normal",
-      marginTop: 6,
-      overflowWrap: "break-word",
-    },
-  });
+  },
+  closeButton: {
+    backgroundColor: "transparent",
+    border: 0,
+    right: 0,
+    top: 5,
+    marginTop: 15,
+    position: "absolute",
+  },
+  fileName: {
+    width: 295,
+  },
+  bucketName: {
+    fontSize: 12,
+    color: "#696969",
+    fontWeight: "normal",
+  },
+  errorMessage: {
+    fontSize: 12,
+    color: "#C83B51",
+    fontWeight: "normal",
+    marginTop: 6,
+    overflowWrap: "break-word",
+  },
+});
 
 const ObjectHandled = ({
   classes,
@@ -185,7 +183,7 @@ const ObjectHandled = ({
         </div>
         <div className={classes.objectDetails}>
           <div className={classes.fileName}>
-            <Tooltip title={prefix} placement="top-start">
+            <Tooltip tooltip={prefix} placement="top">
               <div className={classes.downloadHeader}>
                 <span
                   className={clsx(classes.iconContainer, {
@@ -264,4 +262,4 @@ const ObjectHandled = ({
   );
 };
 
-export default withStyles(ObjectHandled, styles);;
+export default withStyles(ObjectHandled, styles);

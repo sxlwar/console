@@ -17,7 +17,7 @@
 import React, { useState } from "react";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
-import { DialogContentText, Tooltip } from "@mui/material";
+import { DialogContentText } from "@mui/material";
 import {
   Box,
   Button,
@@ -25,6 +25,7 @@ import {
   ConfirmDeleteIcon,
   EditIcon,
   TrashIcon,
+  Tooltip
 } from "mds";
 import { ReplicationSite } from "./SiteReplication";
 import ConfirmDialog from "../../Common/ModalWrapper/ConfirmDialog";
@@ -130,7 +131,7 @@ const ReplicationSites = ({
                     }}
                   >
                     {siteInfo.isCurrent ? (
-                      <Tooltip title={"This site/cluster"} placement="top">
+                      <Tooltip tooltip={"This site/cluster"} placement="top">
                         <Box
                           sx={{
                             "& .min-icon": {
@@ -143,7 +144,7 @@ const ReplicationSites = ({
                         </Box>
                       </Tooltip>
                     ) : null}
-                    <Tooltip title={siteInfo.endpoint}>
+                    <Tooltip tooltip={siteInfo.endpoint}>
                       <Box
                         sx={{
                           overflow: "hidden",

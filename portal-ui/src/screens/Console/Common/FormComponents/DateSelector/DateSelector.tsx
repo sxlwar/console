@@ -25,7 +25,7 @@ import { SelectChangeEvent } from "@mui/material";
 
 import { withStyles } from "../../../../../theme/makeStyles";
 import InputLabel from "@mui/material/InputLabel";
-import Tooltip from "@mui/material/Tooltip";
+import { Tooltip } from "mds";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
@@ -169,7 +169,7 @@ const DateSelector = forwardRef(
               <span>{label}</span>
               {tooltip !== "" && (
                 <div className={classes.tooltipContainer}>
-                  <Tooltip title={tooltip} placement="top-start">
+                  <Tooltip tooltip={tooltip} placement="top">
                     <div className={classes.tooltip}>
                       <HelpIcon />
                     </div>

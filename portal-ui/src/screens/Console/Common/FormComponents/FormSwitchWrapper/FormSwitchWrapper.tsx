@@ -16,10 +16,10 @@
 
 import React from "react";
 
-import { InputLabel, Switch, Tooltip } from "@mui/material";
+import { InputLabel, Switch } from "@mui/material";
 import { InputProps as StandardInputProps } from "@mui/material/Input/Input";
 import clsx from "clsx";
-import { Grid, HelpIcon } from "mds";
+import { Grid, HelpIcon, Tooltip } from "mds";
 import { withStyles } from "../../../../../theme/makeStyles";
 import { actionsTray, fieldBasic } from "../common/styleLibrary";
 
@@ -179,7 +179,7 @@ const FormSwitchWrapper = ({
               <span>{label}</span>
               {tooltip !== "" && (
                 <div className={classes.tooltipContainer}>
-                  <Tooltip title={tooltip} placement="top-start">
+                  <Tooltip tooltip={tooltip} placement="top">
                     <div className={classes.tooltip}>
                       <HelpIcon />
                     </div>

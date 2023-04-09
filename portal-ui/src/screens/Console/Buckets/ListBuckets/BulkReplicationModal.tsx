@@ -17,9 +17,9 @@
 import React, { Fragment, useEffect, useState } from "react";
 
 import { withStyles } from "../../../../theme/makeStyles";
-import { SelectChangeEvent, Tooltip } from "@mui/material";
+import { SelectChangeEvent } from "@mui/material";
 import get from "lodash/get";
-import { Grid } from "mds";
+import { Grid, Tooltip } from "mds";
 import JiraFailedBuildStatusIcon from '@atlaskit/icon/glyph/jira/failed-build-status'
 import CheckCircleOutlineIcon from '@atlaskit/icon/glyph/check-circle-outline'
 import {
@@ -235,7 +235,7 @@ const AddBulkReplicationModal = ({
         if (errString) {
           return (
             <div className={classes.errorIcon}>
-              <Tooltip title={errString} placement="top-start">
+              <Tooltip tooltip={errString} placement="top">
                 <JiraFailedBuildStatusIcon  label=""/>
               </Tooltip>
             </div>

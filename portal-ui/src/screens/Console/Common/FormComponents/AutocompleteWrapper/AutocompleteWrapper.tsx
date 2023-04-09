@@ -20,8 +20,8 @@ import {
   OutlinedInputProps,
   TextField,
   TextFieldProps,
-  Tooltip,
 } from "@mui/material";
+import { Tooltip } from 'mds';
 import { makeStyles, withStyles } from "../../../../../theme/makeStyles";
 import Autocomplete from "@mui/material/Autocomplete";
 
@@ -97,7 +97,7 @@ const AutocompleteWrapper = ({
             <span>{label}</span>
             {tooltip !== "" && (
               <div className={classes.tooltipContainer}>
-                <Tooltip title={tooltip} placement="top-start">
+                <Tooltip tooltip={tooltip} placement="top">
                   <div className={classes.tooltip}>
                     <HelpIcon />
                   </div>

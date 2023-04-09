@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import React from "react";
-import { InputLabel, Tooltip } from "@mui/material";
+import { InputLabel } from "@mui/material";
 import { InputProps as StandardInputProps } from "@mui/material/Input";
 
 import { makeStyles, withStyles } from "../../../../theme/makeStyles";
@@ -23,7 +23,7 @@ import {
   inputFieldStyles,
   tooltipHelper,
 } from "../../Common/FormComponents/common/styleLibrary";
-import { Grid, HelpIcon, IconButton } from "mds";
+import { Grid, HelpIcon, IconButton , Tooltip} from "mds";
 import clsx from "clsx";
 import RegionSelect from "./RegionSelect";
 
@@ -134,7 +134,7 @@ const RegionSelectWrapper = ({
             </span>
             {tooltip !== "" && (
               <div className={classes.tooltipContainer}>
-                <Tooltip title={tooltip} placement="top-start">
+                <Tooltip tooltip={tooltip} placement="top">
                   <div className={classes.tooltip}>
                     <HelpIcon />
                   </div>

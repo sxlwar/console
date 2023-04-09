@@ -15,8 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Tooltip } from "@mui/material";
-import { Loader, Box } from "mds";
+import { Loader, Box, Tooltip } from "mds";
 
 const NumericStatCard = ({
   value,
@@ -58,7 +57,7 @@ const NumericStatCard = ({
             {label}
           </Box>
 
-          <Tooltip title={value} placement="bottom" enterDelay={500}>
+          <Tooltip tooltip={value} placement="bottom">
             <Box
               sx={{
                 fontSize: "50px",

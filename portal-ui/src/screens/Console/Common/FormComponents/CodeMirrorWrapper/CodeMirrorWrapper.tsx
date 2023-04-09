@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { InputLabel, Tooltip } from "@mui/material";
+import { InputLabel } from "@mui/material";
 
 import { withStyles } from "../../../../../theme/makeStyles";
 import { Button, CopyIcon, HelpIcon } from "mds";
@@ -23,7 +23,7 @@ import { fieldBasic } from "../common/styleLibrary";
 import CopyToClipboard from "react-copy-to-clipboard";
 import CodeEditor from "@uiw/react-textarea-code-editor";
 import TooltipWrapper from "../../TooltipWrapper/TooltipWrapper";
-import { Box, Grid } from "mds";
+import { Box, Grid, Tooltip } from "mds";
 
 interface ICodeWrapper {
   value: string;
@@ -58,7 +58,7 @@ const CodeMirrorWrapper = ({
           <span>{label}</span>
           {tooltip !== "" && (
             <div className={classes.tooltipContainer}>
-              <Tooltip title={tooltip} placement="top-start">
+              <Tooltip tooltip={tooltip} placement="top">
                 <div className={classes.tooltip}>
                   <HelpIcon />
                 </div>

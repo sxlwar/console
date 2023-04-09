@@ -18,11 +18,11 @@ import clsx from "clsx";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio, { RadioProps } from "@mui/material/Radio";
-import { InputLabel, Tooltip } from "@mui/material";
+import { InputLabel } from "@mui/material";
 
 import { withStyles } from "../../../../../theme/makeStyles";
 import { fieldBasic, radioIcons, tooltipHelper } from "../common/styleLibrary";
-import { HelpIcon, Grid } from "mds";
+import { HelpIcon, Grid, Tooltip } from "mds";
 
 export interface SelectorTypes {
   label: any;
@@ -109,7 +109,7 @@ export const RadioGroupSelector = ({
           <span>{label}</span>
           {tooltip !== "" && (
             <div className={classes.tooltipContainer}>
-              <Tooltip title={tooltip} placement="top-start">
+              <Tooltip tooltip={tooltip} placement="top">
                 <div>
                   <HelpIcon />
                 </div>

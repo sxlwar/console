@@ -14,9 +14,8 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { Tooltip } from "@mui/material";
 import React from "react";
-import { Box } from 'mds';
+import { Box, Tooltip } from 'mds';
 
 const CounterCard = ({
   counterValue,
@@ -73,7 +72,7 @@ const CounterCard = ({
             {label}
           </Box>
 
-          <Tooltip title={counterValue} placement="bottom" enterDelay={500}>
+          <Tooltip tooltip={counterValue} placement="bottom">
             <Box
               sx={{
                 fontSize:

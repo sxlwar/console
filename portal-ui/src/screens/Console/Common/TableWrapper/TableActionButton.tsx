@@ -18,8 +18,7 @@ import isString from "lodash/isString";
 import { Link } from "react-router-dom";
 
 import { withStyles } from "../../../../theme/makeStyles";
-import { Tooltip } from "@mui/material";
-import { IconButton } from 'mds';
+import { IconButton, Tooltip } from 'mds';
 import CloudIcon from "./TableActionIcons/CloudIcon";
 import ConsoleIcon from "./TableActionIcons/ConsoleIcon";
 import DisableIcon from "./TableActionIcons/DisableIcon";
@@ -132,7 +131,7 @@ const TableActionButton = ({
   );
 
   if (label && label !== "") {
-    buttonElement = <Tooltip title={label}>{buttonElement}</Tooltip>;
+    buttonElement = <Tooltip tooltip={label}>{buttonElement}</Tooltip>;
   }
 
   if (onClick) {

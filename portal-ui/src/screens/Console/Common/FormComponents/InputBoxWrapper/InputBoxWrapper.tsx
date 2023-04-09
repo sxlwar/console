@@ -14,18 +14,18 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import React, { ClipboardEvent, useState } from "react";
-import { InputLabel, TextField, TextFieldProps, Tooltip } from "@mui/material";
+import { InputLabel, TextField, TextFieldProps } from "@mui/material";
 import { OutlinedInputProps } from "@mui/material/OutlinedInput";
 import { InputProps as StandardInputProps } from "@mui/material/Input";
 
 import { makeStyles, withStyles } from "../../../../../theme/makeStyles";
-import WatchFilledIcon from '@atlaskit/icon/glyph/watch-filled'
+import WatchFilledIcon from "@atlaskit/icon/glyph/watch-filled";
 import {
   fieldBasic,
   inputFieldStyles,
   tooltipHelper,
 } from "../common/styleLibrary";
-import { Grid, HelpIcon, IconButton, VisibilityOffIcon } from "mds";
+import { Grid, HelpIcon, IconButton, VisibilityOffIcon, Tooltip } from "mds";
 import clsx from "clsx";
 
 interface InputBoxProps {
@@ -176,7 +176,7 @@ const InputBoxWrapper = ({
             </span>
             {tooltip !== "" && (
               <div className={classes.tooltipContainer}>
-                <Tooltip title={tooltip} placement="top-start">
+                <Tooltip tooltip={tooltip} placement="top">
                   <div className={classes.tooltip}>
                     <HelpIcon />
                   </div>

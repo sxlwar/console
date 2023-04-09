@@ -14,10 +14,9 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { Tooltip } from "@mui/material";
 import React from "react";
 import { Cell, Pie, PieChart } from "recharts";
-import { Box } from 'mds';
+import { Box, Tooltip } from 'mds';
 
 const ReportedUsage = ({
   usageValue,
@@ -78,7 +77,7 @@ const ReportedUsage = ({
           <span>Reported Usage</span>
         </div>
 
-        <Tooltip title={`${usageValue} Bytes`}>
+        <Tooltip tooltip={`${usageValue} Bytes`}>
           <label
             className={"unit-value"}
             style={{

@@ -16,8 +16,8 @@
 
 import React, { Fragment } from "react";
 import { DateTime } from "luxon";
-import { HelpIcon, OpenListIcon, Grid, TimeIcon } from "mds";
-import { InputLabel, TextField, Tooltip } from "@mui/material";
+import { HelpIcon, OpenListIcon, Grid, TimeIcon, Tooltip } from "mds";
+import { InputLabel, TextField } from "@mui/material";
 import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterLuxon } from "@mui/x-date-pickers/AdapterLuxon";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -324,7 +324,7 @@ const DateTimePickerWrapper = ({
             </span>
             {tooltip !== "" && (
               <div className={classes.tooltipContainer}>
-                <Tooltip title={tooltip} placement="top-start">
+                <Tooltip tooltip={tooltip} placement="top">
                   <div className={classes.tooltip}>
                     <HelpIcon />
                   </div>

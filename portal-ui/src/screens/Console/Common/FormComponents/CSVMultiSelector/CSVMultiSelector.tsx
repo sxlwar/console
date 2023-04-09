@@ -23,11 +23,10 @@ import React, {
 } from "react";
 import get from "lodash/get";
 
-
 import { withStyles } from "../../../../../theme/makeStyles";
-import { InputLabel, Tooltip } from "@mui/material";
+import { InputLabel } from "@mui/material";
 import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
-import { AddIcon, HelpIcon, Grid } from "mds";
+import { AddIcon, HelpIcon, Grid, Tooltip } from "mds";
 import InputBoxWrapper from "../InputBoxWrapper/InputBoxWrapper";
 
 interface ICSVMultiSelector {
@@ -42,7 +41,7 @@ interface ICSVMultiSelector {
 }
 
 const styles = () => {
-  return ({
+  return {
     ...fieldBasic,
     ...tooltipHelper,
     inputWithBorder: {
@@ -64,7 +63,7 @@ const styles = () => {
       paddingTop: "20px",
       minWidth: 162,
     },
-  });
+  };
 };
 
 const CSVMultiSelector = ({
@@ -184,7 +183,7 @@ const CSVMultiSelector = ({
           <span>{label}</span>
           {tooltip !== "" && (
             <div className={classes.tooltipContainer}>
-              <Tooltip title={tooltip} placement="top-start">
+              <Tooltip tooltip={tooltip} placement="top">
                 <div className={classes.tooltip}>
                   <HelpIcon />
                 </div>
@@ -204,4 +203,4 @@ const CSVMultiSelector = ({
     </React.Fragment>
   );
 };
-export default withStyles(CSVMultiSelector, styles);;
+export default withStyles(CSVMultiSelector, styles);

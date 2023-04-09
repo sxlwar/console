@@ -21,12 +21,11 @@ import {
   MenuItem,
   Select,
   SelectChangeEvent,
-  Tooltip,
 } from "@mui/material";
 import { Property } from 'csstype';
 import { withStyles } from "../../../../../theme/makeStyles";
 import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
-import { HelpIcon, Grid } from "mds";
+import { HelpIcon, Grid, Tooltip } from "mds";
 
 export interface selectorTypes {
   label: string;
@@ -103,7 +102,7 @@ const SelectWrapper = ({
             <span>{label}</span>
             {tooltip !== "" && (
               <div className={classes.tooltipContainer}>
-                <Tooltip title={tooltip} placement="top-start">
+                <Tooltip tooltip={tooltip} placement="top">
                   <div className={classes.tooltip}>
                     <HelpIcon />
                   </div>

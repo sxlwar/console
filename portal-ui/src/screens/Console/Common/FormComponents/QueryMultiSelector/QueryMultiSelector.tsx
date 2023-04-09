@@ -25,11 +25,11 @@ import get from "lodash/get";
 import debounce from "lodash/debounce";
 import { withStyles } from "../../../../../theme/makeStyles";
 
-import QuestionCircleIcon from '@atlaskit/icon/glyph/question-circle'
-import { InputLabel, Tooltip } from "@mui/material";
+import QuestionCircleIcon from "@atlaskit/icon/glyph/question-circle";
+import { InputLabel } from "@mui/material";
 import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
 import InputBoxWrapper from "../InputBoxWrapper/InputBoxWrapper";
-import { AddIcon, Grid } from "mds";
+import { AddIcon, Grid, Tooltip } from "mds";
 
 interface IQueryMultiSelector {
   elements: string;
@@ -229,9 +229,9 @@ const QueryMultiSelector = ({
           <span>{label}</span>
           {tooltip !== "" && (
             <div className={classes.tooltipContainer}>
-              <Tooltip title={tooltip} placement="top-start">
+              <Tooltip tooltip={tooltip} placement="top">
                 <div className={classes.tooltip}>
-                  <QuestionCircleIcon label=""/>
+                  <QuestionCircleIcon label="" />
                 </div>
               </Tooltip>
             </div>
