@@ -56,7 +56,8 @@ import React from "react";
 import LicenseBadge from "./Menu/LicenseBadge";
 import EncryptionIcon from "../../icons/SidebarMenus/EncryptionIcon";
 import EncryptionStatusIcon from "../../icons/SidebarMenus/EncryptionStatusIcon";
-import { LockOpen, Login } from "@mui/icons-material";
+import UnlockIcon from '@atlaskit/icon/glyph/unlock'
+import SignInIcon from '@atlaskit/icon/glyph/sign-in'
 
 export const validRoutes = (features: string[] | null | undefined) => {
   const ldapIsEnabled = (features && features.includes("ldap-idp")) || false;
@@ -152,14 +153,14 @@ export const validRoutes = (features: string[] | null | undefined) => {
           component: NavLink,
           id: "openID",
           to: IAM_PAGES.IDP_OPENID_CONFIGURATIONS,
-          icon: LockOpen,
+          icon: UnlockIcon,
         },
         {
           name: "LDAP",
           component: NavLink,
           id: "ldap",
           to: IAM_PAGES.IDP_LDAP_CONFIGURATIONS,
-          icon: Login,
+          icon: SignInIcon,
         },
       ],
     },

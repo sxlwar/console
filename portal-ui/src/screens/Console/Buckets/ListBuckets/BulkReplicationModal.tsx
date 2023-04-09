@@ -20,8 +20,8 @@ import { withStyles } from "../../../../theme/makeStyles";
 import { SelectChangeEvent, Tooltip } from "@mui/material";
 import get from "lodash/get";
 import { Grid } from "mds";
-import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import JiraFailedBuildStatusIcon from '@atlaskit/icon/glyph/jira/failed-build-status'
+import CheckCircleOutlineIcon from '@atlaskit/icon/glyph/check-circle-outline'
 import {
   modalBasic,
   wizardCommon,
@@ -226,7 +226,7 @@ const AddBulkReplicationModal = ({
       case "":
         return (
           <div className={classes.successIcon}>
-            <CheckCircleOutlineIcon />
+            <CheckCircleOutlineIcon label=""/>
           </div>
         );
       case "n/a":
@@ -236,7 +236,7 @@ const AddBulkReplicationModal = ({
           return (
             <div className={classes.errorIcon}>
               <Tooltip title={errString} placement="top-start">
-                <ErrorOutlineIcon />
+                <JiraFailedBuildStatusIcon  label=""/>
               </Tooltip>
             </div>
           );

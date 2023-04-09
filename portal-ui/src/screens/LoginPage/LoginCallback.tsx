@@ -22,7 +22,7 @@ import { withStyles } from "../../theme/makeStyles";
 import { baseUrl } from "../../history";
 import { Paper } from "@mui/material";
 import { Button, Grid } from "mds";
-import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
+import JiraFailedBuildStatusIcon from '@atlaskit/icon/glyph/jira/failed-build-status'
 
 const styles = () => ({
   paper: {
@@ -156,7 +156,7 @@ const LoginCallback = ({ classes }: ILoginCallBackProps) => {
           <Grid item xs={5} className={classes.theLogin}>
             <div className={classes.errorTitle}>
               <span className={classes.messageIcon}>
-                <ErrorOutlineIcon />
+                <JiraFailedBuildStatusIcon label=""/>
               </span>
               <span className={classes.errorLabel}>Error from IDP</span>
             </div>

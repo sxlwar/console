@@ -14,20 +14,20 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import React from "react";
-import PublicIcon from "@mui/icons-material/Public";
-import CompressIcon from "@mui/icons-material/Compress";
-import CodeIcon from "@mui/icons-material/Code";
-import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
-import FindReplaceIcon from "@mui/icons-material/FindReplace";
-import VpnKeyIcon from "@mui/icons-material/VpnKey";
-import PendingActionsIcon from "@mui/icons-material/PendingActions";
-import CallToActionIcon from "@mui/icons-material/CallToAction";
+import WorldIcon from '@atlaskit/icon/glyph/world'
+import CompressIcon from "@mui/icons-material/Compress"; // todo
+import EditorCodeIcon from '@atlaskit/icon/glyph/editor/code'
+import LocalHospitalIcon from "@mui/icons-material/LocalHospital"; // todo
+import FindReplaceIcon from "@mui/icons-material/FindReplace"; // todo
+import VpnKeyIcon from "@mui/icons-material/VpnKey"; // todo
+import PendingActionsIcon from "@mui/icons-material/PendingActions"; // todo
+import CallToActionIcon from "@mui/icons-material/CallToAction"; // todo
 import { IElement, IElementValue, IOverrideEnv, OverrideValue } from "./types";
 import { LogsIcon } from "mds";
 
 export const configurationElements: IElement[] = [
   {
-    icon: <PublicIcon />,
+    icon: <WorldIcon label=""/>,
     configuration_id: "region",
     configuration_label: "Region",
   },
@@ -37,7 +37,7 @@ export const configurationElements: IElement[] = [
     configuration_label: "Compression",
   },
   {
-    icon: <CodeIcon />,
+    icon: <EditorCodeIcon label=""/>,
     configuration_id: "api",
     configuration_label: "API",
   },

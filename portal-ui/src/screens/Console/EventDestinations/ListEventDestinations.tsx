@@ -21,7 +21,8 @@ import { useNavigate } from "react-router-dom";
 import { withStyles } from "../../../theme/makeStyles";
 import ProgressBar from "@atlaskit/progress-bar";
 import { red } from "@mui/material/colors";
-import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import PresenceActiveIcon from '@atlaskit/icon/glyph/presence-active'
+
 import {
   NotificationEndpointItem,
   NotificationEndpointsList,
@@ -167,8 +168,9 @@ const ListEventDestinations = ({ classes }: IListNotificationEndpoints) => {
           alignItems: "center",
         }}
       >
-        <FiberManualRecordIcon
-          style={status === "Offline" ? { color: red[500] } : {}}
+        <PresenceActiveIcon
+          primaryColor={status === 'Offline' ? red[500]: ''}
+          label=""
         />
         {status}
       </div>

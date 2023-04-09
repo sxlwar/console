@@ -18,7 +18,7 @@ import React, { Fragment, useEffect, useState } from "react";
 
 import { withStyles } from "../../../../theme/makeStyles";
 import { Grid } from "mds";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ChevronRightLargeIcon from '@atlaskit/icon/glyph/chevron-right-large'
 import { DrivesIcon, Loader, VersionIcon } from "mds";
 import { ServerInfo, Usage } from "../../Dashboard/types";
 import { ErrorResponseHandler } from "../../../../common/types";
@@ -199,7 +199,7 @@ const TestWrapper = ({
                             : classes.advancedClosed
                         }
                       >
-                        <ArrowForwardIosIcon />
+                        <ChevronRightLargeIcon label=""/>
                       </span>
                     </button>
                   )}

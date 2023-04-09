@@ -19,8 +19,8 @@ import { Box } from "mds";
 import { FormTitle } from "./utils";
 import { Button, OnlineRegistrationIcon, UsersIcon } from "mds";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff"; // todo
+import WatchFilledIcon from '@atlaskit/icon/glyph/watch-filled'
 import RegisterHelpBox from "./RegisterHelpBox";
 
 import { spacingUtils } from "../Common/FormComponents/common/styleLibrary";
@@ -129,7 +129,7 @@ const OnlineRegistration = () => {
               type={showPassword ? "text" : "password"}
               value={subnetPassword}
               overlayIcon={
-                showPassword ? <VisibilityOffIcon /> : <RemoveRedEyeIcon />
+                showPassword ? <VisibilityOffIcon /> : <WatchFilledIcon label=""/>
               }
               overlayAction={() => dispatch(setShowPassword(!showPassword))}
             />

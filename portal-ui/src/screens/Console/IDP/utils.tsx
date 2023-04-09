@@ -14,13 +14,13 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import LoginIcon from "@mui/icons-material/Login";
+import SignInIcon from '@atlaskit/icon/glyph/sign-in'
 import { LockIcon } from "mds";
 
 export const ldapHelpBoxContents = [
   {
     text: "MinIO supports using an Active Directory or LDAP (AD/LDAP) service for external management of user identities. Configuring an external IDentity Provider (IDP) enables Single-Sign On (SSO) workflows, where applications authenticate against the external IDP before accessing MinIO.",
-    icon: <LoginIcon />,
+    icon: <SignInIcon label=""/>,
     iconDescription: "Create Configurations",
   },
   {
