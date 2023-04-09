@@ -18,7 +18,6 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { AddIcon, Button, Grid } from "mds";
-import { Paper } from "@mui/material";
 import { ErrorResponseHandler } from "../../../../common/types";
 import TableWrapper from "../../Common/TableWrapper/TableWrapper";
 import api from "../../../../common/api";
@@ -216,7 +215,7 @@ const AccessRule = () => {
           </TooltipWrapper>
         </SecureComponent>
       </Grid>
-      <Paper className={classes.tableBlock}>
+      <div className={classes.tableBlock}>
         <SecureComponent
           scopes={[IAM_SCOPES.S3_GET_BUCKET_POLICY, IAM_SCOPES.S3_GET_ACTIONS]}
           resource={bucketName}
@@ -235,7 +234,7 @@ const AccessRule = () => {
             idField="prefix"
           />
         </SecureComponent>
-      </Paper>
+      </div>
     </Fragment>
   );
 };

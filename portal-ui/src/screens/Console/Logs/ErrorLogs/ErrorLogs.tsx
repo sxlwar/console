@@ -35,7 +35,6 @@ import {
 } from "../../Common/FormComponents/common/styleLibrary";
 import PageLayout from "../../Common/Layout/PageLayout";
 import SearchBox from "../../Common/SearchBox";
-import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableContainer from "@mui/material/TableContainer";
@@ -365,7 +364,7 @@ const ErrorLogs = () => {
               className={classes.logList}
               data-test-id="logs-list-container"
             >
-              <TableContainer component={Paper}>
+              <TableContainer>
                 <Table aria-label="collapsible table">
                   <TableBody>
                     {filteredMessages.map((m) => {

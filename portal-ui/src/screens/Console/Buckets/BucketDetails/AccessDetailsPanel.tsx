@@ -17,7 +17,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { Paper } from "@mui/material";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
@@ -169,7 +168,7 @@ const AccessDetails = () => {
         {displayPoliciesList && <Tab label="Policies" {...a11yProps(0)} />}
         {displayUsersList && <Tab label="Users" {...a11yProps(1)} />}
       </Tabs>
-      <Paper>
+      <div>
         <TabPanel index={0} value={curTab}>
           <SecureComponent
             scopes={[IAM_SCOPES.ADMIN_LIST_USER_POLICIES]}
@@ -210,7 +209,7 @@ const AccessDetails = () => {
             />
           </SecureComponent>
         </TabPanel>
-      </Paper>
+      </div>
     </Fragment>
   );
 };

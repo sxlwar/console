@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import React, { Fragment, useState } from "react";
-import { Checkbox, Paper, Popover } from "@mui/material";
+import { Checkbox, Popover } from "@mui/material";
 import ProgressBar from "@atlaskit/progress-bar";
 import { IconButton, Grid, ViewColumnIcon, ArrowDropDown, ArrowDropUp } from "mds";
 import { useNavigate } from "react-router-dom";
@@ -561,7 +561,7 @@ const TableWrapper = (props: TableWrapperProps) => {
   return (
     <Grid item xs={12} className={parentClassName}>
       <TooltipWrapper tooltip={tooltip ? tooltip : ""}>
-        <Paper
+        <div
           style={{ overflow: "hidden" }}
           className={`${classes.paper} ${
             noBackground ? classes.noBackground : ""
@@ -804,7 +804,7 @@ const TableWrapper = (props: TableWrapperProps) => {
               )}
             </Fragment>
           )}
-        </Paper>
+        </div>
       </TooltipWrapper>
     </Grid>
   );

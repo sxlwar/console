@@ -34,7 +34,6 @@ import {
   modalBasic,
   searchField,
 } from "../Common/FormComponents/common/styleLibrary";
-import Paper from "@mui/material/Paper";
 import ProgressBar from "@atlaskit/progress-bar";
 import TableWrapper from "../Common/TableWrapper/TableWrapper";
 
@@ -427,9 +426,9 @@ const PolicyDetails = ({ classes }: IPolicyDetailsProps) => {
                 <SectionTitle separator sx={{ marginBottom: 15 }}>
                   Policy Summary
                 </SectionTitle>
-                <Paper className={classes.paperContainer}>
+                <div className={classes.paperContainer}>
                   <PolicyView policyStatements={policyStatements} />
-                </Paper>
+                </div>
               </Fragment>
             ),
           }}

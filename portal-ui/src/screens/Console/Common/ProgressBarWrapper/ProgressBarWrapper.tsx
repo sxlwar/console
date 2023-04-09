@@ -15,10 +15,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment } from "react";
-import { styled } from "@mui/material/styles";
-import ProgressBar from '@atlaskit/progress-bar';
+import ProgressBar from "@atlaskit/progress-bar";
 import { Box } from "mds";
 import { CustomProgressBarProps } from "@atlaskit/progress-bar/dist/types/types";
+import { withStyles } from "../../../../theme/makeStyles";
 
 interface IProgressBarWrapper {
   value: number;
@@ -30,13 +30,17 @@ interface IProgressBarWrapper {
   cancelled?: boolean;
 }
 
-const BorderLinearProgress = styled(ProgressBar)(() => ({
-  height: 10,
-  borderRadius: 5,
+const BorderLinearProgress = withStyles(ProgressBar, () => ({
+  root: {
+    height: "10px",
+    borderRadius: "5px",
+  },
 }));
-const SmallBorderLinearProgress = styled(BorderLinearProgress)(() => ({
-  height: 6,
-  borderRadius: 3,
+const SmallBorderLinearProgress = withStyles(BorderLinearProgress, () => ({
+  root: {
+    height: 6,
+    borderRadius: 3,
+  },
 }));
 
 function LinearProgressWithLabel(

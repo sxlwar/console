@@ -20,7 +20,6 @@ import api from "../../common/api";
 import { withStyles } from "../../theme/makeStyles";
 
 import { baseUrl } from "../../history";
-import { Paper } from "@mui/material";
 import { Button, Grid } from "mds";
 import JiraFailedBuildStatusIcon from '@atlaskit/icon/glyph/jira/failed-build-status'
 
@@ -148,7 +147,7 @@ const LoginCallback = ({ classes }: ILoginCallBackProps) => {
   }, [loading, navigate]);
   return error !== "" || errorDescription !== "" ? (
     <React.Fragment>
-      <Paper className={classes.paper}>
+      <div className={classes.paper}>
         <Grid container className={classes.mainContainer}>
           <Grid item xs={7} className={classes.theOcean}>
             <div className={classes.oceanBg} />
@@ -177,7 +176,7 @@ const LoginCallback = ({ classes }: ILoginCallBackProps) => {
             </Button>
           </Grid>
         </Grid>
-      </Paper>
+      </div>
     </React.Fragment>
   ) : null;
 };
