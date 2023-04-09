@@ -13,23 +13,27 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { AlertCloseIcon, IconButton } from "mds";
 import SectionMessage, {
   SectionMessageAction,
 } from "@atlaskit/section-message";
-import { Dialog, DialogContent, DialogTitle } from "@mui/material";
+import { AlertCloseIcon, IconButton } from "mds";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import Modal, {
+  ModalBody,
+  ModalHeader,
+  ModalTransition,
+} from "@atlaskit/modal-dialog";
 
+import CloseIcon from "@mui/icons-material/Close";
+import { AppState, useAppDispatch } from "../../../../store";
+import { setModalSnackMessage } from "../../../../systemSlice";
 import { withStyles } from "../../../../theme/makeStyles";
 import {
   deleteDialogStyles,
   snackBarCommon,
 } from "../FormComponents/common/styleLibrary";
-import { AppState, useAppDispatch } from "../../../../store";
-import CloseIcon from "@mui/icons-material/Close";
 import MainError from "../MainError/MainError";
-import { setModalSnackMessage } from "../../../../systemSlice";
 
 interface IModalProps {
   classes?: any;
@@ -115,65 +119,68 @@ const ModalWrapper = ({
   }
 
   return (
-    <Dialog
-      open={modalOpen}
-      classes={classes}
-      {...customSize}
-      scroll={"paper"}
-      onClose={(event, reason) => {
-        if (reason !== "backdropClick") {
-          onClose(); // close on Esc but not on click outside
-        }
-      }}
-      className={classes.root}
-    >
-      <DialogTitle className={classes.title}>
-        <div className={classes.titleText}>
-          {titleIcon} {title}
-        </div>
-        <div className={classes.closeContainer}>
-          <IconButton
-            aria-label="close"
-            id={"close"}
-            className={classes.closeButton}
-            onClick={onClose}
-            size="small"
-          >
-            <CloseIcon />
-          </IconButton>
-        </div>
-      </DialogTitle>
+    <ModalTransition>
+      {modalOpen && (
+        <Modal
+          classes={classes}
+          {...customSize}
+          onClose={(event, reason) => {
+            onClose();
+          }}
+        >
+          <ModalHeader>
+            <div className={classes.title} style={{ width: "100%" }}>
+              <div className={classes.titleText}>
+                {titleIcon} {title}
+              </div>
+              <div className={classes.closeContainer}>
+                <IconButton
+                  aria-label="close"
+                  id={"close"}
+                  className={classes.closeButton}
+                  onClick={onClose}
+                  size="small"
+                >
+                  <CloseIcon />
+                </IconButton>
+              </div>
+            </div>
+          </ModalHeader>
 
-      <MainError isModal={true} />
-      <div className={classes.snackBarModal}>
-        {openSnackbar && (
-          <SectionMessage
-            actions={[
-              <SectionMessageAction
-                onClick={() => {
-                  closeSnackBar();
-                }}
+          <MainError isModal={true} />
+          <div className={classes.snackBarModal}>
+            {openSnackbar && (
+              <SectionMessage
+                actions={[
+                  <SectionMessageAction
+                    onClick={() => {
+                      closeSnackBar();
+                    }}
+                  >
+                    <AlertCloseIcon />
+                  </SectionMessageAction>,
+                ]}
               >
-                <AlertCloseIcon />
-              </SectionMessageAction>,
-            ]}
-          >
-            <p
-              className={`${classes.snackBar} ${
-                modalSnackMessage && modalSnackMessage.type === "error"
-                  ? classes.errorSnackBar
-                  : ""
-              }`}
-            >
-              {message}
-            </p>
-          </SectionMessage>
-        )}
-      </div>
-      <DialogContent className={noContentPadding ? "" : classes.content}>
-        {children}
-      </DialogContent>
-    </Dialog>
+                <p
+                  className={`${classes.snackBar} ${
+                    modalSnackMessage && modalSnackMessage.type === "error"
+                      ? classes.errorSnackBar
+                      : ""
+                  }`}
+                >
+                  {message}
+                </p>
+              </SectionMessage>
+            )}
+          </div>
+          <ModalBody>
+            <div className={noContentPadding ? "" : classes.content}>
+              {children}
+            </div>
+          </ModalBody>
+        </Modal>
+      )}
+    </ModalTransition>
   );
 };
 

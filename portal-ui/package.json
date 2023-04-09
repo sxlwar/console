@@ -5,6 +5,7 @@
   "homepage": ".",
   "private": true,
   "dependencies": {
+    "@atlaskit/modal-dialog": "^12.4.11",
     "@atlaskit/progress-bar": "^0.5.16",
     "@atlaskit/section-message": "^6.3.14",
     "@emotion/react": "^11.10.6",

@@ -14,25 +14,25 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import Modal, {
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  ModalTitle,
+  ModalTransition,
+} from "@atlaskit/modal-dialog";
 import React from "react";
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-} from "@mui/material";
-import { Button, IconButton } from "mds";
-import CloseIcon from "@mui/icons-material/Close";
 
+import CloseIcon from "@mui/icons-material/Close";
+import { Button, IconButton } from "mds";
 
 import { withStyles } from "../../../../theme/makeStyles";
-import { deleteDialogStyles } from "../FormComponents/common/styleLibrary";
 import { ButtonProps } from "../../types";
+import { deleteDialogStyles } from "../FormComponents/common/styleLibrary";
 
-const styles = () =>
-  ({
-    ...deleteDialogStyles,
-  });
+const styles = () => ({
+  ...deleteDialogStyles,
+});
 
 type ConfirmDialogProps = {
   isOpen?: boolean;
@@ -70,61 +70,63 @@ const ConfirmDialog = ({
   confirmationButtonSimple = false,
 }: ConfirmDialogProps) => {
   return (
-    <Dialog
-      open={isOpen}
-      onClose={(event, reason) => {
-        if (reason !== "backdropClick") {
-          onClose(); // close on Esc but not on click outside
-        }
-      }}
-      className={classes.root}
-      sx={{
-        "& .MuiPaper-root": {
-          padding: "1rem 2rem 2rem 1rem",
-        },
-      }}
-    >
-      <DialogTitle className={classes.title}>
-        <div className={classes.titleText}>
-          {titleIcon} {title}
-        </div>
-        <div className={classes.closeContainer}>
-          <IconButton
-            aria-label="close"
-            className={classes.closeButton}
-            onClick={onClose}
-            size="small"
-          >
-            <CloseIcon />
-          </IconButton>
-        </div>
-      </DialogTitle>
+    <ModalTransition>
+      {isOpen && (
+        <Modal
+          onClose={(event, reason) => {
+            onClose(); // close on Esc but not on click outside
+          }}
+        >
+          <ModalHeader>
+            <ModalTitle>
+              <div className={classes.title}>
+                <div className={classes.titleText}>
+                  {titleIcon} {title}
+                </div>
+                <div className={classes.closeContainer}>
+                  <IconButton
+                    aria-label="close"
+                    className={classes.closeButton}
+                    onClick={onClose}
+                    size="small"
+                  >
+                    <CloseIcon />
+                  </IconButton>
+                </div>
+              </div>
+            </ModalTitle>
+          </ModalHeader>
 
-      <DialogContent className={classes.content}>
-        {confirmationContent}
-      </DialogContent>
-      <DialogActions className={classes.actions}>
-        <Button
-          onClick={onCancel || onClose}
-          disabled={isLoading}
-          type="button"
-          {...cancelButtonProps}
-          variant="regular"
-          id={"confirm-cancel"}
-          label={cancelText}
-        />
+          <ModalBody>
+            <div className={classes.content}>{confirmationContent}</div>
+          </ModalBody>
 
-        <Button
-          id={"confirm-ok"}
-          onClick={onConfirm}
-          label={confirmText}
-          disabled={isLoading}
-          variant={"secondary"}
-          {...confirmButtonProps}
-        />
-      </DialogActions>
-    </Dialog>
+          <ModalFooter>
+            <div className={classes.actions}>
+              <Button
+                onClick={onCancel || onClose}
+                disabled={isLoading}
+                type="button"
+                {...cancelButtonProps}
+                variant="regular"
+                id={"confirm-cancel"}
+                label={cancelText}
+              />
+
+              <Button
+                id={"confirm-ok"}
+                onClick={onConfirm}
+                label={confirmText}
+                disabled={isLoading}
+                variant={"secondary"}
+                {...confirmButtonProps}
+              />
+            </div>
+          </ModalFooter>
+        </Modal>
+      )}
+    </ModalTransition>
   );
 };
 
-export default withStyles(ConfirmDialog, styles);;
+export default withStyles(ConfirmDialog, styles);
