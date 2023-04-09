@@ -15,15 +15,11 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import React from "react";
 import WorldIcon from '@atlaskit/icon/glyph/world'
-import CompressIcon from "@mui/icons-material/Compress"; // todo
 import EditorCodeIcon from '@atlaskit/icon/glyph/editor/code'
-import LocalHospitalIcon from "@mui/icons-material/LocalHospital"; // todo
-import FindReplaceIcon from "@mui/icons-material/FindReplace"; // todo
-import VpnKeyIcon from "@mui/icons-material/VpnKey"; // todo
-import PendingActionsIcon from "@mui/icons-material/PendingActions"; // todo
-import CallToActionIcon from "@mui/icons-material/CallToAction"; // todo
+import RefreshIcon from '@atlaskit/icon/glyph/refresh'
+import PageFilledIcon from '@atlaskit/icon/glyph/page-filled'
 import { IElement, IElementValue, IOverrideEnv, OverrideValue } from "./types";
-import { LogsIcon } from "mds";
+import { LogsIcon, ConsoleIcon, FormatDrivesIcon, CreateIcon, PasswordKeyIcon } from "mds";
 
 export const configurationElements: IElement[] = [
   {
@@ -32,7 +28,7 @@ export const configurationElements: IElement[] = [
     configuration_label: "Region",
   },
   {
-    icon: <CompressIcon />,
+    icon: <FormatDrivesIcon />,
     configuration_id: "compression",
     configuration_label: "Compression",
   },
@@ -42,27 +38,27 @@ export const configurationElements: IElement[] = [
     configuration_label: "API",
   },
   {
-    icon: <LocalHospitalIcon />,
+    icon: <CreateIcon />,
     configuration_id: "heal",
     configuration_label: "Heal",
   },
   {
-    icon: <FindReplaceIcon />,
+    icon: <RefreshIcon label="" />,
     configuration_id: "scanner",
     configuration_label: "Scanner",
   },
   {
-    icon: <VpnKeyIcon />,
+    icon: <PasswordKeyIcon />,
     configuration_id: "etcd",
     configuration_label: "Etcd",
   },
   {
-    icon: <CallToActionIcon />,
+    icon: <ConsoleIcon />,
     configuration_id: "logger_webhook",
     configuration_label: "Logger Webhook",
   },
   {
-    icon: <PendingActionsIcon />,
+    icon: <PageFilledIcon label="" />,
     configuration_id: "audit_webhook",
     configuration_label: "Audit Webhook",
   },

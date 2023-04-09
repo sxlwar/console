@@ -17,7 +17,6 @@
 
 
 import { withStyles } from "../../../theme/makeStyles";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import WatchFilledIcon from '@atlaskit/icon/glyph/watch-filled'
 import LockIcon from '@atlaskit/icon/glyph/lock'
 import {
@@ -32,7 +31,7 @@ import { ErrorResponseHandler } from "../../../common/types";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
 import { useAppDispatch } from "../../../store";
 import { setErrorSnackMessage } from "../../../systemSlice";
-import { Box } from "mds";
+import { Box, VisibilityOffIcon} from "mds";
 
 const styles = () =>
   ({

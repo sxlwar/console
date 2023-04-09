@@ -17,9 +17,8 @@
 import React, { Fragment } from "react";
 import { Box } from "mds";
 import { FormTitle } from "./utils";
-import { Button, OnlineRegistrationIcon, UsersIcon } from "mds";
+import { Button, OnlineRegistrationIcon, UsersIcon, VisibilityOffIcon } from "mds";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff"; // todo
 import WatchFilledIcon from '@atlaskit/icon/glyph/watch-filled'
 import RegisterHelpBox from "./RegisterHelpBox";
 

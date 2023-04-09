@@ -18,10 +18,9 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Button, ConsoleIcon, Grid, Tooltip } from "mds";
 import InputBoxWrapper from "../../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
 import ModalWrapper from "../../Common/ModalWrapper/ModalWrapper";
-import { Webhook } from "@mui/icons-material"; // todo
+import BitbucketBranchesIcon from '@atlaskit/icon/glyph/bitbucket/branches'
 import { formFieldStyles } from "../../Common/FormComponents/common/styleLibrary";
-import CallToActionIcon from "@mui/icons-material/CallToAction"; // todo
-import PendingActionsIcon from "@mui/icons-material/PendingActions"; // todo
+import PageFilledIcon from '@atlaskit/icon/glyph/page-filled'
 import api from "../../../../common/api";
 import {
   configurationIsLoading,
@@ -175,16 +174,16 @@ const EditEndpointModal = ({
   const overrideValues = overrideFields(hasOverride);
 
   let title = "Edit Webhook";
-  let icon = <Webhook />;
+  let icon = <BitbucketBranchesIcon label="" />;
 
   switch (type) {
     case "logger_webhook":
       title = `Edit ${defaultWH ? " the Default " : ""}Logger Webhook`;
-      icon = <CallToActionIcon />;
+      icon = <ConsoleIcon />;
       break;
     case "audit_webhook":
       title = `Edit ${defaultWH ? " the Default " : ""}Audit Webhook`;
-      icon = <PendingActionsIcon />;
+      icon = <PageFilledIcon label="" />;
       break;
   }
 

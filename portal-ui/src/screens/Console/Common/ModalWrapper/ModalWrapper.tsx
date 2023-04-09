@@ -25,7 +25,6 @@ import Modal, {
   ModalTransition,
 } from "@atlaskit/modal-dialog";
 
-import CloseIcon from "@mui/icons-material/Close";
 import { AppState, useAppDispatch } from "../../../../store";
 import { setModalSnackMessage } from "../../../../systemSlice";
 import { withStyles } from "../../../../theme/makeStyles";
@@ -142,7 +141,7 @@ const ModalWrapper = ({
                   onClick={onClose}
                   size="small"
                 >
-                  <CloseIcon />
+                  <CrossIcon label="" />
                 </IconButton>
               </div>
             </div>

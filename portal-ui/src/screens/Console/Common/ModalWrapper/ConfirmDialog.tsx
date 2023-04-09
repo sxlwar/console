@@ -23,8 +23,7 @@ import Modal, {
 } from "@atlaskit/modal-dialog";
 import React from "react";
 
-import CloseIcon from "@mui/icons-material/Close";
-import { Button, IconButton } from "mds";
+import { Button, IconButton, AlertCloseIcon } from "mds";
 
 import { withStyles } from "../../../../theme/makeStyles";
 import { ButtonProps } from "../../types";
@@ -90,7 +89,7 @@ const ConfirmDialog = ({
                     onClick={onClose}
                     size="small"
                   >
-                    <CloseIcon />
+                    <AlertCloseIcon />
                   </IconButton>
                 </div>
               </div>

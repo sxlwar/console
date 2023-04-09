@@ -30,7 +30,7 @@ import {
   formFieldStyles,
   modalStyleUtils,
 } from "../Common/FormComponents/common/styleLibrary";
-import { Box, Grid } from "mds";
+import { Box, Grid, VisibilityOffIcon } from "mds";
 import CodeMirrorWrapper from "../Common/FormComponents/CodeMirrorWrapper/CodeMirrorWrapper";
 import PageLayout from "../Common/Layout/PageLayout";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
@@ -40,7 +40,6 @@ import AddServiceAccountHelpBox from "./AddServiceAccountHelpBox";
 import { NewServiceAccount } from "../Common/CredentialsPrompt/types";
 
 import WatchFilledIcon from '@atlaskit/icon/glyph/watch-filled'
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";// todo
 import { IAM_PAGES } from "../../../common/SecureComponent/permissions";
 import { ErrorResponseHandler } from "../../../../src/common/types";
 import api from "../../../../src/common/api";

@@ -16,16 +16,13 @@
 import React, { Fragment, useState } from "react";
 import { Checkbox, Paper, Popover } from "@mui/material";
 import ProgressBar from "@atlaskit/progress-bar";
-import { IconButton, Grid } from "mds";
+import { IconButton, Grid, ViewColumnIcon, ArrowDropDown, ArrowDropUp } from "mds";
 import { useNavigate } from "react-router-dom";
 import { AutoSizer, Column, InfiniteLoader, Table } from "react-virtualized";
 import get from "lodash/get";
 import isString from "lodash/isString";
 
 import { withStyles } from "../../../../theme/makeStyles";
-import ViewColumnIcon from "@mui/icons-material/ViewColumn";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import TableActionButton from "./TableActionButton";
 import CheckboxWrapper from "../FormComponents/CheckboxWrapper/CheckboxWrapper";
 import {
@@ -344,9 +341,9 @@ const generateColumnsMap = (
             {sortColumn === column.elementKey && (
               <Fragment>
                 {sortDirection === "ASC" ? (
-                  <ArrowDropUpIcon />
+                  <ArrowDropUp />
                 ) : (
-                  <ArrowDropDownIcon />
+                  <ArrowDropDown />
                 )}
               </Fragment>
             )}

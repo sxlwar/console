@@ -16,12 +16,11 @@
 
 import React, { Fragment } from "react";
 import { DateTime } from "luxon";
-import { HelpIcon, OpenListIcon, Grid } from "mds";
+import { HelpIcon, OpenListIcon, Grid, TimeIcon } from "mds";
 import { InputLabel, TextField, Tooltip } from "@mui/material";
 import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterLuxon } from "@mui/x-date-pickers/AdapterLuxon";
 import InputAdornment from "@mui/material/InputAdornment";
-import ScheduleIcon from "@mui/icons-material/Schedule";
 
 import { withStyles } from "../../../../../theme/makeStyles";
 import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
@@ -247,7 +246,7 @@ const DateTimePickerWrapper = ({
     adornment = {
       startAdornment: (
         <InputAdornment position="start">
-          <ScheduleIcon />
+          <TimeIcon />
         </InputAdornment>
       ),
     };

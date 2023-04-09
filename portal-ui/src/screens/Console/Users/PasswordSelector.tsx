@@ -19,8 +19,8 @@ import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWr
 import { setSecretKey, setShowPassword } from "./AddUsersSlice";
 import { useSelector } from "react-redux";
 import { AppState, useAppDispatch } from "../../../store";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff"; // todo
-import WatchFilledIcon from '@atlaskit/icon/glyph/watch-filled'
+import { VisibilityOffIcon } from "mds";
+import WatchFilledIcon from "@atlaskit/icon/glyph/watch-filled";
 
 interface IAddUserProps2 {
   classes?: any;
@@ -49,7 +49,9 @@ const PasswordSelector = ({ classes }: IAddUserProps2) => {
         dispatch(setSecretKey(e.target.value));
       }}
       autoComplete="current-password"
-      overlayIcon={showPassword ? <VisibilityOffIcon /> : <WatchFilledIcon label=""/>}
+      overlayIcon={
+        showPassword ? <VisibilityOffIcon /> : <WatchFilledIcon label="" />
+      }
       overlayAction={() => dispatch(setShowPassword(!showPassword))}
     />
   );

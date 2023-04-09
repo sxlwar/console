@@ -15,13 +15,12 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useState } from "react";
-import { Button, Grid } from "mds";
+import { Button, Grid, ConsoleIcon } from "mds";
 import InputBoxWrapper from "../../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
 import ModalWrapper from "../../Common/ModalWrapper/ModalWrapper";
-import { Webhook } from "@mui/icons-material"; // todo
+import BitbucketBranchesIcon from '@atlaskit/icon/glyph/bitbucket/branches'
 import { formFieldStyles } from "../../Common/FormComponents/common/styleLibrary";
-import CallToActionIcon from "@mui/icons-material/CallToAction"; // todo
-import PendingActionsIcon from "@mui/icons-material/PendingActions"; // todo
+import PageFilledIcon from '@atlaskit/icon/glyph/page-filled'
 import api from "../../../../common/api";
 import {
   configurationIsLoading,
@@ -127,16 +126,16 @@ const AddEndpointModal = ({ open, type, onCloseEndpoint }: IEndpointModal) => {
   };
 
   let title = "Add new Webhook";
-  let icon = <Webhook />;
+  let icon = <BitbucketBranchesIcon label="" />;
 
   switch (type) {
     case "logger_webhook":
       title = "New Logger Webhook";
-      icon = <CallToActionIcon />;
+      icon = <ConsoleIcon />;
       break;
     case "audit_webhook":
       title = "New Audit Webhook";
-      icon = <PendingActionsIcon />;
+      icon = <PageFilledIcon label="" />;
       break;
   }
 

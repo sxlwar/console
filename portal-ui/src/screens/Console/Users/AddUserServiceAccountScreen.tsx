@@ -25,6 +25,7 @@ import {
   PasswordKeyIcon,
   ServiceAccountCredentialsIcon,
   Grid,
+  VisibilityOffIcon
 } from "mds";
 
 import { withStyles } from "../../../theme/makeStyles";
@@ -40,7 +41,6 @@ import FormSwitchWrapper from "../Common/FormComponents/FormSwitchWrapper/FormSw
 import { NewServiceAccount } from "../Common/CredentialsPrompt/types";
 
 import WatchFilledIcon from '@atlaskit/icon/glyph/watch-filled'
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff"; // todo
 import { IAM_PAGES } from "../../../common/SecureComponent/permissions";
 import { ErrorResponseHandler } from "../../../../src/common/types";
 import api from "../../../../src/common/api";

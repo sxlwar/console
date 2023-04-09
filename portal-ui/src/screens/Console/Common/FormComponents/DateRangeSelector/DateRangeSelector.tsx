@@ -15,10 +15,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Box, Button, OpenListIcon, SyncIcon, Grid } from "mds";
+import { Box, Button, OpenListIcon, SyncIcon, Grid, TimeIcon } from "mds";
 import { DateTime } from "luxon";
-import ScheduleIcon from "@mui/icons-material/Schedule"; // todo
-import WatchLaterIcon from "@mui/icons-material/WatchLater";// todo
+import RecentIcon from '@atlaskit/icon/glyph/recent'
 import DateTimePickerWrapper from "../DateTimePickerWrapper/DateTimePickerWrapper";
 
 interface IDateRangeSelector {
@@ -141,7 +140,7 @@ const DateRangeSelector = ({
                 },
               }}
             >
-              <ScheduleIcon className="min-icon" />
+              <TimeIcon className="min-icon" />
             </Box>
             <Box
               sx={{
@@ -184,7 +183,7 @@ const DateRangeSelector = ({
                 },
               }}
             >
-              <WatchLaterIcon className="min-icon" />
+              <RecentIcon label="" size="small" />
             </Box>
             <Box
               sx={{

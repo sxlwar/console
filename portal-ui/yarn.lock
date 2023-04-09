@@ -126,7 +126,7 @@
     "@babel/runtime" "^7.0.0"
     "@emotion/react" "^11.7.1"
 
-"@atlaskit/icon@^21.11.0":
+"@atlaskit/icon@^21.11.0", "@atlaskit/icon@^21.11.5":
   version "21.11.5"
   resolved "https://registry.yarnpkg.com/@atlaskit/icon/-/icon-21.11.5.tgz#c2a52238bad5eb3cc9483aaff498372aed9043e0"
   integrity sha512-84wTZvu7JepRQlCBvyxGSwAw7r0Sn5s4BxIfHgVvgDOnHZ2xnrHfGgK4DnDnMmQkRhaYbAEBFG/kCx9ZTqb+mg==
@@ -2607,13 +2607,6 @@
   version "5.11.13"
   resolved "https://registry.yarnpkg.com/@mui/core-downloads-tracker/-/core-downloads-tracker-5.11.13.tgz#0419a88ae98b3eaff2a633229d23ee04c8868be1"
   integrity sha512-lx+GXBR9h/ApZsEP728tl0pyZyuajto+VnBgsoAzw1d5+CbmOo8ZWieKwVUGxZlPT1wMYNUYS5NtKzCli0xYjw==
-
-"@mui/icons-material@^5.11.11":
-  version "5.11.11"
-  resolved "https://registry.yarnpkg.com/@mui/icons-material/-/icons-material-5.11.11.tgz#d4e01bd405b0dac779f5e060586277f91f3acb6e"
-  integrity sha512-Eell3ADmQVE8HOpt/LZ3zIma8JSvPh3XgnhwZLT0k5HRqZcd6F/QDHc7xsWtgz09t+UEFvOYJXjtrwKmLdwwpw==
-  dependencies:
-    "@babel/runtime" "^7.21.0"
 
 "@mui/lab@^5.0.0-alpha.122":
   version "5.0.0-alpha.123"

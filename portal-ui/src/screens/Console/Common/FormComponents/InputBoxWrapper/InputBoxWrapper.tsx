@@ -17,7 +17,6 @@ import React, { ClipboardEvent, useState } from "react";
 import { InputLabel, TextField, TextFieldProps, Tooltip } from "@mui/material";
 import { OutlinedInputProps } from "@mui/material/OutlinedInput";
 import { InputProps as StandardInputProps } from "@mui/material/Input";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 import { makeStyles, withStyles } from "../../../../../theme/makeStyles";
 import WatchFilledIcon from '@atlaskit/icon/glyph/watch-filled'
@@ -26,7 +25,7 @@ import {
   inputFieldStyles,
   tooltipHelper,
 } from "../common/styleLibrary";
-import { Grid, HelpIcon, IconButton } from "mds";
+import { Grid, HelpIcon, IconButton, VisibilityOffIcon } from "mds";
 import clsx from "clsx";
 
 interface InputBoxProps {

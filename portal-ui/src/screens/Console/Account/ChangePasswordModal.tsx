@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { useState } from "react";
-import { Button, ChangePasswordIcon, Grid } from "mds";
+import { Button, ChangePasswordIcon, Grid, VisibilityOffIcon } from "mds";
 
 
 import { withStyles } from "../../../theme/makeStyles";
@@ -32,7 +32,6 @@ import { ChangePasswordRequest } from "../Buckets/types";
 import { ErrorResponseHandler } from "../../../common/types";
 import api from "../../../common/api";
 import WatchFilledIcon from '@atlaskit/icon/glyph/watch-filled'
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff"; // todo
 import { setModalErrorSnackMessage } from "../../../systemSlice";
 import { useAppDispatch } from "../../../store";
 
