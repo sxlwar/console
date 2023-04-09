@@ -14,11 +14,10 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import AddIcon from '@atlaskit/icon/glyph/add'
-import CrossIcon from '@atlaskit/icon/glyph/cross'
-import Chip from "@mui/material/Chip";
+import AddIcon from "@atlaskit/icon/glyph/add";
+import CrossIcon from "@atlaskit/icon/glyph/cross";
 import get from "lodash/get";
-import { Box, Loader } from "mds";
+import { Box, Loader, Button } from "mds";
 import React, { useEffect, useState } from "react";
 import { SecureComponent } from "../../../../../common/SecureComponent";
 import { IAM_SCOPES } from "../../../../../common/SecureComponent/permissions";
@@ -124,19 +123,18 @@ const BucketTags = ({ bucketName }: BucketTagProps) => {
                         onDelete: null,
                       }}
                     >
-                      <Chip
+                      <Button
+                        id={tagKey}
                         style={{
                           textTransform: "none",
                           marginRight: "5px",
                         }}
-                        size="small"
-                        label={`${tagKey} : ${tag}`}
                         color="primary"
-                        deleteIcon={<CrossIcon label="" />}
-                        onDelete={() => {
+                        icon={<CrossIcon label="" />}
+                        onClick={() => {
                           deleteTag(tagKey, tag);
                         }}
-                      />
+                      >{`${tagKey} : ${tag}`}</Button>
                     </SecureComponent>
                   );
                 }
@@ -152,18 +150,17 @@ const BucketTags = ({ bucketName }: BucketTagProps) => {
             resource={bucketName}
             errorProps={{ disabled: true, onClick: null }}
           >
-            <Chip
+            <Button
+              id="add tag"
               style={{ maxWidth: 80, marginTop: "10px" }}
               icon={<AddIcon label="" />}
-              clickable
-              size="small"
-              label="Add tag"
               color="primary"
-              variant="outlined"
               onClick={() => {
                 setTagModalOpen(true);
               }}
-            />
+            >
+              Add tag
+            </Button>
           </SecureComponent>
         </Box>
       </SecureComponent>

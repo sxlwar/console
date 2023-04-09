@@ -40,8 +40,7 @@ import {
 import { IFileInfo } from "./types";
 import { IAM_SCOPES } from "../../../../../../common/SecureComponent/permissions";
 import { SecureComponent } from "../../../../../../common/SecureComponent";
-import Chip from "@mui/material/Chip";
-import CrossIcon from '@atlaskit/icon/glyph/cross'
+import CrossIcon from "@atlaskit/icon/glyph/cross";
 import {
   selDistSet,
   setModalErrorSnackMessage,
@@ -276,20 +275,21 @@ const AddTagModal = ({
                               onDelete: null,
                             }}
                           >
-                            <Chip
+                            <Button
+                              id={tagKey}
                               style={{
                                 textTransform: "none",
                                 marginRight: "5px",
                                 marginBottom: "5px",
                               }}
-                              size="small"
-                              label={`${tagKey} : ${tag}`}
                               color="primary"
-                              deleteIcon={<CrossIcon label=""/>}
-                              onDelete={() => {
+                              icon={<CrossIcon label="" />}
+                              onClick={() => {
                                 onDeleteTag(tagKey, tag);
                               }}
-                            />
+                            >
+                              {`${tagKey} : ${tag}`}
+                            </Button>
                           </SecureComponent>
                         );
                       }
