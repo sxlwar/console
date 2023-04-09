@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import ZoomOutMapIcon from "@mui/icons-material/ZoomOutMap";
+import MediaServicesActualSizeIcon from '@atlaskit/icon/glyph/media-services/actual-size'
 import { Box } from "mds";
 import { IDashboardPanel } from "../types";
 
@@ -58,7 +58,7 @@ const ExpandGraphLink = ({ panelItem }: { panelItem: IDashboardPanel }) => {
         }}
         className={"zoom-graph-icon"}
       >
-        <ZoomOutMapIcon />
+        <MediaServicesActualSizeIcon label=""/>
       </button>
     </Box>
   );

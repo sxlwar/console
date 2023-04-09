@@ -37,7 +37,7 @@ import LogSearchFullModal from "./LogSearchFullModal";
 import { LogSearchColumnLabels } from "./utils";
 import DateRangeSelector from "../../Common/FormComponents/DateRangeSelector/DateRangeSelector";
 import PageLayout from "../../Common/Layout/PageLayout";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ChevronRightLargeIcon from '@atlaskit/icon/glyph/chevron-right-large'
 import {
   CONSOLE_UI_RESOURCE,
   IAM_SCOPES,
@@ -322,7 +322,7 @@ const LogsSearchMain = ({ classes }: ILogSearchProps) => {
                           : classes.advancedClosed
                       }
                     >
-                      <ArrowForwardIosIcon />
+                      <ChevronRightLargeIcon label="" />
                     </span>
                   </button>
                 </Grid>

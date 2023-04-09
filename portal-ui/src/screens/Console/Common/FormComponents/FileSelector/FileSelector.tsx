@@ -17,10 +17,10 @@
 import React, { useState } from "react";
 import get from "lodash/get";
 import { InputLabel, Tooltip } from "@mui/material";
-import AttachFileIcon from "@mui/icons-material/AttachFile";
-import CancelIcon from "@mui/icons-material/Cancel";
 
 import { withStyles } from "../../../../../theme/makeStyles";
+import AttachmentIcon from '@atlaskit/icon/glyph/attachment'
+import CrossCircleIcon from '@atlaskit/icon/glyph/cross-circle'
 import {
   fieldBasic,
   fileInputStyles,
@@ -146,7 +146,7 @@ const FileSelector = ({
                 }}
                 size="small"
               >
-                <CancelIcon />
+                <CrossCircleIcon  label=""/>
               </IconButton>
             )}
 
@@ -163,7 +163,7 @@ const FileSelector = ({
               }}
               size="small"
             >
-              <AttachFileIcon />
+              <AttachmentIcon  label=""/>
             </IconButton>
           </div>
         )}

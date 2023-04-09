@@ -16,7 +16,7 @@
 
 import React, { Fragment, useEffect, useState } from "react";
 import clsx from "clsx";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import CheckCircleIcon from '@atlaskit/icon/glyph/check-circle'
 import {
   AGPLV3Logo,
   Button,
@@ -687,7 +687,7 @@ const LicensePlans = ({ licenseInfo }: IRegisterStatus) => {
                     <Box className="feature-item-info">
                       <div className="xs-only"></div>
                       <Box className="plan-feature">
-                        <CheckCircleIcon />
+                        <CheckCircleIcon label=""/>
                       </Box>
                     </Box>
                   </Box>

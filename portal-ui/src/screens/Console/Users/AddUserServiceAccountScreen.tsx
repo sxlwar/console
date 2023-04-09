@@ -39,8 +39,8 @@ import FormSwitchWrapper from "../Common/FormComponents/FormSwitchWrapper/FormSw
 
 import { NewServiceAccount } from "../Common/CredentialsPrompt/types";
 
-import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import WatchFilledIcon from '@atlaskit/icon/glyph/watch-filled'
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff"; // todo
 import { IAM_PAGES } from "../../../common/SecureComponent/permissions";
 import { ErrorResponseHandler } from "../../../../src/common/types";
 import api from "../../../../src/common/api";
@@ -237,7 +237,7 @@ const AddServiceAccount = ({ classes }: IAddServiceAccountProps) => {
                                       showPassword ? (
                                         <VisibilityOffIcon />
                                       ) : (
-                                        <RemoveRedEyeIcon />
+                                        <WatchFilledIcon label=""/>
                                       )
                                     }
                                     overlayAction={() =>

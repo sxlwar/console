@@ -33,6 +33,7 @@ import {
   deleteDialogStyles,
   snackBarCommon,
 } from "../FormComponents/common/styleLibrary";
+import CrossIcon from '@atlaskit/icon/glyph/cross'
 import MainError from "../MainError/MainError";
 
 interface IModalProps {
@@ -124,7 +125,7 @@ const ModalWrapper = ({
         <Modal
           classes={classes}
           {...customSize}
-          onClose={(event, reason) => {
+          onClose={() => {
             onClose();
           }}
         >

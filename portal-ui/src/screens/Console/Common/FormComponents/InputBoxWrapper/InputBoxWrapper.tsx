@@ -18,9 +18,9 @@ import { InputLabel, TextField, TextFieldProps, Tooltip } from "@mui/material";
 import { OutlinedInputProps } from "@mui/material/OutlinedInput";
 import { InputProps as StandardInputProps } from "@mui/material/Input";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 
 import { makeStyles, withStyles } from "../../../../../theme/makeStyles";
+import WatchFilledIcon from '@atlaskit/icon/glyph/watch-filled'
 import {
   fieldBasic,
   inputFieldStyles,
@@ -82,7 +82,7 @@ const styles = () => ({
   },
 });
 
-const inputStyles = makeStyles()((theme) => ({
+const inputStyles = makeStyles()(() => ({
   ...inputFieldStyles,
 }));
 
@@ -150,7 +150,7 @@ const InputBoxWrapper = ({
     inputBoxWrapperIcon = toggleTextInput ? (
       <VisibilityOffIcon />
     ) : (
-      <RemoveRedEyeIcon />
+      <WatchFilledIcon label="" />
     );
     inputBoxWrapperType = toggleTextInput ? "text" : "password";
   }

@@ -16,7 +16,7 @@
 
 import React from "react";
 import InputBoxWrapper from "../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import LockIcon from '@atlaskit/icon/glyph/lock'
 import { setSubnetOTP } from "./registerSlice";
 import { Button, Box } from "mds";
 import RegisterHelpBox from "./RegisterHelpBox";
@@ -70,7 +70,7 @@ const SubnetMFAToken = () => {
           }}
         >
           <InputBoxWrapper
-            overlayIcon={<LockOutlinedIcon />}
+            overlayIcon={<LockIcon label=""/>}
             id="subnet-otp"
             name="subnet-otp"
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>

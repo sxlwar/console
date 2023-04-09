@@ -16,7 +16,7 @@
 
 import React, { Fragment, Suspense } from "react";
 import { Box, ApplicationLogo, VersionIcon, IconButton } from "mds";
-import MenuIcon from "@mui/icons-material/Menu";
+import MenuIcon from '@atlaskit/icon/glyph/menu'
 import TooltipWrapper from "../Common/TooltipWrapper/TooltipWrapper";
 import { getLogoVar } from "../../../config";
 
@@ -145,7 +145,7 @@ const MenuToggle = ({ isOpen, onToggle }: MenuToggleProps) => {
             }}
             size="small"
           >
-            <MenuIcon />
+            <MenuIcon label=""/>
           </IconButton>
         )}
       </Box>
