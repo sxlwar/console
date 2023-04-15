@@ -16,21 +16,12 @@
 
 import React, { Fragment, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import { LogoutIcon, Box } from "mds";
-import ListItemText from "@mui/material/ListItemText";
-import List from "@mui/material/List";
-import {
-  LogoutItemIconStyle,
-  menuItemContainerStyles,
-  menuItemMiniStyles,
-  menuItemTextStyles,
-} from "./MenuStyleUtils";
 import MenuItem from "./MenuItem";
 
 import { IAM_PAGES } from "../../../common/SecureComponent/permissions";
 import MenuSectionHeader from "./MenuSectionHeader";
+import { LinkItem } from "@atlaskit/menu";
 
 const ConsoleMenuList = ({
   menuItems,
@@ -85,97 +76,46 @@ const ConsoleMenuList = ({
         },
       }}
     >
-      <List
-        sx={{
-          flex: 1,
-          paddingTop: 0,
+      <React.Fragment>
+        {(menuItems || []).map((menuGroup: any, index) => {
+          if (menuGroup) {
+            let grHeader = null;
 
-          "&.mini": {
-            padding: 0,
-            display: "flex",
-            alignItems: "center",
-            flexFlow: "column",
-
-            "& .main-menu-item": {
-              marginBottom: "20px",
-            },
-          },
-        }}
-        className={`${stateClsName} group-wrapper main-list`}
-      >
-        <React.Fragment>
-          {(menuItems || []).map((menuGroup: any, index) => {
-            if (menuGroup) {
-              let grHeader = null;
-
-              if (menuGroup.group !== header && displayHeaders) {
-                grHeader = <MenuSectionHeader label={menuGroup.group} />;
-                header = menuGroup.group;
-              }
-
-              return (
-                <Fragment key={`${menuGroup.id}-${index.toString()}`}>
-                  {grHeader}
-                  <MenuItem
-                    stateClsName={stateClsName}
-                    page={menuGroup}
-                    id={menuGroup.id}
-                    selectedMenuItem={selectedMenuItem}
-                    setSelectedMenuItem={setSelectedMenuItem}
-                    pathValue={pathname}
-                    onExpand={setExpandGroup}
-                    expandedGroup={expandGroup}
-                    previewMenuGroup={previewMenuGroup}
-                    setPreviewMenuGroup={setPreviewMenuGroup}
-                  />
-                </Fragment>
-              );
+            if (menuGroup.group !== header && displayHeaders) {
+              grHeader = <MenuSectionHeader label={menuGroup.group} />;
+              header = menuGroup.group;
             }
-            return null;
-          })}
-        </React.Fragment>
-      </List>
+
+            return (
+              <Fragment key={`${menuGroup.id}-${index.toString()}`}>
+                {grHeader}
+                <MenuItem
+                  stateClsName={stateClsName}
+                  page={menuGroup}
+                  id={menuGroup.id}
+                  selectedMenuItem={selectedMenuItem}
+                  setSelectedMenuItem={setSelectedMenuItem}
+                  pathValue={pathname}
+                  onExpand={setExpandGroup}
+                  expandedGroup={expandGroup}
+                  previewMenuGroup={previewMenuGroup}
+                  setPreviewMenuGroup={setPreviewMenuGroup}
+                />
+              </Fragment>
+            );
+          }
+          return null;
+        })}
+      </React.Fragment>
+
       {/* List of Bottom anchored menus */}
-      <List
-        sx={{
-          paddingTop: 0,
-          "&.mini": {
-            padding: 0,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexFlow: "column",
-          },
-        }}
-        className={`${stateClsName} group-wrapper bottom-list`}
+
+      <LinkItem
+        href={`${window.location.origin}${basename}logout`}
+        iconBefore={<LogoutIcon></LogoutIcon>}
       >
-        <ListItem
-          button
-          component="a"
-          href={`${window.location.origin}${basename}logout`}
-          disableRipple
-          sx={{
-            ...menuItemContainerStyles,
-            ...menuItemMiniStyles,
-            marginBottom: "3px",
-          }}
-          className={`$ ${stateClsName} bottom-menu-item`}
-        >
-          <ListItemIcon
-            sx={{
-              ...LogoutItemIconStyle,
-            }}
-          >
-            <LogoutIcon />
-          </ListItemIcon>
-          <ListItemText
-            primary="Sign Out"
-            id={"logout"}
-            sx={{ ...menuItemTextStyles }}
-            className={stateClsName}
-          />
-        </ListItem>
-      </List>
+        Sign Out
+      </LinkItem>
     </Box>
   );
 };

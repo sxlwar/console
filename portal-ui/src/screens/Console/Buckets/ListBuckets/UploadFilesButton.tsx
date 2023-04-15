@@ -21,9 +21,7 @@ import { ButtonItem, MenuGroup } from "@atlaskit/menu";
 import Popup from "@atlaskit/popup";
 
 import { withStyles } from "../../../../theme/makeStyles";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import { Button, UploadFolderIcon, UploadIcon } from "mds";
+import { Button, ListItem, UploadFolderIcon, UploadIcon } from "mds";
 import {
   IAM_SCOPES,
   permissionTooltipHelper,
@@ -95,10 +93,10 @@ const UploadFilesButton = ({
               }}
               isDisabled={!uploadObjectAllowed || forceDisable}
             >
-              <ListItemIcon className={classes.listUploadIcons}>
+              <ListItem className={classes.listUploadIcons}>
                 <UploadIcon />
-              </ListItemIcon>
-              <ListItemText>Upload File</ListItemText>
+              </ListItem>
+              <ListItem>Upload File</ListItem>
             </ButtonItem>
             <ButtonItem
               onClick={() => {
@@ -106,10 +104,10 @@ const UploadFilesButton = ({
               }}
               isDisabled={!uploadFolderAllowed || forceDisable}
             >
-              <ListItemIcon className={classes.listUploadIcons}>
+              <ListItem className={classes.listUploadIcons}>
                 <UploadFolderIcon />
-              </ListItemIcon>
-              <ListItemText>Upload Folder</ListItemText>
+              </ListItem>
+              <ListItem>Upload Folder</ListItem>
             </ButtonItem>
           </MenuGroup>
         )}

@@ -15,8 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { useState } from "react";
-import List from "@mui/material/List";
-import ListItemButton from "@mui/material/ListItemButton";
+import { List, ListItem } from "mds";
 import {
   Box,
   Button,
@@ -24,7 +23,7 @@ import {
   ConfirmDeleteIcon,
   EditIcon,
   TrashIcon,
-  Tooltip
+  Tooltip,
 } from "mds";
 import { ReplicationSite } from "./SiteReplication";
 import ConfirmDialog from "../../Common/ModalWrapper/ConfirmDialog";
@@ -72,7 +71,6 @@ const ReplicationSites = ({
           marginBottom: "25px",
           overflowY: "auto",
         }}
-        component="div"
         aria-labelledby="nested-list-subheader"
       >
         <Box
@@ -89,8 +87,7 @@ const ReplicationSites = ({
 
           return (
             <React.Fragment key={`${key}-${index}`}>
-              <ListItemButton
-                disableRipple
+              <ListItem
                 sx={{
                   display: "flex",
                   alignItems: "center",
@@ -218,7 +215,7 @@ const ReplicationSites = ({
                     />
                   </TooltipWrapper>
                 </Box>
-              </ListItemButton>
+              </ListItem>
 
               {deleteSiteKey === key ? (
                 <ConfirmDialog

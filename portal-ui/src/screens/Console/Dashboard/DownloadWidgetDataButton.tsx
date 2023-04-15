@@ -15,8 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment } from "react";
-import ListItemText from "@mui/material/ListItemText";
-import { DownloadIcon, Box } from "mds";
+import { DownloadIcon, Box, ListItem } from "mds";
 import { exportComponentAsPNG } from "react-component-export-image";
 import { ErrorResponseHandler } from "../../../common/types";
 import { useAppDispatch } from "../../../../src/store";
@@ -120,7 +119,7 @@ const DownloadWidgetDataButton = ({
                   setIsOpen(false);
                 }}
               >
-                <ListItemText>Download as CSV</ListItemText>
+                <ListItem>Download as CSV</ListItem>
               </ButtonItem>
               <ButtonItem
                 onClick={() => {
@@ -128,7 +127,7 @@ const DownloadWidgetDataButton = ({
                   setIsOpen(false);
                 }}
               >
-                <ListItemText>Download as PNG</ListItemText>
+                <ListItem>Download as PNG</ListItem>
               </ButtonItem>
             </MenuGroup>
           )}

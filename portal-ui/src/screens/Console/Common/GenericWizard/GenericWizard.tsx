@@ -19,10 +19,7 @@ import React, { Fragment, useState } from "react";
 import { withStyles } from "../../../../theme/makeStyles";
 import { IWizardMain } from "./types";
 import WizardPage from "./WizardPage";
-import { List } from "@mui/material";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import { Grid } from "mds";
+import { Grid, List, ListItem } from "mds";
 
 const styles = () => ({
   wizFromContainer: {},
@@ -154,29 +151,22 @@ const GenericWizard = ({
   const stepsList = () => {
     return (
       <Fragment>
-        <List
-          component="nav"
-          dense={true}
-          classes={{
-            root: classes.stepsContainer,
-          }}
-        >
+        <List className={classes.stepsContainer}>
           {wizardSteps.map((step, index) => {
             return (
               <ListItem
                 id={
                   "wizard-step-" + step.label.toLowerCase().replaceAll(" ", "-")
                 }
-                button
-                disableRipple
                 onClick={() => pageChange(index)}
                 key={`wizard-${index.toString()}`}
-                selected={currentStep === index}
-                classes={{
-                  root: classes.stepItem,
+                className={classes.stepItem}
+                style={{
+                  background:
+                    currentStep === index ? "rgba(129,129,129, .5)" : "",
                 }}
               >
-                <ListItemText primary={step.label} />
+                {step.label}
               </ListItem>
             );
           })}

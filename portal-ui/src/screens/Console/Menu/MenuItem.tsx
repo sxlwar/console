@@ -14,22 +14,10 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React, { Suspense, useCallback } from "react";
-import {
-  Collapse,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-} from "@mui/material";
-import {
-  menuItemContainerStyles,
-  menuItemIconStyles,
-  menuItemMiniStyles,
-  menuItemStyle,
-  menuItemTextStyles,
-} from "./MenuStyleUtils";
-import List from "@mui/material/List";
+import { ButtonItem } from "@atlaskit/menu";
 import { MenuCollapsedIcon, MenuExpandedIcon, Tooltip } from "mds";
+import React, { Suspense, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import { hasPermission } from "../../../common/SecureComponent";
 import {
   CONSOLE_UI_RESOURCE,
@@ -59,6 +47,7 @@ const MenuItem = ({
   setPreviewMenuGroup: (value: string) => void;
   previewMenuGroup: string;
 }) => {
+  const navigate = useNavigate();
   const childrenMenuList = page?.children?.filter(
     (item: any) =>
       ((item.customPermissionFnc
@@ -94,7 +83,7 @@ const MenuItem = ({
   const selectMenuHandler = useCallback(
     (e: any) => {
       onExpand(page.id);
-      setSelectedMenuItem(page.id);
+      setSelectedMenuItem(page.to);
       page.onClick && page.onClick(e);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -105,154 +94,129 @@ const MenuItem = ({
     ? expandCollapseHandler
     : selectMenuHandler;
 
+  console.log("******8", expandedGroup, page.id);
+
   const isActiveGroup = expandedGroup === page.id;
-  const activeClsName =
-    pathValue.includes(selectedMenuItem) && page.id === selectedMenuItem
-      ? "active"
-      : "";
+
+  const isPathEqual = useCallback((p1: string, p2: string) => {
+    return (
+      p1
+        ?.split("/")
+        .filter((item: string) => !!item)
+        .join("_") ===
+      p2
+        ?.split("/")
+        .filter((item: string) => !!item)
+        .join("_")
+    );
+  }, []);
+
+  const isSelected =
+    isPathEqual(page.to ?? "", selectedMenuItem ?? "") && !hasChildren;
 
   return (
     <React.Fragment>
-      <ListItem
+      <ButtonItem
         key={page.to}
-        button
         onClick={(e: any) => {
           onClickHandler(e);
-          setSelectedMenuItem(selectedMenuItem);
+          setSelectedMenuItem(page.to);
+          navigate(page.to);
         }}
-        component={page.component}
-        to={page.to}
-        id={id}
-        className={`${activeClsName} ${stateClsName} main-menu-item `}
-        disableRipple
-        sx={{
-          ...menuItemContainerStyles,
-          marginTop: "5px",
-          ...menuItemMiniStyles,
-
-          "& .expanded-icon": {
-            border: "1px solid #35393c",
-          },
+        isSelected={isSelected}
+        iconBefore={
+          page.icon && (
+            <Tooltip tooltip={`${page.name}`} placement="right">
+              <Suspense fallback={<div>...</div>}>
+                <page.icon style={{ color: "white" }} />
+              </Suspense>
+            </Tooltip>
+          )
+        }
+        cssFn={(state) => {
+          return {
+            ...state,
+            background: isSelected
+              ? "linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgb(0, 95, 129) 53%, rgba(84, 84, 84, 0) 100%) 0% 0% no-repeat padding-box padding-box transparent"
+              : "inherit",
+          };
         }}
       >
-        {page.icon && (
-          <Tooltip tooltip={`${page.name}`} placement="right">
-            <ListItemIcon
-              sx={{ ...menuItemIconStyles }}
-              className={`${
-                isActiveGroup && hasChildren ? "expanded-icon" : ""
-              }`}
-            >
-              <Suspense fallback={<div>...</div>}>
-                <page.icon />
-              </Suspense>
-            </ListItemIcon>
-          </Tooltip>
-        )}
-        {page.name && (
-          <ListItemText
-            className={stateClsName}
-            sx={{ ...menuItemTextStyles }}
-            primary={page.name}
-            secondary={page.badge ? <page.badge /> : null}
-          />
-        )}
+        <span
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 5,
+            color: "white",
+            textDecoration: "none",
+          }}
+        >
+          {page.name && (
+            <div className={stateClsName}>
+              {page.name} {page.badge ? <page.badge /> : null}
+            </div>
+          )}
 
-        {hasChildren ? (
-          isActiveGroup || previewMenuGroup === page.id ? (
-            <MenuExpandedIcon
-              height={15}
-              width={15}
-              className="group-icon"
-              style={{ color: "#8399AB" }}
-            />
-          ) : (
-            <MenuCollapsedIcon
-              height={15}
-              width={15}
-              className="group-icon"
-              style={{ color: "#8399AB" }}
-            />
-          )
-        ) : null}
-      </ListItem>
+          {hasChildren ? (
+            isActiveGroup || previewMenuGroup === page.id ? (
+              <MenuExpandedIcon
+                height={15}
+                width={15}
+                className="group-icon"
+                style={{ color: "#8399AB" }}
+              />
+            ) : (
+              <MenuCollapsedIcon
+                height={15}
+                width={15}
+                className="group-icon"
+                style={{ color: "#8399AB" }}
+              />
+            )
+          ) : null}
+        </span>
+      </ButtonItem>
 
       {(isActiveGroup || previewMenuGroup === page.id) && hasChildren ? (
-        <Collapse
-          key={page.id}
-          id={`${page.id}-children`}
-          in={true}
-          timeout="auto"
-          unmountOnExit
-        >
-          <List
-            component="div"
-            disablePadding
-            key={page.id}
-            sx={{
-              marginLeft: "15px",
-              "&.mini": {
-                marginLeft: "0px",
-              },
-            }}
-            className={`${stateClsName}`}
-          >
-            {childrenMenuList.map((item: any) => {
-              return (
-                <ListItem
-                  key={item.to}
-                  button
-                  component={item.component}
-                  to={item.to}
-                  onClick={(e: any) => {
-                    if (page.id) {
-                      setPreviewMenuGroup("");
-                      setSelectedMenuItem(page.id);
-                    }
-                  }}
-                  disableRipple
-                  sx={{
-                    ...menuItemStyle,
-                    ...menuItemMiniStyles,
-                  }}
-                  className={`${stateClsName}`}
-                >
-                  {item.icon && (
-                    <Tooltip tooltip={`${item.name}`} placement="right">
-                      <ListItemIcon
-                        sx={{
-                          background: "#00274D",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
+        <>
+          {childrenMenuList.map((item: any) => {
+            const is = isPathEqual(item.to, selectedMenuItem);
 
-                          "& svg": {
-                            fill: "#fff",
-                            minWidth: "12px",
-                            maxWidth: "12px",
-                          },
-                        }}
-                        className="menu-icon"
-                      >
-                        <Suspense fallback={<div>...</div>}>
-                          <item.icon />
-                        </Suspense>
-                        {item.badge ? <item.badge /> : null}
-                      </ListItemIcon>
-                    </Tooltip>
-                  )}
-                  {item.name && (
-                    <ListItemText
-                      className={stateClsName}
-                      sx={{ ...menuItemTextStyles, marginLeft: "16px" }}
-                      primary={item.name}
-                    />
-                  )}
-                </ListItem>
-              );
-            })}
-          </List>
-        </Collapse>
+            return (
+              <ButtonItem
+                onClick={(e: any) => {
+                  if (page.id) {
+                    setPreviewMenuGroup(page.id);
+                    setSelectedMenuItem(item.to);
+                  }
+                  navigate(item.to);
+                }}
+                iconBefore={
+                  item.icon && (
+                    <Suspense fallback={<div>...</div>}>
+                      <item.icon />
+                    </Suspense>
+                  )
+                }
+                iconAfter={item.badge ? <item.badge /> : null}
+                cssFn={(state) => {
+                  return {
+                    ...state,
+                    color: "white",
+                    paddingLeft: "3rem",
+                    textDecoration: "none",
+                    background: is
+                      ? "linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgb(0, 95, 129) 53%, rgba(84, 84, 84, 0) 100%) 0% 0% no-repeat padding-box padding-box transparent"
+                      : "inherit",
+                  };
+                }}
+              >
+                {item.name}
+              </ButtonItem>
+            );
+          })}
+        </>
       ) : null}
     </React.Fragment>
   );

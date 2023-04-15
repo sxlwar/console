@@ -15,10 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Collapse from "@mui/material/Collapse";
-import List from "@mui/material/List";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListSubheader from "@mui/material/ListSubheader";
-import { Box, MenuCollapsedIcon, MenuExpandedIcon } from "mds";
+import { Box, MenuCollapsedIcon, MenuExpandedIcon, List, ListItem } from "mds";
 import React from "react";
 import { ServerInfo } from "../types";
 import DriveInfoItem from "./DriveInfoItem";
@@ -44,7 +41,6 @@ const ServersList = ({ data }: { data: ServerInfo[] }) => {
       </Box>
       <List
         sx={{ width: "100%", flex: 1, padding: "0" }}
-        component="nav"
         aria-labelledby="nested-list-subheader"
       >
         {data.map((serverInfo, index) => {
@@ -52,8 +48,7 @@ const ServersList = ({ data }: { data: ServerInfo[] }) => {
           const isExpanded = expanded === key;
           return (
             <React.Fragment key={key}>
-              <ListItemButton
-                disableRipple
+              <ListItem
                 onClick={() => {
                   if (!isExpanded) {
                     handleClick(key);
@@ -108,7 +103,7 @@ const ServersList = ({ data }: { data: ServerInfo[] }) => {
                     <MenuExpandedIcon className="expand-icon" />
                   )}
                 </Box>
-              </ListItemButton>
+              </ListItem>
               {isExpanded ? (
                 <Box
                   key={`${serverInfo.endpoint}-${index}`}
@@ -117,13 +112,12 @@ const ServersList = ({ data }: { data: ServerInfo[] }) => {
                     borderTop: "0",
                   }}
                 >
-                  <ListSubheader
+                  <ListItem
                     key={`${index}-drive-details`}
-                    component="div"
                     sx={{ paddingLeft: "30px" }}
                   >
                     Drives ({serverInfo.drives.length})
-                  </ListSubheader>
+                  </ListItem>
 
                   <Collapse
                     in={isExpanded}

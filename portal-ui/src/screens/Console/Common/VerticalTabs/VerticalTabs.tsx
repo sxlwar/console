@@ -74,7 +74,6 @@ const CustomTab = ({
 }) => {
   const tabAttributes = useTab();
   const ref = useRef(null);
-  console.log(tabAttributes);
 
   return (
     <div
