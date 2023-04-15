@@ -120,7 +120,7 @@ const AddAccessRule = ({
             id="access"
             name="Access"
             onChange={(e) => {
-              setSelectedAccess(e.target.value);
+              setSelectedAccess(e?.value);
             }}
             label="Access"
             value={selectedAccess}

@@ -15,8 +15,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { useEffect, useState } from "react";
-import { SelectChangeEvent } from "@mui/material";
-
 import { Button, ChangeAccessPolicyIcon, Grid } from "mds";
 
 import { withStyles } from "../../../../theme/makeStyles";
@@ -126,8 +124,8 @@ const SetAccessPolicy = ({
                 label="Access Policy"
                 id="select-access-policy"
                 name="select-access-policy"
-                onChange={(e: SelectChangeEvent<string>) => {
-                  setAccessPolicy(e.target.value as string);
+                onChange={(e) => {
+                  setAccessPolicy(e?.value as string);
                 }}
                 options={[
                   { value: "PRIVATE", label: "Private" },

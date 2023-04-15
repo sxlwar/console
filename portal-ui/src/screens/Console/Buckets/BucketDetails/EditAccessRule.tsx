@@ -97,7 +97,7 @@ const EditAccessRule = ({
               id="access"
               name="Access"
               onChange={(e) => {
-                setSelectedAccess(e.target.value);
+                setSelectedAccess(e?.value as string);
               }}
               label="Access"
               value={selectedAccess}

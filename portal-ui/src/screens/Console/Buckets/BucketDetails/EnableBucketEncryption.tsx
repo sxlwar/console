@@ -15,7 +15,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useEffect, useState } from "react";
-import { SelectChangeEvent } from "@mui/material";
 import ProgressBar from '@atlaskit/progress-bar';
 import { AddIcon, BucketEncryptionIcon, Button, Grid } from "mds";
 
@@ -161,8 +160,8 @@ const EnableBucketEncryption = ({
             <Grid item xs={12} className={classes.modalFormScrollable}>
               <Grid item xs={12} className={classes.formFieldRow}>
                 <SelectWrapper
-                  onChange={(e: SelectChangeEvent<string>) => {
-                    setEncryptionType(e.target.value as string);
+                  onChange={(e) => {
+                    setEncryptionType(e?.value as string);
                   }}
                   id="select-encryption-type"
                   name="select-encryption-type"
@@ -193,8 +192,8 @@ const EnableBucketEncryption = ({
                   style={{ display: "flex" }}
                 >
                   <SelectWrapper
-                    onChange={(e: SelectChangeEvent<string>) => {
-                      setKmsKeyID(e.target.value);
+                    onChange={(e) => {
+                      setKmsKeyID(e?.value as string);
                     }}
                     id="select-kms-key-id"
                     name="select-kms-key-id"

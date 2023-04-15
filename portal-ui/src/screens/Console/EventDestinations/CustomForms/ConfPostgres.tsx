@@ -276,8 +276,8 @@ const ConfPostgres = ({ onChange, classes }: IConfPostgresProps) => {
                   id="sslmode"
                   name="sslmode"
                   onChange={(e): void => {
-                    if (e.target.value !== undefined) {
-                      setSslMode(e.target.value + "");
+                    if (e?.value !== undefined) {
+                      setSslMode(e?.value + "");
                     }
                   }}
                   options={[

@@ -14,32 +14,26 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import React from "react";
-import {
-  FormControl,
-  InputBase,
-  InputLabel,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-} from "@mui/material";
-import { Property } from 'csstype';
+import { FormControl, InputBase, InputLabel } from "@mui/material";
+import { Property } from "csstype";
 import { withStyles } from "../../../../../theme/makeStyles";
 import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
 import { HelpIcon, Grid, Tooltip } from "mds";
+import Select from "@atlaskit/select";
 
 export interface selectorTypes {
   label: string;
   value: string;
 }
 
-interface SelectProps {
+interface ISelectProps {
   options: selectorTypes[];
   value: string;
   label: string;
   id: string;
   name: string;
   tooltip?: string;
-  onChange: (e: SelectChangeEvent<string>) => void;
+  onChange: (e: selectorTypes | null) => void;
   disabled?: boolean;
   classes?: any;
 }
@@ -93,7 +87,7 @@ const SelectWrapper = ({
   tooltip = "",
   value,
   disabled = false,
-}: SelectProps) => {
+}: ISelectProps) => {
   return (
     <React.Fragment>
       <Grid item xs={12} className={classes.fieldContainer}>
@@ -115,20 +109,12 @@ const SelectWrapper = ({
           <Select
             id={id}
             name={name}
-            value={value}
+            value={options.find((item) => item.value === value)}
             onChange={onChange}
             input={<SelectStyled />}
             disabled={disabled}
-          >
-            {options.map((option) => (
-              <MenuItem
-                value={option.value}
-                key={`select-${name}-${option.label}`}
-              >
-                {option.label}
-              </MenuItem>
-            ))}
-          </Select>
+            options={options}
+          ></Select>
         </FormControl>
       </Grid>
     </React.Fragment>

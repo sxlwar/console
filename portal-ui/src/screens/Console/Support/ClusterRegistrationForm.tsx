@@ -66,7 +66,7 @@ const ClusterRegistrationForm = () => {
             id="subnet-organization"
             name="subnet-organization"
             onChange={(e) =>
-              dispatch(setSelectedSubnetOrganization(e.target.value as string))
+              dispatch(setSelectedSubnetOrganization(e?.value as string))
             }
             label="Select an organization"
             value={selectedSubnetOrganization}

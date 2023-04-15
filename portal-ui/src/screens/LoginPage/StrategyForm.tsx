@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React from "react";
+import React, { useMemo } from "react";
 import {
   Button,
   LockFilledIcon,
@@ -24,12 +24,8 @@ import {
   UserFilledIcon,
 } from "mds";
 import { setAccessKey, setSecretKey, setSTS, setUseSTS } from "./loginSlice";
-import {
-  InputAdornment,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-} from "@mui/material";
+import { InputAdornment } from "@mui/material";
+import Select from "@atlaskit/select";
 import ProgressBar from "@atlaskit/progress-bar";
 import { AppState, useAppDispatch } from "../../store";
 import { useSelector } from "react-redux";
@@ -39,6 +35,7 @@ import { makeStyles } from "../../theme/makeStyles";
 import { spacingUtils } from "../Console/Common/FormComponents/common/styleLibrary";
 import { doLoginAsync } from "./loginThunks";
 import { IStrategyForm } from "./types";
+import { selectorTypes } from "../Console/Common/FormComponents/SelectWrapper/SelectWrapper";
 
 const useStyles = makeStyles()(() => ({
   root: {
@@ -66,6 +63,13 @@ const useStyles = makeStyles()(() => ({
   linearPredef: {
     height: 10,
   },
+  ssoMenuItem: {
+    display: 'flex',
+    alignItems: 'center', 
+    gap: '5px',
+    padding: '0 1em',
+    cursor: "pointer"
+  },
   ...spacingUtils,
 }));
 
@@ -87,28 +91,23 @@ const StrategyForm = ({ redirectRules }: IStrategyForm) => {
     dispatch(doLoginAsync());
   };
 
-  let ssoOptions: React.ReactNode = null;
+  const ssoOptions = useMemo(() => {
+    const data = redirectRules.map((r) => ({
+      label: `${r.displayName} ${r.serviceType ? ` - ${r.serviceType}` : ""}`,
+      value: r.redirect,
+    }));
 
-  if (redirectRules.length > 0) {
-    ssoOptions = redirectRules.map((r, idx) => (
-      <MenuItem
-        value={r.redirect}
-        key={`sso-login-option-${idx}`}
-        className={classes.ssoMenuItem}
-        divider={true}
-      >
-        <LogoutIcon
-          className={classes.ssoLoginIcon}
-          style={{ width: 16, height: 16, marginRight: 8 }}
-        />
-        {r.displayName}
-        {r.serviceType ? ` - ${r.serviceType}` : ""}
-      </MenuItem>
-    ));
-  }
+    return [
+      {
+        value: useSTS ? "use-sts-cred" : "use-sts",
+        label: useSTS ? "Use Credentials" : "Use STS",
+      },
+      ...data,
+    ];
+  }, [redirectRules, useSTS]);
 
-  const extraActionSelector = (e: SelectChangeEvent) => {
-    const value = e.target.value;
+  const extraActionSelector = (e: selectorTypes | null) => {
+    const value = e?.value;
 
     if (value) {
       console.log(value);
@@ -119,7 +118,7 @@ const StrategyForm = ({ redirectRules }: IStrategyForm) => {
         return;
       }
 
-      window.location.href = e.target.value as string;
+      window.location.href = e?.value as string;
     }
   };
 
@@ -241,6 +240,7 @@ const StrategyForm = ({ redirectRules }: IStrategyForm) => {
             onChange={extraActionSelector}
             displayEmpty
             className={classes.ssoSelect}
+            options={ssoOptions}
             renderValue={() => "Other Authentication Methods"}
             sx={{
               width: "100%",
@@ -248,16 +248,18 @@ const StrategyForm = ({ redirectRules }: IStrategyForm) => {
               fontSize: "14px",
               borderRadius: "4px",
             }}
-          >
-            <MenuItem
-              value={useSTS ? "use-sts-cred" : "use-sts"}
-              className={classes.ssoMenuItem}
-              divider={redirectRules.length > 0}
-            >
-              {useSTS ? "Use Credentials" : "Use STS"}
-            </MenuItem>
-            {ssoOptions}
-          </Select>
+            components={{
+              Option: ({ children, innerProps }) => (
+                <div {...innerProps} className={classes.ssoMenuItem}>
+                  <LogoutIcon
+                    className={classes.ssoLoginIcon}
+                    style={{ width: 16, height: 16, marginRight: 8 }}
+                  />
+                  {children}
+                </div>
+              ),
+            }}
+          ></Select>
         </Grid>
       </form>
     </React.Fragment>

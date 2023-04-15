@@ -82,7 +82,7 @@ const EntityReplicationLookup = () => {
             id="replicationEntityLookup"
             name="replicationEntityLookup"
             onChange={(e) => {
-              setEntityType(e.target.value);
+              setEntityType(e?.value ?? 'bucket');
               setStatsLoaded(false);
             }}
             label=""

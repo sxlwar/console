@@ -18,22 +18,22 @@ import React, {
   forwardRef,
   useEffect,
   useImperativeHandle,
+  useMemo,
   useState,
 } from "react";
 import clsx from "clsx";
-import { SelectChangeEvent } from "@mui/material";
 
 import { withStyles } from "../../../../../theme/makeStyles";
 import InputLabel from "@mui/material/InputLabel";
 import { Tooltip } from "mds";
 import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
+import Select from "@atlaskit/select";
 import InputBase from "@mui/material/InputBase";
 import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
 import { HelpIcon, Grid } from "mds";
 import FormSwitchWrapper from "../FormSwitchWrapper/FormSwitchWrapper";
 import { days, months, validDate, years } from "./utils";
+import { selectorTypes } from "../SelectWrapper/SelectWrapper";
 
 const styles = () => ({
   dateInput: {
@@ -143,16 +143,42 @@ const DateSelector = forwardRef(
       }
     };
 
-    const onMonthChange = (e: SelectChangeEvent<string>) => {
-      setMonth(e.target.value as string);
+    const [yearOptions, monthOptions, dayOptions] = useMemo(() => {
+      return [
+        [
+          { label: "<Year>", value: "" },
+          ...years.map((item) => ({
+            label: item.toString(),
+            value: item.toString(),
+          })),
+        ],
+        [
+          { label: "<Month>", value: "" },
+          ...months.map((item) => ({
+            label: item.toString(),
+            value: item.toString(),
+          })),
+        ],
+        [
+          { label: "<Day>", value: "" },
+          ...days.map((item) => ({
+            label: item.toString(),
+            value: item.toString(),
+          })),
+        ],
+      ];
+    }, []);
+
+    const onMonthChange = (e: selectorTypes | null) => {
+      setMonth(e?.value as string);
     };
 
-    const onDayChange = (e: SelectChangeEvent<string>) => {
-      setDay(e.target.value as string);
+    const onDayChange = (e: selectorTypes | null) => {
+      setDay(e?.value as string);
     };
 
-    const onYearChange = (e: SelectChangeEvent<string>) => {
-      setYear(e.target.value as string);
+    const onYearChange = (e: selectorTypes | null) => {
+      setYear(e?.value as string);
     };
 
     return (
@@ -203,23 +229,14 @@ const DateSelector = forwardRef(
             <Select
               id={`${id}-month`}
               name={`${id}-month`}
-              value={month}
+              value={monthOptions.find(
+                (item) => item.value === month.toString()
+              )}
               displayEmpty
               onChange={onMonthChange}
               input={<SelectStyled />}
-            >
-              <MenuItem value="" disabled>
-                {"<Month>"}
-              </MenuItem>
-              {months.map((option) => (
-                <MenuItem
-                  value={option.value}
-                  key={`select-${id}-monthOP-${option.label}`}
-                >
-                  {option.label}
-                </MenuItem>
-              ))}
-            </Select>
+              options={monthOptions}
+            ></Select>
           </FormControl>
           <FormControl
             disabled={isDateDisabled()}
@@ -228,23 +245,12 @@ const DateSelector = forwardRef(
             <Select
               id={`${id}-day`}
               name={`${id}-day`}
-              value={day}
+              value={dayOptions.find((item) => item.value === day.toString())}
               displayEmpty
               onChange={onDayChange}
               input={<SelectStyled />}
-            >
-              <MenuItem value="" disabled>
-                {"<Day>"}
-              </MenuItem>
-              {days.map((dayNumber) => (
-                <MenuItem
-                  value={dayNumber}
-                  key={`select-${id}-dayOP-${dayNumber}`}
-                >
-                  {dayNumber}
-                </MenuItem>
-              ))}
-            </Select>
+              options={dayOptions}
+            ></Select>
           </FormControl>
           <FormControl
             disabled={isDateDisabled()}
@@ -253,20 +259,12 @@ const DateSelector = forwardRef(
             <Select
               id={`${id}-year`}
               name={`${id}-year`}
-              value={year}
+              value={yearOptions.find((item) => item.value === year.toString())}
               displayEmpty
               onChange={onYearChange}
               input={<SelectStyled />}
-            >
-              <MenuItem value="" disabled>
-                {"<Year>"}
-              </MenuItem>
-              {years.map((year) => (
-                <MenuItem value={year} key={`select-${id}-yearOP-${year}`}>
-                  {year}
-                </MenuItem>
-              ))}
-            </Select>
+              options={yearOptions}
+            ></Select>
           </FormControl>
         </div>
       </Grid>

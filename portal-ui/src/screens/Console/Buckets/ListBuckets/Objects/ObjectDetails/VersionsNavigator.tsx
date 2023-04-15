@@ -19,7 +19,6 @@ import get from "lodash/get";
 import { useSelector } from "react-redux";
 import { withStyles } from "../../../../../../theme/makeStyles";
 
-import { SelectChangeEvent } from "@mui/material";
 import ProgressBar from "@atlaskit/progress-bar";
 import ShareFile from "./ShareFile";
 import {
@@ -586,8 +585,8 @@ const VersionsNavigator = ({
                       id={"sort-by"}
                       label={""}
                       value={sortValue}
-                      onChange={(e: SelectChangeEvent<string>) => {
-                        setSortValue(e.target.value as string);
+                      onChange={(e) => {
+                        setSortValue(e?.value as string);
                       }}
                       name={"sort-by"}
                       options={[

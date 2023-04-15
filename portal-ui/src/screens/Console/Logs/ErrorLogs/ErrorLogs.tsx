@@ -13,14 +13,15 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useMemo, useState } from "react";
 import { IMessageEvent, w3cwebsocket as W3CWebSocket } from "websocket";
 
 import { Grid, Button } from "mds";
 
 import { withStyles } from "../../../../theme/makeStyles";
 import { useSelector } from "react-redux";
-import { FormControl, InputBase, MenuItem, Select } from "@mui/material";
+import { FormControl, InputBase } from "@mui/material";
+import Select from "@atlaskit/select";
 
 import { ErrorResponseHandler } from "../../../../../src/common/types";
 import api from "../../../../../src/common/api";
@@ -211,6 +212,30 @@ const ErrorLogs = () => {
     } else return false;
   });
 
+  const nodeOptions = useMemo(
+    () => [
+      { label: "All Nodes", value: "all" },
+      ...nodes.map((item) => ({ label: item, value: item })),
+    ],
+    [nodes]
+  );
+
+  const logOptions = useMemo(
+    () => [
+      { value: "all", label: "All Log Types" },
+      { value: "minio", label: "MinIO" },
+      { value: "application", label: "Application" },
+    ],
+    []
+  );
+  const agentOptions = useMemo(
+    () => [
+      { label: "Select User Agent", value: selectedUserAgent },
+      ...userAgents.map((item) => ({ label: item, value: item })),
+    ],
+    [selectedUserAgent, userAgents]
+  );
+
   useEffect(() => {
     setLoadingNodes(true);
     api
@@ -239,24 +264,18 @@ const ErrorLogs = () => {
                   id="node"
                   name="node"
                   data-test-id="node-selector"
-                  value={selectedNode}
+                  value={nodeOptions.find(
+                    (item) => item.value === selectedNode
+                  )}
                   onChange={(e) => {
-                    setSelectedNode(e.target.value as string);
+                    setSelectedNode(e?.value as string);
                   }}
                   className={classes.searchField}
                   disabled={loadingNodes || logsStarted}
                   input={<SelectStyled />}
                   placeholder={"Select Node"}
-                >
-                  <MenuItem value={"all"} key={`select-node-all`}>
-                    All Nodes
-                  </MenuItem>
-                  {nodes.map((aNode) => (
-                    <MenuItem value={aNode} key={`select-node-name-${aNode}`}>
-                      {aNode}
-                    </MenuItem>
-                  ))}
-                </Select>
+                  options={nodeOptions}
+                ></Select>
               </FormControl>
             ) : (
               <h3> Loading nodes</h3>
@@ -269,25 +288,16 @@ const ErrorLogs = () => {
                 id="logType"
                 name="logType"
                 data-test-id="log-type"
-                value={logType}
+                value={logOptions.find((item) => item.value === logType)}
                 onChange={(e) => {
-                  setLogType(e.target.value as string);
+                  setLogType(e?.value as string);
                 }}
                 className={classes.searchField}
                 disabled={loadingNodes || logsStarted}
                 input={<SelectStyled />}
                 placeholder={"Select Log Type"}
-              >
-                <MenuItem value="all" key="all-log-types">
-                  All Log Types
-                </MenuItem>
-                <MenuItem value="minio" key="minio-log-type">
-                  MinIO
-                </MenuItem>
-                <MenuItem value="application" key="app-log-type">
-                  Application
-                </MenuItem>
-              </Select>
+                options={logOptions}
+              ></Select>
             </FormControl>
           </Grid>
           <Grid item xs={3}>
@@ -297,30 +307,17 @@ const ErrorLogs = () => {
                   id="userAgent"
                   name="userAgent"
                   data-test-id="user-agent"
-                  value={selectedUserAgent}
+                  value={agentOptions.find(
+                    (item) => item.value === selectedUserAgent
+                  )}
                   onChange={(e) => {
-                    setSelectedUserAgent(e.target.value as string);
+                    setSelectedUserAgent(e?.value as string);
                   }}
                   className={classes.searchField}
                   disabled={userAgents.length < 1 || logsStarted}
                   input={<SelectStyled />}
-                >
-                  <MenuItem
-                    value={selectedUserAgent}
-                    key={`select-user-agent-default`}
-                    disabled={true}
-                  >
-                    Select User Agent
-                  </MenuItem>
-                  {userAgents.map((anAgent) => (
-                    <MenuItem
-                      value={anAgent}
-                      key={`select-user-agent-${anAgent}`}
-                    >
-                      {anAgent}
-                    </MenuItem>
-                  ))}
-                </Select>
+                  options={agentOptions}
+                ></Select>
               </FormControl>
             )}
           </Grid>

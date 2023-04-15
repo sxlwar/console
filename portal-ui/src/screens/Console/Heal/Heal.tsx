@@ -14,15 +14,14 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import {
   FormControl,
   InputBase,
-  MenuItem,
-  Select,
   TextField,
 } from "@mui/material";
+import Select from '@atlaskit/select';
 import { IMessageEvent, w3cwebsocket as W3CWebSocket } from "websocket";
 
 import { Button, HealIcon, Grid } from "mds";
@@ -262,6 +261,8 @@ const Heal = () => {
     value: bucketName.name,
   }));
 
+  const options = useMemo(() => [{label: 'Select Bucket', value: ''}, ...bucketNames], [bucketNames]);
+
   return (
     <Fragment>
       <PageHeaderWrapper label="Drives" />
@@ -280,25 +281,15 @@ const Heal = () => {
                     label="Bucket"
                     id="bucket-name"
                     name="bucket-name"
-                    value={bucketName}
+                    value={options.find(item => item.value === bucketName)}
                     onChange={(e) => {
-                      setBucketName(e.target.value as string);
+                      setBucketName(e?.value as string);
                     }}
                     className={classes.searchField}
                     input={<SelectStyled />}
                     displayEmpty
+                    options={options}
                   >
-                    <MenuItem value="" key={`select-bucket-name-default`}>
-                      Select Bucket
-                    </MenuItem>
-                    {bucketNames.map((option) => (
-                      <MenuItem
-                        value={option.value}
-                        key={`select-bucket-name-${option.label}`}
-                      >
-                        {option.label}
-                      </MenuItem>
-                    ))}
                   </Select>
                 </FormControl>
                 <TextField

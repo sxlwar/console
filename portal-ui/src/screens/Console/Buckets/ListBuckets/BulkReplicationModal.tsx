@@ -17,7 +17,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 
 import { withStyles } from "../../../../theme/makeStyles";
-import { SelectChangeEvent } from "@mui/material";
 import get from "lodash/get";
 import { Grid, Tooltip } from "mds";
 import JiraFailedBuildStatusIcon from '@atlaskit/icon/glyph/jira/failed-build-status'
@@ -260,8 +259,8 @@ const AddBulkReplicationModal = ({
             id={`assign-bucket-${indexItem}`}
             name={`assign-bucket-${indexItem}`}
             value={relationBuckets[indexItem]}
-            onChange={(e: SelectChangeEvent<string>) => {
-              updateItem(indexItem, e.target.value as string);
+            onChange={(e) => {
+              updateItem(indexItem, e?.value as string);
             }}
             options={optionsForBucketsDrop}
             disabled={addLoading}
@@ -394,8 +393,8 @@ const AddBulkReplicationModal = ({
                   <SelectWrapper
                     id="replication_mode"
                     name="replication_mode"
-                    onChange={(e: SelectChangeEvent<string>) => {
-                      setReplicationMode(e.target.value as string);
+                    onChange={(e) => {
+                      setReplicationMode(e?.value as string);
                     }}
                     label="Replication Mode"
                     value={replicationMode}

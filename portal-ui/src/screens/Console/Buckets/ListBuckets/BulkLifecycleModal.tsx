@@ -16,36 +16,35 @@
 
 import React, { Fragment, useEffect, useState } from "react";
 
-import { withStyles } from "../../../../theme/makeStyles";
-import { SelectChangeEvent } from "@mui/material";
+import CheckCircleOutlineIcon from "@atlaskit/icon/glyph/check-circle-outline";
+import JiraFailedBuildStatusIcon from "@atlaskit/icon/glyph/jira/failed-build-status";
 import get from "lodash/get";
 import { Grid, Tooltip } from "mds";
-import JiraFailedBuildStatusIcon from '@atlaskit/icon/glyph/jira/failed-build-status'
-import CheckCircleOutlineIcon from '@atlaskit/icon/glyph/check-circle-outline'
+import api from "../../../../common/api";
+import { ErrorResponseHandler } from "../../../../common/types";
+import { useAppDispatch } from "../../../../store";
+import { setModalErrorSnackMessage } from "../../../../systemSlice";
+import { withStyles } from "../../../../theme/makeStyles";
+import FormSwitchWrapper from "../../Common/FormComponents/FormSwitchWrapper/FormSwitchWrapper";
+import InputBoxWrapper from "../../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
+import PredefinedList from "../../Common/FormComponents/PredefinedList/PredefinedList";
+import QueryMultiSelector from "../../Common/FormComponents/QueryMultiSelector/QueryMultiSelector";
+import RadioGroupSelector from "../../Common/FormComponents/RadioGroupSelector/RadioGroupSelector";
+import SelectWrapper from "../../Common/FormComponents/SelectWrapper/SelectWrapper";
 import {
   createTenantCommon,
   formFieldStyles,
   modalStyleUtils,
   spacingUtils,
 } from "../../Common/FormComponents/common/styleLibrary";
-import InputBoxWrapper from "../../Common/FormComponents/InputBoxWrapper/InputBoxWrapper";
-import ModalWrapper from "../../Common/ModalWrapper/ModalWrapper";
-import PredefinedList from "../../Common/FormComponents/PredefinedList/PredefinedList";
-import api from "../../../../common/api";
 import GenericWizard from "../../Common/GenericWizard/GenericWizard";
-import FormSwitchWrapper from "../../Common/FormComponents/FormSwitchWrapper/FormSwitchWrapper";
-import SelectWrapper from "../../Common/FormComponents/SelectWrapper/SelectWrapper";
-import RadioGroupSelector from "../../Common/FormComponents/RadioGroupSelector/RadioGroupSelector";
-import { ErrorResponseHandler } from "../../../../common/types";
-import QueryMultiSelector from "../../Common/FormComponents/QueryMultiSelector/QueryMultiSelector";
-import { ITiersDropDown } from "../BucketDetails/AddLifecycleModal";
+import ModalWrapper from "../../Common/ModalWrapper/ModalWrapper";
 import {
   ITierElement,
   ITierResponse,
 } from "../../Configurations/TiersConfiguration/types";
+import { ITiersDropDown } from "../BucketDetails/AddLifecycleModal";
 import { MultiBucketResult } from "../types";
-import { setModalErrorSnackMessage } from "../../../../systemSlice";
-import { useAppDispatch } from "../../../../store";
 
 interface IBulkReplicationModal {
   open: boolean;
@@ -153,7 +152,7 @@ const AddBulkReplicationModal = ({
           return (
             <div className={classes.errorIcon}>
               <Tooltip tooltip={errString} placement="top">
-                <JiraFailedBuildStatusIcon label=""/>
+                <JiraFailedBuildStatusIcon label="" />
               </Tooltip>
             </div>
           );
@@ -341,8 +340,8 @@ const AddBulkReplicationModal = ({
                                 id="storage_class"
                                 name="storage_class"
                                 value={storageClass}
-                                onChange={(e: SelectChangeEvent<string>) => {
-                                  setStorageClass(e.target.value as string);
+                                onChange={(e) => {
+                                  setStorageClass(e?.value as string);
                                 }}
                                 options={tiersList}
                               />

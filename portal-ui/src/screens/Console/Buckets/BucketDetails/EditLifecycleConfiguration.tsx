@@ -19,7 +19,6 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  SelectChangeEvent,
 } from "@mui/material";
 import ProgressBar from '@atlaskit/progress-bar';
 
@@ -419,8 +418,8 @@ const EditLifecycleConfiguration = ({
                       id="storage_class"
                       name="storage_class"
                       value={storageClass}
-                      onChange={(e: SelectChangeEvent<string>) => {
-                        setStorageClass(e.target.value as string);
+                      onChange={(e) => {
+                        setStorageClass(e?.value as string);
                       }}
                       options={tiersList}
                     />

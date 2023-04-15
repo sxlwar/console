@@ -24,7 +24,6 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  SelectChangeEvent,
 } from "@mui/material";
 import ProgressBar from "@atlaskit/progress-bar";
 
@@ -263,7 +262,7 @@ const AddLifecycleModal = ({
                         label="Object Version"
                         onChange={(e) => {
                           setTargetVersion(
-                            e.target.value as "current" | "noncurrent"
+                            e?.value as "current" | "noncurrent"
                           );
                         }}
                         options={[
@@ -307,8 +306,8 @@ const AddLifecycleModal = ({
                           id="storage_class"
                           name="storage_class"
                           value={storageClass}
-                          onChange={(e: SelectChangeEvent<string>) => {
-                            setStorageClass(e.target.value as string);
+                          onChange={(e) => {
+                            setStorageClass(e?.value as string);
                           }}
                           options={tiersList}
                         />

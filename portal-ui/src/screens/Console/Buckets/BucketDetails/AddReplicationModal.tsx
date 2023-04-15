@@ -19,7 +19,6 @@ import React, { useEffect, useState } from "react";
 import { BucketReplicationIcon, Button, Grid } from "mds";
 
 import { withStyles } from "../../../../theme/makeStyles";
-import { SelectChangeEvent } from "@mui/material";
 import get from "lodash/get";
 import {
   createTenantCommon,
@@ -290,8 +289,8 @@ const AddReplicationModal = ({
               <SelectWrapper
                 id="replication_mode"
                 name="replication_mode"
-                onChange={(e: SelectChangeEvent<string>) => {
-                  setReplicationMode(e.target.value as string);
+                onChange={(e) => {
+                  setReplicationMode(e?.value as string);
                 }}
                 label="Replication Mode"
                 value={replicationMode}
