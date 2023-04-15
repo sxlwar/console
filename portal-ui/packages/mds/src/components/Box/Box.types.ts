@@ -21,4 +21,5 @@ export interface BoxProps {
   sx?: CSSObject;
   children?: React.ReactNode;
   withBorders?: boolean;
+  ref?: React.Ref<HTMLDivElement>
 }

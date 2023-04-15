@@ -25,7 +25,6 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { useMediaQuery } from "@mui/material";
 
 import { withStyles } from "../../../../../theme/makeStyles";
 import { IBarChartConfiguration } from "./types";
@@ -35,7 +34,6 @@ import { IDashboardPanel } from "../types";
 import { widgetDetailsToPanel } from "../utils";
 import { ErrorResponseHandler } from "../../../../../common/types";
 import api from "../../../../../common/api";
-import { useTheme } from "@mui/styles";
 import { Loader, Grid } from "mds";
 import ExpandGraphLink from "./ExpandGraphLink";
 import { setErrorSnackMessage } from "../../../../../systemSlice";
@@ -61,6 +59,11 @@ const styles = () => ({
     paddingTop: "15px",
     textAlign: "center",
     margin: "auto",
+  },
+  YAxis: {
+    "@media (max-width: 900px)": {
+      display: "none",
+    },
   },
 });
 
@@ -162,9 +165,6 @@ const BarChartWidget = ({
     });
   }
 
-  const theme = useTheme();
-  const biggerThanMd = useMediaQuery(theme.breakpoints.up("md"));
-
   return (
     <div
       className={zoomActivated ? "" : classes.singleValueContainer}
@@ -227,11 +227,11 @@ const BarChartWidget = ({
                 tickLine={false}
                 axisLine={false}
                 width={150}
-                hide={!biggerThanMd}
                 style={{
                   fontSize: "12px",
                   fontWeight: 100,
                 }}
+                className={classes.YAxis}
               />
               {barChartConfiguration.map((bar) => (
                 <Bar

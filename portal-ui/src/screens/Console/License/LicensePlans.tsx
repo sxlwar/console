@@ -14,9 +14,15 @@
 //  You should have received a copy of the GNU Affero General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React, { Fragment, useEffect, useState } from "react";
+import React, {
+  Fragment,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import clsx from "clsx";
-import CheckCircleIcon from '@atlaskit/icon/glyph/check-circle'
+import CheckCircleIcon from "@atlaskit/icon/glyph/check-circle";
 import {
   AGPLV3Logo,
   Button,
@@ -24,10 +30,8 @@ import {
   ConsoleStandard,
   LicenseDocIcon,
 } from "mds";
-import { useTheme } from "@mui/material/styles";
 import { SubnetInfo } from "./types";
 import { Box } from "mds";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import {
   COMMUNITY_PLAN_FEATURES,
   ENTERPRISE_PLAN_FEATURES,
@@ -205,8 +209,8 @@ const PricingFeatureItem = (props: {
 };
 
 const LicensePlans = ({ licenseInfo }: IRegisterStatus) => {
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const ref = useRef<HTMLDivElement>(null);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   let currentPlan = !licenseInfo
     ? "community"
@@ -317,6 +321,14 @@ const LicensePlans = ({ licenseInfo }: IRegisterStatus) => {
     setXsPlanView(plan);
   };
 
+  useLayoutEffect(() => {
+    if (ref.current) {
+      setIsSmallScreen(ref.current.clientWidth < 600);
+    } else {
+      setIsSmallScreen(false);
+    }
+  }, []);
+
   useEffect(() => {
     if (isSmallScreen) {
       setXsPlanView(currentPlan || "community");
@@ -331,6 +343,7 @@ const LicensePlans = ({ licenseInfo }: IRegisterStatus) => {
   return (
     <Fragment>
       <Box
+        ref={ref}
         sx={{
           border: "1px solid #eaeaea",
           borderTop: "0px",
@@ -687,7 +700,7 @@ const LicensePlans = ({ licenseInfo }: IRegisterStatus) => {
                     <Box className="feature-item-info">
                       <div className="xs-only"></div>
                       <Box className="plan-feature">
-                        <CheckCircleIcon label=""/>
+                        <CheckCircleIcon label="" />
                       </Box>
                     </Box>
                   </Box>

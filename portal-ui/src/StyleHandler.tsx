@@ -14,7 +14,6 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { Theme } from "@mui/material/styles";
 import React, { Fragment } from "react";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
@@ -25,11 +24,6 @@ import { useSelector } from "react-redux";
 import "./index.css";
 import { AppState } from "./store";
 import { withStyles } from "./theme/makeStyles";
-
-declare module "@mui/styles/defaultTheme" {
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  interface DefaultTheme extends Theme {}
-}
 
 interface IStyleHandler {
   children: React.ReactNode;

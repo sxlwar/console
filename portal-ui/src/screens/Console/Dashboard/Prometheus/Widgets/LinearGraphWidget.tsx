@@ -24,7 +24,6 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { useMediaQuery } from "@mui/material";
 
 import { withStyles } from "../../../../../theme/makeStyles";
 import { ILinearGraphConfiguration } from "./types";
@@ -34,7 +33,6 @@ import { widgetDetailsToPanel } from "../utils";
 import { ErrorResponseHandler } from "../../../../../common/types";
 import api from "../../../../../common/api";
 import LineChartTooltip from "./tooltips/LineChartTooltip";
-import { useTheme } from "@mui/styles";
 import { Loader, Grid } from "mds";
 import ExpandGraphLink from "./ExpandGraphLink";
 import { setErrorSnackMessage } from "../../../../../systemSlice";
@@ -79,6 +77,9 @@ const styles = () => ({
     color: "#404143",
     fontWeight: "bold",
     fontSize: 12,
+    "@media (max-width: 900px)": {
+      display: "none",
+    },
   },
   loadingAlign: {
     width: 40,
@@ -206,9 +207,6 @@ const LinearGraphWidget = ({
     }
     return <circle cx={cx} cy={cy} r={3} strokeWidth={0} fill="#07264A" />;
   };
-
-  const theme = useTheme();
-  const biggerThanMd = useMediaQuery(theme.breakpoints.up("md"));
 
   let dspLongDate = false;
 
@@ -371,26 +369,24 @@ const LinearGraphWidget = ({
                     <br />
                   </Fragment>
                 )}
-                {biggerThanMd && (
-                  <div className={classes.legendChart}>
-                    {linearConfiguration.map((section, index) => {
-                      return (
+                <div className={classes.legendChart}>
+                  {linearConfiguration.map((section, index) => {
+                    return (
+                      <div
+                        className={classes.singleLegendContainer}
+                        key={`legend-${section.keyLabel}-${index.toString()}`}
+                      >
                         <div
-                          className={classes.singleLegendContainer}
-                          key={`legend-${section.keyLabel}-${index.toString()}`}
-                        >
-                          <div
-                            className={classes.colorContainer}
-                            style={{ backgroundColor: section.lineColor }}
-                          />
-                          <div className={classes.legendLabel}>
-                            {section.keyLabel}
-                          </div>
+                          className={classes.colorContainer}
+                          style={{ backgroundColor: section.lineColor }}
+                        />
+                        <div className={classes.legendLabel}>
+                          {section.keyLabel}
                         </div>
-                      );
-                    })}
-                  </div>
-                )}
+                      </div>
+                    );
+                  })}
+                </div>
               </Fragment>
             )}
           </React.Fragment>
