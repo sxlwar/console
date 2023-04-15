@@ -15,13 +15,14 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment } from "react";
-import { Menu, MenuItem } from "@mui/material";
 import ListItemText from "@mui/material/ListItemText";
 import { DownloadIcon, Box } from "mds";
 import { exportComponentAsPNG } from "react-component-export-image";
 import { ErrorResponseHandler } from "../../../common/types";
 import { useAppDispatch } from "../../../../src/store";
 import { setErrorSnackMessage } from "../../../../src/systemSlice";
+import { ButtonItem, MenuGroup } from "@atlaskit/menu";
+import Popup from "@atlaskit/popup";
 
 interface IDownloadWidgetDataButton {
   title: any;
@@ -34,14 +35,7 @@ const DownloadWidgetDataButton = ({
   componentRef,
   data,
 }: IDownloadWidgetDataButton) => {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const openDownloadMenu = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleCloseDownload = () => {
-    setAnchorEl(null);
-  };
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
   const download = (filename: string, text: string) => {
     let element = document.createElement("a");
     element.setAttribute("href", "data:text/plain;charset=utf-8," + text);
@@ -111,33 +105,34 @@ const DownloadWidgetDataButton = ({
           justifyItems: "center",
         }}
       >
-        <button onClick={handleClick} className={"download-icon"}>
-          <DownloadIcon />
-        </button>
-        <Menu
-          id={`download-widget-main-menu`}
-          aria-labelledby={`download-widget-main`}
-          anchorEl={anchorEl}
-          open={openDownloadMenu}
-          onClose={() => {
-            handleCloseDownload();
-          }}
-        >
-          <MenuItem
-            onClick={() => {
-              downloadAsCSV();
-            }}
-          >
-            <ListItemText>Download as CSV</ListItemText>
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              downloadAsPNG();
-            }}
-          >
-            <ListItemText>Download as PNG</ListItemText>
-          </MenuItem>
-        </Menu>
+        <Popup
+          isOpen={isOpen}
+          trigger={() => (
+            <button onClick={() => setIsOpen(true)} className={"download-icon"}>
+              <DownloadIcon />
+            </button>
+          )}
+          content={() => (
+            <MenuGroup>
+              <ButtonItem
+                onClick={() => {
+                  downloadAsCSV();
+                  setIsOpen(false);
+                }}
+              >
+                <ListItemText>Download as CSV</ListItemText>
+              </ButtonItem>
+              <ButtonItem
+                onClick={() => {
+                  downloadAsPNG();
+                  setIsOpen(false);
+                }}
+              >
+                <ListItemText>Download as PNG</ListItemText>
+              </ButtonItem>
+            </MenuGroup>
+          )}
+        ></Popup>
       </Box>
     </Fragment>
   );

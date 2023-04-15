@@ -16,10 +16,10 @@
 
 import React, { Fragment } from "react";
 
-
+import { ButtonItem, MenuGroup } from "@atlaskit/menu";
+import Popup from "@atlaskit/popup";
 import { withStyles } from "../../../../../theme/makeStyles";
 import { selectorTypes } from "../SelectWrapper/SelectWrapper";
-import { Menu, MenuItem } from "@mui/material";
 
 interface IInputUnitBox {
   classes?: any;
@@ -30,16 +30,15 @@ interface IInputUnitBox {
   onUnitChange?: (newValue: string) => void;
 }
 
-const styles = () =>
-  ({
-    buttonTrigger: {
-      border: "#F0F2F2 1px solid",
-      borderRadius: 3,
-      color: "#838383",
-      backgroundColor: "#fff",
-      fontSize: 12,
-    },
-  });
+const styles = () => ({
+  buttonTrigger: {
+    border: "#F0F2F2 1px solid",
+    borderRadius: 3,
+    color: "#838383",
+    backgroundColor: "#fff",
+    fontSize: 12,
+  },
+});
 
 const InputUnitMenu = ({
   classes,
@@ -49,13 +48,12 @@ const InputUnitMenu = ({
   disabled = false,
   onUnitChange,
 }: IInputUnitBox) => {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
+  const handleClick = () => {
+    setIsOpen(true);
   };
   const handleClose = (newUnit: string) => {
-    setAnchorEl(null);
+    setIsOpen(false);
     if (newUnit !== "" && onUnitChange) {
       onUnitChange(newUnit);
     }
@@ -63,46 +61,37 @@ const InputUnitMenu = ({
 
   return (
     <Fragment>
-      <button
-        id={`${id}-button`}
-        aria-controls={`${id}-menu`}
-        aria-haspopup="true"
-        aria-expanded={open ? "true" : undefined}
-        onClick={handleClick}
-        className={classes.buttonTrigger}
-        disabled={disabled}
-        type={"button"}
-      >
-        {unitSelected}
-      </button>
-      <Menu
-        id={`${id}-menu`}
-        aria-labelledby={`${id}-button`}
-        anchorEl={anchorEl}
-        open={open}
-        onClose={() => {
-          handleClose("");
-        }}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "center",
-        }}
-      >
-        {unitsList.map((unit) => (
-          <MenuItem
-            onClick={() => handleClose(unit.value)}
-            key={`itemUnit-${unit.value}-${unit.label}`}
+      <Popup
+        isOpen={isOpen}
+        trigger={() => (
+          <button
+            id={`${id}-button`}
+            aria-controls={`${id}-menu`}
+            aria-haspopup="true"
+            aria-expanded={isOpen ? "true" : undefined}
+            onClick={handleClick}
+            className={classes.buttonTrigger}
+            disabled={disabled}
+            type={"button"}
           >
-            {unit.label}
-          </MenuItem>
-        ))}
-      </Menu>
+            {unitSelected}
+          </button>
+        )}
+        content={() => (
+          <MenuGroup>
+            {unitsList.map((unit) => (
+              <ButtonItem
+                onClick={() => handleClose(unit.value)}
+                key={`itemUnit-${unit.value}-${unit.label}`}
+              >
+                {unit.label}
+              </ButtonItem>
+            ))}
+          </MenuGroup>
+        )}
+      ></Popup>
     </Fragment>
   );
 };
 
-export default withStyles(InputUnitMenu, styles);;
+export default withStyles(InputUnitMenu, styles);

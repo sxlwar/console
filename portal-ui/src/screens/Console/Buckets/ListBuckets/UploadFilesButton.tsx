@@ -17,7 +17,8 @@
 import React, { Fragment, useState } from "react";
 
 import { CSSObject } from "styled-components";
-import { Menu, MenuItem } from "@mui/material";
+import { ButtonItem, MenuGroup } from "@atlaskit/menu";
+import Popup from "@atlaskit/popup";
 
 import { withStyles } from "../../../../theme/makeStyles";
 import ListItemText from "@mui/material/ListItemText";
@@ -42,16 +43,15 @@ interface IUploadFilesButton {
   overrideStyles?: CSSObject;
 }
 
-const styles = () =>
-  ({
-    listUploadIcons: {
-      height: 20,
-      "& .min-icon": {
-        width: 18,
-        fill: "rgba(0,0,0,0.87)",
-      },
+const styles = () => ({
+  listUploadIcons: {
+    height: 20,
+    "& .min-icon": {
+      width: 18,
+      fill: "rgba(0,0,0,0.87)",
     },
-  });
+  },
+});
 
 const UploadFilesButton = ({
   uploadPath,
@@ -65,14 +65,7 @@ const UploadFilesButton = ({
   const anonymousMode = useSelector(
     (state: AppState) => state.system.anonymousMode
   );
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const openUploadMenu = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleCloseUpload = () => {
-    setAnchorEl(null);
-  };
+  const [isOpen, setIsOpen] = useState(false);
 
   const uploadObjectAllowed =
     hasPermission(uploadPath, [
@@ -90,71 +83,64 @@ const UploadFilesButton = ({
 
   return (
     <Fragment>
-      <TooltipWrapper
-        tooltip={
-          uploadEnabled
-            ? "Upload Files"
-            : permissionTooltipHelper(
-                [IAM_SCOPES.S3_PUT_OBJECT, IAM_SCOPES.S3_PUT_ACTIONS],
-                "upload files to this bucket"
-              )
-        }
-      >
-        <Button
-          id={"upload-main"}
-          aria-controls={`upload-main-menu`}
-          aria-haspopup="true"
-          aria-expanded={openUploadMenu ? "true" : undefined}
-          onClick={handleClick}
-          label={"Upload"}
-          icon={<UploadIcon />}
-          variant={"callAction"}
-          disabled={forceDisable || !uploadEnabled}
-          sx={overrideStyles}
-        />
-      </TooltipWrapper>
-      <Menu
-        id={`upload-main-menu`}
-        aria-labelledby={`upload-main`}
-        anchorEl={anchorEl}
-        open={openUploadMenu}
-        onClose={() => {
-          handleCloseUpload();
-        }}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "center",
-        }}
-      >
-        <MenuItem
-          onClick={() => {
-            uploadFileFunction(handleCloseUpload);
-          }}
-          disabled={!uploadObjectAllowed || forceDisable}
-        >
-          <ListItemIcon className={classes.listUploadIcons}>
-            <UploadIcon />
-          </ListItemIcon>
-          <ListItemText>Upload File</ListItemText>
-        </MenuItem>
-        <MenuItem
-          onClick={() => {
-            uploadFolderFunction(handleCloseUpload);
-          }}
-          disabled={!uploadFolderAllowed || forceDisable}
-        >
-          <ListItemIcon className={classes.listUploadIcons}>
-            <UploadFolderIcon />
-          </ListItemIcon>
-          <ListItemText>Upload Folder</ListItemText>
-        </MenuItem>
-      </Menu>
+      <Popup
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        placement="bottom-start"
+        content={() => (
+          <MenuGroup>
+            <ButtonItem
+              onClick={() => {
+                uploadFileFunction(() => setIsOpen(false));
+              }}
+              isDisabled={!uploadObjectAllowed || forceDisable}
+            >
+              <ListItemIcon className={classes.listUploadIcons}>
+                <UploadIcon />
+              </ListItemIcon>
+              <ListItemText>Upload File</ListItemText>
+            </ButtonItem>
+            <ButtonItem
+              onClick={() => {
+                uploadFolderFunction(() => setIsOpen(false));
+              }}
+              isDisabled={!uploadFolderAllowed || forceDisable}
+            >
+              <ListItemIcon className={classes.listUploadIcons}>
+                <UploadFolderIcon />
+              </ListItemIcon>
+              <ListItemText>Upload Folder</ListItemText>
+            </ButtonItem>
+          </MenuGroup>
+        )}
+        trigger={() => (
+          <TooltipWrapper
+            tooltip={
+              uploadEnabled
+                ? "Upload Files"
+                : permissionTooltipHelper(
+                    [IAM_SCOPES.S3_PUT_OBJECT, IAM_SCOPES.S3_PUT_ACTIONS],
+                    "upload files to this bucket"
+                  )
+            }
+          >
+            <Button
+              id={"upload-main"}
+              aria-controls={`upload-main-menu`}
+              aria-haspopup="true"
+              aria-expanded={isOpen ? "true" : undefined}
+              onClick={() => setIsOpen(true)}
+              label={"Upload"}
+              icon={<UploadIcon />}
+              variant={"callAction"}
+              disabled={forceDisable || !uploadEnabled}
+              sx={overrideStyles}
+            />
+          </TooltipWrapper>
+        )}
+      />
     </Fragment>
   );
 };
 
-export default withStyles(UploadFilesButton, styles);;
+export default withStyles(UploadFilesButton, styles);
