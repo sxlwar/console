@@ -60,7 +60,6 @@ const ConsoleMenuList = ({
         display: "flex",
         flexFlow: "column",
         justifyContent: "space-between",
-        height: "100%",
         flex: 1,
         paddingRight: "8px",
 
@@ -112,9 +111,9 @@ const ConsoleMenuList = ({
 
       <LinkItem
         href={`${window.location.origin}${basename}logout`}
-        iconBefore={<LogoutIcon></LogoutIcon>}
+        iconBefore={<LogoutIcon style={{ color: "white" }}></LogoutIcon>}
       >
-        Sign Out
+        <span style={{ color: "white" }}>Sign Out</span>
       </LinkItem>
     </Box>
   );

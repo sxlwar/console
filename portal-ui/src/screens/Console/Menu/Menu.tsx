@@ -14,7 +14,6 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { Drawer } from "@mui/material";
 import { useSelector } from "react-redux";
 import { withStyles } from "../../../theme/makeStyles";
 
@@ -55,23 +54,15 @@ const styles = () => ({
     "& ::-webkit-scrollbar-thumb:hover": {
       background: "#081C42",
     },
+    "& button .mini": {
+      display: "none",
+    },
   },
   drawerOpen: {
     width: drawerWidth,
-    // transition: theme.transitions.create("width", {
-    //   easing: theme.transitions.easing.sharp,
-    //   duration: theme.transitions.duration.enteringScreen,
-    // }),
   },
   drawerClose: {
-    // transition: theme.transitions.create("width", {
-    //   easing: theme.transitions.easing.sharp,
-    //   duration: theme.transitions.duration.leavingScreen,
-    // }),
     overflowX: "hidden",
-    // [theme.breakpoints.up("xs")]: {
-    //   width: 75,
-    // },
   },
 });
 
@@ -90,18 +81,14 @@ const Menu = ({ classes }: IMenuProps) => {
   const allowedMenuItems = validRoutes(features);
 
   return (
-    <Drawer
+    <div
       id="app-menu"
-      variant="permanent"
       className={clsx(classes.drawer, {
         [classes.drawerOpen]: sidebarOpen,
         [classes.drawerClose]: !sidebarOpen,
       })}
-      classes={{
-        paper: clsx({
-          [classes.drawerOpen]: sidebarOpen,
-          [classes.drawerClose]: !sidebarOpen,
-        }),
+      style={{
+        width: sidebarOpen ? 250 : 70,
       }}
     >
       <MenuToggle
@@ -116,7 +103,7 @@ const Menu = ({ classes }: IMenuProps) => {
         isOpen={sidebarOpen}
         displayHeaders
       />
-    </Drawer>
+    </div>
   );
 };
 

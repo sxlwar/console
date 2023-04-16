@@ -15,11 +15,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import React, { Fragment, useState } from "react";
 import { DateTime } from "luxon";
-import TableRow from "@mui/material/TableRow";
-import TableCell from "@mui/material/TableCell";
-import Collapse from "@mui/material/Collapse";
+import { Row, Cell } from "@atlaskit/table-tree";
 import { LogMessage } from "../types";
-import { Box, BoxArrowDown, BoxArrowUp, WarnFilledIcon } from "mds";
+import { Box, BoxArrowDown, BoxArrowUp, WarnFilledIcon, Accordion } from "mds";
 
 import getByKey from "lodash/get";
 
@@ -180,7 +178,7 @@ const LogLine = (props: { log: LogMessage }) => {
 
   return (
     <React.Fragment key={logTime.toString()}>
-      <TableRow
+      <Row
         sx={{
           "& > *": { borderBottom: "unset" },
           cursor: "pointer",
@@ -188,11 +186,9 @@ const LogLine = (props: { log: LogMessage }) => {
           borderRight: "0",
         }}
         style={{ backgroundColor: "#FDFDFD" }}
+        onClick={() => setOpen(!open)}
       >
-        <TableCell
-          onClick={() => setOpen(!open)}
-          style={{ width: 280, color: "#989898", fontSize: 12 }}
-        >
+        <Cell width={280}>
           <Box
             sx={{
               display: "flex",
@@ -207,11 +203,8 @@ const LogLine = (props: { log: LogMessage }) => {
             <WarnFilledIcon />
             <div>{dateStr}</div>
           </Box>
-        </TableCell>
-        <TableCell
-          onClick={() => setOpen(!open)}
-          style={{ width: 200, color: "#989898", fontSize: 12 }}
-        >
+        </Cell>
+        <Cell width={200}>
           <Box
             sx={{
               "& .min-icon": { width: 12, marginRight: 1 },
@@ -221,8 +214,8 @@ const LogLine = (props: { log: LogMessage }) => {
           >
             {log.errKind}
           </Box>
-        </TableCell>
-        <TableCell onClick={() => setOpen(!open)}>
+        </Cell>
+        <Cell>
           <div
             style={{
               display: "table",
@@ -243,8 +236,8 @@ const LogLine = (props: { log: LogMessage }) => {
               {titleLogMessage}
             </div>
           </div>
-        </TableCell>
-        <TableCell onClick={() => setOpen(!open)} style={{ width: 40 }}>
+        </Cell>
+        <Cell width={40}>
           <Box
             sx={{
               "& .min-icon": {
@@ -260,28 +253,17 @@ const LogLine = (props: { log: LogMessage }) => {
           >
             {open ? <BoxArrowUp /> : <BoxArrowDown />}
           </Box>
-        </TableCell>
-      </TableRow>
+        </Cell>
+      </Row>
       {open ? (
-        <TableRow>
-          <TableCell
-            style={{
-              paddingBottom: 0,
-              paddingTop: 0,
-              width: 200,
-              textTransform: "uppercase",
-              verticalAlign: "top",
-              textAlign: "right",
-              color: "#8399AB",
-              fontWeight: "bold",
-            }}
-          >
-            <Collapse in={open} timeout="auto" unmountOnExit>
+        <Row>
+          <Cell width={200}>
+            <Accordion>
               <div style={{ marginTop: 10 }}>Log Details</div>
-            </Collapse>
-          </TableCell>
-          <TableCell colSpan={2} style={{ paddingBottom: 0, paddingTop: 0 }}>
-            <Collapse in={open} timeout="auto" unmountOnExit>
+            </Accordion>
+          </Cell>
+          <Cell>
+            <Accordion>
               <Box sx={{ margin: 1 }}>
                 <p
                   style={{
@@ -295,10 +277,10 @@ const LogLine = (props: { log: LogMessage }) => {
                   {fullMessage}
                 </p>
               </Box>
-            </Collapse>
-          </TableCell>
-          <TableCell style={{ paddingBottom: 0, paddingTop: 0, width: 40 }} />
-        </TableRow>
+            </Accordion>
+          </Cell>
+          <Cell width={40} />
+        </Row>
       ) : null}
     </React.Fragment>
   );
