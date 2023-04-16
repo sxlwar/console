@@ -94,8 +94,6 @@ const MenuItem = ({
     ? expandCollapseHandler
     : selectMenuHandler;
 
-  console.log("******8", expandedGroup, page.id);
-
   const isActiveGroup = expandedGroup === page.id;
 
   const isPathEqual = useCallback((p1: string, p2: string) => {

@@ -16,15 +16,10 @@
 
 import React, { Fragment, useEffect, useState } from "react";
 import get from "lodash/get";
-import { Button, LifecycleConfigIcon, Grid } from "mds";
+import { Button, LifecycleConfigIcon, Grid, Accordion } from "mds";
 import { useSelector } from "react-redux";
 
 import { withStyles } from "../../../../theme/makeStyles";
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-} from "@mui/material";
 import ProgressBar from "@atlaskit/progress-bar";
 
 import {
@@ -315,66 +310,66 @@ const AddLifecycleModal = ({
                     </Fragment>
                   )}
                   <Grid item xs={12} className={classes.formFieldRowFilter}>
-                    <Accordion>
-                      <AccordionSummary>
-                        <p>Filters</p>
-                      </AccordionSummary>
-                      <AccordionDetails>
-                        <Grid item xs={12}>
-                          <InputBoxWrapper
-                            id="prefix"
-                            name="prefix"
-                            onChange={(
-                              e: React.ChangeEvent<HTMLInputElement>
-                            ) => {
-                              setPrefix(e.target.value);
-                            }}
-                            label="Prefix"
-                            value={prefix}
-                          />
-                        </Grid>
-                        <Grid item xs={12}>
-                          <QueryMultiSelector
-                            name="tags"
-                            label="Tags"
-                            elements={""}
-                            onChange={(vl: string) => {
-                              setTags(vl);
-                            }}
-                            keyPlaceholder="Tag Key"
-                            valuePlaceholder="Tag Value"
-                            withBorder
-                          />
-                        </Grid>
-                      </AccordionDetails>
-                    </Accordion>
+                    <Accordion
+                      summary={<p>Filters</p>}
+                      detail={
+                        <>
+                          <Grid item xs={12}>
+                            <InputBoxWrapper
+                              id="prefix"
+                              name="prefix"
+                              onChange={(
+                                e: React.ChangeEvent<HTMLInputElement>
+                              ) => {
+                                setPrefix(e.target.value);
+                              }}
+                              label="Prefix"
+                              value={prefix}
+                            />
+                          </Grid>
+                          <Grid item xs={12}>
+                            <QueryMultiSelector
+                              name="tags"
+                              label="Tags"
+                              elements={""}
+                              onChange={(vl: string) => {
+                                setTags(vl);
+                              }}
+                              keyPlaceholder="Tag Key"
+                              valuePlaceholder="Tag Value"
+                              withBorder
+                            />
+                          </Grid>
+                        </>
+                      }
+                    ></Accordion>
                   </Grid>
                   {ilmType === "expiry" && targetVersion === "noncurrent" && (
                     <Grid item xs={12} className={classes.formFieldRowFilter}>
-                      <Accordion>
-                        <AccordionSummary>
-                          <p>Advanced</p>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                          <Grid item xs={12}>
-                            <FormSwitchWrapper
-                              value="expired_delete_marker"
-                              id="expired_delete_marker"
-                              name="expired_delete_marker"
-                              checked={expiredObjectDM}
-                              onChange={(
-                                event: React.ChangeEvent<HTMLInputElement>
-                              ) => {
-                                setExpiredObjectDM(event.target.checked);
-                              }}
-                              label={"Expire Delete Marker"}
-                              description={
-                                "Remove the reference to the object if no versions are left"
-                              }
-                            />
-                          </Grid>
-                        </AccordionDetails>
-                      </Accordion>
+                      <Accordion
+                        summary={<p>Advanced</p>}
+                        detail={
+                          <>
+                            <Grid item xs={12}>
+                              <FormSwitchWrapper
+                                value="expired_delete_marker"
+                                id="expired_delete_marker"
+                                name="expired_delete_marker"
+                                checked={expiredObjectDM}
+                                onChange={(
+                                  event: React.ChangeEvent<HTMLInputElement>
+                                ) => {
+                                  setExpiredObjectDM(event.target.checked);
+                                }}
+                                label={"Expire Delete Marker"}
+                                description={
+                                  "Remove the reference to the object if no versions are left"
+                                }
+                              />
+                            </Grid>
+                          </>
+                        }
+                      ></Accordion>
                     </Grid>
                   )}
                 </Grid>

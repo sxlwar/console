@@ -15,14 +15,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useEffect, useState } from "react";
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-} from "@mui/material";
-import ProgressBar from '@atlaskit/progress-bar';
+import ProgressBar from "@atlaskit/progress-bar";
 
-import { Button, Grid, LifecycleConfigIcon } from "mds";
+import { Button, Grid, LifecycleConfigIcon, Accordion } from "mds";
 import get from "lodash/get";
 
 import { withStyles } from "../../../../theme/makeStyles";
@@ -51,16 +46,15 @@ import RadioGroupSelector from "../../Common/FormComponents/RadioGroupSelector/R
 import { setModalErrorSnackMessage } from "../../../../systemSlice";
 import { useAppDispatch } from "../../../../store";
 
-const styles = () =>
-  ({
-    formFieldRowAccordion: {
-      "& .MuiPaper-root": { padding: 0 },
-    },
-    ...spacingUtils,
-    ...modalStyleUtils,
-    ...formFieldStyles,
-    ...createTenantCommon,
-  });
+const styles = () => ({
+  formFieldRowAccordion: {
+    "& .MuiPaper-root": { padding: 0 },
+  },
+  ...spacingUtils,
+  ...modalStyleUtils,
+  ...formFieldStyles,
+  ...createTenantCommon,
+});
 
 interface IAddUserContentProps {
   classes?: any;
@@ -459,64 +453,64 @@ const EditLifecycleConfiguration = ({
                   </Fragment>
                 )}
               <Grid item xs={12} className={classes.formFieldRowAccordion}>
-                <Accordion>
-                  <AccordionSummary>
-                    <p>Filters</p>
-                  </AccordionSummary>
-
-                  <AccordionDetails>
-                    <Grid item xs={12}>
-                      <InputBoxWrapper
-                        id="prefix"
-                        name="prefix"
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                          setPrefix(e.target.value);
-                        }}
-                        label="Prefix"
-                        value={prefix}
-                      />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <QueryMultiSelector
-                        name="tags"
-                        label="Tags"
-                        elements={tags}
-                        onChange={(vl: string) => {
-                          setTags(vl);
-                        }}
-                        keyPlaceholder="Tag Key"
-                        valuePlaceholder="Tag Value"
-                        withBorder
-                      />
-                    </Grid>
-                  </AccordionDetails>
-                </Accordion>
+                <Accordion
+                  summary={<p>Filters</p>}
+                  detail={
+                    <>
+                      <Grid item xs={12}>
+                        <InputBoxWrapper
+                          id="prefix"
+                          name="prefix"
+                          onChange={(
+                            e: React.ChangeEvent<HTMLInputElement>
+                          ) => {
+                            setPrefix(e.target.value);
+                          }}
+                          label="Prefix"
+                          value={prefix}
+                        />
+                      </Grid>
+                      <Grid item xs={12}>
+                        <QueryMultiSelector
+                          name="tags"
+                          label="Tags"
+                          elements={tags}
+                          onChange={(vl: string) => {
+                            setTags(vl);
+                          }}
+                          keyPlaceholder="Tag Key"
+                          valuePlaceholder="Tag Value"
+                          withBorder
+                        />
+                      </Grid>
+                    </>
+                  }
+                ></Accordion>
               </Grid>
               {ilmType === "expiry" &&
                 lifecycleRule.expiration?.noncurrent_expiration_days && (
                   <Grid item xs={12} className={classes.formFieldRowAccordion}>
-                    <Accordion>
-                      <AccordionSummary>
-                        <p>Advanced</p>
-                      </AccordionSummary>
-
-                      <AccordionDetails>
-                        <Grid item xs={12}>
-                          <FormSwitchWrapper
-                            value="expired_delete_marker"
-                            id="expired_delete_marker"
-                            name="expired_delete_marker"
-                            checked={expiredObjectDM}
-                            onChange={(
-                              event: React.ChangeEvent<HTMLInputElement>
-                            ) => {
-                              setExpiredObjectDM(event.target.checked);
-                            }}
-                            label={"Expired Object Delete Marker"}
-                          />
-                        </Grid>
-                      </AccordionDetails>
-                    </Accordion>
+                    <Accordion
+                      summary={<p>Advanced</p>}
+                      detail={
+                        <>
+                          <Grid item xs={12}>
+                            <FormSwitchWrapper
+                              value="expired_delete_marker"
+                              id="expired_delete_marker"
+                              name="expired_delete_marker"
+                              checked={expiredObjectDM}
+                              onChange={(
+                                event: React.ChangeEvent<HTMLInputElement>
+                              ) => {
+                                setExpiredObjectDM(event.target.checked);
+                              }}
+                              label={"Expired Object Delete Marker"}
+                            />
+                          </Grid>
+                        </>
+                      }
+                    ></Accordion>
                   </Grid>
                 )}
             </Grid>
@@ -552,4 +546,4 @@ const EditLifecycleConfiguration = ({
   );
 };
 
-export default withStyles(EditLifecycleConfiguration, styles);;
+export default withStyles(EditLifecycleConfiguration, styles);
