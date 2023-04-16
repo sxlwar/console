@@ -14,19 +14,18 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
+import React, {
+  ChangeEvent,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 
-import { Button, EventSubscriptionIcon, Grid } from "mds";
+import { Button, Checkbox, EventSubscriptionIcon, Grid } from "mds";
 
-
+import TableTree from "@atlaskit/table-tree";
 import { withStyles } from "../../../../theme/makeStyles";
 import api from "../../../../common/api";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import TableCell from "@mui/material/TableCell";
-import TableBody from "@mui/material/TableBody";
-import Checkbox from "@mui/material/Checkbox";
-import Table from "@mui/material/Table";
 import { ArnList } from "../types";
 import {
   formFieldStyles,
@@ -40,16 +39,15 @@ import AutocompleteWrapper from "../../Common/FormComponents/AutocompleteWrapper
 import { setModalErrorSnackMessage } from "../../../../systemSlice";
 import { useAppDispatch } from "../../../../store";
 
-const styles = () =>
-  ({
-    arnField: {
-      "& div div .MuiOutlinedInput-root": {
-        padding: 0,
-      },
+const styles = () => ({
+  arnField: {
+    "& div div .MuiOutlinedInput-root": {
+      padding: 0,
     },
-    ...formFieldStyles,
-    ...modalStyleUtils,
-  });
+  },
+  ...formFieldStyles,
+  ...modalStyleUtils,
+});
 
 interface IAddEventProps {
   classes?: any;
@@ -57,6 +55,13 @@ interface IAddEventProps {
   selectedBucket: string;
   closeModalAndRefresh: () => void;
 }
+
+interface Content {
+  label: string;
+  value: string;
+}
+
+const headers = ["Select", "Event"];
 
 const AddEvent = ({
   classes,
@@ -121,37 +126,55 @@ const AddEvent = ({
   }, [fetchArnList]);
 
   const events = [
-    { label: "PUT - Object Uploaded", value: "put" },
-    { label: "GET - Object accessed", value: "get" },
-    { label: "DELETE - Object Deleted", value: "delete" },
+    {content: { label: "PUT - Object Uploaded", value: "put" }, id: 'put', hasChildren: false, children: []},
+    {content: { label: "GET - Object accessed", value: "get" }, id: 'get', hasChildren: false, children: []},
+    {content: { label: "DELETE - Object Deleted", value: "delete" }, id: 'delete', hasChildren: false, children: []},
   ];
 
-  const handleClick = (
-    event: React.MouseEvent<unknown> | ChangeEvent<unknown>,
-    name: string
-  ) => {
-    const selectedIndex = selectedEvents.indexOf(name);
-    let newSelected: string[] = [];
+  const handleClick = useCallback(
+    (event: React.MouseEvent<unknown> | ChangeEvent<unknown>, name: string) => {
+      const selectedIndex = selectedEvents.indexOf(name);
+      let newSelected: string[] = [];
 
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selectedEvents, name);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selectedEvents.slice(1));
-    } else if (selectedIndex === selectedEvents.length - 1) {
-      newSelected = newSelected.concat(selectedEvents.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selectedEvents.slice(0, selectedIndex),
-        selectedEvents.slice(selectedIndex + 1)
-      );
-    }
-    setSelectedEvents(newSelected);
-  };
+      if (selectedIndex === -1) {
+        newSelected = newSelected.concat(selectedEvents, name);
+      } else if (selectedIndex === 0) {
+        newSelected = newSelected.concat(selectedEvents.slice(1));
+      } else if (selectedIndex === selectedEvents.length - 1) {
+        newSelected = newSelected.concat(selectedEvents.slice(0, -1));
+      } else if (selectedIndex > 0) {
+        newSelected = newSelected.concat(
+          selectedEvents.slice(0, selectedIndex),
+          selectedEvents.slice(selectedIndex + 1)
+        );
+      }
+      setSelectedEvents(newSelected);
+    },
+    [selectedEvents]
+  );
 
   const arnValues = arnList.map((arnConstant) => ({
     label: arnConstant,
     value: arnConstant,
   }));
+
+  const Select = useCallback(
+    (props: Content) => {
+      return (
+        <Checkbox
+          value={props.value}
+          color="primary"
+          onChange={(event) => handleClick(event, props.value)}
+          checked={selectedEvents.includes(props.value)}
+        />
+      );
+    },
+    [handleClick, selectedEvents]
+  );
+  const Event = (props: Content) => {
+    console.log(props);
+    return <span>{props.label}</span>
+  };
 
   return (
     <ModalWrapper
@@ -210,37 +233,12 @@ const AddEvent = ({
               />
             </Grid>
             <Grid item xs={12} className={classes.formFieldRow}>
-              <Table size="medium">
-                <TableHead className={classes.minTableHeader}>
-                  <TableRow>
-                    <TableCell>Select</TableCell>
-                    <TableCell>Event</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {events.map((row) => (
-                    <TableRow
-                      key={`group-${row.value}`}
-                      onClick={(event) => handleClick(event, row.value)}
-                    >
-                      <TableCell padding="checkbox">
-                        <Checkbox
-                          value={row.value}
-                          color="primary"
-                          inputProps={{
-                            "aria-label": "secondary checkbox",
-                          }}
-                          onChange={(event) => handleClick(event, row.value)}
-                          checked={selectedEvents.includes(row.value)}
-                        />
-                      </TableCell>
-                      <TableCell className={classes.wrapCell}>
-                        {row.label}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+              <TableTree
+                columns={[Select, Event]}
+                headers={headers}
+                columnWidths={["50px", "300px"]}
+                items={events}
+              />
             </Grid>
           </Grid>
           <Grid item xs={12} className={classes.modalButtonBar}>
@@ -268,4 +266,4 @@ const AddEvent = ({
   );
 };
 
-export default withStyles(AddEvent, styles);;
+export default withStyles(AddEvent, styles);

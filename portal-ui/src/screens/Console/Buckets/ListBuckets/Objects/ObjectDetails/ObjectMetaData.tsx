@@ -14,15 +14,15 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React, { Fragment } from "react";
+import TableTree, { Cell, Row, Rows } from "@atlaskit/table-tree";
+import { Fragment } from "react";
 import { withStyles } from "../../../../../../theme/makeStyles";
-import { Table, TableBody, TableCell, TableRow } from "@mui/material";
 
+import { Box, Grid } from "mds";
 import {
   detailsPanel,
   spacingUtils,
 } from "../../../../Common/FormComponents/common/styleLibrary";
-import { Box, Grid } from "mds";
 
 interface IObjectMetadata {
   metaData: any;
@@ -89,28 +89,23 @@ const ObjectMetaData = ({
       </Grid>
 
       <Grid item xs={12}>
-        <Table className={classes.table} aria-label="simple table">
-          <TableBody>
-            {metaKeys.map((element: string, index: number) => {
+        <TableTree>
+          <Rows
+            items={metaKeys}
+            render={(element: any) => {
               const renderItem = Array.isArray(metaData[element])
                 ? metaData[element].map(decodeURIComponent).join(", ")
                 : decodeURIComponent(metaData[element]);
 
               return (
-                <TableRow key={`tRow-${index.toString()}`}>
-                  <TableCell
-                    component="th"
-                    scope="row"
-                    className={classes.titleItem}
-                  >
-                    {element}
-                  </TableCell>
-                  <TableCell align="right">{renderItem}</TableCell>
-                </TableRow>
+                <Row>
+                  <Cell>{element}</Cell>
+                  <Cell>{renderItem}</Cell>
+                </Row>
               );
-            })}
-          </TableBody>
-        </Table>
+            }}
+          />
+        </TableTree>
       </Grid>
     </Grid>
   );

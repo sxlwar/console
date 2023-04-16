@@ -312,6 +312,22 @@
     "@babel/runtime" "^7.0.0"
     "@emotion/react" "^11.7.1"
 
+"@atlaskit/table-tree@^9.3.0":
+  version "9.3.0"
+  resolved "https://registry.yarnpkg.com/@atlaskit/table-tree/-/table-tree-9.3.0.tgz#faff7d0702e4b0d883481a4f49adcfffd28bbe3f"
+  integrity sha512-LA4ejLur8wSOmEhNJJdm9a4t5Slr4hu3gHF3SwKLvh4O3lk7HMOKJNhIvSK6/g+nC2qkRDHCCc8tSpuBSjeEvw==
+  dependencies:
+    "@atlaskit/analytics-next" "^9.0.0"
+    "@atlaskit/button" "^16.6.0"
+    "@atlaskit/icon" "^21.11.0"
+    "@atlaskit/spinner" "^15.4.0"
+    "@atlaskit/theme" "^12.3.0"
+    "@atlaskit/tokens" "^1.2.0"
+    "@babel/runtime" "^7.0.0"
+    "@emotion/react" "^11.7.1"
+    lodash "^4.17.21"
+    prop-types "^15.5.10"
+
 "@atlaskit/tabs@^13.3.13":
   version "13.3.13"
   resolved "https://registry.yarnpkg.com/@atlaskit/tabs/-/tabs-13.3.13.tgz#53840e246bd21dc0affc2a7917ba1fd9704c78e4"

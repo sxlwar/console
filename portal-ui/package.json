@@ -12,6 +12,7 @@
     "@atlaskit/progress-bar": "^0.5.16",
     "@atlaskit/section-message": "^6.3.14",
     "@atlaskit/select": "^16.1.8",
+    "@atlaskit/table-tree": "^9.3.0",
     "@atlaskit/tabs": "^13.3.13",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",

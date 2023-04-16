@@ -13,20 +13,22 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
-import React, { Fragment, useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import { IMessageEvent, w3cwebsocket as W3CWebSocket } from "websocket";
 
-import { Grid, Button } from "mds";
+import { Button, Grid } from "mds";
 
-import { withStyles } from "../../../../theme/makeStyles";
-import { useSelector } from "react-redux";
-import { FormControl, InputBase } from "@mui/material";
 import Select from "@atlaskit/select";
+import { FormControl, InputBase } from "@mui/material";
+import { useSelector } from "react-redux";
+import { withStyles } from "../../../../theme/makeStyles";
 
-import { ErrorResponseHandler } from "../../../../../src/common/types";
 import api from "../../../../../src/common/api";
+import { ErrorResponseHandler } from "../../../../../src/common/types";
 import { AppState, useAppDispatch } from "../../../../store";
 
+import TableTree, { Row, Rows } from "@atlaskit/table-tree";
+import { makeStyles } from "../../../../theme/makeStyles";
 import { wsProtocol } from "../../../../utils/wsUtils";
 import {
   actionsTray,
@@ -35,18 +37,15 @@ import {
   searchField,
 } from "../../Common/FormComponents/common/styleLibrary";
 import PageLayout from "../../Common/Layout/PageLayout";
+import PageHeaderWrapper from "../../Common/PageHeaderWrapper/PageHeaderWrapper";
 import SearchBox from "../../Common/SearchBox";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableContainer from "@mui/material/TableContainer";
-import LogLine from "./LogLine";
 import {
   logMessageReceived,
   logResetMessages,
   setLogsStarted,
 } from "../logsSlice";
-import { makeStyles } from "../../../../theme/makeStyles";
-import PageHeaderWrapper from "../../Common/PageHeaderWrapper/PageHeaderWrapper";
+import { LogMessage } from "../types";
+import LogLine from "./LogLine";
 
 const useStyles = makeStyles()((theme) => ({
   logList: {
@@ -361,20 +360,25 @@ const ErrorLogs = () => {
               className={classes.logList}
               data-test-id="logs-list-container"
             >
-              <TableContainer>
-                <Table aria-label="collapsible table">
-                  <TableBody>
-                    {filteredMessages.map((m) => {
-                      return <LogLine log={m} />;
-                    })}
-                  </TableBody>
-                </Table>
+              <div style={{ background: "rgb(231, 235, 240)", padding: 24 }}>
+                <TableTree>
+                  <Rows
+                    items={filteredMessages}
+                    render={(log: LogMessage) => {
+                      return (
+                        <Row>
+                          <LogLine log={log} />
+                        </Row>
+                      );
+                    }}
+                  />
+                </TableTree>
                 {filteredMessages.length === 0 && (
                   <div style={{ padding: 20, textAlign: "center" }}>
                     No logs to display
                   </div>
                 )}
-              </TableContainer>
+              </div>
             </div>
           </Grid>
         </Grid>
