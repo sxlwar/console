@@ -13,16 +13,16 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
+import { Checkbox } from "@mui/material";
 import React from "react";
-import { Checkbox, InputLabel } from "@mui/material";
 
+import { Grid, HelpIcon, Tooltip } from "mds";
 import { withStyles } from "../../../../../theme/makeStyles";
 import {
   checkboxIcons,
   fieldBasic,
   tooltipHelper,
 } from "../common/styleLibrary";
-import { HelpIcon, Grid, Tooltip } from "mds";
 
 interface CheckBoxProps {
   label: string;
@@ -105,7 +105,7 @@ const CheckboxWrapper = ({
           />
         </div>
         {label !== "" && (
-          <InputLabel
+          <label
             htmlFor={id}
             className={`${classes.noMinWidthLabel} ${overrideLabelClasses}`}
           >
@@ -119,7 +119,7 @@ const CheckboxWrapper = ({
                 </Tooltip>
               </div>
             )}
-          </InputLabel>
+          </label>
         )}
       </Grid>
     </React.Fragment>

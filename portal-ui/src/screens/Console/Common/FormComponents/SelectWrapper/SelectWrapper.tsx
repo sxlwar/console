@@ -13,13 +13,13 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
-import React from "react";
-import { FormControl, InputBase, InputLabel } from "@mui/material";
+import { Field } from "@atlaskit/form";
+import Select from "@atlaskit/select";
 import { Property } from "csstype";
+import { Grid, HelpIcon, Tooltip } from "mds";
+import React from "react";
 import { withStyles } from "../../../../../theme/makeStyles";
 import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
-import { HelpIcon, Grid, Tooltip } from "mds";
-import Select from "@atlaskit/select";
 
 export interface selectorTypes {
   label: string;
@@ -48,6 +48,8 @@ const styles = () => ({
     },
   },
 });
+
+const InputBase = () => <input />;
 
 const SelectStyled = withStyles(InputBase, () => ({
   root: {
@@ -92,7 +94,7 @@ const SelectWrapper = ({
     <React.Fragment>
       <Grid item xs={12} className={classes.fieldContainer}>
         {label !== "" && (
-          <InputLabel htmlFor={id} className={classes.inputLabel}>
+          <label htmlFor={id} className={classes.inputLabel}>
             <span>{label}</span>
             {tooltip !== "" && (
               <div className={classes.tooltipContainer}>
@@ -103,19 +105,22 @@ const SelectWrapper = ({
                 </Tooltip>
               </div>
             )}
-          </InputLabel>
+          </label>
         )}
-        <FormControl fullWidth>
-          <Select
-            id={id}
-            name={name}
-            value={options.find((item) => item.value === value)}
-            onChange={onChange}
-            input={<SelectStyled />}
-            disabled={disabled}
-            options={options}
-          ></Select>
-        </FormControl>
+        <Field name={name}>
+          {(fieldProps) => (
+            <Select
+              {...fieldProps}
+              id={id}
+              name={name}
+              value={options.find((item) => item.value === value)}
+              onChange={onChange}
+              input={<SelectStyled />}
+              disabled={disabled}
+              options={options}
+            ></Select>
+          )}
+        </Field>
       </Grid>
     </React.Fragment>
   );

@@ -14,16 +14,17 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React from "react";
+import React, { useState } from "react";
 
-import { Autocomplete, TextField } from "@mui/material";
+import TextField from "@atlaskit/textfield";
 
 import s3Regions from "./s3-regions";
 import gcsRegions from "./gcs-regions";
 import azRegions from "./azure-regions";
-import { Box } from 'mds';
+import { Box } from "mds";
+import Popup from "@atlaskit/popup";
 
-const getRegions = (type: string): any => {
+const getRegions = (type: string): { label: string; value: string }[] => {
   if (type === "s3") {
     return s3Regions;
   }
@@ -40,90 +41,21 @@ const getRegions = (type: string): any => {
 const RegionSelect = ({
   type,
   onChange,
-  inputProps,
 }: {
   type: "minio" | "s3" | "gcs" | "azure" | "unsupported";
   onChange: (obj: any) => void;
   inputProps?: any;
 }) => {
   const regionList = getRegions(type);
-  const [value, setValue] = React.useState("");
+  const [value, setValue] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Autocomplete
-      sx={{
-        "& .MuiOutlinedInput-root": {
-          padding: 0,
-          paddingLeft: "10px",
-          fontSize: 13,
-          fontWeight: 600,
-        },
-        "& .MuiAutocomplete-inputRoot": {
-          "& .MuiOutlinedInput-notchedOutline": {
-            borderColor: "#e5e5e5",
-            borderWidth: 1,
-          },
-          "&:hover .MuiOutlinedInput-notchedOutline": {
-            borderColor: "#07193E",
-            borderWidth: 1,
-          },
-          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-            borderColor: "#07193E",
-            borderWidth: 1,
-          },
-        },
-      }}
-      freeSolo
-      selectOnFocus
-      handleHomeEndKeys
-      onChange={(event, newValue) => {
-        let newVal: any = newValue;
-
-        if (typeof newValue === "string") {
-          newVal = {
-            label: newValue,
-          };
-        } else if (newValue && newValue.inputValue) {
-          // Create a new value from the user input
-          newVal = {
-            label: newValue.inputValue,
-          };
-        } else {
-          newVal = newValue;
-        }
-        setValue(newVal);
-        onChange(newVal?.value);
-      }}
-      value={value}
-      onInputChange={(e: any) => {
-        const { target: { value = "" } = {} } = e || {};
-        onChange(value);
-      }}
-      getOptionLabel={(option) => {
-        // Value selected with enter, right from the input
-        if (typeof option === "string") {
-          return option;
-        }
-        // Add "xxx" option created dynamically
-        if (option.inputValue) {
-          return option.inputValue;
-        }
-        // Regular option
-        return option.value;
-      }}
-      options={regionList}
-      filterOptions={(opts: any[], state: any) => {
-        const filterText = state.inputValue.toLowerCase();
-
-        return opts.filter((opt) =>
-          `${opt.label.toLowerCase()}${opt.value.toLowerCase()}`.includes(
-            filterText
-          )
-        );
-      }}
-      renderOption={(props: any, opt: any) => {
-        return (
-          <li {...props}>
+    <Popup
+      isOpen={isOpen}
+      content={() => (
+        <div>
+          {regionList.map((opt) => (
             <Box
               sx={{
                 display: "flex",
@@ -143,17 +75,30 @@ const RegionSelect = ({
                   fontWeight: 400,
                 },
               }}
+              onClick={() => {
+                setValue(opt.value);
+              }}
             >
               <span className="label">{opt.value}</span>
               <span className="value">{opt.label}</span>
             </Box>
-          </li>
-        );
-      }}
-      renderInput={(params) => (
-        <TextField {...params} {...inputProps} fullWidth />
+          ))}
+        </div>
       )}
-    />
+      trigger={(triggerProps) => (
+        <div {...triggerProps}>
+          <TextField
+            autoComplete="on"
+            value={value}
+            onChange={(val) => {
+              onChange((val.target as any).value);
+            }}
+            onFocus={() => setIsOpen(true)}
+            onBlur={() => setIsOpen(false)}
+          />
+        </div>
+      )}
+    ></Popup>
   );
 };
 

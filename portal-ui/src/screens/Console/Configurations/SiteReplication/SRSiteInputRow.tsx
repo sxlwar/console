@@ -52,9 +52,6 @@ const SRSiteInputRow = ({
           name={`add-rep-peer-site-${index}`}
           placeholder={`site-name`}
           label=""
-          extraInputProps={{
-            readOnly: disabledFields.includes("name"),
-          }}
           value={name}
           onChange={(e) => {
             onFieldChange(e, "name", index);
@@ -68,9 +65,6 @@ const SRSiteInputRow = ({
           name={`add-rep-peer-site-ep-${index}`}
           placeholder={`https://dr.minio-storage:900${index}`}
           label=""
-          extraInputProps={{
-            readOnly: disabledFields.includes("endpoint"),
-          }}
           error={fieldErrors["endpoint"]}
           value={endpoint}
           onChange={(e) => {

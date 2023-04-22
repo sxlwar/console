@@ -13,20 +13,15 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
+import TextField from "@atlaskit/textfield";
 import React, { ClipboardEvent, useState } from "react";
-import { InputLabel, TextField, TextFieldProps } from "@mui/material";
-import { OutlinedInputProps } from "@mui/material/OutlinedInput";
-import { InputProps as StandardInputProps } from "@mui/material/Input";
 
-import { makeStyles, withStyles } from "../../../../../theme/makeStyles";
+import { ErrorMessage, Field } from "@atlaskit/form";
 import WatchFilledIcon from "@atlaskit/icon/glyph/watch-filled";
-import {
-  fieldBasic,
-  inputFieldStyles,
-  tooltipHelper,
-} from "../common/styleLibrary";
-import { Grid, HelpIcon, IconButton, VisibilityOffIcon, Tooltip } from "mds";
 import clsx from "clsx";
+import { Grid, HelpIcon, IconButton, Tooltip, VisibilityOffIcon } from "mds";
+import { withStyles } from "../../../../../theme/makeStyles";
+import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
 
 interface InputBoxProps {
   label: string;
@@ -53,7 +48,6 @@ interface InputBoxProps {
   overlayIcon?: any;
   overlayAction?: () => void;
   overlayObject?: any;
-  extraInputProps?: StandardInputProps["inputProps"];
   noLabelMinWidth?: boolean;
   pattern?: string;
   autoFocus?: boolean;
@@ -81,21 +75,6 @@ const styles = () => ({
   },
 });
 
-const inputStyles = makeStyles()(() => ({
-  ...inputFieldStyles,
-}));
-
-function InputField(props: TextFieldProps) {
-  const classes = inputStyles();
-
-  return (
-    <TextField
-      InputProps={{ classes } as Partial<OutlinedInputProps>}
-      {...props}
-    />
-  );
-}
-
 const InputBoxWrapper = ({
   label,
   onChange,
@@ -116,7 +95,6 @@ const InputBoxWrapper = ({
   overlayId,
   overlayIcon = null,
   overlayObject = null,
-  extraInputProps = {},
   overlayAction,
   noLabelMinWidth = false,
   pattern = "",
@@ -127,20 +105,7 @@ const InputBoxWrapper = ({
   onFocus,
   onPaste,
 }: InputBoxProps) => {
-  let inputProps: any = { "data-index": index, ...extraInputProps };
   const [toggleTextInput, setToggleTextInput] = useState<boolean>(false);
-
-  if (type === "number" && min) {
-    inputProps["min"] = min;
-  }
-
-  if (type === "number" && max) {
-    inputProps["max"] = max;
-  }
-
-  if (pattern !== "") {
-    inputProps["pattern"] = pattern;
-  }
 
   let inputBoxWrapperIcon = overlayIcon;
   let inputBoxWrapperType = type;
@@ -163,81 +128,84 @@ const InputBoxWrapper = ({
           error !== "" ? classes.errorInField : classes.inputBoxContainer
         )}
       >
-        {label !== "" && (
-          <InputLabel
-            htmlFor={id}
-            className={
-              noLabelMinWidth ? classes.noMinWidthLabel : classes.inputLabel
-            }
-          >
-            <span>
-              {label}
-              {required ? "*" : ""}
-            </span>
-            {tooltip !== "" && (
-              <div className={classes.tooltipContainer}>
-                <Tooltip tooltip={tooltip} placement="top">
-                  <div className={classes.tooltip}>
-                    <HelpIcon />
-                  </div>
-                </Tooltip>
-              </div>
-            )}
-          </InputLabel>
-        )}
-
-        <div className={classes.textBoxContainer}>
-          <InputField
-            id={id}
-            name={name}
-            fullWidth
-            value={value}
-            autoFocus={autoFocus}
-            disabled={disabled}
-            onChange={onChange}
-            type={inputBoxWrapperType}
-            multiline={multiline}
-            autoComplete={autoComplete}
-            inputProps={inputProps}
-            error={error !== ""}
-            helperText={error}
-            placeholder={placeholder}
-            className={classes.inputRebase}
-            onKeyPress={onKeyPress}
-            onFocus={onFocus}
-            onPaste={onPaste}
-          />
-          {inputBoxWrapperIcon && (
-            <div
-              className={`${classes.overlayAction} ${
-                label !== "" ? "withLabel" : ""
-              }`}
-            >
-              <IconButton
-                onClick={
-                  overlayAction
-                    ? () => {
-                        overlayAction();
-                      }
-                    : () => setToggleTextInput(!toggleTextInput)
+        <Field
+          name={name}
+          label={
+            label !== "" && (
+              <label
+                htmlFor={id}
+                className={
+                  noLabelMinWidth ? classes.noMinWidthLabel : classes.inputLabel
                 }
-                id={overlayId}
-                size={"small"}
               >
-                {inputBoxWrapperIcon}
-              </IconButton>
+                <span>
+                  {label}
+                  {required ? "*" : ""}
+                </span>
+                {tooltip !== "" && (
+                  <div className={classes.tooltipContainer}>
+                    <Tooltip tooltip={tooltip} placement="top">
+                      <div className={classes.tooltip}>
+                        <HelpIcon />
+                      </div>
+                    </Tooltip>
+                  </div>
+                )}
+              </label>
+            )
+          }
+        >
+          {(fieldProps) => (
+            <div className={classes.textBoxContainer}>
+              <TextField
+                id={id}
+                name={name}
+                value={value as string}
+                autoFocus={autoFocus}
+                disabled={disabled}
+                onChange={onChange}
+                type={inputBoxWrapperType}
+                autoComplete={autoComplete}
+                placeholder={placeholder}
+                className={classes.inputRebase}
+                onKeyPress={onKeyPress}
+                onFocus={onFocus}
+                onPaste={onPaste}
+              />
+              {inputBoxWrapperIcon && (
+                <div
+                  className={`${classes.overlayAction} ${
+                    label !== "" ? "withLabel" : ""
+                  }`}
+                >
+                  <IconButton
+                    onClick={
+                      overlayAction
+                        ? () => {
+                            overlayAction();
+                          }
+                        : () => setToggleTextInput(!toggleTextInput)
+                    }
+                    id={overlayId}
+                    size={"small"}
+                  >
+                    {inputBoxWrapperIcon}
+                  </IconButton>
+                </div>
+              )}
+              {overlayObject && (
+                <div
+                  className={`${classes.overlayAction} ${
+                    label !== "" ? "withLabel" : ""
+                  }`}
+                >
+                  {overlayObject}
+                </div>
+              )}
+              {error && <ErrorMessage>{error}</ErrorMessage>}
             </div>
           )}
-          {overlayObject && (
-            <div
-              className={`${classes.overlayAction} ${
-                label !== "" ? "withLabel" : ""
-              }`}
-            >
-              {overlayObject}
-            </div>
-          )}
-        </div>
+        </Field>
       </Grid>
     </React.Fragment>
   );

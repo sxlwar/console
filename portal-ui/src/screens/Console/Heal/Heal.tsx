@@ -14,52 +14,48 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React, { Fragment, useEffect, useMemo, useState } from "react";
+import { Field } from "@atlaskit/form";
+import Select from "@atlaskit/select";
+import TextField from "@atlaskit/textfield";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
-import {
-  FormControl,
-  InputBase,
-  TextField,
-} from "@mui/material";
-import Select from '@atlaskit/select';
 import { IMessageEvent, w3cwebsocket as W3CWebSocket } from "websocket";
 
-import { Button, HealIcon, Grid } from "mds";
+import { Button, Grid, HealIcon } from "mds";
 
-import { withStyles } from "../../../theme/makeStyles";
-import { wsProtocol } from "../../../utils/wsUtils";
-import { Bucket, BucketList } from "../Watch/types";
-import { colorH, HealStatus } from "./types";
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Legend,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
+import { SecureComponent } from "../../../common/SecureComponent";
+import {
+  CONSOLE_UI_RESOURCE,
+  IAM_SCOPES,
+} from "../../../common/SecureComponent/permissions";
+import api from "../../../common/api";
+import { ErrorResponseHandler } from "../../../common/types";
 import { niceBytes } from "../../../common/utils";
+import { selDistSet } from "../../../systemSlice";
+import { makeStyles, withStyles } from "../../../theme/makeStyles";
+import { wsProtocol } from "../../../utils/wsUtils";
+import DistributedOnly from "../Common/DistributedOnly/DistributedOnly";
+import CheckboxWrapper from "../Common/FormComponents/CheckboxWrapper/CheckboxWrapper";
 import {
   actionsTray,
   containerForHeader,
   inlineCheckboxes,
   searchField,
 } from "../Common/FormComponents/common/styleLibrary";
-import {
-  CONSOLE_UI_RESOURCE,
-  IAM_SCOPES,
-} from "../../../common/SecureComponent/permissions";
-import { ErrorResponseHandler } from "../../../common/types";
-import CheckboxWrapper from "../Common/FormComponents/CheckboxWrapper/CheckboxWrapper";
-import api from "../../../common/api";
 import PageLayout from "../Common/Layout/PageLayout";
-import { SecureComponent } from "../../../common/SecureComponent";
-import DistributedOnly from "../Common/DistributedOnly/DistributedOnly";
-import { selDistSet } from "../../../systemSlice";
-import { makeStyles } from "../../../theme/makeStyles";
 import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
-import {
-  Bar,
-  BarChart,
-  CartesianGrid,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
-import { Legend } from "recharts";
+import { Bucket, BucketList } from "../Watch/types";
+import { HealStatus, colorH } from "./types";
 
 const useStyles = makeStyles()(() => ({
   graphContainer: {
@@ -103,6 +99,8 @@ const useStyles = makeStyles()(() => ({
   ...searchField,
   ...containerForHeader,
 }));
+
+const InputBase = () => <input />;
 
 const SelectStyled = withStyles(InputBase, () => ({
   root: {
@@ -261,7 +259,10 @@ const Heal = () => {
     value: bucketName.name,
   }));
 
-  const options = useMemo(() => [{label: 'Select Bucket', value: ''}, ...bucketNames], [bucketNames]);
+  const options = useMemo(
+    () => [{ label: "Select Bucket", value: "" }, ...bucketNames],
+    [bucketNames]
+  );
 
   return (
     <Fragment>
@@ -276,34 +277,32 @@ const Heal = () => {
           >
             <Grid xs={12} item className={classes.formBox}>
               <Grid item xs={12} className={classes.actionsTray}>
-                <FormControl variant="outlined" className={classes.bucketField}>
-                  <Select
-                    label="Bucket"
-                    id="bucket-name"
-                    name="bucket-name"
-                    value={options.find(item => item.value === bucketName)}
-                    onChange={(e) => {
-                      setBucketName(e?.value as string);
-                    }}
-                    className={classes.searchField}
-                    input={<SelectStyled />}
-                    displayEmpty
-                    options={options}
-                  >
-                  </Select>
-                </FormControl>
+                <Field name="bucket-name">
+                  {(fieldProps) => (
+                    <Select
+                      {...fieldProps}
+                      label="Bucket"
+                      id="bucket-name"
+                      name="bucket-name"
+                      value={options.find((item) => item.value === bucketName)}
+                      onChange={(e) => {
+                        setBucketName(e?.value as string);
+                      }}
+                      className={classes.searchField}
+                      input={<SelectStyled />}
+                      displayEmpty
+                      options={options}
+                    ></Select>
+                  )}
+                </Field>
                 <TextField
                   label="Prefix"
                   className={classes.prefixField}
                   id="prefix-resource"
                   disabled={false}
-                  InputProps={{
-                    disableUnderline: true,
-                  }}
                   onChange={(e) => {
-                    setPrefix(e.target.value);
+                    setPrefix((e.target as any).value);
                   }}
-                  variant="standard"
                 />
               </Grid>
               <Grid item xs={12} className={classes.inlineCheckboxes}>

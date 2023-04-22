@@ -14,7 +14,6 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { Card, CardHeader } from "@mui/material";
 import { Link } from "react-router-dom";
 
 import { withStyles } from "../../../theme/makeStyles";
@@ -151,27 +150,19 @@ const CommonCard = ({
 
   return (
     <Fragment>
-      <Card
+      <div
         className={`${classes.cardRoot} ${
           extraMargin ? classes.extraMargin : ""
         }`}
       >
         {metricValue !== "" && (
-          <CardHeader
-            title={<Header />}
-            subheader={
-              <Fragment>
-                <SubHeader />
-              </Fragment>
-            }
-            classes={{
-              root: classes.root,
-              title: classes.title,
-              content: classes.content,
-            }}
-          />
+          <div className={classes.root}>
+            <Header />
+
+            <SubHeader />
+          </div>
         )}
-      </Card>
+      </div>
     </Fragment>
   );
 };

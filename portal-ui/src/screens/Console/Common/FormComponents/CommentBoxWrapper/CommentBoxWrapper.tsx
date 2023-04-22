@@ -14,7 +14,8 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import { InputLabel, TextField } from "@mui/material";
+import { ErrorMessage, Field } from "@atlaskit/form";
+import TextField from "@atlaskit/textfield";
 import React from "react";
 
 import { Grid, HelpIcon, Tooltip } from "mds";
@@ -93,8 +94,6 @@ const CommentBoxWrapper = ({
   placeholder = "",
   classes,
 }: CommentBoxProps) => {
-  let inputProps: any = { "data-index": index };
-
   return (
     <React.Fragment>
       <Grid
@@ -104,50 +103,43 @@ const CommentBoxWrapper = ({
           error !== "" ? classes.errorInField : ""
         }`}
       >
-        {label !== "" && (
-          <InputLabel htmlFor={id} className={classes.inputLabel}>
-            <span>
-              {label}
-              {required ? "*" : ""}
-            </span>
-            {tooltip !== "" && (
-              <div className={classes.tooltipContainer}>
-                <Tooltip tooltip={tooltip} placement="top">
-                  <div className={classes.tooltip}>
-                    <HelpIcon />
+        <Field
+          name={name}
+          label={
+            label !== "" && (
+              <label htmlFor={id} className={classes.inputLabel}>
+                <span>
+                  {label}
+                  {required ? "*" : ""}
+                </span>
+                {tooltip !== "" && (
+                  <div className={classes.tooltipContainer}>
+                    <Tooltip tooltip={tooltip} placement="top">
+                      <div className={classes.tooltip}>
+                        <HelpIcon />
+                      </div>
+                    </Tooltip>
                   </div>
-                </Tooltip>
-              </div>
-            )}
-          </InputLabel>
-        )}
-
-        <div className={classes.textBoxContainer}>
-          <TextField
-            id={id}
-            name={name}
-            fullWidth
-            value={value}
-            disabled={disabled}
-            onChange={onChange}
-            multiline
-            rows={5}
-            inputProps={inputProps}
-            error={error !== ""}
-            helperText={error}
-            placeholder={placeholder}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            InputProps={{
-              classes: {
-                notchedOutline: classes.cssOutlinedInput,
-                root: classes.rootContainer,
-              },
-            }}
-            variant="outlined"
-          />
-        </div>
+                )}
+              </label>
+            )
+          }
+        >
+          {(fieldProps) => (
+            <React.Fragment>
+              <TextField
+                {...fieldProps}
+                id={id}
+                value={value as string}
+                disabled={disabled}
+                onChange={onChange}
+                rows={5}
+                placeholder={placeholder}
+              ></TextField>
+              {error && <ErrorMessage>{error}</ErrorMessage>}
+            </React.Fragment>
+          )}
+        </Field>
       </Grid>
     </React.Fragment>
   );

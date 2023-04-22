@@ -15,15 +15,13 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { InputLabel } from "@mui/material";
 
-import { withStyles } from "../../../../../theme/makeStyles";
-import { Button, CopyIcon, HelpIcon } from "mds";
-import { fieldBasic } from "../common/styleLibrary";
-import CopyToClipboard from "react-copy-to-clipboard";
 import CodeEditor from "@uiw/react-textarea-code-editor";
+import { Box, Button, CopyIcon, Grid, HelpIcon, Tooltip } from "mds";
+import CopyToClipboard from "react-copy-to-clipboard";
+import { withStyles } from "../../../../../theme/makeStyles";
 import TooltipWrapper from "../../TooltipWrapper/TooltipWrapper";
-import { Box, Grid, Tooltip } from "mds";
+import { fieldBasic } from "../common/styleLibrary";
 
 interface ICodeWrapper {
   value: string;
@@ -54,7 +52,7 @@ const CodeMirrorWrapper = ({
   return (
     <React.Fragment>
       <Grid item xs={12} sx={{ marginBottom: "10px" }}>
-        <InputLabel className={classes.inputLabel}>
+        <label className={classes.inputLabel}>
           <span>{label}</span>
           {tooltip !== "" && (
             <div className={classes.tooltipContainer}>
@@ -65,7 +63,7 @@ const CodeMirrorWrapper = ({
               </Tooltip>
             </div>
           )}
-        </InputLabel>
+        </label>
       </Grid>
 
       <Grid

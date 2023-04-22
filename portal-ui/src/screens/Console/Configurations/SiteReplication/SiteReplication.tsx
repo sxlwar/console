@@ -17,12 +17,13 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { DialogContentText, Grid } from "@mui/material";
+import { DialogContentText } from "@mui/material";
 import PageLayout from "../../Common/Layout/PageLayout";
 import useApi from "../../Common/Hooks/useApi";
 import ReplicationSites from "./ReplicationSites";
 import {
   Box,
+  Grid,
   AddIcon,
   Button,
   ClustersIcon,

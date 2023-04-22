@@ -19,7 +19,7 @@ import { useSelector } from "react-redux";
 import get from "lodash/get";
 import { AppState, useAppDispatch } from "../../../../store";
 import { AlertCloseIcon, Box } from "mds";
-import { Portal } from "@mui/base";
+import Portal from "@atlaskit/portal";
 import { setErrorSnackMessage } from "../../../../systemSlice";
 
 interface IMainErrorProps {

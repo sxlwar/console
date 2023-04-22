@@ -13,16 +13,15 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
-import React from "react";
-import clsx from "clsx";
-import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio, { RadioProps } from "@mui/material/Radio";
-import { InputLabel } from "@mui/material";
+import RadioGroup from "@mui/material/RadioGroup";
+import clsx from "clsx";
+import React from "react";
 
+import { Grid, HelpIcon, Tooltip } from "mds";
 import { withStyles } from "../../../../../theme/makeStyles";
 import { fieldBasic, radioIcons, tooltipHelper } from "../common/styleLibrary";
-import { HelpIcon, Grid, Tooltip } from "mds";
 
 export interface SelectorTypes {
   label: any;
@@ -74,7 +73,6 @@ const styles = () => ({
   ...radioIcons,
 });
 
-
 const RadioButton = (props: RadioProps) => {
   const classes = withStyles.getClasses(props) as any;
 
@@ -105,7 +103,7 @@ export const RadioGroupSelector = ({
   return (
     <Grid container rowSpacing={1} columnSpacing={1}>
       <Grid item sx={{ fontSize: 60 }}>
-        <InputLabel htmlFor={id} className={classes.inputLabel}>
+        <label htmlFor={id} className={classes.inputLabel}>
           <span>{label}</span>
           {tooltip !== "" && (
             <div className={classes.tooltipContainer}>
@@ -116,7 +114,7 @@ export const RadioGroupSelector = ({
               </Tooltip>
             </div>
           )}
-        </InputLabel>
+        </label>
       </Grid>
       <Grid item>
         <RadioGroup

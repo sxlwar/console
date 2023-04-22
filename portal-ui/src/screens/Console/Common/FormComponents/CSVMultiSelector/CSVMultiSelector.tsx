@@ -13,6 +13,7 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
+import get from "lodash/get";
 import React, {
   ChangeEvent,
   createRef,
@@ -21,13 +22,11 @@ import React, {
   useRef,
   useState,
 } from "react";
-import get from "lodash/get";
 
+import { AddIcon, Grid, HelpIcon, Tooltip } from "mds";
 import { withStyles } from "../../../../../theme/makeStyles";
-import { InputLabel } from "@mui/material";
-import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
-import { AddIcon, HelpIcon, Grid, Tooltip } from "mds";
 import InputBoxWrapper from "../InputBoxWrapper/InputBoxWrapper";
+import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
 
 interface ICSVMultiSelector {
   elements: string;
@@ -179,7 +178,7 @@ const CSVMultiSelector = ({
   return (
     <React.Fragment>
       <Grid item xs={12} className={classes.fieldContainer}>
-        <InputLabel className={classes.inputLabel}>
+        <label className={classes.inputLabel}>
           <span>{label}</span>
           {tooltip !== "" && (
             <div className={classes.tooltipContainer}>
@@ -190,7 +189,7 @@ const CSVMultiSelector = ({
               </Tooltip>
             </div>
           )}
-        </InputLabel>
+        </label>
         <Grid
           item
           xs={12}

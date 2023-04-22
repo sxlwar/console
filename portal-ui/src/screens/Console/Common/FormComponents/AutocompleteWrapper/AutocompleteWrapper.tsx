@@ -13,24 +13,15 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
+import { Field } from "@atlaskit/form";
+import TextField from "@atlaskit/textfield";
+import { Tooltip } from "mds";
 import React, { useState } from "react";
-import {
-  FormControl,
-  InputLabel,
-  OutlinedInputProps,
-  TextField,
-  TextFieldProps,
-} from "@mui/material";
-import { Tooltip } from 'mds';
-import { makeStyles, withStyles } from "../../../../../theme/makeStyles";
-import Autocomplete from "@mui/material/Autocomplete";
+import { withStyles } from "../../../../../theme/makeStyles";
 
-import {
-  fieldBasic,
-  inputFieldStyles,
-  tooltipHelper,
-} from "../common/styleLibrary";
-import { HelpIcon, Grid } from "mds";
+import Popup from "@atlaskit/popup";
+import { Grid, HelpIcon } from "mds";
+import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
 
 interface selectorTypes {
   label: string;
@@ -54,21 +45,6 @@ const styles = () => ({
   ...tooltipHelper,
 });
 
-const inputStyles = makeStyles()((theme) => ({
-  ...inputFieldStyles,
-}));
-
-function InputField(props: TextFieldProps) {
-  const classes = inputStyles();
-
-  return (
-    <TextField
-      InputProps={{ classes } as Partial<OutlinedInputProps>}
-      {...props}
-    />
-  );
-}
-
 const AutocompleteWrapper = ({
   classes,
   id,
@@ -81,8 +57,12 @@ const AutocompleteWrapper = ({
   disabled = false,
 }: SelectProps) => {
   const [internalValue, setInternalValue] = useState<selectorTypes>(options[0]);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const executeOnSelect = (_: any, selectedValue: any) => {
+  const executeOnSelect = (data: selectorTypes) => {
+    const value = data.value;
+    const selectedValue = options.find((item) => item.value === value);
+
     if (selectedValue) {
       onChange(selectedValue.value);
       setInternalValue(selectedValue);
@@ -92,33 +72,69 @@ const AutocompleteWrapper = ({
   return (
     <React.Fragment>
       <Grid item xs={12} className={classes.fieldContainer}>
-        {label !== "" && (
-          <InputLabel htmlFor={id} className={classes.inputLabel}>
-            <span>{label}</span>
-            {tooltip !== "" && (
+        <Field
+          aria-required={true}
+          name="username"
+          label={
+            tooltip !== "" ? (
               <div className={classes.tooltipContainer}>
                 <Tooltip tooltip={tooltip} placement="top">
                   <div className={classes.tooltip}>
+                    {label}
                     <HelpIcon />
                   </div>
                 </Tooltip>
               </div>
-            )}
-          </InputLabel>
-        )}
-        <FormControl fullWidth>
-          <Autocomplete
-            id={id}
-            options={options}
-            getOptionLabel={(option) => option.label}
-            isOptionEqualToValue={(option) => option.value === value}
-            disabled={disabled}
-            renderInput={(params) => <InputField {...params} name={name} />}
-            value={internalValue}
-            onChange={executeOnSelect}
-            autoHighlight
-          />
-        </FormControl>
+            ) : (
+              label
+            )
+          }
+          isRequired
+          defaultValue="dst12"
+        >
+          {({ fieldProps, error }) => (
+            <React.Fragment>
+              <Popup
+                isOpen={isOpen}
+                content={() => (
+                  <div style={{ padding: "1em" }}>
+                    {options.map((item) => (
+                      <p
+                        key={item.label}
+                        onClick={() => executeOnSelect(item)}
+                        style={{
+                          margin: "10px 0",
+                          padding: "5px 10px",
+                          cursor: "pointer",
+                          background:
+                            item.value === internalValue.value
+                              ? "rgba(129,129,129, .3)"
+                              : "inherit",
+                        }}
+                      >
+                        {item.label}
+                      </p>
+                    ))}
+                  </div>
+                )}
+                trigger={(triggerProps) => (
+                  <div {...triggerProps}>
+                    <TextField
+                      {...fieldProps}
+                      id={id}
+                      name={name}
+                      disabled={disabled}
+                      autoComplete="on"
+                      value={value}
+                      onFocus={() => setIsOpen(true)}
+                      onBlur={() => setIsOpen(false)}
+                    />
+                  </div>
+                )}
+              ></Popup>
+            </React.Fragment>
+          )}
+        </Field>
       </Grid>
     </React.Fragment>
   );

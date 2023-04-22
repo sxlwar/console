@@ -17,7 +17,7 @@
 import React from "react";
 import { Box, Button, OpenListIcon, SyncIcon, Grid, TimeIcon } from "mds";
 import { DateTime } from "luxon";
-import RecentIcon from '@atlaskit/icon/glyph/recent'
+import RecentIcon from "@atlaskit/icon/glyph/recent";
 import DateTimePickerWrapper from "../DateTimePickerWrapper/DateTimePickerWrapper";
 
 interface IDateRangeSelector {
@@ -65,33 +65,6 @@ const DateRangeSelector = ({
       sx={{
         "& .filter-date-input-label, .end-time-input-label": {
           display: "none",
-        },
-        "& .MuiInputBase-adornedEnd.filter-date-date-time-input": {
-          width: "100%",
-          border: "1px solid #eaeaea",
-          paddingLeft: "8px",
-          paddingRight: "8px",
-          borderRadius: "1px",
-        },
-
-        "& .MuiInputAdornment-root button": {
-          height: "20px",
-          width: "20px",
-          marginRight: "5px",
-        },
-        "& .filter-date-input-wrapper": {
-          height: "30px",
-          width: "100%",
-
-          "& .MuiTextField-root": {
-            height: "30px",
-            width: "90%",
-
-            "& input.Mui-disabled": {
-              color: "#000000",
-              WebkitTextFillColor: "#101010",
-            },
-          },
         },
       }}
     >

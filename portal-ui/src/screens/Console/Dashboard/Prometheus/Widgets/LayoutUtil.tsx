@@ -15,14 +15,13 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { Box } from "mds";
-import { SxProps, Theme } from "@mui/material/styles";
 
 export type DLayoutColumnProps = {
   componentId: number;
-  sx?: SxProps<Theme>;
+  sx?: any;
 };
 export type DLayoutRowProps = {
-  sx?: SxProps<Theme>;
+  sx?: any;
   columns: DLayoutColumnProps[];
 };
 

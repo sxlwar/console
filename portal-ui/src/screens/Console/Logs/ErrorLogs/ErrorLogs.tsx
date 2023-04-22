@@ -19,7 +19,6 @@ import { IMessageEvent, w3cwebsocket as W3CWebSocket } from "websocket";
 import { Button, Grid } from "mds";
 
 import Select from "@atlaskit/select";
-import { FormControl, InputBase } from "@mui/material";
 import { useSelector } from "react-redux";
 import { withStyles } from "../../../../theme/makeStyles";
 
@@ -46,6 +45,7 @@ import {
 } from "../logsSlice";
 import { LogMessage } from "../types";
 import LogLine from "./LogLine";
+import { Field } from "@atlaskit/form";
 
 const useStyles = makeStyles()((theme) => ({
   logList: {
@@ -73,6 +73,8 @@ const useStyles = makeStyles()((theme) => ({
   ...inlineCheckboxes,
   ...containerForHeader,
 }));
+
+const InputBase = () => <input />;
 
 const SelectStyled = withStyles(InputBase, () => ({
   root: {
@@ -258,66 +260,75 @@ const ErrorLogs = () => {
         <Grid container rowSpacing={1} columnSpacing={1}>
           <Grid item xs={4}>
             {!loadingNodes ? (
-              <FormControl variant="outlined" className={classes.nodeField}>
-                <Select
-                  id="node"
-                  name="node"
-                  data-test-id="node-selector"
-                  value={nodeOptions.find(
-                    (item) => item.value === selectedNode
-                  )}
-                  onChange={(e) => {
-                    setSelectedNode(e?.value as string);
-                  }}
-                  className={classes.searchField}
-                  disabled={loadingNodes || logsStarted}
-                  input={<SelectStyled />}
-                  placeholder={"Select Node"}
-                  options={nodeOptions}
-                ></Select>
-              </FormControl>
+              <Field name="node">
+                {(fieldProps) => (
+                  <Select
+                    {...fieldProps}
+                    id="node"
+                    name="node"
+                    data-test-id="node-selector"
+                    value={nodeOptions.find(
+                      (item) => item.value === selectedNode
+                    )}
+                    onChange={(e) => {
+                      setSelectedNode(e?.value as string);
+                    }}
+                    className={classes.searchField}
+                    disabled={loadingNodes || logsStarted}
+                    input={<SelectStyled />}
+                    placeholder={"Select Node"}
+                    options={nodeOptions}
+                  ></Select>
+                )}
+              </Field>
             ) : (
               <h3> Loading nodes</h3>
             )}
           </Grid>
 
           <Grid item xs={3}>
-            <FormControl variant="outlined" className={classes.nodeField}>
-              <Select
-                id="logType"
-                name="logType"
-                data-test-id="log-type"
-                value={logOptions.find((item) => item.value === logType)}
-                onChange={(e) => {
-                  setLogType(e?.value as string);
-                }}
-                className={classes.searchField}
-                disabled={loadingNodes || logsStarted}
-                input={<SelectStyled />}
-                placeholder={"Select Log Type"}
-                options={logOptions}
-              ></Select>
-            </FormControl>
+            <Field name="logType">
+              {(fieldProps) => (
+                <Select
+                  {...fieldProps}
+                  id="logType"
+                  name="logType"
+                  data-test-id="log-type"
+                  value={logOptions.find((item) => item.value === logType)}
+                  onChange={(e) => {
+                    setLogType(e?.value as string);
+                  }}
+                  className={classes.searchField}
+                  disabled={loadingNodes || logsStarted}
+                  input={<SelectStyled />}
+                  placeholder={"Select Log Type"}
+                  options={logOptions}
+                ></Select>
+              )}
+            </Field>
           </Grid>
           <Grid item xs={3}>
             {userAgents.length > 1 && (
-              <FormControl variant="outlined" className={classes.nodeField}>
-                <Select
-                  id="userAgent"
-                  name="userAgent"
-                  data-test-id="user-agent"
-                  value={agentOptions.find(
-                    (item) => item.value === selectedUserAgent
-                  )}
-                  onChange={(e) => {
-                    setSelectedUserAgent(e?.value as string);
-                  }}
-                  className={classes.searchField}
-                  disabled={userAgents.length < 1 || logsStarted}
-                  input={<SelectStyled />}
-                  options={agentOptions}
-                ></Select>
-              </FormControl>
+              <Field name="userAgent">
+                {(fieldProps) => (
+                  <Select
+                    {...fieldProps}
+                    id="userAgent"
+                    name="userAgent"
+                    data-test-id="user-agent"
+                    value={agentOptions.find(
+                      (item) => item.value === selectedUserAgent
+                    )}
+                    onChange={(e) => {
+                      setSelectedUserAgent(e?.value as string);
+                    }}
+                    className={classes.searchField}
+                    disabled={userAgents.length < 1 || logsStarted}
+                    input={<SelectStyled />}
+                    options={agentOptions}
+                  ></Select>
+                )}
+              </Field>
             )}
           </Grid>
           <Grid

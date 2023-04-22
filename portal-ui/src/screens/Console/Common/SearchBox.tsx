@@ -15,9 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import InputAdornment from "@mui/material/InputAdornment";
 import { SearchIcon } from "mds";
-import TextField from "@mui/material/TextField";
+import TextField from "@atlaskit/textfield";
 import { withStyles } from "../../../theme/makeStyles";
 
 import { searchField } from "./FormComponents/common/styleLibrary";
@@ -46,28 +45,17 @@ const SearchBox = ({
   overrideClass,
   value,
 }: SearchBoxProps) => {
-  const inputProps = {
-    disableUnderline: true,
-    [`${adornmentPosition}Adornment`]: (
-      <InputAdornment
-        position={adornmentPosition}
-        className={classes.adornment}
-      >
-        <SearchIcon />
-      </InputAdornment>
-    ),
-  };
   return (
     <TextField
       placeholder={placeholder}
       className={overrideClass ? overrideClass : classes.searchField}
       id="search-resource"
       label=""
-      InputProps={inputProps}
+      elemAfterInput={adornmentPosition === "end" ? <SearchIcon /> : null}
+      elemBeforeInput={adornmentPosition === "start" ? <SearchIcon /> : null}
       onChange={(e) => {
-        onChange(e.target.value);
+        onChange((e.target as any).value);
       }}
-      variant="standard"
       value={value}
     />
   );

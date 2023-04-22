@@ -16,8 +16,7 @@
 
 import React from "react";
 
-import { InputLabel, Switch } from "@mui/material";
-import { InputProps as StandardInputProps } from "@mui/material/Input/Input";
+import { Switch } from "@mui/material";
 import clsx from "clsx";
 import { Grid, HelpIcon, Tooltip } from "mds";
 import { withStyles } from "../../../../../theme/makeStyles";
@@ -37,7 +36,6 @@ interface IFormSwitch {
   checked: boolean;
   switchOnly?: boolean;
   indicatorLabels?: string[];
-  extraInputProps?: StandardInputProps["inputProps"];
 }
 
 const styles = () => ({
@@ -121,7 +119,6 @@ const FormSwitchWrapper = ({
   description = "",
   classes,
   indicatorLabels,
-  extraInputProps = {},
 }: IFormSwitch) => {
   const switchComponent = (
     <React.Fragment>
@@ -141,7 +138,7 @@ const FormSwitchWrapper = ({
         onChange={onChange}
         color="primary"
         name={name}
-        inputProps={{ "aria-label": "primary checkbox", ...extraInputProps }}
+        inputProps={{ "aria-label": "primary checkbox" }}
         disabled={disabled}
         disableRipple
         disableFocusRipple
@@ -175,7 +172,7 @@ const FormSwitchWrapper = ({
       >
         <Grid item xs={12} sm={8} md={8}>
           {label !== "" && (
-            <InputLabel htmlFor={id} className={classes.inputLabel}>
+            <label htmlFor={id} className={classes.inputLabel}>
               <span>{label}</span>
               {tooltip !== "" && (
                 <div className={classes.tooltipContainer}>
@@ -186,7 +183,7 @@ const FormSwitchWrapper = ({
                   </Tooltip>
                 </div>
               )}
-            </InputLabel>
+            </label>
           )}
         </Grid>
         <Grid

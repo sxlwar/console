@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import React, { useEffect, useMemo, useState } from "react";
-import { FormControl, InputBase, TextField } from "@mui/material";
+import TextField from "@atlaskit/textfield";
 import { IMessageEvent, w3cwebsocket as W3CWebSocket } from "websocket";
 import { useSelector } from "react-redux";
 import Select from "@atlaskit/select";
@@ -38,6 +38,7 @@ import api from "../../../common/api";
 import PageLayout from "../Common/Layout/PageLayout";
 import { watchMessageReceived, watchResetMessages } from "./watchSlice";
 import PageHeaderWrapper from "../Common/PageHeaderWrapper/PageHeaderWrapper";
+import { Field } from "@atlaskit/form";
 
 const useStyles = makeStyles()(() => ({
   searchPrefix: {
@@ -56,6 +57,8 @@ const useStyles = makeStyles()(() => ({
   ...searchField,
   ...containerForHeader,
 }));
+
+const InputBase = () => <input />;
 
 const SelectStyled = withStyles(InputBase, () => ({
   root: {
@@ -174,45 +177,40 @@ const Watch = () => {
       <PageLayout>
         <Grid item xs={12}>
           <Grid item xs={12} className={classes.actionsTray}>
-            <FormControl variant="outlined" className={classes.bucketField}>
-              <Select
-                id="bucket-name"
-                name="bucket-name"
-                value={options.find((item) => item.value === bucketName)}
-                onChange={(e) => {
-                  setBucketName(e?.value as string);
-                }}
-                className={classes.searchField}
-                disabled={start}
-                input={<SelectStyled />}
-                options={options}
-              ></Select>
-            </FormControl>
+            <Field name="bucket-name">
+              {(fieldProps) => (
+                <Select
+                  {...fieldProps}
+                  id="bucket-name"
+                  name="bucket-name"
+                  value={options.find((item) => item.value === bucketName)}
+                  onChange={(e) => {
+                    setBucketName(e?.value as string);
+                  }}
+                  className={classes.searchField}
+                  disabled={start}
+                  input={<SelectStyled />}
+                  options={options}
+                ></Select>
+              )}
+            </Field>
             <TextField
               className={`${classes.searchField} ${classes.searchPrefix}`}
               id="prefix-resource"
               label="Prefix"
               disabled={start}
-              InputProps={{
-                disableUnderline: true,
-              }}
               onChange={(e) => {
-                setPrefix(e.target.value);
+                setPrefix((e.target as any).value);
               }}
-              variant="standard"
             />
             <TextField
               className={`${classes.searchField} ${classes.searchPrefix}`}
               id="suffix-resource"
               label="Suffix"
               disabled={start}
-              InputProps={{
-                disableUnderline: true,
-              }}
               onChange={(e) => {
-                setSuffix(e.target.value);
+                setSuffix((e.target as any).value);
               }}
-              variant="standard"
             />
             {start ? (
               <Button

@@ -24,7 +24,6 @@ import {
   UserFilledIcon,
 } from "mds";
 import { setAccessKey, setSecretKey, setSTS, setUseSTS } from "./loginSlice";
-import { InputAdornment } from "@mui/material";
 import Select from "@atlaskit/select";
 import ProgressBar from "@atlaskit/progress-bar";
 import { AppState, useAppDispatch } from "../../store";
@@ -64,11 +63,16 @@ const useStyles = makeStyles()(() => ({
     height: 10,
   },
   ssoMenuItem: {
-    display: 'flex',
-    alignItems: 'center', 
-    gap: '5px',
-    padding: '0 1em',
-    cursor: "pointer"
+    display: "flex",
+    alignItems: "center",
+    gap: "5px",
+    padding: "0 1em",
+    cursor: "pointer",
+  },
+  icon: {
+    display: "flex",
+    alignItems: "center",
+    padding: "0 10px",
   },
   ...spacingUtils,
 }));
@@ -128,7 +132,6 @@ const StrategyForm = ({ redirectRules }: IStrategyForm) => {
         <Grid container rowSpacing={2} columnSpacing={2}>
           <Grid item xs={12} className={classes.spacerBottom}>
             <LoginField
-              fullWidth
               id="accessKey"
               className={classes.inputField}
               value={accessKey}
@@ -139,22 +142,15 @@ const StrategyForm = ({ redirectRules }: IStrategyForm) => {
               name="accessKey"
               autoComplete="username"
               disabled={loginSending}
-              variant={"outlined"}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment
-                    position="start"
-                    className={classes.iconColor}
-                  >
-                    <UserFilledIcon />
-                  </InputAdornment>
-                ),
-              }}
+              elemBeforeInput={
+                <span className={classes.icon}>
+                  <UserFilledIcon />
+                </span>
+              }
             />
           </Grid>
           <Grid item xs={12} className={useSTS ? classes.spacerBottom : ""}>
             <LoginField
-              fullWidth
               className={classes.inputField}
               value={secretKey}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -166,23 +162,16 @@ const StrategyForm = ({ redirectRules }: IStrategyForm) => {
               autoComplete="current-password"
               disabled={loginSending}
               placeholder={useSTS ? "STS Secret" : "Password"}
-              variant={"outlined"}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment
-                    position="start"
-                    className={classes.iconColor}
-                  >
-                    <LockFilledIcon />
-                  </InputAdornment>
-                ),
-              }}
+              elemBeforeInput={
+                <span className={classes.icon}>
+                  <LockFilledIcon />
+                </span>
+              }
             />
           </Grid>
           {useSTS && (
             <Grid item xs={12} className={classes.spacerBottom}>
               <LoginField
-                fullWidth
                 id="sts"
                 className={classes.inputField}
                 value={sts}
@@ -193,17 +182,11 @@ const StrategyForm = ({ redirectRules }: IStrategyForm) => {
                 name="STS"
                 autoComplete="sts"
                 disabled={loginSending}
-                variant={"outlined"}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment
-                      position="start"
-                      className={classes.iconColor}
-                    >
-                      <PasswordKeyIcon />
-                    </InputAdornment>
-                  ),
-                }}
+                elemBeforeInput={
+                  <span className={classes.icon}>
+                    <PasswordKeyIcon />
+                  </span>
+                }
               />
             </Grid>
           )}

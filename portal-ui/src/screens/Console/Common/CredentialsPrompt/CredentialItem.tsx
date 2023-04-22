@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { InputAdornment, OutlinedInput } from "@mui/material";
+import TextField from "@atlaskit/textfield";
 import { withStyles } from "../../../../theme/makeStyles";
 
 import { Button, CopyIcon } from "mds";
@@ -24,37 +24,36 @@ import CopyToClipboard from "react-copy-to-clipboard";
 import { fieldBasic } from "../FormComponents/common/styleLibrary";
 import TooltipWrapper from "../TooltipWrapper/TooltipWrapper";
 
-const styles = () =>
-  ({
-    container: {
-      display: "flex",
-      flexFlow: "column",
-      padding: "20px 0 8px 0",
-    },
-    inputWithCopy: {
-      "& .MuiInputBase-root ": {
-        width: "100%",
-        background: "#FBFAFA",
-        "& .MuiInputBase-input": {
-          height: ".8rem",
-        },
-        "& .MuiInputAdornment-positionEnd": {
-          marginRight: ".5rem",
-          "& .MuiButtonBase-root": {
-            height: "2rem",
-          },
-        },
-      },
-      "& .MuiButtonBase-root .min-icon": {
-        width: ".8rem",
+const styles = () => ({
+  container: {
+    display: "flex",
+    flexFlow: "column",
+    padding: "20px 0 8px 0",
+  },
+  inputWithCopy: {
+    "& .MuiInputBase-root ": {
+      width: "100%",
+      background: "#FBFAFA",
+      "& .MuiInputBase-input": {
         height: ".8rem",
       },
+      "& .MuiInputAdornment-positionEnd": {
+        marginRight: ".5rem",
+        "& .MuiButtonBase-root": {
+          height: "2rem",
+        },
+      },
     },
-    inputLabel: {
-      ...fieldBasic.inputLabel,
-      fontSize: ".8rem",
+    "& .MuiButtonBase-root .min-icon": {
+      width: ".8rem",
+      height: ".8rem",
     },
-  });
+  },
+  inputLabel: {
+    ...fieldBasic.inputLabel,
+    fontSize: ".8rem",
+  },
+});
 
 const CredentialItem = ({
   label = "",
@@ -69,28 +68,26 @@ const CredentialItem = ({
     <div className={classes.container}>
       <div className={classes.inputLabel}>{label}:</div>
       <div className={classes.inputWithCopy}>
-        <OutlinedInput
+        <TextField
           value={value}
           readOnly
-          endAdornment={
-            <InputAdornment position="end">
-              <TooltipWrapper tooltip={"Copy"}>
-                <CopyToClipboard text={value}>
-                  <Button
-                    id={"copy-clipboard"}
-                    aria-label="copy"
-                    onClick={() => {}}
-                    onMouseDown={() => {}}
-                    style={{
-                      width: "28px",
-                      height: "28px",
-                      padding: "0px",
-                    }}
-                    icon={<CopyIcon />}
-                  />
-                </CopyToClipboard>
-              </TooltipWrapper>
-            </InputAdornment>
+          elemAfterInput={
+            <TooltipWrapper tooltip={"Copy"}>
+              <CopyToClipboard text={value}>
+                <Button
+                  id={"copy-clipboard"}
+                  aria-label="copy"
+                  onClick={() => {}}
+                  onMouseDown={() => {}}
+                  style={{
+                    width: "28px",
+                    height: "28px",
+                    padding: "0px",
+                  }}
+                  icon={<CopyIcon />}
+                />
+              </CopyToClipboard>
+            </TooltipWrapper>
           }
         />
       </div>
@@ -98,4 +95,4 @@ const CredentialItem = ({
   );
 };
 
-export default withStyles(CredentialItem, styles);;
+export default withStyles(CredentialItem, styles);

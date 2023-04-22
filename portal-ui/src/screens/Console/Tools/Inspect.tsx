@@ -231,9 +231,6 @@ const Inspect = ({ classes }: { classes?: any }) => {
                   <InputBoxWrapper
                     id="inspect_volume"
                     name="inspect_volume"
-                    extraInputProps={{
-                      "data-test-id": "inspect_volume",
-                    }}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                       setVolumeName(e.target.value);
                     }}
@@ -252,9 +249,6 @@ const Inspect = ({ classes }: { classes?: any }) => {
                   <InputBoxWrapper
                     id="inspect_path"
                     name="inspect_path"
-                    extraInputProps={{
-                      "data-test-id": "inspect_path",
-                    }}
                     error={pathError}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                       setInspectPath(e.target.value);
@@ -273,9 +267,6 @@ const Inspect = ({ classes }: { classes?: any }) => {
                   <FormSwitchWrapper
                     classes={{
                       inputLabel: classes.switchLabel,
-                    }}
-                    extraInputProps={{
-                      "data-test-id": "inspect_encrypt",
                     }}
                     label="Encrypt"
                     indicatorLabels={["True", "False"]}

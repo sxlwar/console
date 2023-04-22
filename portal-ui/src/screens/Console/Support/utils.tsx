@@ -125,9 +125,6 @@ export const ProxyConfiguration = () => {
                 label=""
                 value={proxyConfigurationCommand}
                 overlayIcon={<CopyIcon />}
-                extraInputProps={{
-                  readOnly: true,
-                }}
                 overlayAction={() =>
                   navigator.clipboard.writeText(proxyConfigurationCommand)
                 }

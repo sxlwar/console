@@ -14,26 +14,23 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React, {
+import clsx from "clsx";
+import {
   forwardRef,
   useEffect,
   useImperativeHandle,
   useMemo,
   useState,
 } from "react";
-import clsx from "clsx";
 
-import { withStyles } from "../../../../../theme/makeStyles";
-import InputLabel from "@mui/material/InputLabel";
-import { Tooltip } from "mds";
-import FormControl from "@mui/material/FormControl";
+import { Field } from "@atlaskit/form";
 import Select from "@atlaskit/select";
-import InputBase from "@mui/material/InputBase";
-import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
-import { HelpIcon, Grid } from "mds";
+import { Grid, HelpIcon, Tooltip } from "mds";
+import { withStyles } from "../../../../../theme/makeStyles";
 import FormSwitchWrapper from "../FormSwitchWrapper/FormSwitchWrapper";
-import { days, months, validDate, years } from "./utils";
 import { selectorTypes } from "../SelectWrapper/SelectWrapper";
+import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
+import { days, months, validDate, years } from "./utils";
 
 const styles = () => ({
   dateInput: {
@@ -60,6 +57,8 @@ const styles = () => ({
     marginBottom: 20,
   },
 });
+
+const InputBase = () => <input />;
 
 const SelectStyled = withStyles(InputBase, () => ({
   root: {
@@ -191,7 +190,7 @@ const DateSelector = forwardRef(
       >
         <div className={classes.labelContainer}>
           <Grid container>
-            <InputLabel htmlFor={id} className={classes.inputLabel}>
+            <label htmlFor={id} className={classes.inputLabel}>
               <span>{label}</span>
               {tooltip !== "" && (
                 <div className={classes.tooltipContainer}>
@@ -202,7 +201,7 @@ const DateSelector = forwardRef(
                   </Tooltip>
                 </div>
               )}
-            </InputLabel>
+            </label>
             {addSwitch && (
               <FormSwitchWrapper
                 indicatorLabels={["Specific Date", "Default (7 Days)"]}
@@ -222,50 +221,51 @@ const DateSelector = forwardRef(
           </Grid>
         </div>
         <div>
-          <FormControl
-            disabled={isDateDisabled()}
-            className={classes.dateInput}
-          >
-            <Select
-              id={`${id}-month`}
-              name={`${id}-month`}
-              value={monthOptions.find(
-                (item) => item.value === month.toString()
-              )}
-              displayEmpty
-              onChange={onMonthChange}
-              input={<SelectStyled />}
-              options={monthOptions}
-            ></Select>
-          </FormControl>
-          <FormControl
-            disabled={isDateDisabled()}
-            className={classes.dateInput}
-          >
-            <Select
-              id={`${id}-day`}
-              name={`${id}-day`}
-              value={dayOptions.find((item) => item.value === day.toString())}
-              displayEmpty
-              onChange={onDayChange}
-              input={<SelectStyled />}
-              options={dayOptions}
-            ></Select>
-          </FormControl>
-          <FormControl
-            disabled={isDateDisabled()}
-            className={classes.dateInput}
-          >
-            <Select
-              id={`${id}-year`}
-              name={`${id}-year`}
-              value={yearOptions.find((item) => item.value === year.toString())}
-              displayEmpty
-              onChange={onYearChange}
-              input={<SelectStyled />}
-              options={yearOptions}
-            ></Select>
-          </FormControl>
+          <Field name={`${id}-month`} isDisabled={isDateDisabled()}>
+            {(fieldProps) => (
+              <Select
+                id={`${id}-month`}
+                name={`${id}-month`}
+                value={monthOptions.find(
+                  (item) => item.value === month.toString()
+                )}
+                displayEmpty
+                onChange={onMonthChange}
+                input={<SelectStyled />}
+                options={monthOptions}
+              ></Select>
+            )}
+          </Field>
+          <Field name={`${id}-day`} isDisabled={isDateDisabled()}>
+            {(filedProps) => (
+              <Select
+                {...filedProps}
+                id={`${id}-day`}
+                name={`${id}-day`}
+                value={dayOptions.find((item) => item.value === day.toString())}
+                displayEmpty
+                onChange={onDayChange}
+                input={<SelectStyled />}
+                options={dayOptions}
+              ></Select>
+            )}
+          </Field>
+          <Field name={`${id}-yeary`} isDisabled={isDateDisabled()}>
+            {(fieldProps) => (
+              <Select
+                {...fieldProps}
+                id={`${id}-year`}
+                name={`${id}-year`}
+                value={yearOptions.find(
+                  (item) => item.value === year.toString()
+                )}
+                displayEmpty
+                onChange={onYearChange}
+                input={<SelectStyled />}
+                options={yearOptions}
+              ></Select>
+            )}
+          </Field>
         </div>
       </Grid>
     );

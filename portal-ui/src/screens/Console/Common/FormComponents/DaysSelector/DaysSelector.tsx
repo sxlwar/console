@@ -15,7 +15,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React, { Fragment, useEffect, useState } from "react";
-import InputLabel from "@mui/material/InputLabel";
 import { DateTime } from "luxon";
 
 import { withStyles } from "../../../../../theme/makeStyles";
@@ -189,27 +188,17 @@ const DaysSelector = ({
     selectedMinutes,
   ]);
 
-  const extraInputProps = {
-    style: {
-      textAlign: "center" as const,
-      paddingRight: 10,
-      paddingLeft: 10,
-      width: 25,
-    },
-    className: "removeArrows" as const,
-  };
-
   return (
     <Fragment>
       <Grid container className={classes.fieldContainer}>
         <Grid item xs={12} className={classes.labelContainer}>
-          <InputLabel
+          <label
             htmlFor={id}
             className={classes.inputLabel}
-            sx={{ marginLeft: "10px" }}
+            style={{ marginLeft: "10px" }}
           >
             <span>{label}</span>
-          </InputLabel>
+          </label>
         </Grid>
         <Grid item xs={12} className={classes.durationInputs}>
           <Grid item className={classes.dateInputContainer}>
@@ -225,7 +214,6 @@ const DaysSelector = ({
                 setSelectedDays(parseInt(e.target.value));
               }}
               value={selectedDays.toString()}
-              extraInputProps={extraInputProps}
               noLabelMinWidth
             />
           </Grid>
@@ -242,7 +230,6 @@ const DaysSelector = ({
                 setSelectedHours(parseInt(e.target.value));
               }}
               value={selectedHours.toString()}
-              extraInputProps={extraInputProps}
               noLabelMinWidth
             />
           </Grid>
@@ -259,7 +246,6 @@ const DaysSelector = ({
                 setSelectedMinutes(parseInt(e.target.value));
               }}
               value={selectedMinutes.toString()}
-              extraInputProps={extraInputProps}
               noLabelMinWidth
             />
           </Grid>

@@ -14,17 +14,15 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React, { Fragment } from "react";
+import { DateTimePicker } from "@atlaskit/datetime-picker";
+import { Field } from "@atlaskit/form";
 import { DateTime } from "luxon";
-import { HelpIcon, OpenListIcon, Grid, TimeIcon, Tooltip } from "mds";
-import { InputLabel, TextField } from "@mui/material";
-import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterLuxon } from "@mui/x-date-pickers/AdapterLuxon";
-import InputAdornment from "@mui/material/InputAdornment";
+import { Grid, HelpIcon, Tooltip } from "mds";
+import { Fragment } from "react";
 
+import { Theme } from "../../../../../theme/main";
 import { withStyles } from "../../../../../theme/makeStyles";
 import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
-import { Theme } from "../../../../../theme/main";
 
 interface IDateTimePicker {
   value: DateTime | null;
@@ -234,77 +232,9 @@ const DateTimePickerWrapper = ({
   label,
   tooltip = "",
   required,
-  id,
   disabled = false,
-  noInputIcon = false,
   classNamePrefix = "",
-  openPickerIcon,
 }: IDateTimePicker) => {
-  let adornment = {};
-
-  if (!noInputIcon) {
-    adornment = {
-      startAdornment: (
-        <InputAdornment position="start">
-          <TimeIcon />
-        </InputAdornment>
-      ),
-    };
-  }
-
-  if (forFilterContained) {
-    adornment = {
-      endAdornment: (
-        <InputAdornment position="end">
-          <OpenListIcon className={classes.openListIcon} />
-        </InputAdornment>
-      ),
-    };
-  }
-
-  const classOverridden = `${classNamePrefix}date-time-input  ${
-    forSearchBlock ? classes.dateSelectorOverride : ""
-  } ${
-    forFilterContained && !forSearchBlock
-      ? classes.dateSelectorFilterOverride
-      : ""
-  }`;
-
-  const clsName = forSearchBlock
-    ? classes.parentDateOverride
-    : classes.dateSelectorFormOverride;
-
-  const inputItem = (
-    <LocalizationProvider dateAdapter={AdapterLuxon}>
-      <DateTimePicker
-        value={value}
-        onChange={onChange}
-        InputProps={{
-          ...adornment,
-          className: classOverridden,
-        }}
-        components={{
-          OpenPickerIcon: openPickerIcon,
-        }}
-        label=""
-        className={clsName}
-        disabled={disabled}
-        renderInput={(props: any) => (
-          <TextField id={id} variant="standard" {...props} disabled />
-        )}
-        ampm={false}
-        PopperProps={{
-          className: classes.paperOverride,
-        }}
-        inputFormat={"LL/dd/yyyy HH:mm"}
-      />
-    </LocalizationProvider>
-  );
-
-  if (forSearchBlock) {
-    return inputItem;
-  }
-
   const containerCls = !forFilterContained ? classes.fieldContainer : "";
   return (
     <Fragment>
@@ -313,32 +243,53 @@ const DateTimePickerWrapper = ({
         xs={12}
         className={`${containerCls} ${classNamePrefix}input-field-container`}
       >
-        {label !== "" && (
-          <InputLabel
-            htmlFor={id}
-            className={`${classes.inputLabel} ${classNamePrefix}input-label`}
-          >
-            <span>
-              {label}
-              {required ? "*" : ""}
-            </span>
-            {tooltip !== "" && (
-              <div className={classes.tooltipContainer}>
-                <Tooltip tooltip={tooltip} placement="top">
-                  <div className={classes.tooltip}>
-                    <HelpIcon />
+        <Field
+          name="date_time_picker"
+          isDisabled={disabled}
+          label={
+            !forSearchBlock &&
+            label !== "" && (
+              <div
+                className={`${classes.inputLabel} ${classNamePrefix}input-label`}
+              >
+                <span>
+                  {label}
+                  {required ? "*" : ""}
+                </span>
+                {tooltip !== "" && (
+                  <div className={classes.tooltipContainer}>
+                    <Tooltip tooltip={tooltip} placement="top">
+                      <div className={classes.tooltip}>
+                        <HelpIcon />
+                      </div>
+                    </Tooltip>
                   </div>
-                </Tooltip>
+                )}
               </div>
-            )}
-          </InputLabel>
-        )}
-
-        <div
-          className={`${classes.textBoxContainer} ${classNamePrefix}input-wrapper`}
+            )
+          }
         >
-          {inputItem}
-        </div>
+          {(fieldProps) => (
+            <div
+              className={`${classes.textBoxContainer} ${classNamePrefix}input-wrapper`}
+            >
+              <DateTimePicker
+                {...fieldProps}
+                value={value?.toString()}
+                onChange={(event) => {
+                  if (event) {
+                    const date = new Date(event);
+
+                    onChange?.(DateTime.fromJSDate(date));
+                  } else {
+                    onChange?.(null);
+                  }
+                }}
+                isDisabled={disabled}
+              />
+            </div>
+          )}
+        </Field>
       </Grid>
     </Fragment>
   );

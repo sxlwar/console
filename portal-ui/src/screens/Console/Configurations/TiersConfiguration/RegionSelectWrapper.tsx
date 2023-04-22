@@ -14,8 +14,6 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import React from "react";
-import { InputLabel } from "@mui/material";
-import { InputProps as StandardInputProps } from "@mui/material/Input";
 
 import { makeStyles, withStyles } from "../../../../theme/makeStyles";
 import {
@@ -46,7 +44,6 @@ interface RegionSelectBoxProps {
   overlayIcon?: any;
   overlayAction?: () => void;
   overlayObject?: any;
-  extraInputProps?: StandardInputProps["inputProps"];
   noLabelMinWidth?: boolean;
   pattern?: string;
   autoFocus?: boolean;
@@ -96,7 +93,6 @@ const RegionSelectWrapper = ({
   overlayId,
   overlayIcon = null,
   overlayObject = null,
-  extraInputProps = {},
   overlayAction,
   noLabelMinWidth = false,
   classes,
@@ -106,7 +102,6 @@ const RegionSelectWrapper = ({
 
   let inputProps: any = {
     "data-index": index,
-    ...extraInputProps,
     name: name,
     id: id,
     classes: inputClasses,
@@ -122,7 +117,7 @@ const RegionSelectWrapper = ({
         )}
       >
         {label !== "" && (
-          <InputLabel
+          <label
             htmlFor={id}
             className={
               noLabelMinWidth ? classes.noMinWidthLabel : classes.inputLabel
@@ -141,7 +136,7 @@ const RegionSelectWrapper = ({
                 </Tooltip>
               </div>
             )}
-          </InputLabel>
+          </label>
         )}
 
         <div className={classes.textBoxContainer}>

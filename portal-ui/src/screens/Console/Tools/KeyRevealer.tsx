@@ -38,9 +38,6 @@ const KeyRevealer = ({ value }: { value: string }) => {
         onChange={() => {}}
         value={value}
         overlayIcon={<CopyIcon />}
-        extraInputProps={{
-          readOnly: true,
-        }}
         overlayAction={() => navigator.clipboard.writeText(value)}
       />
 

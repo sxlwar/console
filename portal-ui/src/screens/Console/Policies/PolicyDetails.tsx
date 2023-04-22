@@ -39,8 +39,7 @@ import TableWrapper from "../Common/TableWrapper/TableWrapper";
 
 import { ErrorResponseHandler } from "../../../common/types";
 import CodeMirrorWrapper from "../Common/FormComponents/CodeMirrorWrapper/CodeMirrorWrapper";
-import InputAdornment from "@mui/material/InputAdornment";
-import TextField from "@mui/material/TextField";
+import TextField from "@atlaskit/textfield";
 import ScreenTitle from "../Common/ScreenTitle/ScreenTitle";
 import PageLayout from "../Common/Layout/PageLayout";
 import VerticalTabs from "../Common/VerticalTabs/VerticalTabs";
@@ -451,17 +450,19 @@ const PolicyDetails = ({ classes }: IPolicyDetailsProps) => {
                         id="search-resource"
                         label=""
                         onChange={(val) => {
-                          setFilterUsers(val.target.value);
+                          setFilterUsers((val.target as any).value);
                         }}
-                        InputProps={{
-                          disableUnderline: true,
-                          startAdornment: (
-                            <InputAdornment position="start">
-                              <SearchIcon />
-                            </InputAdornment>
-                          ),
-                        }}
-                        variant="standard"
+                        elemBeforeInput={
+                          <span
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              padding: "0 5px",
+                            }}
+                          >
+                            <SearchIcon />
+                          </span>
+                        }
                       />
                     </Grid>
                   )}
@@ -496,17 +497,19 @@ const PolicyDetails = ({ classes }: IPolicyDetailsProps) => {
                         id="search-resource"
                         label=""
                         onChange={(val) => {
-                          setFilterGroups(val.target.value);
+                          setFilterGroups((val.target as any).value);
                         }}
-                        InputProps={{
-                          disableUnderline: true,
-                          startAdornment: (
-                            <InputAdornment position="start">
-                              <SearchIcon />
-                            </InputAdornment>
-                          ),
-                        }}
-                        variant="standard"
+                        elemBeforeInput={
+                          <span
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              padding: "0 5px",
+                            }}
+                          >
+                            <SearchIcon />
+                          </span>
+                        }
                       />
                     </Grid>
                   )}

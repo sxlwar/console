@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import Collapse from "@mui/material/Collapse";
+import { Accordion } from "mds";
 import { Box, MenuCollapsedIcon, MenuExpandedIcon, List, ListItem } from "mds";
 import React from "react";
 import { ServerInfo } from "../types";
@@ -119,20 +119,12 @@ const ServersList = ({ data }: { data: ServerInfo[] }) => {
                     Drives ({serverInfo.drives.length})
                   </ListItem>
 
-                  <Collapse
-                    in={isExpanded}
-                    timeout="auto"
-                    unmountOnExit
+                  <Accordion
                     sx={{
                       width: "100%",
                       flex: 1,
                       display: "flex",
-                      padding: { md: "15px 30px", xs: "10px 10px" },
-                      "& .MuiCollapse-wrapperInner": {
-                        display: "flex",
-                        flexFlow: "column",
-                        gap: "15px",
-                      },
+                      padding: "15px 30px",
                     }}
                   >
                     {serverInfo.drives.map((driveInfo, index) => {
@@ -143,7 +135,7 @@ const ServersList = ({ data }: { data: ServerInfo[] }) => {
                         />
                       );
                     })}
-                  </Collapse>
+                  </Accordion>
                 </Box>
               ) : null}
             </React.Fragment>

@@ -16,7 +16,6 @@
 
 import React, { useState } from "react";
 import get from "lodash/get";
-import { InputLabel } from "@mui/material";
 
 import { withStyles } from "../../../../../theme/makeStyles";
 import AttachmentIcon from '@atlaskit/icon/glyph/attachment'
@@ -98,7 +97,7 @@ const FileSelector = ({
         } ${error !== "" ? classes.errorInField : ""}`}
       >
         {label !== "" && (
-          <InputLabel
+          <label
             htmlFor={id}
             className={`${error !== "" ? classes.fieldLabelError : ""} ${
               classes.inputLabel
@@ -117,7 +116,7 @@ const FileSelector = ({
                 </Tooltip>
               </div>
             )}
-          </InputLabel>
+          </label>
         )}
 
         {showFileSelector || value === "" ? (

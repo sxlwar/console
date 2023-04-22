@@ -26,7 +26,6 @@ import debounce from "lodash/debounce";
 import { withStyles } from "../../../../../theme/makeStyles";
 
 import QuestionCircleIcon from "@atlaskit/icon/glyph/question-circle";
-import { InputLabel } from "@mui/material";
 import { fieldBasic, tooltipHelper } from "../common/styleLibrary";
 import InputBoxWrapper from "../InputBoxWrapper/InputBoxWrapper";
 import { AddIcon, Grid, Tooltip } from "mds";
@@ -225,7 +224,7 @@ const QueryMultiSelector = ({
   return (
     <React.Fragment>
       <Grid item xs={12} className={classes.fieldContainer}>
-        <InputLabel className={classes.inputLabel}>
+        <label className={classes.inputLabel}>
           <span>{label}</span>
           {tooltip !== "" && (
             <div className={classes.tooltipContainer}>
@@ -236,7 +235,7 @@ const QueryMultiSelector = ({
               </Tooltip>
             </div>
           )}
-        </InputLabel>
+        </label>
         <Grid
           item
           xs={12}

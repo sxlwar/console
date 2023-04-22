@@ -17,7 +17,7 @@
 import React, { Fragment } from "react";
 
 import { withStyles } from "../../../../../theme/makeStyles";
-import TextField from "@mui/material/TextField";
+import TextField from "@atlaskit/textfield";
 import { searchField } from "../common/styleLibrary";
 
 interface IFilterInputWrapper {
@@ -86,10 +86,7 @@ const FilterInputWrapper = ({
             name={name}
             label=""
             onChange={(val) => {
-              onChange(val.target.value);
-            }}
-            InputProps={{
-              disableUnderline: true,
+              onChange((val.target as any).value);
             }}
             className={classes.searchField}
             value={value}
