@@ -16,7 +16,7 @@
 
 import React from "react";
 
-import { Switch } from "@mui/material";
+import Toggle from '@atlaskit/toggle';
 import clsx from "clsx";
 import { Grid, HelpIcon, Tooltip } from "mds";
 import { withStyles } from "../../../../../theme/makeStyles";
@@ -59,53 +59,6 @@ const styles = () => ({
   ...fieldBasic,
 });
 
-const StyledSwitch = withStyles(Switch, () => ({
-  root: {
-    width: 50,
-    height: 24,
-    padding: 0,
-    margin: 0,
-  },
-  switchBase: {
-    padding: 1,
-    "&$checked": {
-      transform: "translateX(24px)",
-      color: "white",
-      "& + $track": {
-        backgroundColor: "#4CCB92",
-        boxShadow: "inset 0px 1px 4px rgba(0,0,0,0.1)",
-        opacity: 1,
-        border: "none",
-      },
-    },
-    "&$focusVisible $thumb": {
-      color: "#4CCB92",
-      border: "6px solid #fff",
-    },
-  },
-  thumb: {
-    width: 22,
-    height: 22,
-    backgroundColor: "#FAFAFA",
-    border: "2px solid #FFFFFF",
-    marginLeft: 1,
-  },
-  track: {
-    borderRadius: 24 / 2,
-    backgroundColor: "#E2E2E2",
-    boxShadow: "inset 0px 1px 4px rgba(0,0,0,0.1)",
-    opacity: 1,
-    // transition: theme.transitions.create(["background-color", "border"]),
-  },
-  checked: {},
-  focusVisible: {},
-  switchContainer: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-end",
-  },
-}));
-
 const FormSwitchWrapper = ({
   label = "",
   onChange,
@@ -133,17 +86,12 @@ const FormSwitchWrapper = ({
             : "OFF"}
         </span>
       )}
-      <StyledSwitch
-        checked={checked}
+      <Toggle
+        isChecked={checked}
         onChange={onChange}
-        color="primary"
         name={name}
-        inputProps={{ "aria-label": "primary checkbox" }}
-        disabled={disabled}
-        disableRipple
-        disableFocusRipple
-        disableTouchRipple
-        value={value}
+        isDisabled={disabled}
+        value={value as string}
         id={id}
       />
       {!switchOnly && (

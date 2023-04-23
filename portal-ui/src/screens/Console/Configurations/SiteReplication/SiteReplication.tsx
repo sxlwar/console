@@ -17,7 +17,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { DialogContentText } from "@mui/material";
 import PageLayout from "../../Common/Layout/PageLayout";
 import useApi from "../../Common/Hooks/useApi";
 import ReplicationSites from "./ReplicationSites";
@@ -44,6 +43,7 @@ import AButton from "../../Common/AButton/AButton";
 import { useAppDispatch } from "../../../../store";
 import TooltipWrapper from "../../Common/TooltipWrapper/TooltipWrapper";
 import PageHeaderWrapper from "../../Common/PageHeaderWrapper/PageHeaderWrapper";
+import { DialogContentText } from "../../../../common/DialogContentText";
 
 export type ReplicationSite = {
   deploymentID: string;

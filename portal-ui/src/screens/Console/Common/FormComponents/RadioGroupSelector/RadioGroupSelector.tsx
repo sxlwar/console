@@ -13,10 +13,7 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Radio, { RadioProps } from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import clsx from "clsx";
+import { RadioGroup } from "@atlaskit/radio";
 import React from "react";
 
 import { Grid, HelpIcon, Tooltip } from "mds";
@@ -44,49 +41,8 @@ interface RadioGroupProps {
 const styles = () => ({
   ...fieldBasic,
   ...tooltipHelper,
-  optionLabel: {
-    "&.Mui-disabled": {
-      "& .MuiFormControlLabel-label": {
-        color: "#9c9c9c",
-      },
-    },
-    "&:last-child": {
-      marginRight: 0,
-    },
-    "& .MuiFormControlLabel-label": {
-      fontSize: 12,
-      color: "#07193E",
-    },
-  },
-  checkedOption: {
-    "& .MuiFormControlLabel-label": {
-      fontSize: 12,
-      color: "#07193E",
-      fontWeight: 700,
-    },
-  },
-  root: {
-    "&:hover": {
-      backgroundColor: "transparent",
-    },
-  },
   ...radioIcons,
 });
-
-const RadioButton = (props: RadioProps) => {
-  const classes = withStyles.getClasses(props) as any;
-
-  return (
-    <Radio
-      className={classes.root}
-      disableRipple
-      color="default"
-      checkedIcon={<span className={classes.radioSelectedIcon} />}
-      icon={<span className={classes.radioUnselectedIcon} />}
-      {...props}
-    />
-  );
-};
 
 export const RadioGroupSelector = ({
   selectorOptions = [],
@@ -96,9 +52,7 @@ export const RadioGroupSelector = ({
   name,
   onChange,
   tooltip = "",
-  disableOptions = false,
   classes,
-  displayInColumn = false,
 }: RadioGroupProps) => {
   return (
     <Grid container rowSpacing={1} columnSpacing={1}>
@@ -119,29 +73,11 @@ export const RadioGroupSelector = ({
       <Grid item>
         <RadioGroup
           aria-label={id}
-          id={id}
           name={name}
+          options={selectorOptions}
           value={currentSelection}
           onChange={onChange}
-          row={!displayInColumn}
-          style={{ display: "flex", textAlign: "right" }}
-        >
-          {selectorOptions.map((selectorOption) => {
-            return (
-              <FormControlLabel
-                key={`rd-${name}-${selectorOption.value}`}
-                value={selectorOption.value}
-                control={<RadioButton />}
-                label={selectorOption.label}
-                disabled={disableOptions}
-                className={clsx(classes.optionLabel, {
-                  [classes.checkedOption]:
-                    selectorOption.value === currentSelection,
-                })}
-              />
-            );
-          })}
-        </RadioGroup>
+        ></RadioGroup>
       </Grid>
     </Grid>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import { Stack } from "@mui/material";
+import { Grid } from "mds";
 
 type LabelValuePairProps = {
   label?: any;
@@ -19,14 +19,14 @@ const LabelValuePair = ({
   valProps = {},
 }: LabelValuePairProps) => {
   return (
-    <Stack direction={{ xs: "column", sm: orientation }} {...stkProps}>
+    <Grid direction={{ xs: "column", sm: orientation }} {...stkProps}>
       <label style={{ marginRight: 5, fontWeight: 600 }} {...lblProps}>
         {label}
       </label>
       <label style={{ marginRight: 5, fontWeight: 500 }} {...valProps}>
         {value}
       </label>
-    </Stack>
+    </Grid>
   );
 };
 

@@ -13,8 +13,8 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
-import { Checkbox } from "@mui/material";
 import React from "react";
+import { Checkbox } from '@atlaskit/checkbox';
 
 import { Grid, HelpIcon, Tooltip } from "mds";
 import { withStyles } from "../../../../../theme/makeStyles";
@@ -88,19 +88,11 @@ const CheckboxWrapper = ({
           <Checkbox
             name={name}
             id={id}
-            value={value}
+            value={value as string}
             color="primary"
-            inputProps={{ "aria-label": "secondary checkbox" }}
-            checked={checked}
+            isChecked={checked}
             onChange={onChange}
-            checkedIcon={<span className={classes.checkedIcon} />}
-            icon={<span className={classes.unCheckedIcon} />}
-            disabled={disabled}
-            disableRipple
-            disableFocusRipple
-            focusRipple={false}
-            centerRipple={false}
-            disableTouchRipple
+            isDisabled={disabled}
             style={overrideCheckboxStyles || {}}
           />
         </div>

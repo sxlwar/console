@@ -14,72 +14,66 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { containerForHeader } from "../Common/FormComponents/common/styleLibrary";
 
-
-import { withStyles } from "../../../theme/makeStyles";
+import { Field } from "@atlaskit/form";
+import { RadioGroup } from "@atlaskit/radio";
 import clsx from "clsx";
-import {
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Radio,
-  RadioGroup,
-} from "@mui/material";
-
 import * as cicons from "mds";
 import * as micons from "mds";
-import { Loader, Grid } from "mds";
+import { Grid, Loader } from "mds";
+import { withStyles } from "../../../theme/makeStyles";
 
 interface IIconsScreenSimple {
   classes?: any;
 }
 
-const styles = () =>
-  ({
-    ...containerForHeader,
-    root: {
-      fontSize: 12,
-      wordWrap: "break-word",
-      "& .min-loader": {
-        width: 45,
-        height: 45,
-      },
+const styles = () => ({
+  ...containerForHeader,
+  root: {
+    fontSize: 12,
+    wordWrap: "break-word",
+    "& .min-loader": {
+      width: 45,
+      height: 45,
     },
-    red: {
-      "& .min-icon": {
-        color: "red",
-      },
+  },
+  red: {
+    "& .min-icon": {
+      color: "red",
     },
-  });
+  },
+});
+
+const colorOptions: { label: string; value: string }[] = [
+  { label: "Default", value: "def" },
+  { label: "Color", value: "red" },
+];
 
 const IconsScreen = ({ classes }: IIconsScreenSimple) => {
   const [color, setColor] = useState<string>("default");
   return (
     <div className={classes.container}>
       <Grid container>
-        <FormControl>
-          <FormLabel id="demo-radio-buttons-group-label">Color</FormLabel>
-          <RadioGroup
-            row
-            aria-labelledby="demo-radio-buttons-group-label"
-            defaultValue="default"
-            name="radio-buttons-group"
-            onChange={(c) => {
-              setColor(c.target.value);
-            }}
-          >
-            <FormControlLabel value="def" control={<Radio />} label="Default" />
-            <FormControlLabel value="red" control={<Radio />} label="Color" />
-          </RadioGroup>
-        </FormControl>
+        <Field name="color" label="Color">
+          {(fieldProps) => (
+            <RadioGroup
+              {...fieldProps}
+              options={colorOptions}
+              onChange={(c) => {
+                setColor(c.target.value);
+              }}
+              aria-labelledby="radiogroup-label"
+            />
+          )}
+        </Field>
       </Grid>
       <h1>Logos</h1>
       <Grid
         container
         sx={{
-          textAlign: 'center'
+          textAlign: "center",
         }}
         rowSpacing={4}
         columnSpacing={4}
@@ -97,7 +91,7 @@ const IconsScreen = ({ classes }: IIconsScreenSimple) => {
       <Grid
         container
         sx={{
-          textAlign: 'center'
+          textAlign: "center",
         }}
         rowSpacing={4}
         columnSpacing={4}
@@ -115,7 +109,7 @@ const IconsScreen = ({ classes }: IIconsScreenSimple) => {
       <Grid
         container
         sx={{
-          textAlign: 'center'
+          textAlign: "center",
         }}
         rowSpacing={4}
         columnSpacing={4}
@@ -1169,7 +1163,7 @@ const IconsScreen = ({ classes }: IIconsScreenSimple) => {
       <Grid
         container
         sx={{
-          textAlign: 'center'
+          textAlign: "center",
         }}
         rowSpacing={4}
         columnSpacing={4}
@@ -1313,4 +1307,4 @@ const IconsScreen = ({ classes }: IIconsScreenSimple) => {
   );
 };
 
-export default withStyles(IconsScreen, styles);;
+export default withStyles(IconsScreen, styles);

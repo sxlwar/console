@@ -104,6 +104,19 @@
     date-fns "^2.17.0"
     react-uid "^2.2.0"
 
+"@atlaskit/checkbox@^12.4.6":
+  version "12.4.6"
+  resolved "https://registry.yarnpkg.com/@atlaskit/checkbox/-/checkbox-12.4.6.tgz#25e2b2c2f59e728acd4439c15a2a92a6c420dccb"
+  integrity sha512-3b73SgYoA/6R05lf7SWIx16AC0IfIYJzvwvfVKx+SI3FNGISzQfsF4M35wkT4ROsbbkLOIIOeTVWcoCLgGdhhQ==
+  dependencies:
+    "@atlaskit/analytics-next" "^9.0.0"
+    "@atlaskit/ds-lib" "^2.1.0"
+    "@atlaskit/icon" "^21.11.0"
+    "@atlaskit/theme" "^12.2.0"
+    "@atlaskit/tokens" "^1.2.0"
+    "@babel/runtime" "^7.0.0"
+    "@emotion/react" "^11.7.1"
+
 "@atlaskit/codemod-utils@^4.1.0":
   version "4.1.3"
   resolved "https://registry.yarnpkg.com/@atlaskit/codemod-utils/-/codemod-utils-4.1.3.tgz#bcc7ff725ac153684a366fc54ab1f532a531d811"
@@ -346,6 +359,18 @@
     "@babel/runtime" "^7.0.0"
     "@emotion/react" "^11.7.1"
 
+"@atlaskit/radio@^5.4.9":
+  version "5.4.9"
+  resolved "https://registry.yarnpkg.com/@atlaskit/radio/-/radio-5.4.9.tgz#ac34d3d216e2f727dff7724327cb09b5f1620d37"
+  integrity sha512-9N+mCeCua/yCBlI4c+UHuAfgQwePO22U6hKd9FmO/Q/3U72eatpUWPm/Kb2H1uSksBb3DUuGxqVx0hK1CmuJCA==
+  dependencies:
+    "@atlaskit/analytics-next" "^9.0.0"
+    "@atlaskit/ds-lib" "^2.1.0"
+    "@atlaskit/theme" "^12.2.0"
+    "@atlaskit/tokens" "^1.2.0"
+    "@babel/runtime" "^7.0.0"
+    "@emotion/react" "^11.7.1"
+
 "@atlaskit/section-message@^6.3.14":
   version "6.3.14"
   resolved "https://registry.yarnpkg.com/@atlaskit/section-message/-/section-message-6.3.14.tgz#5db3b84dd84588ad7aff6e7a76054ba414ce5243"
@@ -455,6 +480,19 @@
     "@atlaskit/ds-lib" "^2.1.0"
     "@atlaskit/tokens" "^1.2.0"
     "@babel/runtime" "^7.0.0"
+
+"@atlaskit/toggle@^12.5.8":
+  version "12.5.8"
+  resolved "https://registry.yarnpkg.com/@atlaskit/toggle/-/toggle-12.5.8.tgz#49adb59e4009c42a0c40fbf1b7bc9b185dcbe5c7"
+  integrity sha512-ZkuSGA7U5IaXmtpAPZ5upS95Gl5nhgQE96JqyBXj/g3Is3r7NhaVzMJU0bDt4DCbjzEsachb6UFd2gdQvuRHnQ==
+  dependencies:
+    "@atlaskit/analytics-next" "^9.0.0"
+    "@atlaskit/ds-lib" "^2.1.0"
+    "@atlaskit/icon" "^21.11.0"
+    "@atlaskit/theme" "^12.2.0"
+    "@atlaskit/tokens" "^1.2.0"
+    "@babel/runtime" "^7.0.0"
+    "@emotion/react" "^11.7.1"
 
 "@atlaskit/tokens@^1.0.0":
   version "1.2.8"

@@ -288,18 +288,4 @@ export interface ThemeOptions {
   };
 }
 
-declare module "@mui/material/styles" {
-  export interface Theme {
-    colors?: {
-      link?: string;
-    };
-  }
-
-  export interface ThemeOptions {
-    colors?: {
-      link?: string;
-    };
-  }
-}
-
 export default theme;

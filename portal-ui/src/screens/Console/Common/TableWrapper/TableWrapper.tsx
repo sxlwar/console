@@ -13,25 +13,32 @@
 //
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
-import React, { Fragment, useState } from "react";
-import { Checkbox, Popover } from "@mui/material";
+import { Checkbox } from "@atlaskit/checkbox";
+import { Popup } from "@atlaskit/popup";
 import ProgressBar from "@atlaskit/progress-bar";
-import { IconButton, Grid, ViewColumnIcon, ArrowDropDown, ArrowDropUp } from "mds";
-import { useNavigate } from "react-router-dom";
-import { AutoSizer, Column, InfiniteLoader, Table } from "react-virtualized";
 import get from "lodash/get";
 import isString from "lodash/isString";
+import {
+  ArrowDropDown,
+  ArrowDropUp,
+  Grid,
+  IconButton,
+  ViewColumnIcon,
+} from "mds";
+import React, { Fragment, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { AutoSizer, Column, InfiniteLoader, Table } from "react-virtualized";
 
+import { Loader } from "mds";
 import { withStyles } from "../../../../theme/makeStyles";
-import TableActionButton from "./TableActionButton";
 import CheckboxWrapper from "../FormComponents/CheckboxWrapper/CheckboxWrapper";
 import {
   checkboxIcons,
   radioIcons,
   TableRowPredefStyles,
 } from "../FormComponents/common/styleLibrary";
-import { Loader } from "mds";
 import TooltipWrapper from "../TooltipWrapper/TooltipWrapper";
+import TableActionButton from "./TableActionButton";
 
 //Interfaces for table Items
 
@@ -340,11 +347,7 @@ const generateColumnsMap = (
           <Fragment>
             {sortColumn === column.elementKey && (
               <Fragment>
-                {sortDirection === "ASC" ? (
-                  <ArrowDropUp />
-                ) : (
-                  <ArrowDropDown />
-                )}
+                {sortDirection === "ASC" ? <ArrowDropUp /> : <ArrowDropDown />}
               </Fragment>
             )}
             {column.label}
@@ -450,7 +453,6 @@ const TableWrapper = (props: TableWrapperProps) => {
     entityName,
     selectedItems,
     idField,
-    radioSelection = false,
     customEmptyMessage = "",
     customPaperHeight = "",
     noBackground = false,
@@ -471,7 +473,6 @@ const TableWrapper = (props: TableWrapperProps) => {
   const classes = withStyles.getClasses(props);
 
   const [columnSelectorOpen, setColumnSelectorOpen] = useState<boolean>(false);
-  const [anchorEl, setAnchorEl] = React.useState<any>(null);
 
   const findView = itemActions
     ? itemActions.find((el) => el.type === "view")
@@ -500,60 +501,51 @@ const TableWrapper = (props: TableWrapperProps) => {
     }
   };
 
-  const openColumnsSelector = (event: { currentTarget: any }) => {
-    setColumnSelectorOpen(!columnSelectorOpen);
-    setAnchorEl(event.currentTarget);
-  };
-
   const closeColumnSelector = () => {
     setColumnSelectorOpen(false);
-    setAnchorEl(null);
   };
 
   const columnsSelection = (columns: IColumns[]) => {
     return (
       <Fragment>
-        <IconButton
-          aria-describedby={"columnsSelector"}
-          color="primary"
-          onClick={openColumnsSelector}
-          size="large"
-        >
-          <ViewColumnIcon fontSize="inherit" />
-        </IconButton>
-        <Popover
-          anchorEl={anchorEl}
+        <Popup
           id={"columnsSelector"}
-          open={columnSelectorOpen}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "left",
-          }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "left",
-          }}
+          isOpen={columnSelectorOpen}
+          placement="bottom-start"
           onClose={closeColumnSelector}
-        >
-          <div className={classes.shownColumnsLabel}>Shown Columns</div>
-          <div className={classes.popoverContent}>
-            {columns.map((column: IColumns) => {
-              return (
-                <CheckboxWrapper
-                  key={`tableColumns-${column.label}`}
-                  label={column.label}
-                  checked={columnsShown.includes(column.elementKey!)}
-                  onChange={(e) => {
-                    onColumnChange(column.elementKey!, e.target.checked);
-                  }}
-                  id={`chbox-${column.label}`}
-                  name={`chbox-${column.label}`}
-                  value={column.label}
-                />
-              );
-            })}
-          </div>
-        </Popover>
+          content={() => (
+            <div>
+              <div className={classes.shownColumnsLabel}>Shown Columns</div>
+              <div className={classes.popoverContent}>
+                {columns.map((column: IColumns) => {
+                  return (
+                    <CheckboxWrapper
+                      key={`tableColumns-${column.label}`}
+                      label={column.label}
+                      checked={columnsShown.includes(column.elementKey!)}
+                      onChange={(e) => {
+                        onColumnChange(column.elementKey!, e.target.checked);
+                      }}
+                      id={`chbox-${column.label}`}
+                      name={`chbox-${column.label}`}
+                      value={column.label}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          )}
+          trigger={(triggerProps) => (
+            <IconButton
+              {...triggerProps}
+              aria-describedby={"columnsSelector"}
+              color="primary"
+              size="large"
+            >
+              <ViewColumnIcon fontSize="inherit" />
+            </IconButton>
+          )}
+        ></Popup>
       </Fragment>
     );
   };
@@ -718,33 +710,11 @@ const TableWrapper = (props: TableWrapperProps) => {
                                       : rowData[idField]
                                   }
                                   color="primary"
-                                  inputProps={{
-                                    "aria-label": "secondary checkbox",
-                                  }}
-                                  className="TableCheckbox"
-                                  checked={isSelected}
+                                  isChecked={isSelected}
                                   onChange={onSelect}
                                   onClick={(e) => {
                                     e.stopPropagation();
                                   }}
-                                  checkedIcon={
-                                    <span
-                                      className={
-                                        radioSelection
-                                          ? classes.radioSelectedIcon
-                                          : classes.checkedIcon
-                                      }
-                                    />
-                                  }
-                                  icon={
-                                    <span
-                                      className={
-                                        radioSelection
-                                          ? classes.radioUnselectedIcon
-                                          : classes.unCheckedIcon
-                                      }
-                                    />
-                                  }
                                 />
                               );
                             }}
