@@ -17,52 +17,27 @@
 import { useSelector } from "react-redux";
 import { withStyles } from "../../../theme/makeStyles";
 
-import clsx from "clsx";
 import { AppState, useAppDispatch } from "../../../store";
 
-import { menuOpen } from "../../../systemSlice";
+import {
+  AtlassianNavigation,
+  PrimaryButton,
+  PrimaryDropdownButton,
+} from "@atlaskit/atlassian-navigation";
+import DropdownMenu, {
+  DropdownItem
+} from "@atlaskit/dropdown-menu";
+import { useNavigate } from "react-router-dom";
 import { selFeatures } from "../consoleSlice";
 import { validRoutes } from "../valid-routes";
-import ConsoleMenuList from "./ConsoleMenuList";
 import MenuToggle from "./MenuToggle";
-
-const drawerWidth = 250;
+import { IMenuItem } from "./types";
 
 const styles = () => ({
   drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-    whiteSpace: "nowrap",
-    background:
-      "transparent linear-gradient(90deg, #073052 0%, #081C42 100%) 0% 0% no-repeat padding-box !important",
-    boxShadow: "0px 3px 7px #00000014",
-    "& .MuiPaper-root": {
-      backgroundColor: "inherit",
+    "& header": {
+      height: "auto",
     },
-    "& ::-webkit-scrollbar": {
-      width: "5px",
-    },
-    "& ::-webkit-scrollbar-track": {
-      background: "#F0F0F0",
-      borderRadius: 0,
-      boxShadow: "inset 0px 0px 0px 0px #F0F0F0",
-    },
-    "& ::-webkit-scrollbar-thumb": {
-      background: "#5A6375",
-      borderRadius: 0,
-    },
-    "& ::-webkit-scrollbar-thumb:hover": {
-      background: "#081C42",
-    },
-    "& button .mini": {
-      display: "none",
-    },
-  },
-  drawerOpen: {
-    width: drawerWidth,
-  },
-  drawerClose: {
-    overflowX: "hidden",
   },
 });
 
@@ -72,36 +47,70 @@ interface IMenuProps {
 
 const Menu = ({ classes }: IMenuProps) => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const features = useSelector(selFeatures);
 
   const sidebarOpen = useSelector(
     (state: AppState) => state.system.sidebarOpen
   );
 
-  const allowedMenuItems = validRoutes(features);
+  const allowedMenuItems: IMenuItem[] = validRoutes(features);
+  console.log(allowedMenuItems);
+
+  const items = allowedMenuItems.map((item) => {
+    if (item.children?.length) {
+      return (
+        <DropdownMenu
+          key={item.name}
+          trigger={({ triggerRef, ...props }) => (
+            <PrimaryDropdownButton {...props} ref={triggerRef}>
+              {item.name}
+            </PrimaryDropdownButton>
+          )}
+        >
+          {item.children.map((it) => (
+            <DropdownItem
+              key={it.name}
+              onClick={() => {
+                if (it.to) {
+                  navigate(it.to);
+                }
+              }}
+            >
+              {it.name}
+            </DropdownItem>
+          ))}
+        </DropdownMenu>
+      );
+    }
+
+    return (
+      <PrimaryButton
+        key={item.name}
+        onClick={() => {
+          if (item.to) {
+            navigate(item.to);
+          }
+        }}
+      >
+        {item.name}
+      </PrimaryButton>
+    );
+  });
 
   return (
-    <div
-      id="app-menu"
-      className={clsx(classes.drawer, {
-        [classes.drawerOpen]: sidebarOpen,
-        [classes.drawerClose]: !sidebarOpen,
-      })}
-      style={{
-        width: sidebarOpen ? 250 : 70,
-      }}
-    >
-      <MenuToggle
-        onToggle={(nextState) => {
-          dispatch(menuOpen(nextState));
-        }}
-        isOpen={sidebarOpen}
-      />
-
-      <ConsoleMenuList
-        menuItems={allowedMenuItems}
-        isOpen={sidebarOpen}
-        displayHeaders
+    <div className={classes.drawer}>
+      <AtlassianNavigation
+        renderProductHome={() => (
+          <MenuToggle
+            onToggle={(nextState) => {
+              // dispatch(menuOpen(nextState));
+            }}
+            isOpen={sidebarOpen}
+          />
+        )}
+        label="site"
+        primaryItems={[...items, <PrimaryButton>Sign Out</PrimaryButton>]}
       />
     </div>
   );

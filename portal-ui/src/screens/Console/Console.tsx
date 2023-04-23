@@ -150,10 +150,7 @@ const KMSRoutes = React.lazy(() => import("./KMS/KMSRoutes"));
 const styles = (theme: Theme) => ({
   root: {
     display: "flex",
-    "& .MuiPaper-root.MuiSnackbarContent-root": {
-      borderRadius: "0px 0px 5px 5px",
-      boxShadow: "none",
-    },
+    flexDirection: 'column',
   },
   content: {
     flexGrow: 1,

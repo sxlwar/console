@@ -25,10 +25,10 @@ const MenuSectionHeader = ({ label }: IMenuSectionHeader) => {
     <div
       style={{
         fontSize: 15,
-        color: "#b3c9d9",
+        color: "#fff",
         marginTop: 20,
         marginBottom: 10,
-        borderBottom: "#0F446C 1px solid",
+        borderBottom: "#ccc 1px solid",
         marginRight: 25,
         paddingBottom: 5,
       }}

@@ -14,15 +14,10 @@ const PageLayout = ({
   variant = "constrained",
   noPadding = false,
 }: PageLayoutProps) => {
-  let style = variant === "constrained" ? { maxWidth: 1220 } : {};
   return (
-    <div
-      style={{
-        padding: noPadding ? 0 : "2rem",
-      }}
-    >
+    <div style={{ padding: "2rem" }}>
       <Grid container>
-        <Grid item xs={12} className={className} style={style}>
+        <Grid item xs={12} className={className}>
           {children}
         </Grid>
       </Grid>

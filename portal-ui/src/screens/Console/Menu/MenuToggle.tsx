@@ -16,7 +16,7 @@
 
 import React, { Fragment, Suspense } from "react";
 import { Box, ApplicationLogo, VersionIcon, IconButton } from "mds";
-import MenuIcon from '@atlaskit/icon/glyph/menu'
+import MenuIcon from "@atlaskit/icon/glyph/menu";
 import TooltipWrapper from "../Common/TooltipWrapper/TooltipWrapper";
 import { getLogoVar } from "../../../config";
 
@@ -33,19 +33,7 @@ const MenuToggle = ({ isOpen, onToggle }: MenuToggleProps) => {
     <Box
       className={`${stateClsName}`}
       sx={{
-        width: "100%",
         cursor: "pointer",
-        "&::after": {
-          height: "1px",
-          display: "block",
-          content: "' '",
-          backgroundColor: "#0F446C",
-          margin: "0px auto",
-        },
-        "&.wide:hover": {
-          background:
-            "transparent linear-gradient(270deg, #00000000 0%, #051d39 53%, #54545400 100%) 0% 0% no-repeat padding-box",
-        },
       }}
       onClick={() => {
         if (isOpen) {
@@ -79,6 +67,8 @@ const MenuToggle = ({ isOpen, onToggle }: MenuToggleProps) => {
             justifyContent: "center",
             "&.wide": {
               flex: "1",
+              background: "rgba(0 0 0 / 0.3)",
+              padding: 10,
               "& svg": {
                 width: "100%",
                 maxWidth: 180,
@@ -145,7 +135,7 @@ const MenuToggle = ({ isOpen, onToggle }: MenuToggleProps) => {
             }}
             size="small"
           >
-            <MenuIcon label=""/>
+            <MenuIcon label="" />
           </IconButton>
         )}
       </Box>

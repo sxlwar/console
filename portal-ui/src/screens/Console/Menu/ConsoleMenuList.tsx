@@ -20,7 +20,6 @@ import { LogoutIcon, Box } from "mds";
 import MenuItem from "./MenuItem";
 
 import { IAM_PAGES } from "../../../common/SecureComponent/permissions";
-import MenuSectionHeader from "./MenuSectionHeader";
 import { LinkItem } from "@atlaskit/menu";
 
 const ConsoleMenuList = ({
@@ -32,7 +31,6 @@ const ConsoleMenuList = ({
   isOpen: boolean;
   displayHeaders?: boolean;
 }) => {
-  const stateClsName = isOpen ? "wide" : "mini";
   const { pathname = "" } = useLocation();
   let groupToSelect = pathname.slice(1, pathname.length); //single path
   if (groupToSelect.indexOf("/") !== -1) {
@@ -55,41 +53,22 @@ const ConsoleMenuList = ({
 
   return (
     <Box
-      className={`${stateClsName} wrapper`}
       sx={{
         display: "flex",
-        flexFlow: "column",
         justifyContent: "space-between",
         flex: 1,
-        paddingRight: "8px",
-
-        "&.wide": {
-          marginLeft: "30px",
-        },
-
-        "&.mini": {
-          marginLeft: "10px",
-          "& .menuHeader": {
-            display: "none",
-          },
-        },
       }}
     >
       <React.Fragment>
         {(menuItems || []).map((menuGroup: any, index) => {
           if (menuGroup) {
-            let grHeader = null;
-
             if (menuGroup.group !== header && displayHeaders) {
-              grHeader = <MenuSectionHeader label={menuGroup.group} />;
               header = menuGroup.group;
             }
 
             return (
               <Fragment key={`${menuGroup.id}-${index.toString()}`}>
-                {grHeader}
                 <MenuItem
-                  stateClsName={stateClsName}
                   page={menuGroup}
                   id={menuGroup.id}
                   selectedMenuItem={selectedMenuItem}

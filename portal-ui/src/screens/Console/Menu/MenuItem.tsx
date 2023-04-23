@@ -126,7 +126,7 @@ const MenuItem = ({
           page.icon && (
             <Tooltip tooltip={`${page.name}`} placement="right">
               <Suspense fallback={<div>...</div>}>
-                <page.icon style={{ color: "white" }} />
+                <page.icon style={{ color: "white", width: 18, height: 18 }} />
               </Suspense>
             </Tooltip>
           )
@@ -134,9 +134,7 @@ const MenuItem = ({
         cssFn={(state) => {
           return {
             ...state,
-            background: isSelected
-              ? "linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgb(0, 95, 129) 53%, rgba(84, 84, 84, 0) 100%) 0% 0% no-repeat padding-box padding-box transparent"
-              : "inherit",
+            background: isSelected ? "rgba(0 0 0 / 0.3)" : "inherit",
           };
         }}
       >
@@ -162,14 +160,14 @@ const MenuItem = ({
                 height={15}
                 width={15}
                 className="group-icon"
-                style={{ color: "#8399AB" }}
+                style={{ color: "#fff" }}
               />
             ) : (
               <MenuCollapsedIcon
                 height={15}
                 width={15}
                 className="group-icon"
-                style={{ color: "#8399AB" }}
+                style={{ color: "#fff" }}
               />
             )
           ) : null}
@@ -202,11 +200,8 @@ const MenuItem = ({
                   return {
                     ...state,
                     color: "white",
-                    paddingLeft: "3rem",
                     textDecoration: "none",
-                    background: is
-                      ? "linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, rgb(0, 95, 129) 53%, rgba(84, 84, 84, 0) 100%) 0% 0% no-repeat padding-box padding-box transparent"
-                      : "inherit",
+                    background: is ? "rgba(0 0 0 / 0.3)" : "inherit",
                   };
                 }}
               >
